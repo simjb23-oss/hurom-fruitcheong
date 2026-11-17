@@ -136,7 +136,7 @@ function build(vk) {
   const BH = V.baseH, CUP_D = 0.26, CUP_Y = BH - CUP_D;    // 컵 바닥 높이
   const JH = V.jarH, JY = CUP_Y + 0.02;                     // 통 바닥 높이
   const HR = 0.35, GT = 0.03, GAP = 0.01;                     // 컵 가운데 구멍 반지름(Ø7cm) · 유리 바닥 3mm · 틈 1mm(그림) · 실제 유효 간격은 덮개·띄움 포함 6~7mm
-  const VR = 0.325, PINR = 0.045, PINH = 0.12;                // 날개 Ø6.5cm · 유리 돌기(핀)
+  const VR = 0.325, HUBR = 0.065, DIMPLE = 0.03;              // 날개 Ø6.5cm · 젓개 볼록 허브 Ø13mm · 유리 바닥 오목 자리 깊이 3mm(돌기 없음 — 불량 재검토 2026-11-17)
   M.body.color.set(V.baseColor); M.body.roughness = V.baseRough; M.body.clearcoat = V.baseClear;
 
   /* 1. 받침 몸통 — 낮고 얇게. 앞에는 버튼 1 + 빛 1줄만. 팬 구멍은 바닥·뒤 */
@@ -153,13 +153,13 @@ function build(vk) {
     const lg = new THREE.Mesh(new THREE.PlaneGeometry(0.36, 0.09), M.logo); lg.position.set(0, BH * 0.3, V.baseR + 0.004); g.add(lg);
     if (wood && !V.square) { const ring = lathe([[V.cupR + 0.02, BH - 0.001], [V.baseR - 0.05, BH - 0.001], [V.baseR - 0.05, BH + 0.03], [V.cupR + 0.02, BH + 0.03]], M.wood, 96); g.add(ring); woodMeshes.push(ring); }
     if (wood && V.square) { const band = new THREE.Mesh(new RoundedBoxGeometry(V.baseR * 2 + 0.002, 0.04, V.baseR * 2 + 0.002, 2, 0.1), M.wood); band.position.y = BH + 0.02; g.add(band); woodMeshes.push(band); }
-    part('받침 · 낮고 얇게 · 팬 구멍은 바닥·뒤', g, [0, 0, 0], new THREE.Vector3(-V.baseR * 0.8, BH * 0.5, V.baseR * 0.5));
+    part('받침 · 낮고 얇게 · 안은 젖는 칸/마른 칸(물막이 턱 3mm → 뒤 배수) · 팬 구멍은 바닥·뒤', g, [0, 0, 0], new THREE.Vector3(-V.baseR * 0.8, BH * 0.5, V.baseR * 0.5));
   }
   /* 2. 알루미늄 컵 — 통 바닥·아래 옆면에 닿아 펠티어 열을 전함 */
   {
     const g = new THREE.Group();
     const cup = lathe([[HR, CUP_Y - 0.02], [V.cupR, CUP_Y - 0.02], [V.cupR, BH + 0.005], [V.cupR - 0.02, BH + 0.005], [V.cupR - 0.02, CUP_Y], [HR, CUP_Y]], M.alu, 72); g.add(cup);
-    part('알루미늄 컵 · 가운데 Ø7cm 뚫림(유리 창) · 둘레로 열 전달', g, [0, 0.85, 0], new THREE.Vector3(V.cupR, BH, 0), true);
+    part('알루미늄 컵 · 위에 실리콘 열 패드 0.5mm · 가운데 Ø7cm 뚫림(유리 창) · 둘레로 열 전달', g, [0, 0.85, 0], new THREE.Vector3(V.cupR, BH, 0), true);
   }
   /* 3. 빛 링 — 컵 바닥의 RGB LED 링. 품목 색으로 통을 아래서 비추고, 숨쉬기·고정·깜빡임으로 단계를 알림 */
   {
@@ -175,7 +175,7 @@ function build(vk) {
     const innerP = inset(prof, 0.035); innerP[0] = [0, 0.035];
     const innerM = lathe(innerP, M.glass, 96); innerM.material = M.glass;
     g.add(outer, innerM);
-    const pin = new THREE.Mesh(new THREE.CylinderGeometry(PINR, PINR + 0.015, PINH, 24), M.glass); pin.position.y = GT + PINH / 2; g.add(pin);   // 유리 성형 돌기 — 젓개를 끼우는 핀
+    const dimple = new THREE.Mesh(new THREE.TorusGeometry(HUBR + 0.01, 0.008, 12, 48), M.glass); dimple.rotation.x = Math.PI / 2; dimple.position.y = GT + 0.004; g.add(dimple);   // 유리 바닥 오목 자리(반구 · 깊이 3mm) — 테두리만 그림. 돌기(핀)는 뿌리 응력 때문에 없앰
     // 눈금 2줄(과일 · 설탕) — 가는 띠
     const fillY = JH * (V.jar === 'wide' ? 0.66 : 0.7);
     const syrup = lathe(syrupProfile(prof, fillY), M.syrup, 96); g.add(syrup);
@@ -190,18 +190,18 @@ function build(vk) {
       f.position.set(Math.cos(a) * rr, y + 0.03, Math.sin(a) * rr); f.rotation.set(rnd(), rnd() * 3, rnd()); fruitG.add(f);
     }
     g.position.y = JY;
-    part(`유리 통 · 약 2L · ${V.jar === 'onggi' ? '항아리형(배 Ø16 · 입 Ø12)' : V.jar === 'cyl' ? '원통 Ø14' : '넓적 Ø18'} × ${Math.round(JH * 10)}cm · 구멍 없음 · 바닥 가운데 유리 돌기(핀)`, g, [0, 1.9, 0], new THREE.Vector3(V.mouthR + 0.1, JH * 0.75, 0));
+    part(`유리 통 · 약 2L · ${V.jar === 'onggi' ? '항아리형(배 Ø16 · 입 Ø12)' : V.jar === 'cyl' ? '원통 Ø14' : '넓적 Ø18'} × ${Math.round(JH * 10)}cm · 붕규산 3.3 · 구멍 없음 · 바닥 가운데 오목 자리(깊이 3mm)`, g, [0, 1.9, 0], new THREE.Vector3(V.mouthR + 0.1, JH * 0.75, 0));
   }
-  /* 5. 젓개 — Ø6.5cm 날개 3 · 통 바닥 유리 돌기(핀)에 끼워 제자리에서만 돎 · 바닥 쪽에 여러 극 희토류 자석 원판을 PP로 막고 실리콘으로 덮음 */
+  /* 5. 젓개 — Ø6.5cm 날개 3 · 바닥 볼록 허브가 유리 오목 자리에 앉아 제자리에서 돎(자석이 가운데로 당김) · 자석 6개는 도금 후 PP 일체 사출(이음매 없음) · LSR 덮기 */
   {
     const g = new THREE.Group();
-    const body = lathe([[PINR + 0.012, 0], [VR, 0], [VR, 0.06], [VR - 0.03, 0.08], [PINR + 0.07, 0.08], [PINR + 0.05, 0.15], [PINR + 0.012, 0.15]], M.siliconeT, 64); g.add(body);   // 실리콘 겉몸(반투명으로 그림) + 핀 구멍
+    const body = lathe([[0, 0], [VR, 0], [VR, 0.06], [VR - 0.03, 0.08], [0.12, 0.08], [0.1, 0.15], [0, 0.15]], M.siliconeT, 64); g.add(body);   // 실리콘 겉몸(반투명으로 그림) — 핀 구멍 없음
+    const hub = new THREE.Mesh(new THREE.SphereGeometry(HUBR, 32, 16, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), M.pp); hub.position.y = 0.002; g.add(hub);   // 볼록 허브(PP) — 유리 오목 자리에 앉음
     for (let i = 0; i < 6; i++) { const seg = new THREE.Mesh(new THREE.CylinderGeometry(VR - 0.045, VR - 0.045, 0.028, 48, 1, false, i * Math.PI / 3, Math.PI / 3), i % 2 ? M.magnetS : M.magnet); seg.position.y = 0.026; g.add(seg); }   // 6극 자석 원판(N·S 번갈아) — 유리 바닥에 가장 가깝게
     const ppCap = new THREE.Mesh(new THREE.CylinderGeometry(VR - 0.04, VR - 0.04, 0.012, 48), M.pp); ppCap.position.y = 0.047; g.add(ppCap);   // PP 봉입 덮개
-    const ppIn = new THREE.Mesh(new THREE.CylinderGeometry(PINR + 0.06, PINR + 0.06, 0.03, 32), M.pp); ppIn.position.y = 0.026; g.add(ppIn);
-    for (let i = 0; i < 3; i++) { const h = new THREE.Group(); h.rotation.y = i * Math.PI * 2 / 3; const b = new THREE.Mesh(new RoundedBoxGeometry(VR - PINR - 0.06, 0.09, 0.06, 2, 0.02), M.silicone); b.position.set((VR + PINR) / 2 + 0.01, 0.12, 0); b.rotation.x = 0.4; h.add(b); g.add(h); }   // 날개 3 · 끝 둥글게
-    g.position.y = JY + GT; g.userData.slow = true; spinners.push(g);
-    part('젓개 · Ø6.5cm 날개 3 · 핀에 끼움(떠다니지 않음) · 바닥 쪽 여러 극 자석 봉입 · 뽑아서 씻음', g, [0, 1.35, 0], new THREE.Vector3(VR, 0.08, 0));
+    for (let i = 0; i < 3; i++) { const h = new THREE.Group(); h.rotation.y = i * Math.PI * 2 / 3; const b = new THREE.Mesh(new RoundedBoxGeometry(VR - 0.16, 0.09, 0.06, 2, 0.02), M.silicone); b.position.set((VR + 0.1) / 2 + 0.01, 0.12, 0); b.rotation.x = 0.4; h.add(b); g.add(h); }   // 날개 3 · 끝 둥글게
+    g.position.y = JY + GT - DIMPLE * 0.5; g.userData.slow = true; spinners.push(g);   // 허브가 오목 자리에 반쯤 잠김
+    part('젓개 · Ø6.5cm 날개 3 · 볼록 허브가 오목 자리에 앉음(자석이 가운데로 당김) · 자석 6개 도금 + PP 일체 사출 · 뽑아서 씻음', g, [0, 1.35, 0], new THREE.Vector3(VR, 0.08, 0));
   }
   /* 6. 뚜껑 — 얹어 누르는 식 · 가운데 한 방향 밸브 · 손잡이(나무 안) */
   {
@@ -232,7 +232,7 @@ function build(vk) {
     const g = new THREE.Group();
     const tec = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.04, 0.3), M.peltier); tec.position.set(0, CUP_Y - 0.045, PZ); g.add(tec);
     [[-0.17], [0.17]].forEach(([x]) => { const w = tube([new THREE.Vector3(x, CUP_Y - 0.045, PZ - 0.2), new THREE.Vector3(x, CUP_Y - 0.06, PZ - 0.35), new THREE.Vector3(x * 0.5, 0.1, 0.5)], 0.004, M.wireB, 20); g.add(w); });
-    part('펠티어 1장 · 극 바꿔 데우기·식히기 · 서늘고 공용', g, [0, -0.35, -0.9], new THREE.Vector3(0.2, CUP_Y - 0.045, PZ), true);
+    part('펠티어 1장 · 식히기 · PWM 연속(극 전환 없음) · 데우기는 필름 히터 10W(벤치 후 확정) · 서늘고 공용', g, [0, -0.35, -0.9], new THREE.Vector3(0.2, CUP_Y - 0.045, PZ), true);
   }
   /* 9. 방열판 */
   {
@@ -248,14 +248,14 @@ function build(vk) {
     const bl = new THREE.Group(); bl.position.set(0, 0.045, PZ);
     for (let i = 0; i < 7; i++) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.012, 0.05), M.vent); b.position.set(0.1, 0, 0); const h = new THREE.Group(); h.rotation.y = i / 7 * Math.PI * 2; b.rotation.x = 0.6; h.add(b); bl.add(h); }
     bl.userData.spin = true; spinners.push(bl); g.add(bl);
-    part('팬 40mm · 바닥 흡기 → 뒤 배기', g, [0, -1.15, -1.7], new THREE.Vector3(0.21, 0.045, PZ), true);
+    part('팬 40mm 볼 베어링 · 바닥 흡기 망 → 뒤 배기', g, [0, -1.15, -1.7], new THREE.Vector3(0.21, 0.045, PZ), true);
   }
   /* 11. 제어 보드 — 앞 아래 · 펠티어 극 전환(H브리지) · 품목 일정표 · 젓개 걸림 감지 */
   {
     const g = new THREE.Group();
     const pcb = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.015, 0.22), M.pcb); pcb.position.set(0, 0.1, V.cupR * 0.78); g.add(pcb);
     [[-0.12, 0.08], [0.1, 0.06], [0.18, 0.04]].forEach(([x, s]) => { const c = new THREE.Mesh(new THREE.BoxGeometry(s, 0.02, s), M.chip); c.position.set(x, 0.118, V.cupR * 0.78); g.add(c); });
-    part('제어 보드 · 극 전환 · 품목 일정표 · NTC', g, [-0.5, -0.5, 1.2], new THREE.Vector3(0.25, 0.1, V.cupR * 0.78), true);
+    part('제어 보드 · 마른 칸 · 품목 일정표 · NTC · 온습도 · 홀 센서(눌리는 컵으로 통 감지)', g, [-0.5, -0.5, 1.2], new THREE.Vector3(0.25, 0.1, V.cupR * 0.78), true);
   }
   /* 12. 버튼 1 + 빛 1줄 — 앞 윗면 */
   {
@@ -272,7 +272,7 @@ function build(vk) {
     const pl = V.square ? new THREE.Mesh(new RoundedBoxGeometry(r * 2, 0.02, r * 2, 2, 0.06), M.body) : new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.02, 72), M.body); pl.position.y = 0.01; g.add(pl);
     for (let i = -3; i <= 3; i++) { const s = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.01, 0.3), M.vent); s.position.set(i * 0.08, -0.002, PZ); g.add(s); }
     [[-0.6, -0.6], [0.6, -0.6], [-0.6, 0.6], [0.6, 0.6]].forEach(([x, z]) => { const f = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.03, 20), M.rubber); f.position.set(x * r, -0.012, z * r); g.add(f); });
-    part('바닥판 · 흡기 슬롯 · 고무발 4', g, [0, -1.5, 0], new THREE.Vector3(-r * 0.7, 0, r * 0.7), true);
+    part('바닥판 · 빼서 씻는 흡기 망 · 고무발 4', g, [0, -1.5, 0], new THREE.Vector3(-r * 0.7, 0, r * 0.7), true);
   }
   /* 14. 어댑터 — 12V 외장(서늘고·해동기 공용 후보 · W 추정 예정) · 선은 뒤 아래로 */
   {
