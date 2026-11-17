@@ -145,7 +145,7 @@ h2{font-size:clamp(32px,4.2vw,56px);line-height:1.18;font-weight:800;letter-spac
 footer{padding:56px 0 72px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
 
 /* exploded view */
-#structure{height:520vh;padding:0;background:linear-gradient(#fbfaf7,#f1efe9)}
+#structure{height:360vh;padding:0;background:linear-gradient(#fbfaf7,#f1efe9)}.xv-skip{position:absolute;right:24px;top:84px;z-index:4;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;backdrop-filter:blur(6px)}.xv-skip:hover{background:#fff}.xv-barwrap{position:absolute;left:0;right:0;top:64px;height:3px;background:rgba(0,0,0,.06);z-index:4}#xv-bar{height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:#e98f1f}.xv-hint{position:absolute;left:50%;bottom:92px;transform:translateX(-50%);z-index:3;font-size:12px;color:var(--sub);background:rgba(255,255,255,.7);padding:4px 10px;border-radius:999px;pointer-events:none}@media (max-width:860px){#structure{height:280vh}.xv-skip{top:auto;bottom:16px;right:12px;font-size:12px;padding:7px 12px}.xv-hint{display:none}}
 .xv-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;grid-template-columns:minmax(280px,360px) 1fr;align-items:center}
 .xv-text{padding:0 0 0 max(32px,calc((100vw - 1120px)/2 + 32px));position:relative;z-index:2}
 .xv-step{position:absolute;top:50%;transform:translateY(-40%);opacity:0;transition:opacity .6s,transform .6s;max-width:330px}
@@ -528,6 +528,9 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
 
 <section id="structure">
   <div class="xv-sticky">
+    <div class="xv-barwrap" aria-hidden="true"><div id="xv-bar"></div></div>
+    <a class="xv-skip" href="#spec">분해 보기 건너뛰기 ↓</a>
+    <div class="xv-hint">스크롤을 내리면 날이 밝고 부품이 분해됩니다</div>
     <div class="xv-text">
       <div class="xv-step on"><div class="kicker">구조 · 저녁 앞모습 (시안 A · 가정 Ø19 × 23cm)</div><h2>받침 빛이 청을 비춥니다.</h2><p>낮은 흰 받침(높이 5cm) 안에 알루미늄 컵이 있고, 거기에 항아리형 유리 통이 앉습니다. 통 둘레 빛 테와 컵 바닥 LED 링이 품목 색으로 통을 아래에서 비춥니다. 아래 단추로 시안·청 색·나무 안을 바꿉니다. 스크롤을 내리면 날이 밝고 부품별로 분해됩니다.</p></div>
       <div class="xv-step"><div class="kicker">구조 · 뒷모습</div><h2>열과 선은 뒤로.</h2><p>뒷면 슬롯으로 바람이 나갑니다 — 숙성 때는 펠티어 더운 면의 열, 녹이기 때는 찬 면의 냉기. 바람은 바닥판 슬롯으로 들어와 방열판을 지나 뒤로 나갑니다. 어댑터 선도 뒤 아래로. 앞에서는 아무것도 안 보입니다.</p></div>

@@ -342,9 +342,17 @@ addEventListener('resize', resize); resize();
 const tmp = new THREE.Vector3();
 const NIGHT_BG = new THREE.Color(0x151210);
 let t0 = performance.now();
+let wasOff = false;
 function frame(now) {
+  // 화면 밖(위·아래 한 화면 이상)이거나 탭이 숨겨졌으면 그리지 않음 — 긴 페이지에서 스크롤이 무거워지는 것을 막음
+  if (forced === null) {
+    const rr = sec.getBoundingClientRect();
+    if (document.hidden || rr.bottom < -innerHeight || rr.top > innerHeight * 2) { wasOff = true; t0 = now; setTimeout(() => requestAnimationFrame(frame), 120); return; }
+  }
+  if (wasOff) { wasOff = false; t0 = now; }
   const dt = Math.min(0.1, Math.max(0, (now - t0) / 1000)); t0 = now;
   const p = progress();
+  const bar = document.getElementById('xv-bar'); if (bar) bar.style.transform = `scaleX(${p})`;
   // 0~.08 저녁 앞모습 · .08~.2 날이 밝으며 돌아 뒷모습 · .2~.36 몸체 투명 + 열 흐름 · .4~.58 분해 · .58~.76 유지 · .76~.95 조립 · .95~ 저녁으로
   const nt = NIGHT !== null ? NIGHT : p < 0.06 ? 1 : p < 0.2 ? 1 - ease((p - 0.06) / 0.14) : p < 0.95 ? 0 : ease((p - 0.95) / 0.05);
   const e = p < 0.4 ? 0 : p < 0.58 ? ease((p - 0.4) / 0.18) : p < 0.76 ? 1 : p < 0.95 ? 1 - ease((p - 0.76) / 0.19) : 0;
