@@ -209,6 +209,22 @@ footer{padding:56px 0 72px;font-size:13px;color:var(--sub);border-top:1px solid 
 .xv-colors>div{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .xv-colors button i{box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}
 .xv-colors button.txt{padding:8px 14px}
+.xv-colors .xv-sep{font:600 12px/1 inherit;font-family:inherit;color:#8a8a8a;padding:0 2px 0 6px;align-self:center;white-space:nowrap}
+.xv-colors button.prev{opacity:.72}
+details.prev{margin-top:28px;border:1px dashed var(--line);border-radius:18px;padding:0 20px 4px;background:rgba(255,255,255,.5)}
+details.prev>summary{cursor:pointer;list-style:none;font-weight:700;font-size:15px;padding:16px 0;color:var(--sub)}
+details.prev>summary::-webkit-details-marker{display:none}
+details.prev>summary::before{content:'▸';display:inline-block;margin-right:8px;transition:transform .2s}
+details.prev[open]>summary::before{transform:rotate(90deg)}
+details.prev .three,details.prev .four{margin-top:8px}details.prev .four{margin-bottom:18px}
+.lite-cmp .two>div{padding:0;overflow:hidden}
+.lite-cmp .two .photo{margin:0;border-radius:0;background:#f7f5f0}
+.lite-cmp .cap{padding:18px 22px 22px}.lite-cmp .cap small{display:block;font-size:12px;color:var(--accent);font-weight:700;margin-bottom:6px}
+.lite-cmp .cap>b{display:block;font-size:18px;margin-bottom:6px;letter-spacing:-0.02em}.lite-cmp .cap p{font-size:14px;color:var(--sub);line-height:1.6;margin:0}.lite-cmp .cap p b{color:var(--ink,#151515)}
+.lite-cmp .night{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.lite-cmp .night>div{border-radius:18px;overflow:hidden;background:#15120f;border:1px solid var(--line)}.lite-cmp .night img{width:100%;display:block}
+.lite-cmp .night small{display:block;text-align:center;padding:10px;font-size:13px;color:#e9e2d6;font-weight:600;background:#15120f}
+@media (max-width:860px){.lite-cmp .night{grid-template-columns:1fr}}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
 .three>div{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden}
 .three .photo{margin:0;border-radius:0;background:#f7f5f0}
@@ -434,7 +450,7 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
   <div class="wrap">
     <div class="kicker rv">04 · 제품</div>
     <h2 class="rv">통 하나, 젓개 하나, USB-C 하나, 버튼 하나.</h2>
-    <div class="duo rv"><div class="ph tilt"><img src="img/photo_yuja_front.jpg" alt="과일청 메이커 정면 · 유자청 · 받침 빛 · 컨셉 이미지"><span class="mono">01 / 대표 컷 · 시안 A</span></div><div class="ph tilt"><img src="img/photo_pour_maesil.jpg" alt="매실 위에 설탕을 붓는 장면 · 컨셉 이미지"><span class="mono">02 / 과일 먼저, 설탕은 위에</span></div></div>
+    <div class="duo rv"><div class="ph tilt"><img src="img/photo_yuja_front.jpg" alt="과일청 메이커 정면 · 유자청 · 받침 빛 · 컨셉 이미지"><span class="mono">01 / 대표 컷 · 2L 항아리 이전 안 컨셉(1L 라이트 A·C 렌더는 05)</span></div><div class="ph tilt"><img src="img/photo_pour_maesil.jpg" alt="매실 위에 설탕을 붓는 장면 · 컨셉 이미지"><span class="mono">02 / 과일 먼저, 설탕은 위에</span></div></div>
     <div class="spec rv">
       <div><b>1L</b><span>붕규산 유리 통(전체 1.2L) · 1회분 과일 약 500g + 설탕 약 500g(레몬 4개 · 유자 3~4개) · 통째 옮김 · 많이 담그면 통 2개</span></div>
       <div><b>실온 · 열 없음</b><span>데우기도 식히기도 없음 — 설탕은 실온에서 다 녹고, 속도는 젓기가 정함 · 겨울(15°C↓)엔 젓는 간격을 줄여 보정(<a href="#lite2">검토</a>)</span></div>
@@ -442,7 +458,7 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
       <div><b>30분마다 1~2분</b><span>바닥 자석 젓개 Ø4cm · 20~30rpm 아주 천천히 · 즙이 나오기 전 처음 4~6시간은 쉬고, 겨울엔 15분마다</span></div>
       <div><b>3묶음</b><span>유자·레몬·딸기(1~2일 → 냉장고) / 매실(며칠 → 서늘한 곳) / 생강·오미자</span></div>
       <div><b>3개</b><span>씻는 부품 · 뚜껑 · 유리 통 · 젓개(통·젓개 식기세척기)</span></div>
-      <div><b>Ø12.5 × 21.5cm</b><span>라이트 바깥 크기(받침 Ø12.5×4.5 + 통 15 + 뚜껑 2) · 약 0.9kg · 확정은 디자인 뒤</span></div>
+      <div><b>Ø12.5 × 21.5cm</b><span>라이트 A 통형 바깥 크기(받침 Ø12.5×4.5 + 통 15 + 뚜껑 2) · 약 0.9kg · C 넓적은 Ø16 × 15.5cm · 둘 중 하나는 설문 사진 비교로 정함(<a href="#design">05</a>)</span></div>
       <div><b>USB-C 5V</b><span>폰 충전기(5V 2A↑)로 켬 · 어댑터 미포함, C-to-C 케이블 포함 · 평균 1~2W · 최대 5W</span></div>
     </div>
     <div class="how rv" style="margin-top:36px">
@@ -465,19 +481,43 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
   <div class="wrap">
     <div class="kicker rv">05 · 디자인</div>
     <h2 class="rv">받침은 낮고 조용하게, 청 색이 주인공.</h2>
-    <p class="note rv" style="border-left:3px solid #1f8a5b;padding-left:10px"><b>읽는 법(11/17):</b> 시안 A~C와 이미지는 <b>2L 항아리 이전 안</b>입니다. 기본안 「라이트」는 1L 통형(입구 Ø100 · 프레스 성형 · 항아리 연마 문제 없음) + 낮은 흰 받침(Ø12.5 × 4.5cm)으로 피그마에서 다시 그립니다. 받침 빛 · 흰 하나 · 통 안 청이 색이라는 방향은 그대로입니다.</p>
+    <p class="note rv" style="border-left:3px solid #1f8a5b;padding-left:10px"><b>11/17 「둘 다 넣어봐」:</b> 기본안 「라이트」(1L · USB-C · 젓기만)를 <b>A 통형</b>과 <b>C 넓적</b> 두 모양으로 다시 그렸습니다(아래 렌더 · 구조 3D · 단면도 모두 라이트 기준). 둘 중 하나는 1단계 설문의 사진 비교와 1주차 벤치(위까지 섞이는지)로 정합니다. 2L 항아리 시안 A·B·C는 「이전 안」으로 접어 두었습니다. 받침 빛 · 흰 하나 · 통 안 청이 색이라는 방향은 그대로입니다.</p>
     <p class="lead2 rv">며칠 동안 조리대 위에 놓여 있고 철마다 다시 꺼내는 물건입니다. 숨기고 싶은 기계면 베란다로 가고, 그러면 쓰지 않게 됩니다. 그래서 <b>꺼내 두고 싶은 물건</b>이어야 합니다. 디자인 작업은 피그마 보드에서 합니다 — 시안·CMF·사용 장면을 거기서 고치고, 이 페이지의 그림은 그 보드를 가져옵니다.</p>
     <a class="figma rv" href="https://www.figma.com/design/4p5ypveUPOybvLEnaq2gcE" target="_blank" rel="noopener">피그마 디자인 보드 열기 →</a> <a class="figma rv" href="film.html" style="background:#e98f1f;color:#15120f">30초 소개 필름 →</a> <a class="figma rv" href="prompts.html" style="background:#fff;color:#15120f;border:1px solid var(--line)">이미지 프롬프트 10컷 →</a>
-    <div class="three rv" style="margin-top:28px">
-      <div><div class="photo"><img src="img/a.png" alt="시안 A 항아리형"></div><div class="cap"><b>시안 A · 추천 — 항아리형 유리 통 + 흰 무광 받침</b><p>장독 곡선을 현대적으로 다듬은 통(배 Ø16 · 입 Ø12 · 16cm). 배가 나와 2L가 들어가도 키가 낮습니다. 받침 Ø19 × 5cm.</p><small>유리 금형 필요(바닥 오목 자리 포함) · 입구가 배보다 좁아 취입 성형 — 결정 요청 5</small></div></div>
-      <div><div class="photo"><img src="img/b.png" alt="시안 B 원통"></div><div class="cap"><b>시안 B — 원통 유리 + 연회색 세라믹 질감 받침</b><p>가장 단순한 통(Ø14 × 16cm). 기성 내열 유리를 쓸 수 있다는 장점이 있었지만, 바닥 가운데 오목 자리(젓개 받침)가 필요해져 기성 통을 못 씁니다. 다만 프레스 성형이 쉬워 통 모양 결정(결정 요청 5)에서 다시 봅니다.</p><small>사실상 제외</small></div></div>
-      <div><div class="photo"><img src="img/c.png" alt="시안 C 넓적"></div><div class="cap"><b>시안 C — 넓적한 낮은 유리 통 + 베이지 받침</b><p>넓고 낮은 통(Ø18 × 11cm). 상부장 아래 어디든 들어가고 설탕이 빨리 녹지만, 자리를 더 차지하고 「항아리」 느낌이 약합니다.</p><small>대안</small></div></div>
+    <div class="lite-cmp rv" style="margin-top:28px">
+      <div class="two" style="margin-top:0">
+        <div><div class="photo"><img src="img/lite_a.png" alt="라이트 A · 통형 1L 유리 통 + 흰 받침 Ø12.5cm · 3D 렌더"></div><div class="cap"><small>라이트 A · 통형 — 기본 후보</small><b>Ø10 × 15cm 통 + 흰 받침 Ø12.5 × 4.5cm → 전체 Ø12.5 × 21.5cm</b><p>입구 Ø100이 가장 넓어 프레스 성형(항아리 연마 문제 없음). 좁은 조리대 · 냉장고 선반에 그대로 들어가고, 2L 통(별매)도 같은 받침에 앉습니다. 과일 층이 10cm로 깊어 <b>바닥 젓개가 위까지 섞는지</b>가 벤치 과제(염료 시험). 유리 통만 보면 「물병」으로 보일 수 있어 뚜껑 · 빛 테 비례를 피그마에서 다듬습니다.</p></div></div>
+        <div><div class="photo"><img src="img/lite_c.png" alt="라이트 C · 넓적 1L 유리 통 + 흰 받침 Ø16cm · 3D 렌더"></div><div class="cap"><small>라이트 C · 넓적 — 대안</small><b>Ø13.5 × 9.5cm 통 + 흰 받침 Ø16 × 4cm → 전체 Ø16 × 15.5cm</b><p>바닥 면적이 A의 1.8배라 설탕층이 얇고 Ø6.6cm 날개가 더 넓게 섞어 <b>빨리 · 고르게 녹는 쪽</b>. 과일 층 7cm로 얕아 위까지 섞임이 유리하고 손 넣어 씻기 쉽습니다. 대신 자리를 1.6배 차지하고, 낮고 넓은 비례가 「요거트 메이커 · 반찬통」으로 읽힐 위험이 있어 받침 빛과 뚜껑 디자인에 더 기대야 합니다.</p></div></div>
+      </div>
+      <div class="night">
+        <div><img src="img/lite_a_night.png" alt="라이트 A · 저녁 조리대 · 유자청 · 받침 빛"><small>라이트 A · 저녁 — 단색 받침 빛이 통 안 유자청 색을 그대로 비춥니다</small></div>
+        <div><img src="img/lite_c_night.png" alt="라이트 C · 저녁 조리대 · 유자청 · 받침 빛"><small>라이트 C · 저녁 — 같은 빛, 넓은 통</small></div>
+      </div>
+      <table class="pl" style="margin-top:18px">
+        <tr><th class="l" style="width:22%">비교</th><th class="l" style="width:39%">라이트 A · 통형</th><th class="l">라이트 C · 넓적</th></tr>
+        <tr><td class="l"><b>유리 통</b></td><td class="l">내경 Ø100 × 150mm · 전체 1.2L · 1.0L 상한 선 · 붕규산 3.3 · 프레스 성형</td><td class="l">내경 Ø130 × 95mm · 전체 약 1.3L · 1.0L 상한 선(70mm) · 붕규산 3.3 · 프레스 성형</td></tr>
+        <tr><td class="l"><b>전체 크기 · 무게</b></td><td class="l">Ø12.5 × 21.5cm · 약 0.9kg</td><td class="l">Ø16 × 15.5cm · 약 1.0kg(유리가 조금 더)</td></tr>
+        <tr><td class="l"><b>받침 · 구동</b></td><td class="l">Ø12.5 × 4.5cm · 자석 디스크 Ø40 · 젓개 Ø5.4cm 날개 3</td><td class="l">Ø16 × 4cm · 자석 디스크 Ø40(같음) · 젓개 Ø6.6cm 날개 3 · 필요 토크 약 1.3배(여유 안)</td></tr>
+        <tr><td class="l"><b>설탕 녹는 속도</b> <span class="tag est">추정</span></td><td class="l">바닥 면적 79cm² · 설탕 500g 층 두께 약 4cm → 젓개가 바닥층을 뚫는 데 시간</td><td class="l">바닥 면적 133cm² · 설탕층 약 2.4cm · 날개가 넓어 <b>1.3~1.5배 빠를 것</b> — 1주차 벤치에서 A · C 같은 조건으로 잼</td></tr>
+        <tr><td class="l"><b>위까지 섞임</b></td><td class="l">과일 층 10cm — 축류 날개로도 윗면 순환이 과제(염료 ≤10분 목표)</td><td class="l">과일 층 7cm — 유리</td></tr>
+        <tr><td class="l"><b>자리 · 보관</b></td><td class="l">좁은 조리대 유리 · 냉장고 선반(높이 20cm↑)에 통째 들어감</td><td class="l">자리 1.6배 · 냉장고 선반 낮아도(10cm↑) 들어감 · 상부장 아래 여유</td></tr>
+        <tr><td class="l"><b>인상</b></td><td class="l">「유리 물병 + 흰 받침」 — 가전 티 적음 · 뚜껑 · 빛 테 비례가 관건</td><td class="l">「요거트 메이커 · 반찬통」으로 읽힐 위험 — 받침 빛 · 뚜껑으로 차별</td></tr>
+        <tr><td class="l"><b>2L 통(별매) 호환</b></td><td class="l">같은 받침에 Ø10 × 27cm 통 → 가능</td><td class="l">같은 받침에 Ø13.5 × 17cm 통 → 가능</td></tr>
+        <tr><td class="l"><b>추천</b></td><td class="l"><span class="tag ok">기본 후보</span> 설문 사진 비교에 A · C 둘 다 넣고, 벤치 염료 시험에서 A가 윗면 순환 10분을 못 넘기면 C로</td><td class="l"><span class="tag warn">대안</span> 녹는 속도 · 씻기에서 앞서면 바꿈</td></tr>
+      </table>
+    </div>
+    <details class="prev rv"><summary>이전 안 · 2L 항아리 시안 A · B · C와 청 색 4가지 (11/17 라이트 전 · 비교용)</summary>
+    <div class="three" style="margin-top:8px">
+      <div><div class="photo"><img src="img/a.png" alt="시안 A 항아리형(2L 이전 안)"></div><div class="cap"><b>시안 A · 추천 — 항아리형 유리 통 + 흰 무광 받침</b><p>장독 곡선을 현대적으로 다듬은 통(배 Ø16 · 입 Ø12 · 16cm). 배가 나와 2L가 들어가도 키가 낮습니다. 받침 Ø19 × 5cm.</p><small>2L 이전 안 · 입구가 배보다 좁아 취입 성형 — 라이트에서는 입구가 가장 넓은 통형으로 바꿈</small></div></div>
+      <div><div class="photo"><img src="img/b.png" alt="시안 B 원통"></div><div class="cap"><b>시안 B — 원통 유리 + 연회색 세라믹 질감 받침</b><p>가장 단순한 통(Ø14 × 16cm). 기성 내열 유리를 쓸 수 있다는 장점이 있었지만, 바닥 가운데 오목 자리(젓개 받침)가 필요해져 기성 통을 못 씁니다. 다만 프레스 성형이 쉬워 통 모양 결정(결정 요청 5)에서 다시 봅니다.</p><small>2L 이전 안 · 제외</small></div></div>
+      <div><div class="photo"><img src="img/c.png" alt="시안 C 넓적"></div><div class="cap"><b>시안 C — 넓적한 낮은 유리 통 + 베이지 받침</b><p>넓고 낮은 통(Ø18 × 11cm). 상부장 아래 어디든 들어가고 설탕이 빨리 녹지만, 자리를 더 차지하고 「항아리」 느낌이 약합니다.</p><small>2L 이전 안 · 라이트 C(넓적 1L)로 이어짐</small></div></div>
     </div>
     <div class="four rv">
-      <div><img src="img/c_yuja.png" alt="유자"><small>유자 · 주황</small></div><div><img src="img/c_maesil.png" alt="매실"><small>매실 · 초록</small></div><div><img src="img/c_omija.png" alt="오미자"><small>오미자 · 빨강</small></div><div><img src="img/c_strawberry.png" alt="딸기"><small>딸기 · 분홍</small></div>
+      <div><img src="img/c_yuja.png" alt="유자"><small>유자 · 주황</small></div><div><img src="img/c_maesil.png" alt="매실"><small>매실 · 초록</small></div><div><img src="img/c_omija.png" alt="오미자"><small>오미자 · 빨강</small></div><div><img src="img/c_strawberry.png" alt="딸기"><small>딸기 · 분홍(2L 이전 안 · 라이트는 LED 단색, 청 색은 통 안 시럽이 냄)</small></div>
     </div>
+    </details>
     <div class="two rv">
-      <div><h3>바꿀 수 없는 것 (기획이 정함)</h3><ul><li>유리 통 약 2L, 통에 구멍·축·실링 없음, 통째 들어 옮김</li><li>받침 높이 6cm 이하(모터·펠티어·팬을 눕혀 넣음) · 앞에는 버튼 1 + 빛 1줄</li><li>팬 슬롯·방열판·나사·어댑터 선은 바닥판·뒷면에만</li><li>받침 빛 = 품목 색 + 단계 표시(숨쉬기 · 고정 · 세 번 깜빡)</li><li>식품 접촉 부품은 유리·식품용 실리콘·PP만</li></ul></div>
+      <div><h3>바꿀 수 없는 것 (기획이 정함)</h3><ul><li>유리 통 1L 붕규산(2L는 별매 · 같은 받침), 통에 구멍·축·실링 없음, 통째 들어 옮김 · 입구가 가장 넓은 프레스형</li><li>받침 높이 4.5cm 안팎(자석 디스크 · 소형 모터 · 보드만) · 앞에는 버튼 1 + 빛 1줄 · 흰 하나</li><li>USB-C 꽂이 · 나사는 뒷면 · 바닥판에만(팬 슬롯 · 방열판 · 어댑터 없음)</li><li>받침 빛 = 단색(따뜻한 흰) + 단계 표시(숨쉬기 · 고정 · 세 번 깜빡) · 청 색은 통 안 시럽이 냄</li><li>식품 접촉 부품은 유리·식품용 실리콘·PP만</li></ul></div>
       <div><h3>디자이너가 정하는 것 (피그마에서)</h3><ul><li>통의 곡선과 입 지름(국자가 들어가고 과일을 담기 쉬운 선)</li><li>받침 윗테·뚜껑 손잡이의 나무 사용 여부(오일 마감 너도밤·호두)</li><li>빛 테의 폭·확산 재질 · 저녁 밝기</li><li>Hurom 각인 위치 · 서늘고·해동기와 한 가족으로 보이는 라운드 값</li><li>평가 기준: 「발효기·요거트 메이커로 보이면 실패」 — 인터뷰에서 가전으로 인식되는 비율 30% 이하</li></ul></div>
     </div>
   </div>
@@ -496,10 +536,11 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
   <div class="wrap">
     <div class="kicker rv">06 · 구조 성립 검토 — 진짜 되나</div>
     <h2 class="rv">열여섯 번 따지고 수천 번 돌려서, 다섯 군데를 바꿨습니다.</h2>
-    <p class="note rv" style="border-left:3px solid #1f8a5b;padding-left:10px"><b>읽는 법(11/17):</b> 이 칸의 검토 ①~⑯은 <b>2L · 데우기/식히기 이전 안</b> 기준입니다. 기본안 「라이트」(1L · 젓기만)는 자석 토크 필요치가 0.5 → 0.1 N·m, 유리 바닥 창은 같고, 열 · 결로 · 펠티어 · 히터 항목은 해당 없음이라 <b>모두 더 여유 있는 쪽</b>입니다. 1L 전용 수치는 1주차 벤치 뒤 갱신합니다(<a href="#lite2">라이트 검토</a>).</p>
+    <p class="note rv" style="border-left:3px solid #1f8a5b;padding-left:10px"><b>읽는 법(11/17):</b> 이 칸의 검토 ①~⑯은 <b>2L · 데우기/식히기 이전 안</b> 기준입니다. 기본안 「라이트」(1L · 젓기만)는 자석 토크 필요치가 0.5 → 0.1 N·m, 유리 바닥 창은 같고, 열 · 결로 · 펠티어 · 히터 항목은 해당 없음이라 <b>모두 더 여유 있는 쪽</b>입니다. 1L 전용 수치는 1주차 벤치 뒤 갱신합니다(<a href="#lite2">라이트 검토</a>). 단면도와 3D는 라이트 A 기준으로 다시 그렸고, 2L 단면도는 접힌 칸에 있습니다.</p>
     <p class="lead2 rv">그림이 예쁜 것과 기계가 도는 것은 다릅니다. 힘 · 열 · 물 · 유리 · 안전을 하나씩 숫자로 따졌습니다. 아래 값은 설계 계산이며 <b>1단계 벤치에서 실측으로 바꿉니다.</b> 1차 검토(①~⑩) 뒤 사용 기간별 불량을 막는 보완안을 냈고, 그 보완안을 다시 의심해 <b>자석 · 젓기 · 열 · 유리 네 가지를 시뮬레이션으로 반복</b>했습니다(⑪~⑯: 공차 몬테카를로 5,000회 · 젓기 무작위 600회 · 1년 8개 달 열 계산). 바뀐 것 다섯: <b>① 자석 = 다극 링 1개 Ø70 · 간격 5.5mm</b> ② <b>유리 바닥 = 오목 자리 + 세라믹 볼</b> ③ <b>헛돎 판정 = 토크 방향 뒤집힘</b> ④ <b>결로 기준 = 컵 밀봉 + 유리 벽</b>, 여름 약속은 실온 −3~5°C ⑤ <b>스러스트 베어링 · 온도 퓨즈 · 통 감지 방식</b>. <b>11/17: 식히기(펠티어)를 기본형에서 빼서, 아래 표의 결로 · 극 전환 · 식혀 두기 줄은 「프로」 검토용으로만 남습니다.</b></p>
-    <div class="duo rv" style="margin-top:24px"><div class="ph tilt" style="aspect-ratio:3/2"><img src="img/photo_cutaway.jpg" alt="과일청 메이커 단면 컨셉 이미지 · 유리 바닥 돌기 · 실리콘 교반 날개(자석 6개) · 하부 자석 디스크 · 슬림 기어모터 · 알루미늄 컵 · 펠티어 모듈"><span class="mono">04 / 단면 컨셉 (AI 이미지 · 비례 확인용)</span></div><div class="box" style="margin-top:0"><h3>신박한 점 하나 — 통에 구멍 없이 자석으로 젓습니다</h3><ul><li>유리 통 바닥에는 구멍·축·실링이 <b>없습니다.</b> 그래서 새지 않고, 통째 들어 냉장고로 갑니다.</li><li>바닥 가운데 오목 자리에 <b>실리콘 젓개(링 자석 1개 봉입 · 세라믹 볼 받침)</b>를 얹고, 유리 너머(유효 간격 5.5mm) 아래의 <b>자석 원판</b>이 돌립니다.</li><li>씻을 것은 뚜껑·유리 통·젓개 셋. 젓개는 뽑아서 식기세척기에 넣습니다. 축이 있는 블렌더·제빵기 통과 다른 점입니다.</li><li>힘이 모자라면(벤치 0.3 N·m 미달) 그때 바닥 축 직결로 바꿉니다 — 지금은 자석이 기본안입니다.</li></ul></div></div>
-    <div class="figure rv"><img src="img/section.svg" alt="통 바닥과 받침 가운데 단면도 · 유리 돌기 · 젓개 · 자석 원판 · 모터 · 펠티어 · 팬 · 결로 물받이"><small>단면 · 16개 부품의 자리와 치수(2차 검토 반영 이름표). 가운데는 <b>오목 자리 + 세라믹 볼</b>, 젓개 속은 <b>링 자석 1개</b>, 구동 원판 아래 스러스트 베어링(⑤ · ⑧ · ⑪). 축척 아님.</small></div>
+    <div class="duo rv" style="margin-top:24px"><div class="ph tilt" style="aspect-ratio:3/2"><img src="img/photo_cutaway.jpg" alt="과일청 메이커 단면 컨셉 이미지 · 유리 바닥 돌기 · 실리콘 교반 날개(자석 6개) · 하부 자석 디스크 · 슬림 기어모터 · 알루미늄 컵 · 펠티어 모듈"><span class="mono">04 / 단면 컨셉 (AI 이미지 · 2L 이전 안 · 비례 확인용)</span></div><div class="box" style="margin-top:0"><h3>신박한 점 하나 — 통에 구멍 없이 자석으로 젓습니다</h3><ul><li>유리 통 바닥에는 구멍·축·실링이 <b>없습니다.</b> 그래서 새지 않고, 통째 들어 냉장고로 갑니다.</li><li>바닥 가운데 오목 자리에 <b>실리콘 젓개(자석 디스크 Ø40 봉입 · 세라믹 볼 받침)</b>를 얹고, 유리 너머(유효 간격 4.5mm) 아래의 <b>자석 디스크</b>가 돌립니다(2L 이전 안은 링 자석 Ø70 · 5.5mm).</li><li>씻을 것은 뚜껑·유리 통·젓개 셋. 젓개는 뽑아서 식기세척기에 넣습니다. 축이 있는 블렌더·제빵기 통과 다른 점입니다.</li><li>힘이 모자라면(라이트 벤치 0.1 N·m 미달) 그때 바닥 축 직결로 바꿉니다 — 지금은 자석이 기본안입니다.</li></ul></div></div>
+    <div class="figure rv"><img src="img/section-lite.svg" alt="라이트 A 단면도 · 1L 유리 통 바닥과 받침 가운데 · 젓개 · 자석 디스크 Ø40 · 5V 기어 모터 · 보드 · USB-C 꽂이"><small>단면 · 라이트 A(1L) · 15개 부품의 자리와 치수. 가운데는 <b>오목 자리 + 세라믹 볼</b>, 젓개 속은 <b>자석 디스크 Ø40(4극)</b>, 아래는 <b>디스크 + 부시 + 5V 기어 모터</b>. 컵 · 히터 · 펠티어 · 팬 없음. 축척 아님.</small></div>
+    <details class="prev"><summary>이전 안 · 2L 단면도(펠티어 · 알루미늄 컵 · 팬 · 링 자석 Ø70 포함 · 비교용)</summary><div class="figure" style="margin-top:0"><img src="img/section.svg" alt="통 바닥과 받침 가운데 단면도 · 유리 돌기 · 젓개 · 자석 원판 · 모터 · 펠티어 · 팬 · 결로 물받이"><small>단면 · 16개 부품의 자리와 치수(2차 검토 반영 이름표). 가운데는 <b>오목 자리 + 세라믹 볼</b>, 젓개 속은 <b>링 자석 1개</b>, 구동 원판 아래 스러스트 베어링(⑤ · ⑧ · ⑪). 축척 아님.</small></div></details>
     <table class="pl rv">
       <tr><th class="l" style="width:17%">검토 항목</th><th class="l" style="width:38%">계산 · 근거</th><th class="l" style="width:33%">결론 · 설계 반영</th><th>판정</th></tr>
       <tr><td class="l"><b>① 젓개를 돌리는 힘</b></td><td class="l">다 녹은 청(당도 60~65%, 150~500 mPa·s)을 Ø8cm 날개로 60rpm 이하로 저을 때 필요한 힘 &lt;0.01 N·m. 즙이 나와 설탕이 젖은 뒤 바닥층을 밀 때 0.08~0.23 N·m(2차: 젓개를 Ø6.5→Ø8cm로 키워 약 1.5배). 담근 첫날 마른 설탕 1kg + 과일 1kg이 누르면 0.1~0.5 N·m, 과일이 끼면 순간 1 N·m 이상.</td><td class="l">마른 설탕 더미는 젓지 않음(처음 4~6시간 데우기만). 설계 목표 0.5 N·m(최소 0.3)로 평상시의 3배 여유. 걸림은 두 가지로 잡습니다 — 모터가 멈춰 전류가 오르는 경우(≥1.2A 2초)와 젓개가 미끄러져 토크 방향이 뒤집히는 경우(⑫). 멈춤 → 2초 → 10rpm부터 다시 출발, 3번 실패면 알림.</td><td><span class="tag ok">성립</span></td></tr>
@@ -524,7 +565,7 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
       <div><h3>이번 검토로 바뀐 것</h3><ul><li>식혀 두기 15~18°C 고정 → <b>이슬점 연동(최저 18°C, 장마철엔 23°C 안팎)</b>. 온습도 센서를 보드에 넣고 사양·작동·안전 칸을 모두 고쳤습니다.</li><li>컵 둘레 <b>물받이 홈 + 배수</b>, 보드 코팅 추가(결로 대비).</li><li>젓개 날개에 각도(축류) · 벤치에 <b>염료 순환 시험</b> 추가.</li><li>사용 기간별 불량을 따로 따져 <b>부품 10곳</b>을 더 바꿨습니다 — 자석 도금·기밀, 탈조 감지, BLDC, 붕규산 확정, 바닥 트레이, 통 감지 핀 위치 등(<a href="#lifecycle">11-B 재검토 표</a>).</li><li><b>2차(시뮬레이션 반복)</b>: 자석 다극 링 1개 Ø70 · 간격 5.5mm · 스러스트 베어링 · 컵 구멍 Ø76.</li><li><b>2차</b>: 유리 돌기 → 오목 자리 + 세라믹 볼 · 열탕 뒤 식히기 보류.</li><li><b>2차</b>: 헛돎 판정(토크 방향) · 통 감지 누름 핀 + 홀 · 72°C 온도 퓨즈.</li><li><b>2차</b>: 컵 밀봉 링 + 유리 벽 결로 기준 · 실리콘 막 · 여름 약속 실온 −3~5°C.</li></ul></div>
       <div><h3>벤치에서 꼭 재야 하는 숫자 5개</h3><ul><li>링 자석 Ø70 · 간격 5.5mm에서 미끄러지는 토크(목표 0.5, 계산 0.62~0.67 N·m) · FEM과 비교</li><li>통 세 지점 온도가 25~30°C에 드는 시간(목표 ≤3시간)</li><li>28°C·습도 75% 방에서 유리 벽 기준 제어 시 하루 결로량(목표 ≤10ml) · 12시간 뒤 실온보다 내려간 폭(계산 3.4°C)</li><li>걸쭉한 청 · 덩어리 · 첫날 더미에서 헛돎 판정이 100% 잡는지</li><li>바닥 날개 작동 시 염료가 윗면까지 도는 시간(목표 ≤10분)</li></ul></div>
     </div>
-    <div class="box rv" style="margin-top:24px"><h3>구조 3D · 분해도 (아래로 스크롤하면 부품별로 분해됩니다)</h3><p class="note">3D는 구조 설명용 모형입니다. 치수는 실제 디자인과 다를 수 있습니다. 시안·청 색·나무 안을 단추로 바꿔 볼 수 있습니다.</p></div>
+    <div class="box rv" style="margin-top:24px"><h3>구조 3D · 분해도 (아래로 스크롤하면 부품별로 분해됩니다)</h3><p class="note">3D는 구조 설명용 모형입니다. 치수는 실제 디자인과 다를 수 있습니다. <b>라이트 A(통형) · C(넓적)</b>, 청 색, 나무 안을 단추로 바꿔 볼 수 있고, 「이전 안 2L」 단추로 항아리 시안 3개(펠티어 · 컵 · 팬 포함)도 볼 수 있습니다.</p></div>
   </div>
 </section>
 
@@ -534,15 +575,16 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
     <a class="xv-skip" href="#spec">분해 보기 건너뛰기 ↓</a>
     <div class="xv-hint">스크롤을 내리면 날이 밝고 부품이 분해됩니다</div>
     <div class="xv-text">
-      <div class="xv-step on"><div class="kicker">구조 · 저녁 앞모습 (시안 A · 가정 Ø19 × 23cm)</div><h2>받침 빛이 청을 비춥니다.</h2>
-    <p class="note rv" style="border-left:3px solid #1f8a5b;padding-left:10px"><b>읽는 법(11/17):</b> 3D · 단면도는 <b>2L 이전 안</b>(펠티어 · 히터 · 알루미늄 컵 포함)입니다. 기본안 「라이트」는 1L 통 · USB-C 꽂이 · 소형 모터 · 자석 디스크 Ø40만 남고 컵 · 히터 · 팬 · 베어링이 빠집니다 — 3D는 디자인 확정 뒤 다시 만듭니다.</p><p>낮은 흰 받침(높이 5cm) 안에 알루미늄 컵이 있고, 거기에 항아리형 유리 통이 앉습니다. 통 둘레 빛 테와 컵 바닥 LED 링이 품목 색으로 통을 아래에서 비춥니다. 아래 단추로 시안·청 색·나무 안을 바꿉니다. 스크롤을 내리면 날이 밝고 부품별로 분해됩니다.</p></div>
-      <div class="xv-step"><div class="kicker">구조 · 뒷모습</div><h2>열과 선은 뒤로.</h2><p>뒷면 슬롯으로 바람이 나갑니다 — (11/17 데우기만 기본형은 팬이 없어 이 바람길이 빠집니다.) 바람은 바닥판 슬롯으로 들어와 방열판을 지나 뒤로 나갑니다. 어댑터 선도 뒤 아래로. 앞에서는 아무것도 안 보입니다.</p></div>
-      <div class="xv-step"><div class="kicker">구조 · 속</div><h2>가운데는 자석, 둘레는 히터.</h2><p>알루미늄 컵 가운데 Ø76mm는 뚫려 있어 유리 바닥(약 2.5mm)만 남고, 그 바로 아래 다극 링 자석 원판(Ø70)이 유효 간격 5.5mm(유리 + 젓개 덮개 + 띄움 + 틈)로 유리 너머 젓개를 돌립니다. 젓개는 통 바닥 가운데 오목 자리에 세라믹 볼로 얹혀 제자리에서만 돌고, 통에 구멍이 없습니다. 자석끼리 당기는 힘은 원판 아래 스러스트 베어링이 받습니다. 컵 아래 얇은 히터(20W)가 컵을 데우고(11/17부터 식히기 없음 — 3D의 펠티어 · 팬은 이전 안 그림), 컵이 통 바닥 둘레와 아래 옆면에 열을 전합니다. 주황색 선은 바람길입니다.</p></div>
-      <div class="xv-step"><div class="kicker">구조 · 분해</div><h2>부품 14개, 씻는 것은 셋.</h2><p>뚜껑 · 유리 통 · 젓개를 들어서 빼 씻습니다(통·젓개는 식기세척기). 컵·빛 링·펠티어·방열판·팬·구동 자석 원판과 모터·보드·바닥판은 받침에 남습니다. 센서는 NTC(컵) + 통 감지 누름 핀 · 홀 센서 + 72°C 온도 퓨즈. 전원은 12V 외장 어댑터(서늘고·해동기 공용 후보).</p></div>
+      <div class="xv-step on"><div class="kicker">구조 · 저녁 앞모습 (<span data-xv-lite="1">라이트 A Ø12.5 × 21.5cm · C Ø16 × 15.5cm</span><span data-xv-prev="1" hidden>2L 이전 안 · 시안 A Ø19 × 23cm</span>)</div><h2>받침 빛이 청을 비춥니다.</h2>
+    <p><span data-xv-lite="1">낮은 흰 받침(높이 4.5cm) 위에 1L 유리 통이 바로 앉습니다 — 알루미늄 컵이 없습니다. 자리 바닥의 단색 LED와 통 둘레 빛 테가 통을 아래에서 비춰 청 색이 그대로 보입니다. 아래 단추로 <b>라이트 A(통형) · C(넓적)</b> · 청 색 · 나무 안을 바꾸고, 「이전 안 2L」 단추로 항아리 시안도 볼 수 있습니다.</span><span data-xv-prev="1" hidden>2L 이전 안: 낮은 흰 받침(높이 5cm) 안에 알루미늄 컵이 있고, 거기에 항아리형 유리 통이 앉습니다. 통 둘레 빛 테와 컵 바닥 RGB LED 링이 품목 색으로 통을 아래에서 비춥니다.</span> 스크롤을 내리면 날이 밝고 부품별로 분해됩니다.</p></div>
+      <div class="xv-step"><div class="kicker">구조 · 뒷모습</div><h2><span data-xv-lite="1">뒤에는 USB-C 꽂이 하나.</span><span data-xv-prev="1" hidden>열과 선은 뒤로.</span></h2><p><span data-xv-lite="1">뒷면에는 USB-C 꽂이 하나뿐입니다. 팬 · 배기 슬롯 · 어댑터가 없어 바람길이 없습니다. 폰 충전기(5V 2A 이상)에 C-to-C 케이블로 꽂습니다. 앞에서는 버튼 하나와 빛 한 줄만 보입니다.</span><span data-xv-prev="1" hidden>2L 이전 안: 뒷면 슬롯으로 바람이 나갑니다. 바람은 바닥판 슬롯으로 들어와 방열판을 지나 뒤로 나갑니다. 어댑터 선도 뒤 아래로. 앞에서는 아무것도 안 보입니다.</span></p></div>
+      <div class="xv-step"><div class="kicker">구조 · 속</div><h2><span data-xv-lite="1">가운데는 자석뿐, 열은 없습니다.</span><span data-xv-prev="1" hidden>가운데는 자석, 둘레는 히터.</span></h2><p><span data-xv-lite="1">통 자리 바닥 바로 아래 자석 디스크 Ø40(4극)가 유효 간격 4.5mm(유리 2.5 + 젓개 덮개 + 띄움 + 틈)로 유리 너머 젓개를 돌립니다. 젓개는 통 바닥 가운데 오목 자리에 세라믹 볼로 얹혀 제자리에서만 돌고, 통에 구멍이 없습니다. 자석이 당기는 힘(약 8N)은 부시가 받습니다. 모터는 5V 기어 모터 20~30rpm, 걸림 · 헛돎 · 다 녹음은 모터 전류로 판정합니다. 히터 · 컵 · 펠티어 · 팬은 없습니다.</span><span data-xv-prev="1" hidden>2L 이전 안: 알루미늄 컵 가운데 Ø76mm는 뚫려 있어 유리 바닥(약 2.5mm)만 남고, 그 바로 아래 다극 링 자석 원판(Ø70)이 유효 간격 5.5mm로 유리 너머 젓개를 돌립니다. 자석끼리 당기는 힘은 원판 아래 스러스트 베어링이 받습니다. 컵 바깥 펠티어가 컵을 데우거나 식히고, 주황색 선은 바람길입니다.</span></p></div>
+      <div class="xv-step"><div class="kicker">구조 · 분해</div><h2><span data-xv-lite="1">부품 10개, 씻는 것은 셋.</span><span data-xv-prev="1" hidden>부품 14개, 씻는 것은 셋.</span></h2><p><span data-xv-lite="1">뚜껑 · 유리 통 · 젓개를 들어서 빼 씻습니다(통·젓개는 식기세척기). 빛 링 · 구동 자석 디스크와 모터 · 보드 · 바닥판은 받침에 남습니다. 센서는 통 감지 홀 센서와 모터 전류 감지뿐입니다. 전원은 USB-C 5V(어댑터 없음 · C-to-C 케이블 1m 동봉).</span><span data-xv-prev="1" hidden>2L 이전 안: 컵·빛 링·펠티어·방열판·팬·구동 자석 원판과 모터·보드·바닥판은 받침에 남습니다. 센서는 NTC(컵) + 통 감지 누름 핀 · 홀 센서 + 72°C 온도 퓨즈. 전원은 12V 외장 어댑터.</span></p></div>
     </div>
     <div class="xv-stage"><canvas id="xv-canvas" aria-label="과일청 메이커 3D · 시안 · 청 색 · 분해도"></canvas><div id="xv-labels"></div>
       <div class="xv-colors" role="group" aria-label="시안과 청 색">
-        <div><button data-xv-variant="a" class="txt on">A 항아리</button><button data-xv-variant="b" class="txt">B 원통</button><button data-xv-variant="c" class="txt">C 넓적</button><button data-xv-wood="1" class="txt"><i style="background:#c99a66"></i>나무</button></div>
+        <div><button data-xv-variant="la" class="txt on">라이트 A · 통형</button><button data-xv-variant="lc" class="txt">라이트 C · 넓적</button><button data-xv-wood="1" class="txt"><i style="background:#c99a66"></i>나무</button></div>
+        <div><span class="xv-sep">이전 안 2L</span><button data-xv-variant="a" class="txt prev">A 항아리</button><button data-xv-variant="b" class="txt prev">B 원통</button><button data-xv-variant="c" class="txt prev">C 넓적</button></div>
         <div><button data-xv-color="yuja" class="on"><i style="background:#f29a2e"></i>유자</button><button data-xv-color="maesil"><i style="background:#8cb43c"></i>매실</button><button data-xv-color="omija"><i style="background:#c41f3e"></i>오미자</button><button data-xv-color="strawberry"><i style="background:#f06a8c"></i>딸기</button></div>
       </div></div>
   </div>
@@ -1061,7 +1103,7 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
       <div><small>결정 2</small><b>가격 정책 방향</b><p><b>11/17 결정(준보 님) — 기본안 「라이트」 6.9만 원 · USB-C · 1L 붕규산 · 젓기만</b>(<a href="#lite2">검토</a>) · 착륙 원가 3.3만(상한 3.6만, FTA 시 3.1만) · 프로모션 하한 6.4만 · <b>자사몰 중심 유통(수수료 12%) · 공용 PM 0.5명이 손익 조건</b>. 설문 가격 문항 5.9 / 6.9 / 7.9만 + 「3만 요거트 메이커 vs 6.9만 라이트 vs 17만 고급형」 사진 비교. 고급형(약 17만 · 2L · 데우기/식히기)은 선택 30% 넘으면 2년차 추가. 이전 안: 데우기만 14.9만(11/17 오전) · 식히기 포함 18.9만.</p></div>
       <div><small>결정 3</small><b>디자인 시안 A</b><p>항아리형 + 낮은 흰 받침으로 피그마 디자인을 진행합니다(나무 안은 옵션). B는 바닥 오목 자리 때문에 기성 통을 못 써서 제외, C는 대안으로 보관.</p></div>
       <div><small>결정 4</small><b>ODM 견적</b><p>라이트는 서늘고 · 해동기 묶음(12V · 펠티어 · BLDC)과 부품이 거의 겹치지 않으므로 <b>요거트 메이커 · 자석 믹싱컵을 만드는 광둥 ODM 3곳</b>에 따로 견적을 냅니다(1L 붕규산 통은 허베이 · 산둥 유리 공장 직구매 후 지급). 서늘고 · 해동기 묶음 견적은 그대로 진행.</p></div>
-      <div><small>결정 5</small><b>2차 구조 검토 결과</b><p>① 통 모양: 입구(Ø12)가 배(Ø16)보다 좁은 항아리는 프레스로 못 빼 취입 + 바닥 연마(통 단가 +0.2만)가 필요합니다. 입구를 배 가까이 넓힌 프레스형을 권합니다. ② 여름 식히기 · 단열 슬리브 · 데우기 히터 · 알루미늄 컵은 라이트에서 모두 뺐습니다(11/17). ③ 1L 통은 입구 Ø100 통형(프레스)으로 항아리 문제가 없습니다.</p></div>
+      <div><small>결정 5</small><b>2차 구조 검토 결과</b><p>① 통 모양: 입구(Ø12)가 배(Ø16)보다 좁은 항아리는 프레스로 못 빼 취입 + 바닥 연마(통 단가 +0.2만)가 필요합니다. 입구를 배 가까이 넓힌 프레스형을 권합니다. ② 여름 식히기 · 단열 슬리브 · 데우기 히터 · 알루미늄 컵은 라이트에서 모두 뺐습니다(11/17). ③ 1L 통은 입구가 가장 넓은 프레스형으로 항아리 문제가 없습니다 — <b>A 통형(Ø100 × 150) · C 넓적(Ø130 × 95)</b> 두 안을 그렸고(05 · 구조 3D), 설문 사진 비교 + 1주차 벤치(위까지 섞임 · 녹는 속도)로 하나를 고릅니다. 기본 후보는 A.</p></div>
     </div>
     <p class="note rv" style="color:#a89f93;margin-top:28px">후속 요청: 특허팀 KIPRIS 선행 조사(출원 후보 3건) · 자사몰 회원 설문 발송 승인 · 유리 공장 2곳 샘플 의뢰(오목 자리 · 항아리+연마 / 넓은 입구 프레스) · 자석 협력사 FEM 해석 의뢰.</p>
   </div>

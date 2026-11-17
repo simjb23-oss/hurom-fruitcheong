@@ -6,7 +6,8 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 //   유리 통(약 2L, 바닥 가운데 유리 돌기=핀) + 오목 자리에 앉는 Ø8cm 날개 젓개(여러 극 희토류 자석 봉입) + 컵 가운데 Ø7cm 유리 창 아래 구동 자석 원판(유효 간격 6~7mm) + 통 바깥(알루미늄 컵 둘레) 펠티어 + 뚜껑 한 방향 밸브. 받침은 낮고 얇게, 유리 통이 주인공. 받침 빛이 통을 아래서 비춤.
 //   시안 3개: A 항아리형 유리 + 흰 무광 받침 · B 원통 유리 + 연회색 세라믹 받침 · C 넓적한 낮은 유리 + 베이지 받침. 나무 안: 뚜껑 손잡이·받침 윗테.
 //   치수는 모두 가정(단위 10cm): A 받침 Ø20 × 6cm · 통 Ø16(배) × 16cm · 뚜껑 1.2cm.
-//   쿼리: ?p=0~1 진행도 · ?v=a|b|c 시안 · ?c=yuja|maesil|omija|strawberry 청 색 · ?wood 나무 안 · ?night 저녁 장면 고정 · ?day 낮 고정 · ?ang=<도> · ?cy= · ?noairg ?noadapter ?nofruit
+//   2026-11-17 라이트 기본안(준보 「둘 다 넣어봐」): ?v=la(통형 1L) · ?v=lc(넓적 1L) — USB-C 5V · 자석 디스크 Ø40 · 5V 기어 모터 · 컵 · 히터 · 펠티어 · 팬 · 어댑터 없음. a|b|c 는 2L 이전 안(비교용).
+//   쿼리: ?p=0~1 진행도 · ?v=la|lc|a|b|c 시안 · ?c=yuja|maesil|omija|strawberry 청 색 · ?wood 나무 안 · ?night 저녁 장면 고정 · ?day 낮 고정 · ?ang=<도> · ?cy= · ?noairg ?noadapter ?nofruit
 const sec = document.getElementById('structure');
 const canvas = document.getElementById('xv-canvas');
 const labelLayer = document.getElementById('xv-labels');
@@ -79,6 +80,8 @@ const M = {
 
 /* ---------- 시안 · 청 색 ---------- */
 const VARIANTS = {
+  la: { name: '라이트 A · 통형 1L · 흰 받침', lite: true, baseR: 0.625, baseH: 0.45, square: false, baseColor: 0xf4f4f1, baseRough: 0.45, baseClear: 0.3, jar: 'lcyl', jarH: 1.5, mouthR: 0.53, cupR: 0.56 },
+  lc: { name: '라이트 C · 넓적 1L · 흰 받침', lite: true, baseR: 0.80, baseH: 0.40, square: false, baseColor: 0xf4f4f1, baseRough: 0.45, baseClear: 0.3, jar: 'lwide', jarH: 0.95, mouthR: 0.69, cupR: 0.72 },
   a: { name: 'A 항아리형 · 흰 무광 받침', baseR: 0.95, baseH: 0.5, square: false, baseColor: 0xf4f4f1, baseRough: 0.45, baseClear: 0.3, jar: 'onggi', jarH: 1.6, mouthR: 0.58, cupR: 0.66 },
   b: { name: 'B 원통 · 연회색 세라믹 받침', baseR: 0.85, baseH: 0.5, square: true, baseColor: 0xc6c3bc, baseRough: 0.95, baseClear: 0.0, jar: 'cyl', jarH: 1.6, mouthR: 0.7, cupR: 0.74 },
   c: { name: 'C 넓적한 낮은 통 · 베이지 받침', baseR: 1.05, baseH: 0.42, square: false, baseColor: 0xd3c0a3, baseRough: 0.6, baseClear: 0.15, jar: 'wide', jarH: 1.1, mouthR: 0.86, cupR: 0.92 },
@@ -89,7 +92,7 @@ const COLORS = {
   omija: { name: '오미자', syrup: 0xb3122f, fruit: 0xe24a66, light: 0xff3b5c },
   strawberry: { name: '딸기', syrup: 0xe85a80, fruit: 0xff9ab6, light: 0xff7aa0 },
 };
-let variantKey = (Q.get('v') || 'a').toLowerCase(); if (!VARIANTS[variantKey]) variantKey = 'a';
+let variantKey = (Q.get('v') || 'la').toLowerCase(); if (!VARIANTS[variantKey]) variantKey = 'la';
 let colorKey = Q.get('c') || 'yuja'; if (!COLORS[colorKey]) colorKey = 'yuja';
 let wood = Q.has('wood');
 
@@ -112,6 +115,8 @@ function tube(points, r, mat, seg = 40) { return new THREE.Mesh(new THREE.TubeGe
 function jarProfile(kind, H) {
   if (kind === 'onggi') return [[0, 0], [0.5, 0], [0.56, 0.02], [0.63, 0.12], [0.74, 0.32], [0.8, 0.55], [0.8, 0.78], [0.76, 1.0], [0.68, 1.2], [0.6, 1.36], [0.58, 1.46], [0.62, 1.52], [0.62, H]];
   if (kind === 'cyl') return [[0, 0], [0.64, 0], [0.7, 0.06], [0.7, H - 0.02], [0.7, H]];
+  if (kind === 'lcyl') return [[0, 0], [0.42, 0], [0.48, 0.02], [0.51, 0.08], [0.515, 0.5], [0.525, 1.1], [0.53, H - 0.03], [0.53, H]];   // 라이트 A 통형 Ø10 × 15cm · 위로 살짝 벌어짐(프레스 성형)
+  if (kind === 'lwide') return [[0, 0], [0.58, 0], [0.65, 0.03], [0.68, 0.1], [0.685, 0.5], [0.69, H - 0.03], [0.69, H]];   // 라이트 C 넓적 Ø13.5 × 9.5cm
   return [[0, 0], [0.74, 0], [0.86, 0.1], [0.9, 0.3], [0.9, H - 0.02], [0.9, H]];   // wide 넓적
 }
 function inset(profile, d) { return profile.map(([r, y], i) => [Math.max(0, r - (i === 0 ? 0 : d)), y]); }
@@ -133,6 +138,19 @@ function build(vk) {
   V = VARIANTS[vk]; variantKey = vk;
   while (product.children.length) product.remove(product.children[0]);
   parts.forEach(p => p.el.remove()); parts = []; spinners = []; woodMeshes = [];
+  if (V.lite) {   // 라이트(1L · USB-C · 젓기만) — 부품 10개
+    buildLite();
+    product.traverse(o => { if (o.name && Q.has('no' + o.name)) o.visible = false; });
+    product.traverse(o => { if (o.isMesh && !NOSHADOW.has(o.material)) o.castShadow = true; else if (o.isMesh) o.castShadow = false; });
+    document.querySelectorAll('[data-xv-variant]').forEach(b => b.classList.toggle('on', b.dataset.xvVariant === vk));
+    document.querySelectorAll('[data-xv-wood]').forEach(b => b.classList.toggle('on', wood));
+    document.querySelectorAll('[data-xv-lite]').forEach(el => { el.hidden = false; });
+    document.querySelectorAll('[data-xv-prev]').forEach(el => { el.hidden = true; });
+    setColor(colorKey);
+    return;
+  }
+  document.querySelectorAll('[data-xv-lite]').forEach(el => { el.hidden = true; });
+  document.querySelectorAll('[data-xv-prev]').forEach(el => { el.hidden = false; });
   const BH = V.baseH, CUP_D = 0.26, CUP_Y = BH - CUP_D;    // 컵 바닥 높이
   const JH = V.jarH, JY = CUP_Y + 0.02;                     // 통 바닥 높이
   const HR = 0.38, GT = 0.03, GAP = 0.01;                     // 컵 가운데 구멍 반지름(Ø76) · 유리 바닥 3mm · 틈(그림) · 실제 유효 간격 5.5mm(유리 2.5 + 덮개 1.0 + 띄움 0.5 + 틈 1.5) — 2차 구조 검토
@@ -297,11 +315,135 @@ function build(vk) {
   document.querySelectorAll('[data-xv-wood]').forEach(b => b.classList.toggle('on', wood));
 }
 const NOSHADOW = new Set([M.glass, M.syrup, M.air, M.logo, M.ledRing, M.strip]);
+/* ---------- 라이트(1L · USB-C · 젓기만) 만들기 — 2026-11-17 기본안 · 부품 10개, 씻는 것 셋 ---------- */
+function buildLite() {
+  const BH = V.baseH, SEAT_D = 0.06, SEAT_Y = BH - SEAT_D;      // 통이 앉는 얕은 자리 6mm(컵 없음)
+  const JH = V.jarH, JY = SEAT_Y + 0.004;                        // 통 바닥 높이
+  const GT = 0.025, GAP = 0.008;                                 // 유리 바닥 2.5mm · 그림 틈 — 실제 유효 간격 4.5mm(유리 2.5 + 덮개 1 + 띄움 0.5 + 틈 0.5)
+  const MR = 0.20, BALLR = 0.04, DIMPLE = 0.04;                  // 자석 디스크 Ø40(양쪽 같음) · 세라믹 볼 Ø8mm · 오목 자리 4mm
+  const VR = V.jar === 'lwide' ? 0.33 : 0.27;                    // 날개 Ø6.6 / Ø5.4cm
+  const JR = V.mouthR;                                           // 통 바깥 반지름(입구가 가장 넓음)
+  M.body.color.set(V.baseColor); M.body.roughness = V.baseRough; M.body.clearcoat = V.baseClear;
+  /* 1. 받침 — Ø12.5 × 4.5cm(A) · Ø16 × 4cm(C) · 흰 무광 · 뒤에 USB-C 꽂이 하나. 팬 구멍 · 배기 슬롯 없음 */
+  {
+    const g = new THREE.Group();
+    const body = lathe([[0, 0], [V.baseR - 0.04, 0], [V.baseR, 0.04], [V.baseR, BH - 0.05], [V.baseR - 0.05, BH], [JR + 0.03, BH], [JR + 0.03, SEAT_Y], [0, SEAT_Y]], M.body, 96); g.add(body);
+    const port = new THREE.Mesh(new RoundedBoxGeometry(0.09, 0.032, 0.05, 2, 0.014), M.dark); port.position.set(0, BH * 0.42, -(V.baseR - 0.015)); g.add(port);   // USB-C 꽂이(뒤)
+    const halo = new THREE.Mesh(new THREE.RingGeometry(JR + 0.03, JR + 0.07, 96), M.ledRing); halo.rotation.x = -Math.PI / 2; halo.position.y = BH + 0.002; g.add(halo);   // 통 둘레 빛 테
+    const lg = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.075), M.logo); lg.position.set(0, BH * 0.32, V.baseR + 0.004); g.add(lg);
+    if (wood) { const ring = lathe([[JR + 0.03, BH - 0.001], [V.baseR - 0.05, BH - 0.001], [V.baseR - 0.05, BH + 0.03], [JR + 0.03, BH + 0.03]], M.wood, 96); g.add(ring); woodMeshes.push(ring); }
+    part(`받침 · Ø${(V.baseR * 20).toFixed(1).replace('.0', '')} × ${(BH * 10).toFixed(1)}cm · 흰 무광 · 뒤에 USB-C 꽂이 · 컵 · 히터 · 팬 없음`, g, [0, 0, 0], new THREE.Vector3(-V.baseR * 0.8, BH * 0.5, V.baseR * 0.5));
+  }
+  /* 2. 빛 링 — 자리 바닥의 단색 LED(따뜻한 흰). 청 색이 그대로 비쳐 보이고, 숨쉬기 = 젓는 중 · 고정 = 다 녹음 */
+  {
+    const g = new THREE.Group();
+    const ring = new THREE.Mesh(new THREE.RingGeometry(MR + 0.07, JR - 0.02, 64), M.ledRing); ring.rotation.x = -Math.PI / 2; ring.position.y = SEAT_Y + 0.004; g.add(ring);
+    part('빛 링 · 단색 LED · 통을 아래서 비춤 · 숨쉬기=젓는 중 · 고정=다 녹음', g, [0, 0.38, 0], new THREE.Vector3(-0.3, SEAT_Y, 0.15), true);
+  }
+  /* 3. 유리 통 — 1L 붕규산 3.3 · 입구가 가장 넓어 프레스 성형 · 바닥 2.5mm · 오목 자리 + 세라믹 볼 · 1.0L 상한 선 */
+  {
+    const g = new THREE.Group(); jarGroup = g;
+    const prof = jarProfile(V.jar, JH);
+    const outer = lathe(prof, M.glass, 96);
+    const innerP = inset(prof, 0.03); innerP[0] = [0, GT];
+    g.add(outer, lathe(innerP, M.glass, 96));
+    const dimple = new THREE.Mesh(new THREE.TorusGeometry(BALLR + 0.015, 0.007, 12, 48), M.glass); dimple.rotation.x = Math.PI / 2; dimple.position.y = GT + 0.004; g.add(dimple);
+    const lineY = JH * (1.0 / 1.2);   // 1.0L 상한 선(전체 1.2L)
+    const line = new THREE.Mesh(new THREE.TorusGeometry(JR + 0.002, 0.004, 8, 96), M.pp); line.rotation.x = Math.PI / 2; line.position.y = lineY; g.add(line);
+    const fillY = lineY - 0.08;
+    g.add(lathe(syrupProfile(prof, fillY), M.syrup, 96));
+    fruitG = new THREE.Group(); fruitG.name = 'fruit'; g.add(fruitG);
+    const rnd = (() => { let s = 11; return () => { s = (s * 16807) % 2147483647; return s / 2147483647; }; })();
+    const n = V.jar === 'lwide' ? 14 : 11;
+    for (let i = 0; i < n; i++) {
+      const top = i < Math.ceil(n * 0.55);
+      const y = top ? fillY - 0.02 - rnd() * 0.08 : 0.1 + rnd() * Math.max(0.1, fillY - 0.3);
+      const rAt = (V.jar === 'lwide' ? 0.6 : 0.46) - 0.1;
+      const a = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * Math.max(0.08, rAt - 0.04);
+      const f = new THREE.Mesh(new RoundedBoxGeometry(0.08 + rnd() * 0.06, 0.04 + rnd() * 0.03, 0.08 + rnd() * 0.06, 2, 0.016), M.fruit);
+      f.position.set(Math.cos(a) * rr, y + 0.03, Math.sin(a) * rr); f.rotation.set(rnd(), rnd() * 3, rnd()); fruitG.add(f);
+    }
+    g.position.y = JY;
+    part(`유리 통 · 1L 붕규산 3.3 · ${V.jar === 'lwide' ? '넓적 Ø13.5 × 9.5cm' : '통형 Ø10 × 15cm'} · 입구가 가장 넓음(프레스 성형) · 바닥 2.5mm · 오목 자리 + 세라믹 볼 · 1.0L 상한 선 · 구멍 없음`, g, [0, 1.2, 0], new THREE.Vector3(JR + 0.1, JH * 0.75, 0));
+  }
+  /* 4. 젓개 — 날개 3 · 자석 디스크 Ø40 봉입(4극 · 도금 + PP + 실리콘) · 세라믹 볼이 오목 자리에 앉아 제자리에서 돎 */
+  {
+    const g = new THREE.Group();
+    const body = lathe([[0, 0], [VR, 0], [VR, 0.05], [VR - 0.025, 0.07], [0.1, 0.07], [0.085, 0.13], [0, 0.13]], M.siliconeT, 64); g.add(body);
+    const ball = new THREE.Mesh(new THREE.SphereGeometry(BALLR, 24, 16), M.pp); ball.position.y = 0.01; g.add(ball);
+    for (let i = 0; i < 4; i++) { const seg = new THREE.Mesh(new THREE.CylinderGeometry(MR, MR, 0.026, 40, 1, false, i * Math.PI / 2, Math.PI / 2), i % 2 ? M.magnetS : M.magnet); seg.position.y = 0.025; g.add(seg); }   // 4극 디스크
+    const ppCap = new THREE.Mesh(new THREE.CylinderGeometry(MR + 0.01, MR + 0.01, 0.012, 40), M.pp); ppCap.position.y = 0.044; g.add(ppCap);
+    for (let i = 0; i < 3; i++) { const h = new THREE.Group(); h.rotation.y = i * Math.PI * 2 / 3; const b = new THREE.Mesh(new RoundedBoxGeometry(VR - 0.12, 0.08, 0.05, 2, 0.018), M.silicone); b.position.set((VR + 0.08) / 2 + 0.01, 0.1, 0); b.rotation.x = 0.4; h.add(b); g.add(h); }
+    g.position.y = JY + GT - DIMPLE * 0.6; g.userData.slow = true; spinners.push(g);
+    part(`젓개 · Ø${Math.round(VR * 20)}cm 날개 3 · 자석 디스크 Ø40 봉입(4극 · 도금 + PP + 실리콘) · 세라믹 볼 Ø8mm · 오목 자리에 앉아 제자리에서 돎 · 뽑아서 씻음`, g, [0, 0.8, 0], new THREE.Vector3(VR, 0.07, 0));
+  }
+  /* 5. 뚜껑 — PP · 얹는 식 · 패킹 · 한 방향 밸브 · 손잡이(나무 안) */
+  {
+    const g = new THREE.Group();
+    const r = JR + 0.05;
+    const lid = lathe([[0, 0], [r, 0], [r, 0.055], [r - 0.03, 0.09], [0.14, 0.11], [0, 0.11]], M.lid, 72); g.add(lid);
+    const skirt = lathe([[JR - 0.05, -0.07], [JR - 0.03, -0.07], [JR - 0.03, 0], [JR - 0.05, 0]], M.silicone, 72); g.add(skirt);
+    const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.095, 0.11, 0.06, 32), wood ? M.wood : M.lid); knob.position.y = 0.14; g.add(knob); if (wood) woodMeshes.push(knob);
+    const valve = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.026, 16), M.valve); valve.position.y = 0.18; g.add(valve);
+    g.position.y = JY + JH;
+    part(`뚜껑 · PP · 얹는 식 · 패킹 · 한 방향 밸브(김 빠짐)${wood ? ' · 나무 손잡이' : ''}`, g, [0, 1.8, 0], new THREE.Vector3(r, 0.07, 0));
+  }
+  /* 6. 구동 자석 디스크 Ø40 × 5mm + 부시 + 5V 기어 모터 — 자리 바닥 바로 아래 · 유효 간격 4.5mm · 20~30rpm · 0.1 N·m */
+  {
+    const g = new THREE.Group();
+    const DT = 0.05, dy = JY - GAP - DT / 2;
+    const disc = new THREE.Group(); disc.position.y = dy;
+    for (let i = 0; i < 4; i++) { const seg = new THREE.Mesh(new THREE.CylinderGeometry(MR, MR, DT, 40, 1, false, i * Math.PI / 2, Math.PI / 2), i % 2 ? M.magnet : M.magnetS); disc.add(seg); }
+    const yoke = new THREE.Mesh(new THREE.CylinderGeometry(MR + 0.01, MR + 0.01, 0.01, 40), M.heatsink); yoke.position.y = -DT / 2 - 0.005; disc.add(yoke);   // 철 백요크 1mm
+    disc.userData.slow = true; spinners.push(disc); g.add(disc);
+    const bush = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.02, 20), M.copper); bush.position.y = dy - DT / 2 - 0.02; g.add(bush);   // 부시(자석 당김 약 8N 받음)
+    const mh = Math.max(0.1, dy - DT / 2 - 0.03 - 0.03);
+    const mot = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, mh, 28), M.dark); mot.position.y = dy - DT / 2 - 0.03 - mh / 2; g.add(mot);   // 5V 기어 모터(Ø24)
+    part('구동 자석 디스크 Ø40 × 5mm · 4극 N38SH급 · 백요크 · 부시 · 유효 간격 4.5mm · 5V 기어 모터 20~30rpm · 0.1 N·m', g, [0, 0.18, 0], new THREE.Vector3(MR, dy, 0), true);
+  }
+  /* 7. 제어 보드 — 앞 아래 · MCU · 모터 드라이버 · 전류 감지(걸림 · 헛돎 · 다 녹음) · 홀 센서(통 감지) · USB-C 꽂이 */
+  {
+    const g = new THREE.Group();
+    const bz = V.baseR * 0.42;
+    const pcb = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.015, 0.16), M.pcb); pcb.position.set(0, 0.07, bz); g.add(pcb);
+    [[-0.09, 0.06], [0.06, 0.05], [0.13, 0.035]].forEach(([x, sz]) => { const c = new THREE.Mesh(new THREE.BoxGeometry(sz, 0.018, sz), M.chip); c.position.set(x, 0.087, bz); g.add(c); });
+    g.add(tube([new THREE.Vector3(0, 0.08, bz - 0.08), new THREE.Vector3(0, 0.12, -V.baseR * 0.4), new THREE.Vector3(0, BH * 0.42, -(V.baseR - 0.06))], 0.005, M.wireB, 20));   // USB-C 꽂이까지 선
+    part('제어 보드 · MCU · 모터 드라이버 · 전류 감지(걸림 · 헛돎 · 다 녹음) · 홀 센서(통 감지) · USB-C 꽂이 CC 5.1kΩ', g, [-0.4, -0.4, 0.8], new THREE.Vector3(0.17, 0.07, bz), true);
+  }
+  /* 8. 버튼 1 + 빛 1줄 — 앞 윗면 */
+  {
+    const g = new THREE.Group();
+    const bz = V.baseR - 0.13;
+    const btn = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.018, 32), M.lid); btn.position.set(0, BH + 0.007, bz); g.add(btn);
+    const strip = new THREE.Mesh(new RoundedBoxGeometry(0.28, 0.012, 0.025, 1, 0.005), M.strip); strip.position.set(0, BH + 0.004, bz - 0.1); g.add(strip);
+    part('버튼 1 + 빛 1줄 · 앞에서 보이는 전부', g, [0.7, 0.25, 0.4], new THREE.Vector3(0.1, BH, bz));
+  }
+  /* 9. 바닥판 — 고무발 4 · 바람 구멍 없음 */
+  {
+    const g = new THREE.Group();
+    const r = V.baseR - 0.07;
+    const pl = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.02, 72), M.body); pl.position.y = 0.01; g.add(pl);
+    [[-0.6, -0.6], [0.6, -0.6], [-0.6, 0.6], [0.6, 0.6]].forEach(([x, z]) => { const f = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.03, 20), M.rubber); f.position.set(x * r, -0.012, z * r); g.add(f); });
+    part('바닥판 · 고무발 4 · 나사 4 · 바람 구멍 없음(물 들어갈 틈 없음)', g, [0, -0.9, 0], new THREE.Vector3(-r * 0.7, 0, r * 0.7), true);
+  }
+  /* 10. USB-C 케이블 — 1m 동봉 · 어댑터 없음(5V 2A 폰 충전기) · 뒤 아래로 */
+  {
+    const g = new THREE.Group();
+    const plug = new THREE.Mesh(new RoundedBoxGeometry(0.12, 0.034, 0.06, 2, 0.014), M.dark); plug.position.set(0, BH * 0.42, -(V.baseR + 0.05)); g.add(plug);
+    g.add(tube([new THREE.Vector3(0, BH * 0.42, -(V.baseR + 0.1)), new THREE.Vector3(0.3, 0.12, -(V.baseR + 0.6)), new THREE.Vector3(1.2, 0.03, -1.4), new THREE.Vector3(2.2, 0.03, -1.6)], 0.012, M.wireB, 30));
+    g.name = 'cable';
+    part('USB-C to C 케이블 1m · 어댑터 없음(5V 2A 폰 충전기) · 전기용품안전 비대상', g, [0.9, -0.5, -0.3], new THREE.Vector3(0.9, 0.08, -(V.baseR + 0.9)));
+  }
+  airG = null;   // 바람길 없음(팬 없음)
+  glow.position.set(0, SEAT_Y + 0.1, 0); glowUp.position.set(0, JY + JH * 0.5, 0);
+}
+
 
 function setColor(k) {
   const c = COLORS[k] || COLORS.yuja; colorKey = k;
   M.syrup.color.set(c.syrup); M.syrup.emissive.set(c.syrup).multiplyScalar(0.85); M.fruit.color.set(c.fruit);
-  M.ledRing.emissive.set(c.light); M.strip.emissive.set(c.light); glow.color.set(c.light); glowUp.color.set(c.light);
+  const led = V.lite ? 0xffc98a : c.light;   // 라이트: 단색 LED(따뜻한 흰) — 청 색은 통 안 시럽이 냄
+  M.ledRing.emissive.set(led); M.strip.emissive.set(led); glow.color.set(led); glowUp.color.set(V.lite ? c.light : c.light);
   document.querySelectorAll('[data-xv-color]').forEach(b => b.classList.toggle('on', b.dataset.xvColor === k));
 }
 window.xvSetColor = setColor;
@@ -384,7 +526,7 @@ function frame(now) {
     : p < 0.76 ? XA + (XB - XA) * ((p - 0.58) / 0.18)
     : p < 0.95 ? XB + (FRONT - XB) * ease((p - 0.76) / 0.19) : FRONT;
   const H = V.baseH + V.jarH + 0.2;
-  const dist = (7.4 + H * 1.1 + e * 8.8) * ZM;
+  const dist = ((V.lite ? 5.4 : 7.4) + H * 1.1 + e * (V.lite ? 4.6 : 8.8)) * ZM;   // 라이트는 작아서 가까이
   const camY = (1.6 - 0.5 * nt) + (p < 0.22 ? 0 : p < 0.4 ? 1.8 * ease((p - 0.22) / 0.18) : 1.8);
   const angF = ANG === null ? ang : ANG;
   camera.position.set(Math.sin(angF) * dist, camY + CY + e * 1.4, Math.cos(angF) * dist);
