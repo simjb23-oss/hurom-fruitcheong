@@ -36,6 +36,9 @@
 #s4 .ex{position:absolute;right:4vw;top:50%;transform:translateY(-50%);height:88vh;aspect-ratio:1600/1660;background:url(img/explode-numbered.png) center/contain no-repeat}
 .parts{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;font-size:15px}
 .parts div{display:flex;gap:10px;align-items:center}.parts em{font-style:normal;width:24px;height:24px;border-radius:12px;background:#e8781a;color:#fff;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.magimg{position:absolute;left:38vw;right:2vw;top:6vh;bottom:10vh;background:url(img/real-magnet.jpg) center/contain no-repeat}
+.mag{position:absolute;left:calc(38vw + (60vw*.5) - 1vw);top:53%;width:0;height:0}.mag i{position:absolute;left:-60px;top:-22px;width:120px;height:44px;border:2px solid rgba(232,120,26,.9);border-radius:50%;opacity:0}
+@media(max-width:860px){.magimg{left:0;right:0;top:7vh;bottom:auto;height:42vh}.mag{display:none}}
 /* 5 · 라인업 */
 #s5 .swatch{display:flex;gap:14px;margin-top:34px}
 .sw{display:flex;align-items:center;gap:8px;font-size:15px;opacity:.35;transition:opacity .3s}.sw.on{opacity:1}.sw i{width:14px;height:14px;border-radius:50%}
@@ -61,13 +64,17 @@
 <div id="stage">
  <section class="scene" id="s0"><div><h2 class="h split">설탕이 다 녹을 때까지<br>매일 저어 주던 일.</h2></div><div class="line"></div></section>
  <section class="scene" id="s1"><div class="bg" style="background-image:url(img/real-hero.jpg)"></div><div class="shade"></div>
-  <div class="copy"><div class="kick"><span>Hurom · Fruit Syrup Maker</span></div><h1 class="h split">담가 두면,<br>저어 주고 지켜 줍니다.</h1><p class="p">유리 항아리에 과일과 설탕만 넣고 버튼 하나. 설탕이 녹을 때까지 데우고 젓고, 다 되면 서늘하게 지켜 둡니다.</p></div></section>
+  <div class="copy"><div class="kick"><span>Hurom · Fruit Syrup Maker</span></div><h1 class="h split">담가 두면,<br>자석이 저어 줍니다.</h1><p class="p">유리 항아리에 과일과 설탕만 넣고 버튼 하나. 유리 너머 자석이 젓고, 설탕이 녹으면 서늘하게 지켜 둡니다.</p></div></section>
  <section class="scene" id="s2"><div class="bg" style="background-image:url(img/real-use.jpg)"></div><div class="shade"></div>
   <div class="copy"><div class="kick"><span>담그는 날</span></div><h2 class="h split">넣고, 누르면 끝.</h2>
   <div class="stats"><div class="stat"><b data-n="1">0</b><span>버튼</span></div><div class="stat"><b data-n="2" data-u="L">0</b><span>유리 항아리</span></div><div class="stat"><b data-n="0" data-from="9">9</b><span>통에 뚫린 구멍</span></div></div></div></section>
  <section class="scene" id="s3"><canvas id="sugar"></canvas>
   <div class="copy"><div class="kick"><span>기계가 하는 일</span></div><h2 class="h split">녹이고, 젓고,<br>식혀 둡니다.</h2>
   <div class="track"><div class="tk"><div class="bar"><i></i></div><b>녹이기</b><span>25~30°C · 처음 4~6시간</span></div><div class="tk"><div class="bar"><i></i></div><b>젓기</b><span>30분마다 1~2분</span></div><div class="tk"><div class="bar"><i></i></div><b>식혀 두기</b><span>실온보다 8~10°C 낮게</span></div></div></div></section>
+<section class="scene" id="sM" style="background:#f4f2ee"><div class="magimg"></div>
+  <div class="mag"><i></i><i></i><i></i></div>
+  <div class="copy" style="color:#1c1b19;max-width:520px"><div class="kick" style="color:#d26a12"><span>Magnetic Stir · 자석 젓기</span></div><h2 class="h split">유리 너머에서,<br>자석이 젓습니다.</h2><p class="p" style="color:#5f5b55">통 바닥 아래 6극 자석 원판이 돌면, 유리 안쪽 젓개 속 자석이 따라 돕니다. 축도 구멍도 실링도 없어 새지 않고, 젓개는 쏙 빼서 씻습니다.</p>
+  <div class="stats" style="margin-top:30px"><div class="stat"><b data-n="0" data-from="3" style="color:#1c1b19">3</b><span style="color:#6b6862">통에 뚫린 구멍 · 축 · 실링</span></div><div class="stat"><b data-n="6" style="color:#1c1b19">0</b><span style="color:#6b6862">극 자석 원판</span></div><div class="stat"><b data-n="3" style="color:#1c1b19">0</b><span style="color:#6b6862">씻는 부품</span></div></div></div></section>
  <section class="scene" id="s4"><div class="ex"></div>
   <div class="copy"><div class="kick"><span>구조</span></div><h2 class="h split">통에는 구멍이 없습니다.</h2><p class="p">젓개는 유리 바닥 돌기에 끼워 두고, 유리 너머 자석이 돌립니다. 씻는 것은 셋뿐입니다.</p>
   <div class="parts"><div><em>2</em>유리 통 · 붕규산 2L</div><div><em>3</em>젓개 · 자석 봉입</div><div><em>6</em>자석 원판 + 납작 모터</div><div><em>7</em>펠티어 · 데우기·식히기</div><div><em>5</em>빛 링 · 단계 표시</div><div><em>14</em>12V 4A 어댑터</div></div></div></section>
@@ -95,9 +102,9 @@ function draw(t){if(!W)rs();cx.clearRect(0,0,W,H);const c=W/2,R=W*.42;
  cx.strokeStyle=`rgba(255,${150+60*dissolve.v},60,.9)`;cx.lineWidth=6*devicePixelRatio;cx.beginPath();cx.arc(c,c,R*1.04,0,7);cx.stroke();
  requestAnimationFrame(draw)}requestAnimationFrame(draw);
 // 타임라인
-const S=[...document.querySelectorAll('.scene')],D=[4,6,6,7,7,7,6,8];
+const S=[...document.querySelectorAll('.scene')],D=[4,6,6,7,8,7,7,6,8];
 const dots=document.getElementById('dots');S.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML='<i></i>';b.onclick=()=>tl.seek('s'+i);dots.appendChild(b)});
-const tl=gsap.timeline({repeat:-1,defaults:{ease:'power3.out'}});
+const CNT=[];const tl=gsap.timeline({repeat:-1,defaults:{ease:'power3.out'},onUpdate:()=>CNT.forEach(([b,o])=>b.textContent=Math.round(o.v)+(b.dataset.u||''))});
 function words(s){return s.querySelectorAll('.w>i')}
 S.forEach((s,i)=>{const L='s'+i;tl.addLabel(L);
  tl.set(S,{autoAlpha:0},L).set(s,{autoAlpha:1},L);
@@ -109,15 +116,17 @@ S.forEach((s,i)=>{const L='s'+i;tl.addLabel(L);
  const dot=dots.children[i].querySelector('i');tl.fromTo(dot,{width:'0%'},{width:'100%',duration:D[i],ease:'none'},L);
  tl.set(dots.children,{},L);
  if(i===0)tl.fromTo(s.querySelector('.line'),{width:0},{width:'40vw',duration:2.4,ease:'power2.inOut'},L+'+=.8');
- if(i===2)s.querySelectorAll('.stat b').forEach((b,j)=>{const o={v:+(b.dataset.from||0)};tl.fromTo(b.parentNode,{autoAlpha:0,y:30},{autoAlpha:1,y:0,duration:.6},L+'+='+(1.4+j*.2));tl.fromTo(o,{v:+(b.dataset.from||0)},{v:+b.dataset.n,immediateRender:false,duration:1.4,ease:'power2.out',onUpdate:()=>b.textContent=Math.round(o.v)+(b.dataset.u||'')},L+'+='+(1.5+j*.2))});
+ if(i===2||i===4)s.querySelectorAll('.stat b').forEach((b,j)=>{const o={v:+(b.dataset.from||0)};CNT.push([b,o]);tl.fromTo(b.parentNode,{autoAlpha:0,y:30},{autoAlpha:1,y:0,duration:.6},L+'+='+(1.4+j*.2));tl.fromTo(o,{v:+(b.dataset.from||0)},{v:+b.dataset.n,immediateRender:false,duration:1.4,ease:'power2.out'},L+'+='+(1.5+j*.2))});
  if(i===3){tl.fromTo(dissolve,{v:0},{v:1,duration:5.6,ease:'power1.inOut'},L+'+=1');s.querySelectorAll('.tk').forEach((t,j)=>{tl.fromTo(t,{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.5},L+'+='+(1.4+j*.25));tl.fromTo(t.querySelector('i'),{width:'0%'},{width:'100%',duration:1.6,ease:'power2.inOut'},L+'+='+(2+j*1.4))});tl.fromTo('#sugar',{scale:.8,autoAlpha:0},{scale:1,autoAlpha:1,duration:1.2},L+'+=.3')}
- if(i===4){tl.fromTo(s.querySelector('.ex'),{autoAlpha:0,y:80,scale:.9},{autoAlpha:1,y:0,scale:1,duration:1.6},L+'+=.4');tl.fromTo(s.querySelectorAll('.parts div'),{autoAlpha:0,x:-16},{autoAlpha:1,x:0,duration:.4,stagger:.12},L+'+=2')}
- if(i===5){const sw=s.querySelectorAll('.sw'),cols=['#f2a516','#a8c43a','#c8102e','#ef4b5f'];sw.forEach((w,j)=>{tl.call(()=>{sw.forEach(x=>x.classList.remove('on'));w.classList.add('on');gsap.to('#wash',{background:cols[j],opacity:.35,duration:.6})},null,L+'+='+(1.6+j*1.2))});tl.to('#wash',{opacity:0,duration:.6},L+'+='+(D[i]-.6))}
- if(i===7)tl.fromTo(s.querySelector('.cta'),{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.8},L+'+=1.6');
+ if(i===4)tl.fromTo(s.querySelector('.magimg'),{autoAlpha:0,scale:.94,x:60},{autoAlpha:1,scale:1,x:0,duration:1.4},L+'+=.3');
+ if(i===4)s.querySelectorAll('.mag i').forEach((r,j)=>tl.fromTo(r,{scale:.4,autoAlpha:.9},{scale:2.6,autoAlpha:0,duration:1.8,repeat:3,ease:'power1.out'},L+'+='+(1+j*.6)));
+ if(i===5){tl.fromTo(s.querySelector('.ex'),{autoAlpha:0,y:80,scale:.9},{autoAlpha:1,y:0,scale:1,duration:1.6},L+'+=.4');tl.fromTo(s.querySelectorAll('.parts div'),{autoAlpha:0,x:-16},{autoAlpha:1,x:0,duration:.4,stagger:.12},L+'+=2')}
+ if(i===6){const sw=s.querySelectorAll('.sw'),cols=['#f2a516','#a8c43a','#c8102e','#ef4b5f'];sw.forEach((w,j)=>{tl.call(()=>{sw.forEach(x=>x.classList.remove('on'));w.classList.add('on');gsap.to('#wash',{background:cols[j],opacity:.35,duration:.6})},null,L+'+='+(1.6+j*1.2))});tl.to('#wash',{opacity:0,duration:.6},L+'+='+(D[i]-.6))}
+ if(i===8)tl.fromTo(s.querySelector('.cta'),{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.8},L+'+=1.6');
  tl.to({},{duration:D[i]-0.01},L);
 });
 const pp=document.getElementById('pp');pp.onclick=()=>{tl.paused(!tl.paused());pp.textContent=tl.paused()?'재생':'일시정지'};
 document.getElementById('again').onclick=e=>{e.preventDefault();tl.restart()};
 addEventListener('keydown',e=>{const cur=S.findIndex(s=>getComputedStyle(s).visibility==='visible');if(e.key==='ArrowRight')tl.seek('s'+Math.min(S.length-1,cur+1));if(e.key==='ArrowLeft')tl.seek('s'+Math.max(0,cur-1));if(e.key===' '){e.preventDefault();pp.click()}});
-const q=new URLSearchParams(location.search);if(q.has('t')){tl.pause();tl.seek(+q.get('t'))}
+const q=new URLSearchParams(location.search);if(q.has('t')){tl.pause();tl.seek(+q.get('t'),false)}
 </script></body></html>
