@@ -3,7 +3,7 @@ import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.j
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 // 휴롬 과일청 메이커(가칭) · 구조 3D v1 첫판 (2026-11-17, 두팔 msg_936ec2ba·msg_4b56059b 지시 · 준보 「무조건 이뻐야 한다」)
-//   유리 통(약 2L, 바닥 가운데 유리 돌기=핀) + 핀에 끼운 Ø6.5cm 날개 젓개(여러 극 희토류 자석 봉입) + 컵 가운데 Ø7cm 유리 창 아래 구동 자석 원판(간격 4mm) + 통 바깥(알루미늄 컵 둘레) 펠티어 + 뚜껑 한 방향 밸브. 받침은 낮고 얇게, 유리 통이 주인공. 받침 빛이 통을 아래서 비춤.
+//   유리 통(약 2L, 바닥 가운데 유리 돌기=핀) + 핀에 끼운 Ø6.5cm 날개 젓개(여러 극 희토류 자석 봉입) + 컵 가운데 Ø7cm 유리 창 아래 구동 자석 원판(유효 간격 6~7mm) + 통 바깥(알루미늄 컵 둘레) 펠티어 + 뚜껑 한 방향 밸브. 받침은 낮고 얇게, 유리 통이 주인공. 받침 빛이 통을 아래서 비춤.
 //   시안 3개: A 항아리형 유리 + 흰 무광 받침 · B 원통 유리 + 연회색 세라믹 받침 · C 넓적한 낮은 유리 + 베이지 받침. 나무 안: 뚜껑 손잡이·받침 윗테.
 //   치수는 모두 가정(단위 10cm): A 받침 Ø20 × 6cm · 통 Ø16(배) × 16cm · 뚜껑 1.2cm.
 //   쿼리: ?p=0~1 진행도 · ?v=a|b|c 시안 · ?c=yuja|maesil|omija|strawberry 청 색 · ?wood 나무 안 · ?night 저녁 장면 고정 · ?day 낮 고정 · ?ang=<도> · ?cy= · ?noairg ?noadapter ?nofruit
@@ -135,7 +135,7 @@ function build(vk) {
   parts.forEach(p => p.el.remove()); parts = []; spinners = []; woodMeshes = [];
   const BH = V.baseH, CUP_D = 0.26, CUP_Y = BH - CUP_D;    // 컵 바닥 높이
   const JH = V.jarH, JY = CUP_Y + 0.02;                     // 통 바닥 높이
-  const HR = 0.35, GT = 0.03, GAP = 0.01;                     // 컵 가운데 구멍 반지름(Ø7cm) · 유리 바닥 3mm · 틈 1mm → 자석 간격 4mm
+  const HR = 0.35, GT = 0.03, GAP = 0.01;                     // 컵 가운데 구멍 반지름(Ø7cm) · 유리 바닥 3mm · 틈 1mm(그림) · 실제 유효 간격은 덮개·띄움 포함 6~7mm
   const VR = 0.325, PINR = 0.045, PINH = 0.12;                // 날개 Ø6.5cm · 유리 돌기(핀)
   M.body.color.set(V.baseColor); M.body.roughness = V.baseRough; M.body.clearcoat = V.baseClear;
 
@@ -214,7 +214,7 @@ function build(vk) {
     g.position.y = JY + JH;
     part(`뚜껑 · 얹는 식 · 패킹 · 한 방향 밸브(김 빠짐)${wood ? ' · 나무 손잡이' : ''}`, g, [0, 2.9, 0], new THREE.Vector3(r, 0.08, 0));
   }
-  /* 7. 구동 자석 원판 + 납작 모터 — 컵 가운데 유리 창 아래 · 유리 3mm + 틈 1mm = 자석 간격 4mm · 아주 느림 · 걸리면 역회전 */
+  /* 7. 구동 자석 원판 + 납작 모터 — 컵 가운데 유리 창 아래 · 유효 간격 6~7mm(유리 + 덮개 + 띄움) · 아주 느림 · 걸리면 역회전 */
   {
     const g = new THREE.Group();
     const DT = 0.03, dy = JY - GAP - DT / 2;
@@ -224,7 +224,7 @@ function build(vk) {
     disc.userData.slow = true; spinners.push(disc); g.add(disc);
     const mh = Math.max(0.08, dy - DT / 2 - 0.012 - 0.1);
     const mot = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, mh, 28), M.dark); mot.position.y = dy - DT / 2 - 0.012 - mh / 2; g.add(mot);   // 납작 기어드 모터(또는 코일판)
-    part('구동 자석 원판 · 여러 극 · 유리 3mm + 틈 1mm = 간격 4mm · 납작 모터', g, [0, 0.3, 0], new THREE.Vector3(VR - 0.05, dy, 0), true);
+    part('구동 자석 원판 · 여러 극 N48SH급 · 유효 간격 6~7mm(유리 + 덮개 + 띄움) · 납작 모터', g, [0, 0.3, 0], new THREE.Vector3(VR - 0.05, dy, 0), true);
   }
   /* 8. 펠티어 — 컵 바닥 뒤쪽에 1장 · 극 전환으로 데우기/식히기 (서늘고·해동기 공용) */
   const PZ = -(V.cupR * 0.72);   // 컵 가운데 Ø7cm는 뚫려 있어 펠티어는 둘레(뒤쪽)에
