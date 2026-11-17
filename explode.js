@@ -231,7 +231,7 @@ function build(vk) {
   {
     const g = new THREE.Group();
     const tec = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.04, 0.3), M.peltier); tec.position.set(0, CUP_Y - 0.045, PZ); g.add(tec);
-    [[-0.17], [0.17]].forEach(([x]) => { const w = tube([new THREE.Vector3(x, CUP_Y - 0.045, PZ - 0.2), new THREE.Vector3(x, CUP_Y - 0.06, PZ - 0.35), new THREE.Vector3(x * 0.5, 0.1, 0.5)], 0.01, M.wireB, 20); g.add(w); });
+    [[-0.17], [0.17]].forEach(([x]) => { const w = tube([new THREE.Vector3(x, CUP_Y - 0.045, PZ - 0.2), new THREE.Vector3(x, CUP_Y - 0.06, PZ - 0.35), new THREE.Vector3(x * 0.5, 0.1, 0.5)], 0.004, M.wireB, 20); g.add(w); });
     part('펠티어 1장 · 극 바꿔 데우기·식히기 · 서늘고 공용', g, [0, -0.35, -0.9], new THREE.Vector3(0.2, CUP_Y - 0.045, PZ), true);
   }
   /* 9. 방열판 */
@@ -278,7 +278,7 @@ function build(vk) {
   {
     const g = new THREE.Group();
     const brick = new THREE.Mesh(new RoundedBoxGeometry(0.7, 0.24, 0.36, 2, 0.04), M.dark); brick.position.set(1.9, 0.12, -1.5); g.add(brick);
-    g.add(tube([new THREE.Vector3(1.55, 0.12, -1.5), new THREE.Vector3(0.9, 0.08, -1.3), new THREE.Vector3(0.25, 0.1, -V.baseR - 0.01)], 0.012, M.wireB, 30));
+    g.add(tube([new THREE.Vector3(1.55, 0.12, -1.5), new THREE.Vector3(0.9, 0.08, -1.3), new THREE.Vector3(0.25, 0.1, -V.baseR - 0.01)], 0.006, M.wireB, 30));
     g.name = 'adapter';
     part('12V 어댑터 · 서늘고·해동기 공용 후보', g, [1.6, -1.0, -0.3], new THREE.Vector3(1.9, 0.26, -1.5));
   }
@@ -394,6 +394,7 @@ function frame(now) {
   parts.forEach(({ obj, el, anchor }) => {
     tmp.copy(anchor); obj.localToWorld(tmp); tmp.project(camera);
     const sx = (tmp.x * 0.5 + 0.5) * w, sy = (-tmp.y * 0.5 + 0.5) * h;
+    el.dataset.ax = sx.toFixed(1); el.dataset.ay = sy.toFixed(1); el.dataset.vis = obj.visible && tmp.z < 1 ? 1 : 0;   // 캡처용: 이름표 대신 번호를 찍을 원래 위치
     lab.push({ el, sx, sy, w: el.offsetWidth || 160, h: el.offsetHeight || 30 });
     el.style.opacity = clamp((e - 0.7) / 0.3) * (obj.visible ? 1 : 0);
   });
