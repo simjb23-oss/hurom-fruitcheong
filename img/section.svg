@@ -6,7 +6,7 @@
   </defs>
   <rect width="1200" height="720" fill="#fbfaf7"/>
   <text x="40" y="44" font-size="22" font-weight="800" fill="#151515">단면 · 통 바닥과 받침 가운데 (시안 A · 축척 아님)</text>
-  <text x="40" y="68" font-size="13" fill="#666">통에는 구멍·축·실링이 없습니다. 젓개는 바닥의 오목한 자리에 볼록 허브로 앉아 제자리에서 돌고, 유리 너머의 자석 원판이 돌립니다. (불량 재검토 반영: 돌기 없앰 · 젖는 칸/마른 칸 · 홀 센서 · 필름 히터)</text>
+  <text x="40" y="68" font-size="13" fill="#666">통에는 구멍·축·실링이 없습니다. 젓개는 바닥 오목 자리에 세라믹 볼로 앉아 제자리에서 돌고, 유리 너머의 링 자석이 돌립니다. (2차 검토: 링 자석 Ø70 · 간격 5.5mm · 스러스트 베어링 · 컵 밀봉)</text>
 
   <!-- base shell -->
   <path d="M250 430 Q250 410 270 410 L930 410 Q950 410 950 430 L950 600 Q950 620 930 620 L270 620 Q250 620 250 600 Z" fill="#f4f2ee" stroke="#c9c4bb" stroke-width="2"/>
@@ -45,7 +45,7 @@
   <text x="600" y="500" font-size="12" text-anchor="middle" fill="#222">납작 기어드 모터 · ≤20mm</text>
   <!-- gap dimension -->
   <g stroke="#c41f3e" stroke-width="1.5"><line x1="760" y1="432" x2="760" y2="456"/><line x1="752" y1="432" x2="768" y2="432"/><line x1="752" y1="456" x2="768" y2="456"/></g>
-  <text x="772" y="448" font-size="12" fill="#c41f3e" font-weight="700">유효 간격 6~7mm = 유리 2.5~3 + 덮개 1.5 + 띄움·틈</text>
+  <text x="772" y="448" font-size="12" fill="#c41f3e" font-weight="700">유효 간격 5.5mm = 유리 2.5 + 덮개 1.0 + 띄움 0.5 + 틈 1.5</text>
   <!-- peltier stack at rear-left of cup -->
   <rect x="330" y="452" width="120" height="8" fill="#fff" stroke="#777"/><rect x="330" y="460" width="120" height="8" fill="#c8d9ff" stroke="#777"/>
   <text x="390" y="458" font-size="9" text-anchor="middle" fill="#333">TEC 40×40</text>
@@ -70,21 +70,21 @@
     <g stroke="#999" stroke-width="1"><line x1="318" y1="310" x2="120" y2="150"/><line x1="470" y1="380" x2="120" y2="215"/><line x1="500" y1="408" x2="120" y2="270"/><line x1="440" y1="352" x2="120" y2="330"/><line x1="307" y1="400" x2="120" y2="390"/><line x1="330" y1="470" x2="120" y2="470"/><line x1="390" y1="556" x2="120" y2="540"/><line x1="314" y1="446" x2="120" y2="600"/></g>
     <text x="40" y="146"><tspan font-weight="800">1</tspan> 유리 통 · 붕규산 3.3 확정 · 바닥 균일 3mm · 모서리 R5 · 서냉</text>
     <text x="40" y="211"><tspan font-weight="800">2</tspan> 젓개 몸 · 식품용 실리콘(LSR) · Ø6.5cm</text>
-    <text x="40" y="266"><tspan font-weight="800">3</tspan> 도금 자석 6극(N48SH급) · PP 일체 사출(이음매 없음) · LSR 덮기</text>
+    <text x="40" y="266"><tspan font-weight="800">3</tspan> 다극 링 자석 1개(N48SH급 Ø70) · 도금 · PP 일체 사출 · LSR 덮기</text>
     <text x="40" y="326"><tspan font-weight="800">4</tspan> 날개 3장 · 각도 15° (아래 → 위 흐름)</text>
-    <text x="40" y="386"><tspan font-weight="800">5</tspan> 알루미늄 컵 · 실리콘 열 패드 0.5mm · 옆면 3cm 접촉 · 가운데 Ø7cm 뚫림</text>
-    <text x="40" y="466"><tspan font-weight="800">6</tspan> 펠티어 TEC1-12706 · 식히기 · PWM 연속 / 데우기는 필름 히터 10W(빨강 띠 · 벤치 후 확정)</text>
+    <text x="40" y="386"><tspan font-weight="800">5</tspan> 알루미늄 컵 · 실리콘 막 0.3mm · EPDM 밀봉 링 · 가운데 Ø76 뚫림</text>
+    <text x="40" y="466"><tspan font-weight="800">6</tspan> 펠티어 TEC1-12706 · PWM 연속 · 극 전환 배치당 1회(필름 히터는 벤치 후) · 72°C 퓨즈</text>
     <text x="40" y="536"><tspan font-weight="800">7</tspan> 방열판 + 팬 60mm 볼 베어링 · 빼서 씻는 흡기 망 → 뒤 배기</text>
     <text x="40" y="596"><tspan font-weight="800">8</tspan> 물막이 턱 3mm → 뒤 배수구 · 젖는 칸 / 마른 칸 분리</text>
   </g>
   <!-- leader labels right -->
   <g font-size="13" fill="#222">
     <g stroke="#999" stroke-width="1"><line x1="612" y1="436" x2="1080" y2="150"/><line x1="730" y1="463" x2="1080" y2="230"/><line x1="730" y1="472" x2="1080" y2="290"/><line x1="660" y1="495" x2="1080" y2="350"/><line x1="859" y1="456" x2="1080" y2="410"/><line x1="873" y1="434" x2="1080" y2="470"/><line x1="893" y1="336" x2="1080" y2="530"/><line x1="850" y1="523" x2="1080" y2="590"/></g>
-    <text x="1160" y="146" text-anchor="end"><tspan font-weight="800">9</tspan> 오목 자리 · 반구 깊이 3mm · 젓개 볼록 허브가 앉음 · 자석이 가운데로 당김</text>
-    <text x="1160" y="226" text-anchor="end"><tspan font-weight="800">10</tspan> 구동 자석 원판 · 6극 N48SH급 · Ø65 × 6~8mm</text>
+    <text x="1160" y="146" text-anchor="end"><tspan font-weight="800">9</tspan> 오목 자리 · 반구 깊이 4mm · 세라믹 볼 받침 · 자석이 가운데로 당김</text>
+    <text x="1160" y="226" text-anchor="end"><tspan font-weight="800">10</tspan> 구동 링 자석 Ø70 × 8mm + 스러스트 볼 베어링</text>
     <text x="1160" y="286" text-anchor="end"><tspan font-weight="800">11</tspan> 철 백요크 1mm (자속 모음)</text>
     <text x="1160" y="346" text-anchor="end"><tspan font-weight="800">12</tspan> 납작 기어드 모터 · 12V · 10~60rpm · 0.6 N·m</text>
-    <text x="1160" y="406" text-anchor="end"><tspan font-weight="800">13</tspan> 통 감지 · 눌리는 컵(0.5mm) + 홀 센서 · 수지 봉함 · 구동 자석 간섭 없음</text>
+    <text x="1160" y="406" text-anchor="end"><tspan font-weight="800">13</tspan> 통 감지 · 테두리 누름 핀 + 홀 센서 · 구동 자석과 30mm↑</text>
     <text x="1160" y="466" text-anchor="end"><tspan font-weight="800">14</tspan> RGB LED 링 (품목 색 · 단계 표시)</text>
     <text x="1160" y="526" text-anchor="end"><tspan font-weight="800">15</tspan> 빛 테 · 유백 PC 확산</text>
     <text x="1160" y="586" text-anchor="end"><tspan font-weight="800">16</tspan> 제어 보드(마른 칸) · MCU + 모터 드라이버 + NTC + 온습도</text>
