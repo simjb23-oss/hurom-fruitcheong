@@ -72,10 +72,10 @@
     <text x="40" y="211"><tspan font-weight="800">2</tspan> 젓개 몸 · 식품용 실리콘(LSR) · Ø6.5cm</text>
     <text x="40" y="266"><tspan font-weight="800">3</tspan> 다극 링 자석 1개(N48SH급 Ø70) · 도금 · PP 일체 사출 · LSR 덮기</text>
     <text x="40" y="326"><tspan font-weight="800">4</tspan> 날개 3장 · 각도 15° (아래 → 위 흐름)</text>
-    <text x="40" y="386"><tspan font-weight="800">5</tspan> 알루미늄 컵 · 실리콘 막 0.3mm · EPDM 밀봉 링 · 가운데 Ø76 뚫림</text>
-    <text x="40" y="466"><tspan font-weight="800">6</tspan> 펠티어 TEC1-12706 · PWM 연속 · 극 전환 배치당 1회(필름 히터는 벤치 후) · 72°C 퓨즈</text>
-    <text x="40" y="536"><tspan font-weight="800">7</tspan> 방열판 + 팬 60mm 볼 베어링 · 빼서 씻는 흡기 망 → 뒤 배기</text>
-    <text x="40" y="596"><tspan font-weight="800">8</tspan> 물막이 턱 3mm → 뒤 배수구 · 젖는 칸 / 마른 칸 분리</text>
+    <text x="40" y="380"><tspan font-weight="800">5</tspan> 알루미늄 컵 · 실리콘 막 0.3mm<tspan x="56" dy="16">EPDM 밀봉 링 · 가운데 Ø76 뚫림</tspan></text>
+    <text x="40" y="460"><tspan font-weight="800">6</tspan> 펠티어 TEC1-12706 · PWM 연속 · 72°C 퓨즈<tspan x="56" dy="16">극 전환 배치당 1회 (필름 히터는 벤치 후)</tspan></text>
+    <text x="40" y="530"><tspan font-weight="800">7</tspan> 방열판 + 팬 60mm 볼 베어링<tspan x="56" dy="16">빼서 씻는 흡기 망 → 뒤 배기</tspan></text>
+    <text x="40" y="590"><tspan font-weight="800">8</tspan> 물막이 턱 3mm → 뒤 배수구<tspan x="56" dy="16">젖는 칸 / 마른 칸 분리</tspan></text>
   </g>
   <!-- leader labels right -->
   <g font-size="13" fill="#222">
@@ -84,10 +84,10 @@
     <text x="1160" y="226" text-anchor="end"><tspan font-weight="800">10</tspan> 구동 링 자석 Ø70 × 8mm + 스러스트 볼 베어링</text>
     <text x="1160" y="286" text-anchor="end"><tspan font-weight="800">11</tspan> 철 백요크 1mm (자속 모음)</text>
     <text x="1160" y="346" text-anchor="end"><tspan font-weight="800">12</tspan> 납작 기어드 모터 · 12V · 10~60rpm · 0.6 N·m</text>
-    <text x="1160" y="406" text-anchor="end"><tspan font-weight="800">13</tspan> 통 감지 · 테두리 누름 핀 + 홀 센서 · 구동 자석과 30mm↑</text>
+    <text x="1160" y="400" text-anchor="end"><tspan font-weight="800">13</tspan> 통 감지 · 테두리 누름 핀 + 홀 센서<tspan x="1160" dy="16">구동 자석과 30mm 이상 떨어뜨림</tspan></text>
     <text x="1160" y="466" text-anchor="end"><tspan font-weight="800">14</tspan> RGB LED 링 (품목 색 · 단계 표시)</text>
     <text x="1160" y="526" text-anchor="end"><tspan font-weight="800">15</tspan> 빛 테 · 유백 PC 확산</text>
-    <text x="1160" y="586" text-anchor="end"><tspan font-weight="800">16</tspan> 제어 보드(마른 칸) · MCU + 모터 드라이버 + NTC + 온습도</text>
+    <text x="1160" y="580" text-anchor="end"><tspan font-weight="800">16</tspan> 제어 보드(마른 칸)<tspan x="1160" dy="16">MCU + 모터 드라이버 + NTC + 온습도</tspan></text>
   </g>
-  <text x="600" y="690" font-size="12" text-anchor="middle" fill="#777">빨강·파랑 = 자석 N·S극 (6극 중 단면에 보이는 4개) · 주황 점선 = 바람길 · 치수는 설계 목표값</text>
+  <text x="600" y="690" font-size="12" text-anchor="middle" fill="#777">빨강·파랑 = 링 자석 N·S극 (다극 중 단면에 보이는 4개) · 주황 점선 = 바람길 · 치수는 설계 목표값</text>
 </svg>
