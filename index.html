@@ -353,7 +353,7 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
       </ul></div>
     </div>
     <div class="toc rv">
-      <a href="#problem"><small>01</small>문제 — 집 청은 왜 실패하나</a><a href="#whynow"><small>02</small>왜 휴롬 · 왜 지금</a><a href="#discovery"><small>03</small>후보 중 이것을 고른 이유</a><a href="#product"><small>04</small>제품 · 작동 · 1년 달력</a><a href="#design"><small>05</small>디자인 · 피그마 보드</a><a href="#feasible"><small>06</small>구조 성립 검토</a><a href="#market"><small>07</small>시장 · 고객</a><a href="#pricing"><small>08</small>가격 정책 · 제조처</a><a href="#numbers"><small>09</small>숫자 · 3년 손익 · 감도</a><a href="#tech"><small>10</small>기술 · 특허 · 규제</a><a href="#risk"><small>11</small>리스크 · 중단 기준</a><a href="#validate"><small>12</small>검증 · 일정 · 조직 · 출시</a>
+      <a href="#problem"><small>01</small>문제 — 집 청은 왜 실패하나</a><a href="#whynow"><small>02</small>왜 휴롬 · 왜 지금</a><a href="#discovery"><small>03</small>후보 중 이것을 고른 이유</a><a href="#product"><small>04</small>제품 · 작동 · 1년 달력</a><a href="#design"><small>05</small>디자인 · 피그마 보드</a><a href="#feasible"><small>06</small>구조 성립 검토</a><a href="#market"><small>07</small>시장 · 고객</a><a href="#pricing"><small>08</small>가격 정책 · 제조처</a><a href="#numbers"><small>09</small>숫자 · 3년 손익 · 감도</a><a href="#tech"><small>10</small>기술 · 특허 · 규제</a><a href="#risk"><small>11</small>리스크 · 중단 기준</a><a href="#lifecycle"><small>11-B</small>사용 기간별 불량</a><a href="#validate"><small>12</small>검증 · 일정 · 조직 · 출시</a>
     </div>
   </div>
 </section>
@@ -544,7 +544,7 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
         <tr><td class="l">정격 입력(어댑터)</td><td class="l">AC 100~240V · 50/60Hz → DC 12V 4A(48W) · KC 안전 인증 어댑터 · 전원선 1.5m · 서늘고·해동기 공용 규격</td></tr>
         <tr><td class="l">소비전력</td><td class="l">최대 43W(데우기·식히기 시작) · 녹이기 평균 15W · 식혀 두기 평균 8~12W · 대기 ≤0.5W <span class="tag est">추정</span></td></tr>
         <tr><td class="l">펠티어</td><td class="l">TEC1-12706급 40×40×3.8mm 1장 · 12V 3A로 구동(정격의 절반, 효율 구간) · H브리지 극 전환 · 과열 차단 65°C(더운 면 NTC)</td></tr>
-        <tr><td class="l">구동 모터</td><td class="l">12V 납작 기어드 DC/BLDC · 출력 10~60rpm · 정격 0.6 N·m · 전류 감지로 걸림 판정(≥1.2A 2초) → 정지 → 역회전 3초 → 재시작</td></tr>
+        <tr><td class="l">구동 모터</td><td class="l">12V 납작 기어드 <b>BLDC(확정 · 브러시 마모 없음)</b> · 출력 10~60rpm · 정격 0.6 N·m · 전류 감지 2가지: <b>걸림</b>(≥1.2A 2초) → 정지 → 역회전 3초 → 재시작, 3회 실패면 알림 · <b>탈조</b>(젓는 중 전류가 무부하 수준으로 급감 = 자석이 놓쳐 아래 원판만 돎) → 저속 재포획 → 2회 실패면 빛 깜빡임 + 부저 알림</td></tr>
         <tr><td class="l">자석 커플링</td><td class="l">6극 N48SH급(벤치에서 정함) 원판 Ø65 × 6~8mm 한 쌍 + 철 백요크 1mm · 유효 간격 6~7mm(유리 2.5~3 + 덮개 1.5 + 띄움·틈) · 설계 전달 토크 ≥0.3 N·m(목표 0.5) · 최고 사용 온도 150°C</td></tr>
         <tr><td class="l">센서 · 표시</td><td class="l">NTC 10kΩ 2개(컵 · 방열판) · 리드 스위치(통 감지) · 모터 전류 · RGB LED 링 12구 + 앞면 빛 1줄 · 부저 · 버튼 1(짧게 = 품목 · 길게 = 끔)</td></tr>
         <tr><td class="l">제어</td><td class="l">8비트 MCU · 품목 묶음 3 × (데우기 온도 · 젓기 간격 · 완료 시간 · 식혀 두기 온도) 표 · 펌웨어 갱신 없음(앱 없음)</td></tr>
@@ -798,6 +798,69 @@ section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;w
         <li>ODM 견적 착륙 원가가 <b>8.5만 원 초과</b>이고 1년 안에 7.5만 아래로 내릴 VE 항목이 없을 때</li>
       </ul></div>
       <div><h3>실패해도 남는 것</h3><ul><li>펠티어 양방향 모듈 · 12V 48W 어댑터 · 보드 뼈대 — 서늘고·해동기에 그대로 씀</li><li>자석 커플링 토크 데이터와 닝보 협력사 관계 — 다른 교반·착즙 보조 기구에 재사용</li><li>「청 담그는 가구」 설문 데이터 — 과일 가전 라인업 전체의 수요 근거</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="lifecycle">
+  <div class="wrap">
+    <div class="kicker rv">11-B · 사용 기간별 불량 예측 (설계 검토 · 실측 전 추정)</div>
+    <h2 class="rv">언제 무엇이 고장 나는지, 쓰는 기간 순서로 적습니다.</h2>
+    <p class="lead2 rv">가정한 사용 패턴: 1년에 <b>5~6번</b> 담그고 한 번에 <b>5~10일</b> 돕니다(연 가동 약 1,000~1,500시간, 젓개 기동 약 1,500회, 식기세척기 10~15회). 나머지 기간은 서랍에 둡니다. 보증 1년 · 기대 수명 5년. 아래 숫자는 모두 설계 검토로 본 <span class="tag est">추정</span>이고, 1단계 벤치와 DVT 신뢰성 시험으로 바꿔 넣습니다.</p>
+    <div class="gate rv">
+      <div><small>① 출고 ~ 1개월</small><b>만들 때 생긴 것</b><p>유리 금 · 자석 극 조립 반대 · 리드 스위치 위치 · NTC 열 패드 들뜸 · 밸브 뒤집힘 · 새 고무 냄새 · 어댑터 · 팬 편심. <b>출하 검사</b>로 잡습니다.</p></div>
+      <div><small>② 1 ~ 12개월</small><b>쓰다가 생기는 것</b><p>여름 결로 · 흘린 설탕물 → 보드 · 젓개 헛돎을 못 잡음 · 밸브에 설탕 결정 · 자석 캡슐 틈 · 발효 거품 넘침. <b>펌웨어 · 밀봉 · 물길</b>로 잡습니다.</p></div>
+      <div><small>③ 1 ~ 3년</small><b>닳기 시작</b><p>펠티어 극 전환 피로 · 먼지로 과열 차단 잦아짐 · 기어 그리스 굳음 · 실리콘 색·냄새 배임 · 패킹 눌림 · 어댑터 콘덴서. <b>소모품 판매 · 제어</b>로 잡습니다.</p></div>
+      <div><small>④ 3 ~ 5년 이상</small><b>마모</b><p>유리 표면 뿌옇게(에칭) · 돌기 금 자람 · 펠티어 성능 20~30%↓ · ABS 황변 · 전원선 꺾임 · 백요크 녹. 자석 힘 저하는 <b>거의 없음</b>(N48SH 150°C급).</p></div>
+    </div>
+    <div class="two rv">
+      <div class="box dark" style="margin-top:0"><h3>먼저 잡아야 할 4가지 (식품 안전 · 민원 큰 순)</h3><ol style="padding-left:18px">
+        <li><b>젓개 속 자석 녹</b> — 식기세척기 수십 회 뒤 PP 캡슐 융착부에 틈 → 네오디뮴 녹 → 청에 검은 물. 식품 안전 사고라 가장 큽니다. 자석 니켈+에폭시 도금 · 캡슐 수압 기밀 전수 · 식세기 200회 시험.</li>
+        <li><b>젓개가 헛돌아도 모름(탈조)</b> — 청이 걸쭉해지면 자석이 놓쳐 아래 원판만 돕니다. 이때 모터 전류는 <b>떨어지므로</b> 「≥1.2A 걸림 판정」만으로는 못 잡습니다. 04-B에 「전류 급감 = 탈조 → 재포획 → 알림」을 넣었습니다.</li>
+        <li><b>결로 물이 받침 안으로</b> — 첫해 6월 매실 철에 바로 나옵니다. 이슬점 연동(06 ⑤) + 물받이 홈 · 배수 · 컨포멀 코팅 · 리드 스위치 밀봉형.</li>
+        <li><b>유리 통 파손</b> — 돌기 뿌리 응력 + 열탕 소독 직후 찬 컵. 집에서 청 담글 때 열탕 소독이 흔하므로 <b>붕규산 3.3(ΔT 160°C급)</b>이 안전 쪽이고, 강화 소다석회(ΔT 40~60°C)를 고르면 「열탕 뒤 10분 식히기」 안내가 필수입니다.</li>
+      </ol></div>
+      <div><h3>숫자로 보면 <span class="tag est">추정</span></h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">출고 ~ 1개월 서비스율</td><td class="l">0.8~1.2% (운송 중 유리 파손 포함 · 소형 주방가전 업계 초기 불량 1% 안팎 기준)</td></tr>
+        <tr><td class="l">12개월 누적 서비스율</td><td class="l">약 3% → 08 가격 정책의 <b>AS · 불량 충당 3%</b>와 같은 가정</td></tr>
+        <tr><td class="l">3년 누적 · 5년 누적</td><td class="l">6~8% · 10~12% (소모품 젓개 · 패킹 · 밸브 교체는 별도, 유료)</td></tr>
+        <tr><td class="l">소모품 교체 주기</td><td class="l">젓개 · 패킹 · 우산 밸브 세트 2~3년(색 · 냄새 · 눌림) · 유리 통 파손 시 단품 판매</td></tr>
+        <tr><td class="l">부품 보유</td><td class="l">소비자분쟁해결기준의 소형 주방가전 부품 보유 기간을 따름(품질팀 확인) · 펠티어 · 보드 · 어댑터 · 유리 통 · 젓개 세트</td></tr>
+      </table>
+      <h3 style="margin-top:22px">제품 탓으로 보일 「사용 결과」 불량</h3><ul><li><b>곰팡이 · 알코올 냄새</b> — 탈조를 못 잡았거나 과일이 위로 떠 공기에 닿은 경우. 탈조 알림 + 「과일 먼저, 설탕 위」 안내 + 뚜껑 안쪽 누름판(검토).</li><li><b>설탕이 굳어 젓개 고착</b> — 설탕을 1:1 넘게 넣거나 데우기 전 저을 때. 첫 4~6시간 데우기만 하는 제어 유지.</li><li><b>거품 · 가스로 청이 넘침</b> — 매실 발효 초기. 2L 통에 1.6L 상한 눈금 + 밸브 위치를 액면보다 높게 + 컵 가장자리 물받이.</li></ul></div>
+    </div>
+    <h3 class="rv" style="margin-top:40px;font-size:20px">부품별 상세 — 시기 · 원인 · 미리 잡는 법 · 확인 시험</h3>
+    <table class="risk rv">
+      <tr><th>시기</th><th>부품</th><th>불량</th><th>원인</th><th>미리 잡는 법</th><th>확인 시험 · 시점</th></tr>
+      <tr><td>①</td><td>유리 통</td><td>첫 열탕 · 식세기에서 금 · 깨짐</td><td>금형 기포 · 돌기 뿌리 응력 · 서냉 부족</td><td>뿌리 R3 · 어닐링 · 전수 편광 검사</td><td>열충격 ΔT 40°C 샘플 · 포장 낙하 · 4~6주차</td></tr>
+      <tr><td>①</td><td>자석 원판 · 젓개</td><td>안 돎 · 덜컥거림</td><td>6극 N/S를 거꾸로 조립</td><td>극 방향 지그 · 출하 회전 검사</td><td>출하 100% · DVT</td></tr>
+      <tr><td>①</td><td>리드 스위치</td><td>통을 올려도 「통 없음」 · 구동 자석에 오동작</td><td>위치 편차 · 구동 원판 자기장 간섭</td><td>감지 자석을 구동 원판에서 먼 받침 테두리에 · 차폐 철판</td><td>감지 거리 출하 검사 · 간섭 맵 · 벤치</td></tr>
+      <tr><td>①</td><td>컵 NTC</td><td>온도 ±1.5°C 넘게 틀림 · 과열 차단</td><td>열 패드 빠짐 · 들뜸</td><td>출하 1점 교정 · 패드 두께 관리</td><td>출하 100%</td></tr>
+      <tr><td>①</td><td>뚜껑 밸브 · 패킹</td><td>샘 · 가스가 안 빠짐</td><td>밸브 뒤집힘 · 패킹 누락</td><td>1~3 kPa 열림 압력 전수</td><td>출하 100%</td></tr>
+      <tr><td>①</td><td>젓개 · 패킹(LSR)</td><td>새 고무 냄새</td><td>2차 경화 부족</td><td>후경화 4시간 200°C · 관능 · 용출 시험</td><td>식품용 기구 시험 · G2</td></tr>
+      <tr><td>①</td><td>어댑터 · DC 잭</td><td>안 켜짐 · 껐다 켜짐</td><td>잭 접촉 · 어댑터 불량</td><td>입고 검사 · 잭 삽입력 · 잠금형 잭</td><td>플러그 5,000회 삽입 · DVT</td></tr>
+      <tr><td>①</td><td>팬 · 기어</td><td>30 dB 넘는 소음</td><td>조립 편심 · 그리스 부족</td><td>출하 소음 검사</td><td>출하 샘플링</td></tr>
+      <tr><td>②</td><td>받침 속 보드</td><td>꺼짐 · 버튼 오동작 · 부식</td><td>여름 결로 · 흘린 설탕물이 스며듦</td><td>이슬점 연동 · 물받이 홈 · 배수 · 컨포멀 코팅 · IPX1급</td><td>40°C/93% 500h · 28°C/70% 결로 챔버 24h · 목업</td></tr>
+      <tr><td>②</td><td>젓개 · 펌웨어</td><td>헛돎(탈조)을 못 잡음 → 안 저어진 채 며칠</td><td>점도 상승 · 자석 놓침 → 전류 <b>저하</b></td><td>「전류 급감 = 탈조」 판정 · 저속 재포획 · 알림</td><td>설탕 60% 이상 걸쭉한 청으로 벤치 · 1~3주차</td></tr>
+      <tr><td>②</td><td>젓개</td><td>걸림 정지가 반복</td><td>설탕 덩어리 · 과일 조각 끼임</td><td>역회전 3초 · 3회 실패면 알림 · 날개 사이 간격 넓힘</td><td>걸림 10,000회 · DVT</td></tr>
+      <tr><td>②</td><td>뚜껑 밸브</td><td>막힘 → 뚜껑 튐 · 청이 샘</td><td>설탕 결정이 밸브에 굳음</td><td>밸브를 액면보다 높게 · 분리 세척 · 1.6L 상한 눈금</td><td>매실 발효 2주 목업 · 4~6주차</td></tr>
+      <tr><td>②</td><td>젓개 캡슐</td><td>자석 녹 · 검은 물</td><td>식세기 열 · 세제로 융착부 틈</td><td>자석 Ni-Cu-Ni + 에폭시 도금 · 캡슐 수압 기밀 전수</td><td>식세기 200회 + 기밀 · DVT</td></tr>
+      <tr><td>②</td><td>알루미늄 컵</td><td>긁힘 · 얼룩 · 산 부식</td><td>유리 바닥 마찰 · 흘린 청(pH 2.5~3)</td><td>경질 아노다이징 두께 · 컵 가장자리 물받이</td><td>당액 40°C 48h 침지 · DVT</td></tr>
+      <tr><td>②</td><td>(오용)</td><td>통 없이 돌림 · 받침에 물 부음</td><td>사용자 실수</td><td>리드 스위치 정지 · 받침 IPX1</td><td>안전 검토 · 인증 단계</td></tr>
+      <tr><td>③</td><td>펠티어</td><td>식히기 · 데우기가 약해짐 → 끊김</td><td>데우기↔식히기 <b>극 전환이 열 사이클</b> → 납땜 피로</td><td>극 전환은 배치당 1회만 · 전환 전 0A 30초 · PWM 연속 제어</td><td>극 전환 2,000 사이클 · DVT</td></tr>
+      <tr><td>③</td><td>방열판 · 팬</td><td>과열 차단이 잦아짐</td><td>먼지 · 기름 막힘(바닥 흡기)</td><td>흡기 그릴 분리 청소 · 「청소」 안내 · 65°C 차단 확인</td><td>먼지 챔버 · DVT</td></tr>
+      <tr><td>③</td><td>모터 · 기어</td><td>소음 · 힘 저하</td><td>그리스 굳음 · 기어 마모</td><td><b>BLDC 확정</b> · 1단 금속 기어 · 자석 커플링이 토크 리미터 역할</td><td>2,000h 연속 운전 · DVT</td></tr>
+      <tr><td>③</td><td>실리콘 젓개 · 패킹</td><td>색 · 냄새 배임(오미자 · 딸기 · 생강) · 눌림 · 찢어짐</td><td>LSR 흡착 · 영구 압축 변형</td><td>밝은 색 LSR · 소모품 세트 판매</td><td>압축 변형 70°C 22h · 색소 침지</td></tr>
+      <tr><td>③</td><td>어댑터</td><td>1년 넣어 두었다 꺼내니 안 켜짐</td><td>전해 콘덴서 노화</td><td>105°C 장수명 콘덴서를 견적서에 명시</td><td>어댑터 사양서 · ODM 견적</td></tr>
+      <tr><td>③</td><td>받침 속</td><td>개미 · 벌레 · 끈적임</td><td>설탕이 남은 채 서랍 보관</td><td>받침 틈 최소화 · 「보관 전 닦기」 안내</td><td>사용 설명서 · 인터뷰</td></tr>
+      <tr><td>④</td><td>유리 통</td><td>표면 뿌옇게(에칭) · 돌기 금 자라 깨짐</td><td>식세기 수백 회 · 미세 흠</td><td>통 단품 판매 · 금 간 유리 사용 금지 안내</td><td>식세기 500회 · DVT</td></tr>
+      <tr><td>④</td><td>펠티어</td><td>성능 20~30%↓ → 「실온 −8~10°C」 못 지킴</td><td>열전 소자 노화</td><td>정격의 절반(3A)으로 구동해 여유 확보</td><td>가속 수명 · ODM 자료</td></tr>
+      <tr><td>④</td><td>받침 · 전원선</td><td>황변 · DC 플러그 근처 끊김</td><td>ABS UV 노화 · 반복 굽힘</td><td>PC/ABS + UV 안정제 · 플러그 부시 보강</td><td>UV 500h · 굽힘 10,000회 · DVT</td></tr>
+      <tr><td>④</td><td>자석 원판 · 백요크</td><td>힘 저하는 거의 없음 · 백요크 철판 녹</td><td>N48SH 150°C급(사용 30°C) · 결로 습기</td><td>백요크 아연 도금 또는 SUS430</td><td>염수 분무 48h · DVT</td></tr>
+    </table>
+    <div class="two rv">
+      <div class="box" style="margin-top:0"><h3>1단계 벤치에 더 넣을 신뢰성 시험 6개</h3><ol style="padding-left:18px"><li>젓개 캡슐: 식세기 200회 + 수압 기밀</li><li>유리: 열충격 ΔT 40°C · 돌기 뿌리 응력(편광)</li><li>탈조 감지: 설탕 60% 이상 걸쭉한 청으로 펌웨어 확인</li><li>고온고습 40°C · 93% · 500시간 + 결로 물 경로</li><li>펠티어: 극 전환 열 사이클 수명</li><li>모터 · 기어: 2,000시간 연속 운전</li></ol></div>
+      <div><h3>설계에 바로 반영한 것</h3><ul><li><b>04-B 구동 모터</b>: BLDC 확정 · 걸림(전류 ↑)과 탈조(전류 ↓) 두 가지 판정 · 알림</li><li><b>리드 스위치</b>를 구동 자석 원판에서 떨어진 받침 테두리로 옮기고 차폐</li><li><b>펠티어 극 전환</b>은 배치당 1회(데우기 → 식히기)만 · 전환 전 0A 30초</li><li><b>소모품 세트</b>(젓개 · 패킹 · 밸브)와 <b>유리 통 단품</b>을 추가 판매로 둠</li><li>품질 쪽에서 가장 큰 고칠 점은 <b>탈조 감지</b>였습니다 — 「안 젓는데 도는 줄 아는」 경우를 걸림 판정만으로는 못 잡습니다.</li></ul></div>
     </div>
   </div>
 </section>
