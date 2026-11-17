@@ -1,0 +1,209 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>휴롬 과일청 메이커 · 경영 분석</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1c1b19;--sub:#6b6862;--line:#e6e2d9;--acc:#e8781a;--s:#2f8f5b;--w:#d9822b;--o:#2f6fd6;--t:#c8402e}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--ink);font-family:Pretendard,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:22px;padding:16px 5vw;background:rgba(247,245,240,.82);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.sc{border-color:var(--line)}nav b{font-weight:800;letter-spacing:.05em;margin-right:auto}nav a{font-size:14px;text-decoration:none;color:var(--sub);transition:color .2s}nav a:hover,nav a.on{color:var(--ink)}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--acc);width:0;z-index:30}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+header{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;position:relative;overflow:hidden}
+.eyebrow{font-size:13px;font-weight:700;color:var(--acc);letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(40px,6.4vw,92px);line-height:1.08;letter-spacing:-.035em;font-weight:800;margin:18px 0 26px}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}.w>i{display:inline-block;font-style:normal}
+.lead{font-size:clamp(17px,1.5vw,21px);line-height:1.7;color:var(--sub);max-width:780px}
+.verdict{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px}
+.vd{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.vd b{display:block;font-size:13px;color:var(--sub);margin-bottom:8px}.vd p{font-size:17px;font-weight:700;line-height:1.45}
+.orb{position:absolute;right:-12vw;top:12vh;width:52vw;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ffd08a,#f0a03a 45%,rgba(240,160,58,0) 70%);opacity:.35;filter:blur(2px);z-index:-1}
+section.wrap{padding-top:130px;padding-bottom:30px}
+.sh{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}.sh .n{font-size:14px;font-weight:800;color:var(--acc)}
+h2{font-size:clamp(30px,3.6vw,50px);letter-spacing:-.03em;line-height:1.15}
+.sd{color:var(--sub);font-size:17px;line-height:1.7;max-width:760px;margin-bottom:40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.07)}
+.card .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;padding:5px 10px;border-radius:999px;background:#1c1b19;color:#fff;margin-bottom:16px}
+.card h3{font-size:22px;margin-bottom:12px;letter-spacing:-.02em}.card ul{padding-left:18px;line-height:1.75;font-size:15px;color:#3b3934}
+.src{font-size:12px;color:#9a968e;margin-top:12px;line-height:1.5}
+.est{display:inline-block;font-size:11px;font-weight:700;color:var(--w);border:1px solid #f0d2b0;background:#fdf4ea;border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:middle}
+/* SWOT */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative}
+.q{border-radius:22px;padding:30px;color:#fff;min-height:290px;position:relative;overflow:hidden}
+.q h3{font-size:15px;letter-spacing:.12em;opacity:.85;margin-bottom:6px}.q .big{font-size:30px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.q ul{padding-left:18px;line-height:1.75;font-size:15px}.q .L{position:absolute;right:20px;bottom:-30px;font-size:180px;font-weight:900;opacity:.12;line-height:1}
+.qS{background:linear-gradient(135deg,#2f8f5b,#23704a)}.qW{background:linear-gradient(135deg,#d9822b,#b9661a)}.qO{background:linear-gradient(135deg,#2f6fd6,#2457ad)}.qT{background:linear-gradient(135deg,#c8402e,#a32f20)}
+.axis{position:absolute;font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.08em}
+/* TOWS */
+.tows{display:grid;grid-template-columns:150px 1fr 1fr;gap:12px;margin-top:28px}
+.tows div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;font-size:15px;line-height:1.6}
+.tows .hd{background:transparent;border:0;font-weight:800;font-size:14px;color:var(--sub);display:flex;align-items:center}
+.tows b{display:block;font-size:12px;letter-spacing:.08em;margin-bottom:6px}
+/* STP map */
+.stp{display:grid;grid-template-columns:1fr 1.25fr;gap:28px;align-items:start}
+.seg{display:flex;flex-direction:column;gap:12px}
+.sg{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;gap:16px;align-items:center}
+.sg .bar{flex:none;width:90px;height:8px;border-radius:8px;background:#eee8dd;overflow:hidden}.sg .bar i{display:block;height:100%;width:0;background:var(--acc)}
+.sg.tg{border-color:var(--acc);box-shadow:0 0 0 3px rgba(232,120,26,.12)}
+.sg h4{font-size:16px}.sg p{font-size:13px;color:var(--sub);margin-top:3px;line-height:1.5}
+.map{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;position:relative}
+.map svg{width:100%;height:auto;display:block}
+.dot circle{transition:r .3s}.dot:hover circle{r:13}
+/* 4P */
+.p4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.p4 .card{padding:24px}.p4 .L{font-size:56px;font-weight:900;color:var(--acc);line-height:1;margin-bottom:10px}
+/* 5 forces */
+.ff{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.force{display:grid;grid-template-columns:150px 1fr 44px;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.force h4{font-size:16px}.force p{grid-column:2/4;font-size:13px;color:var(--sub);margin-top:-6px;line-height:1.5}
+.meter{display:flex;gap:5px}.meter i{flex:1;height:10px;border-radius:3px;background:#ece7dd}.meter i.on{background:var(--t)}
+.force b{font-variant-numeric:tabular-nums;font-size:20px;text-align:right}
+#radar{width:100%;max-width:460px;margin:0 auto;display:block}
+/* go/stop */
+.gs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gs .card b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.gs .card span{font-size:14px;color:var(--sub);line-height:1.5;display:block;margin-top:6px}
+footer{padding:100px 0 80px;text-align:center;color:var(--sub);font-size:14px}
+footer .cta{display:flex;gap:12px;justify-content:center;margin-bottom:24px}
+footer .cta a{text-decoration:none;font-weight:700;padding:14px 22px;border-radius:14px;background:var(--ink);color:#fff}footer .cta a.g{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.rv{opacity:0;transform:translateY(40px)}
+@media(max-width:900px){.grid3,.verdict,.p4,.gs,.stp,.ff{grid-template-columns:1fr}.swot{grid-template-columns:1fr}.tows{grid-template-columns:1fr}.tows .hd{display:none}nav a{display:none}.wrap{padding:0 18px}.force{grid-template-columns:110px 1fr 36px}.q{min-height:0}}
+</style></head><body>
+<div id="prog"></div>
+<nav id="nav"><b>HUROM · 과일청 메이커</b><a href="#c3">3C</a><a href="#swot">SWOT</a><a href="#stp">STP</a><a href="#p4">4P</a><a href="#f5">5 Forces</a><a href="#go">Go/Stop</a><a href="film.html">소개 필름</a></nav>
+<header class="wrap"><div class="orb"></div>
+ <div class="eyebrow">Business Analysis</div>
+ <h1 class="split">빈자리는 있다.<br>문제는 몇 번 쓰느냐.</h1>
+ <p class="lead">휴롬 과일청 메이커를 3C · SWOT · STP · 4P · 5 Forces로 따져 봤습니다. 결론은 <b>「전용 가전이 없는 시장을 휴롬 고객과 함께 먼저 잡을 수 있다, 단 계절성과 자석 젓기 힘은 12주 검증으로 먼저 확인한다」</b>입니다.</p>
+ <div class="verdict"><div class="vd rv"><b>기회</b><p>청 전용 가전은 국내 · 일본에서 찾지 못함 — 먼저 들어가면 자리를 차지</p></div><div class="vd rv"><b>무기</b><p>유리 너머 자석 젓기 — 통에 구멍 · 축이 없어 새지 않고 씻기 쉬움</p></div><div class="vd rv"><b>숙제</b><p>1년에 몇 번 쓰나(계절) · 자석 힘 마진 · 유리 통 파손</p></div></div>
+</header>
+
+<section id="c3" class="wrap"><div class="sh"><span class="n">01</span><h2>3C — 누가 사고, 누구와 겨루고, 우리는 뭘 가졌나</h2></div>
+<p class="sd">고객은 이미 청을 담그고 있고, 그 일을 대신해 주는 기계는 없습니다. 휴롬은 과일을 다루는 고객을 이미 갖고 있습니다.</p>
+<div class="grid3">
+ <div class="card rv"><span class="tag">CUSTOMER</span><h3>청을 담그는 집</h3><ul><li>계절마다 담금: 매실(6월) · 유자 · 모과(11~12월) · 딸기(봄)</li><li>불편: 설탕이 녹을 때까지 매일 저어야 하고, 바닥에 설탕이 가라앉음</li><li>불안: 곰팡이 · 발효 가스 · 「제대로 됐나」</li><li>식약처 매실청 기준: 과일 · 설탕 1:1, 실온 3~4개월</li></ul><p class="src">수제청 시장 규모는 공신력 있는 수치를 찾지 못함(확인 못 함) — 12주 검증의 고객 설문으로 확인.</p></div>
+ <div class="card rv"><span class="tag">COMPETITOR</span><h3>대신해 주는 기계가 없다</h3><ul><li>유리병 · 항아리: 싸지만 전부 손으로</li><li>발효메이커: 25~80°C · 1~48시간 온도만, 젓기 없음</li><li>청국장 발효기: 약 22만 원, 다른 용도 · 젓기 없음</li><li>요거트메이커: 온도만, 용량 작음</li></ul><p class="src">청 전용 가전은 국내 · 일본 검색에서 찾지 못함(2026-11-17 조사).</p></div>
+ <div class="card rv"><span class="tag">COMPANY</span><h3>휴롬이 가진 것</h3><ul><li>원액기 고객 = 과일을 많이 사고 다루는 집</li><li>「착즙 → 청」으로 자연스러운 확장(같은 과일, 다른 보관법)</li><li>자사몰 · 홈쇼핑 판매 경험, 계절 방송 운영</li><li>재료 준비 가전 라인(서늘고 · 해동기)과 펠티어 · 자석 기술 공유</li></ul></div>
+</div></section>
+
+<section id="swot" class="wrap"><div class="sh"><span class="n">02</span><h2>SWOT</h2></div>
+<p class="sd">강점은 「아무도 안 만든 것 + 새지 않는 구조」, 약점은 「계절」. 위협은 구조가 단순해 따라 하기 쉽다는 점입니다.</p>
+<div class="swot">
+ <div class="q qS"><h3>STRENGTHS</h3><div class="big">비어 있는 자리 + 새지 않는 구조</div><ul><li>청 전용 가전 첫 진입</li><li>자석 젓기: 통에 구멍 · 축 · 실링 0 → 새지 않고 씻기 쉬움</li><li>버튼 1개 · 앱 없음</li><li>휴롬 = 과일 브랜드 신뢰</li></ul><span class="L">S</span></div>
+ <div class="q qW"><h3>WEAKNESSES</h3><div class="big">1년에 몇 번 쓰나</div><ul><li>계절성: 담그는 철에만 씀</li><li>자석 힘 추정 0.17~0.45 N·m(목표 0.5) <span class="est" style="color:#fff;border-color:#fff3;background:#fff2">추정</span></li><li>펠티어 식히기 한계: 실온 −8~10°C</li><li>유리 통 무게 · 깨짐</li></ul><span class="L">W</span></div>
+ <div class="q qO"><h3>OPPORTUNITIES</h3><div class="big">홈카페 · 선물 · 산지</div><ul><li>홈카페 · 수제청 선물 문화</li><li>매실 · 유자 산지와 「과일 + 기계」 키트</li><li>홈쇼핑 시즌 방송(6월 매실 · 11월 유자)</li><li>생강청 · 레몬청 등 사계절 레시피로 확장</li></ul><span class="L">O</span></div>
+ <div class="q qT"><h3>THREATS</h3><div class="big">따라 하기 쉽다</div><ul><li>구조가 단순해 중국 저가 복제가 빠름</li><li>발효 · 곰팡이 사고 = 브랜드 타격</li><li>네오디뮴 가격 변동</li><li>인증(KC · 식품용 기구) 기간</li></ul><span class="L">T</span></div>
+</div>
+<div class="tows">
+ <div class="hd"></div><div class="hd">강점(S)으로</div><div class="hd">약점(W)을 메워</div>
+ <div class="hd">기회(O)를 잡는다</div>
+ <div class="rv"><b style="color:var(--s)">SO 전략</b>6월 매실철에 홈쇼핑 첫 방송 + 산지 매실 키트를 같이 판다. 「담그는 날」을 첫 경험으로 판다.</div>
+ <div class="rv"><b style="color:var(--w)">WO 전략</b>사계절 레시피(봄 딸기 · 여름 매실 · 가을 생강 · 겨울 유자)를 버튼 하나에 넣어 1년 내내 쓰게 한다.</div>
+ <div class="hd">위협(T)을 막는다</div>
+ <div class="rv"><b style="color:var(--o)">ST 전략</b>자석 젓기 구조 · 유리 핀 · 젓개 형상을 실용신안 · 디자인으로 먼저 낸다. 복제가 나오기 전에 이름을 선점한다.</div>
+ <div class="rv"><b style="color:var(--t)">WT 전략</b>유리 통 · 젓개를 따로 파는 교체 부품으로 → 파손 불만을 매출로. 발효 경고는 빛 · 설명서로 먼저 알린다.</div>
+</div></section>
+
+<section id="stp" class="wrap"><div class="sh"><span class="n">03</span><h2>STP — 누구에게, 어디에 서나</h2></div>
+<p class="sd">「청을 이미 담그는 집」을 먼저 잡고, 홈카페와 선물로 넓힙니다. 지도에서 「자동으로 해 주면서 청 전용」 자리는 비어 있습니다.</p>
+<div class="stp">
+ <div class="seg">
+  <div class="sg tg rv"><div class="bar"><i data-w="92"></i></div><div><h4>① 매년 청을 담그는 집 · 타깃</h4><p>40~60대, 매실 · 유자청을 해마다. 원액기 고객과 많이 겹침</p></div></div>
+  <div class="sg rv"><div class="bar"><i data-w="64"></i></div><div><h4>② 홈카페 30대</h4><p>레몬 · 자몽청으로 음료를 만듦, 보여 주기 좋은 기계를 선호</p></div></div>
+  <div class="sg rv"><div class="bar"><i data-w="48"></i></div><div><h4>③ 선물 · 명절</h4><p>부모님 · 집들이 선물, 산지 키트와 묶음</p></div></div>
+  <p class="src">막대 = 첫해 우선순위(팀 판단). 세그먼트 크기는 설문 전이라 숫자로 쓰지 않음.</p>
+ </div>
+ <div class="map rv"><svg id="pmap" viewBox="0 0 560 420">
+  <defs><linearGradient id="hl" x1="0" x2="1"><stop offset="0" stop-color="#e8781a" stop-opacity=".0"/><stop offset="1" stop-color="#e8781a" stop-opacity=".14"/></linearGradient></defs>
+  <rect x="290" y="20" width="250" height="180" rx="18" fill="url(#hl)"/>
+  <line x1="40" y1="210" x2="540" y2="210" stroke="#d9d4ca"/><line x1="290" y1="20" x2="290" y2="400" stroke="#d9d4ca"/>
+  <text x="540" y="232" text-anchor="end" font-size="12" fill="#6b6862" font-weight="700">자동으로 해 줌 →</text><text x="44" y="232" font-size="12" fill="#6b6862" font-weight="700">← 손으로</text>
+  <text x="298" y="34" font-size="12" fill="#6b6862" font-weight="700">청 전용 ↑</text><text x="298" y="394" font-size="12" fill="#6b6862" font-weight="700">↓ 다른 용도</text>
+  <g class="dot" data-x="120" data-y="120"><circle r="10" fill="#9a968e"/><text x="16" y="5" font-size="14" font-weight="700">유리병 · 항아리</text></g>
+  <g class="dot" data-x="380" data-y="300"><circle r="10" fill="#9a968e"/><text x="16" y="5" font-size="14" font-weight="700">발효메이커</text></g>
+  <g class="dot" data-x="340" data-y="350"><circle r="10" fill="#9a968e"/><text x="16" y="5" font-size="14" font-weight="700">청국장 발효기</text></g>
+  <g class="dot" data-x="420" data-y="250"><circle r="10" fill="#9a968e"/><text x="16" y="5" font-size="14" font-weight="700">요거트메이커</text></g>
+  <g class="dot" data-x="430" data-y="90"><circle r="15" fill="#e8781a"/><circle r="15" fill="none" stroke="#e8781a" class="pulse"/><text x="-60" y="-26" font-size="16" font-weight="800">휴롬 과일청 메이커</text></g>
+ </svg><p class="src">위치는 기능 기준 팀 판단(정량 조사 아님).</p></div>
+</div></section>
+
+<section id="p4" class="wrap"><div class="sh"><span class="n">04</span><h2>4P — 무엇을 · 얼마에 · 어디서 · 어떻게</h2></div>
+<p class="sd">가격은 감으로 정하지 않습니다. 본문 「가격 정책」에서 해외 제조 원가부터 운임 · 관세 · 인증비 · 유통 수수료를 쌓아 역산합니다.</p>
+<div class="p4">
+ <div class="card rv"><div class="L">P</div><h3>Product</h3><ul><li>2L 유리 항아리 + 흰 무광 받침</li><li>자석 젓기 · 데우기 · 식혀 두기</li><li>버튼 1개 · 빛 링이 청 색을 따라감</li></ul></div>
+ <div class="card rv"><div class="L">P</div><h3>Price</h3><ul><li>원가 적층 역산(FOB → 운임 · 관세 → KC · 식품용 기구 인증 → 유통 수수료 → AS · 마케팅 → 이익)</li><li>숫자는 본문 「가격 정책」</li></ul></div>
+ <div class="card rv"><div class="L">P</div><h3>Place</h3><ul><li>자사몰(원액기 고객 재구매)</li><li>홈쇼핑 시즌 방송</li><li>산지 협업 키트 · 선물 채널</li></ul></div>
+ <div class="card rv"><div class="L">P</div><h3>Promotion</h3><ul><li>「유리 너머 자석이 젓는다」 15초 영상</li><li>매실철 「담그는 날」 캠페인</li><li>완성 청 색 4가지를 빛으로 보여 줌</li></ul></div>
+</div></section>
+
+<section id="f5" class="wrap"><div class="sh"><span class="n">05</span><h2>5 Forces — 얼마나 치열한가</h2></div>
+<p class="sd">지금 직접 경쟁은 약하지만, 들어오기 쉽고 「그냥 손으로 젓기」라는 대체재가 셉니다. 먼저 들어가 이름과 특허로 막는 게 핵심입니다.</p>
+<div class="ff">
+ <div>
+  <div class="force rv" data-v="2"><h4>기존 경쟁</h4><div class="meter"></div><b>2</b><p>청 전용 가전이 없음</p></div>
+  <div class="force rv" data-v="4"><h4>새로 들어올 위협</h4><div class="meter"></div><b>4</b><p>구조가 단순, 중국 ODM으로 빨리 복제 가능</p></div>
+  <div class="force rv" data-v="4"><h4>대체재</h4><div class="meter"></div><b>4</b><p>유리병 + 손으로 젓기, 시판 청 사 먹기</p></div>
+  <div class="force rv" data-v="3"><h4>공급자 힘</h4><div class="meter"></div><b>3</b><p>네오디뮴 · 유리 금형 업체가 적음</p></div>
+  <div class="force rv" data-v="3"><h4>구매자 힘</h4><div class="meter"></div><b>3</b><p>계절 상품이라 가격에 민감</p></div>
+  <p class="src">1~5 = 팀 판단 강도(5가 가장 셈).</p>
+ </div>
+ <svg id="radar" viewBox="-215 -175 430 350"></svg>
+</div></section>
+
+<section id="go" class="wrap"><div class="sh"><span class="n">06</span><h2>그래서, 12주 안에 확인할 것</h2></div>
+<p class="sd">분석에서 나온 숙제를 숫자로 바꿨습니다. 하나라도 못 넘으면 멈춥니다.</p>
+<div class="gs">
+ <div class="card rv"><b data-n="0.5" data-d="1">0</b><span>N·m 이상 — 자석 젓기 힘(벤치 시험). 못 넘으면 바닥 축 직결로</span></div>
+ <div class="card rv"><b data-n="6" data-u="시간">0</b><span>안에 설탕 다 녹음(2L · 1:1)</span></div>
+ <div class="card rv"><b data-n="3" data-u="회+">0</b><span>1년에 쓰겠다는 횟수(설문) — 계절성 확인</span></div>
+ <div class="card rv"><b data-n="0" data-u="건">0</b><span>곰팡이 · 넘침(시제품 10대 × 4주)</span></div>
+</div></section>
+
+<footer class="wrap"><div class="cta"><a href="./">기획서 본문</a><a class="g" href="film.html">소개 필름</a><a class="g" href="prompts.html">이미지 프롬프트</a></div>숫자 중 「추정」 표시는 시제품 · 설문 전 값입니다.</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();lenis.scrollTo(a.getAttribute('href'),{offset:-60})}));
+// 제목 글자
+document.querySelectorAll('.split').forEach(el=>{el.innerHTML=el.innerHTML.split('<br>').map(l=>l.trim().split(' ').map(w=>`<span class="w"><i>${w}</i></span>`).join(' ')).join('<br>')});
+gsap.from('header .w>i',{yPercent:110,rotate:5,duration:1.1,stagger:.07,ease:'expo.out',delay:.15});
+gsap.from(['.eyebrow','.lead'],{autoAlpha:0,y:24,duration:1,stagger:.15,delay:.5});
+gsap.to('.orb',{scale:1.15,xPercent:-8,yPercent:10,duration:8,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.orb',{yPercent:60,scrollTrigger:{trigger:'header',start:'top top',end:'bottom top',scrub:true}});
+// 진행 막대 · 메뉴
+ScrollTrigger.create({start:0,end:'max',onUpdate:s=>{document.getElementById('prog').style.width=(s.progress*100)+'%';document.getElementById('nav').classList.toggle('sc',s.scroll()>20)}});
+document.querySelectorAll('section[id]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 40%',end:'bottom 40%',onToggle:e=>{if(e.isActive)document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+s.id))}}));
+// 일반 등장
+ScrollTrigger.batch('.rv',{start:'top 88%',onEnter:b=>gsap.to(b,{autoAlpha:1,y:0,duration:.9,stagger:.1,ease:'power3.out',overwrite:true})});
+gsap.set('.rv',{autoAlpha:0,y:40});
+// 섹션 제목
+document.querySelectorAll('.sh h2').forEach(h=>gsap.from(h,{autoAlpha:0,x:-30,duration:.9,ease:'power3.out',scrollTrigger:{trigger:h,start:'top 85%'}}));
+// SWOT 사분면: 가운데서 펼쳐짐
+gsap.fromTo('.q',{scale:.85,rotate:(i)=>[-3,3,3,-3][i]},{scale:1,rotate:0,duration:1,ease:'back.out(1.6)',stagger:.12,scrollTrigger:{trigger:'.swot',start:'top 75%'}});
+gsap.utils.toArray('.q .L').forEach(l=>gsap.fromTo(l,{yPercent:40},{yPercent:-20,ease:'none',scrollTrigger:{trigger:l.parentNode,scrub:true}}));
+// STP 막대 · 지도 점
+document.querySelectorAll('.sg .bar i').forEach(b=>gsap.to(b,{width:b.dataset.w+'%',duration:1.4,ease:'power3.out',scrollTrigger:{trigger:b,start:'top 85%'}}));
+const dots=[...document.querySelectorAll('#pmap .dot')];dots.forEach(d=>d.setAttribute('transform','translate(290,210) scale(0)'));
+ScrollTrigger.create({trigger:'#pmap',start:'top 75%',once:true,onEnter:()=>dots.forEach((d,i)=>{const o={x:290,y:210,s:0};gsap.to(o,{x:+d.dataset.x,y:+d.dataset.y,s:1,duration:1.2,delay:i*.15+(i===dots.length-1?.4:0),ease:'back.out(1.4)',onUpdate:()=>d.setAttribute('transform',`translate(${o.x},${o.y}) scale(${o.s})`)})})});
+gsap.to('.pulse',{attr:{r:40},opacity:0,duration:1.6,repeat:-1,ease:'power1.out'});
+// 5 Forces 막대 + 레이더
+document.querySelectorAll('.force').forEach(f=>{const m=f.querySelector('.meter');for(let i=0;i<5;i++)m.appendChild(document.createElement('i'));ScrollTrigger.create({trigger:f,start:'top 85%',once:true,onEnter:()=>[...m.children].forEach((c,i)=>{if(i<+f.dataset.v)setTimeout(()=>c.classList.add('on'),120*i+200)})})});
+(function(){const svg=document.getElementById('radar'),ns='http://www.w3.org/2000/svg',F=[...document.querySelectorAll('.force')],N=F.length,R=130;
+ const pt=(i,r)=>[Math.sin(i/N*2*Math.PI)*r,-Math.cos(i/N*2*Math.PI)*r];
+ for(let k=1;k<=5;k++){const p=document.createElementNS(ns,'polygon');p.setAttribute('points',F.map((_,i)=>pt(i,R*k/5).join(',')).join(' '));p.setAttribute('fill','none');p.setAttribute('stroke','#e2ddd3');svg.appendChild(p)}
+ F.forEach((f,i)=>{const [x,y]=pt(i,R+22),t=document.createElementNS(ns,'text');t.setAttribute('x',x);t.setAttribute('y',y+4);t.setAttribute('text-anchor','middle');t.setAttribute('font-size','12');t.setAttribute('font-weight','700');t.setAttribute('fill','#3b3934');t.textContent=f.querySelector('h4').textContent;svg.appendChild(t)});
+ const poly=document.createElementNS(ns,'polygon');poly.setAttribute('fill','rgba(200,64,46,.18)');poly.setAttribute('stroke','#c8402e');poly.setAttribute('stroke-width','2');svg.appendChild(poly);
+ const o={k:0};const draw=()=>poly.setAttribute('points',F.map((f,i)=>pt(i,R*(+f.dataset.v)/5*o.k).join(',')).join(' '));draw();
+ gsap.to(o,{k:1,duration:1.6,ease:'elastic.out(1,.6)',onUpdate:draw,scrollTrigger:{trigger:svg,start:'top 75%'}});})();
+// Go/Stop 숫자
+document.querySelectorAll('.gs b').forEach(b=>{const o={v:0},d=+(b.dataset.d||0),u=b.dataset.u||'';const set=()=>b.textContent=o.v.toFixed(d)+u;set();gsap.to(o,{v:+b.dataset.n,duration:1.8,ease:'power2.out',onUpdate:set,scrollTrigger:{trigger:b,start:'top 88%'}})});
+// 카드 기울기
+document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();gsap.to(c,{rotateY:(e.clientX-r.left-r.width/2)/r.width*6,rotateX:-(e.clientY-r.top-r.height/2)/r.height*6,transformPerspective:900,duration:.4})});c.addEventListener('mouseleave',()=>gsap.to(c,{rotateX:0,rotateY:0,duration:.6}))});
+if(new URLSearchParams(location.search).has('all')){gsap.globalTimeline.timeScale(50);ScrollTrigger.getAll().forEach(t=>t.vars.once!==undefined||t.animation&&t.animation.progress(1));document.querySelectorAll('.rv').forEach(e=>{e.style.opacity=1;e.style.visibility='visible';e.style.transform='none'})}
+</script></body></html>
