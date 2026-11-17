@@ -1,0 +1,348 @@
+<section id="spec">
+  <div class="wrap">
+    <div class="kicker rv">04-B · 상세 사양 (설계 목표값 · 시제품 실측과 ODM 협의로 확정)</div>
+    <h2 class="rv">전원 · 열 · 구동 · 재질 · 안전 — 숫자로 적습니다.</h2>
+    <div class="two rv">
+      <div><h3>전기 · 전원</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">정격 입력(어댑터)</td><td class="l">AC 100~240V · 50/60Hz → DC 12V 4A(48W) · KC 안전 인증 어댑터 · 전원선 1.5m · 서늘고·해동기 공용 규격</td></tr>
+        <tr><td class="l">소비전력</td><td class="l">최대 43W(데우기·식히기 시작) · 녹이기 평균 15W · 식혀 두기 평균 8~12W · 대기 ≤0.5W <span class="tag est">추정</span></td></tr>
+        <tr><td class="l">펠티어</td><td class="l">TEC1-12706급 40×40×3.8mm 1장 · 12V 3A로 구동(정격의 절반, 효율 구간) · H브리지 극 전환 · 과열 차단 65°C(더운 면 NTC)</td></tr>
+        <tr><td class="l">구동 모터</td><td class="l">12V 납작 기어드 DC/BLDC · 출력 10~60rpm · 정격 0.6 N·m · 전류 감지로 걸림 판정(≥1.2A 2초) → 정지 → 역회전 3초 → 재시작</td></tr>
+        <tr><td class="l">자석 커플링</td><td class="l">6극 N42SH 원판 Ø65 × 5mm 한 쌍 + 철 백요크 1mm · 간격 4mm · 설계 전달 토크 ≥0.3 N·m(목표 0.5) · 최고 사용 온도 150°C</td></tr>
+        <tr><td class="l">센서 · 표시</td><td class="l">NTC 10kΩ 2개(컵 · 방열판) · 리드 스위치(통 감지) · 모터 전류 · RGB LED 링 12구 + 앞면 빛 1줄 · 부저 · 버튼 1(짧게 = 품목 · 길게 = 끔)</td></tr>
+        <tr><td class="l">제어</td><td class="l">8비트 MCU · 품목 묶음 3 × (데우기 온도 · 젓기 간격 · 완료 시간 · 식혀 두기 온도) 표 · 펌웨어 갱신 없음(앱 없음)</td></tr>
+      </table></div>
+      <div><h3>열 · 용량 · 재질 · 환경</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">온도 범위</td><td class="l">녹이기 25~30°C(품목별 고정) · 식혀 두기 실온 −8~10°C, 최저 18°C · 제어 정밀도 ±1.5°C(컵 기준) <span class="tag est">추정</span></td></tr>
+        <tr><td class="l">용량 · 크기 · 무게</td><td class="l">유리 통 총 2.0L · 유효 1.6L(과일 800g + 설탕 800g) · 시안 A 바깥 Ø19 × 23cm · 받침 5~6cm · 본체 약 1.1kg + 통 0.9kg + 뚜껑 0.15kg <span class="tag est">추정</span></td></tr>
+        <tr><td class="l">유리 통</td><td class="l">붕규산 3.3 또는 강화 소다석회(유리 공장 샘플로 결정) · 바닥 3mm · 바닥 가운데 돌기 8mm(대안: 얕은 돔) · 눈금 2줄 · 식기세척기 · 열탕 10분 · 열충격 ΔT 40°C 이상</td></tr>
+        <tr><td class="l">식품 접촉 부품</td><td class="l">유리 · 젓개 LSR 실리콘(자석은 PP 융착 캡슐 안) · 뚜껑 PP + 실리콘 패킹 + 실리콘 우산 밸브(열림 1~3 kPa) · 모두 식약처 기구·용기 기준 용출 시험<sup class="f">14</sup></td></tr>
+        <tr><td class="l">본체 재질</td><td class="l">받침 ABS 또는 PC/ABS 무광 · 알루미늄 컵 A1050 2mm 경질 아노다이징 · 빛 테 유백 PC · 바닥판 PP + 고무발 4</td></tr>
+        <tr><td class="l">소음 · 환경</td><td class="l">≤30 dB(A) 1m(팬 저속) · 사용 환경 10~35°C · 습도 ≤80% · 결로 물받이 홈 + 배수 · 보드 컨포멀 코팅</td></tr>
+        <tr><td class="l">안전 · 인증 · 보증</td><td class="l">통 없으면 정지 · 걸림 정지 · 과열 차단 · 젓개 Ø6.5cm(삼킴 원통 미통과) · KC 전자파 적합등록 + 어댑터 KC 안전 + 식품용 기구 기준<sup class="f">13,14</sup> · 보증 1년(유리 파손 제외)</td></tr>
+      </table></div>
+    </div>
+    <p class="note rv">모든 값은 설계 목표치입니다. 1단계 벤치(토크 · 온도 · 결로 · 순환)와 ODM 견적에서 실측·확정합니다.</p>
+  </div>
+</section>
+
+<section id="market" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">07 · 시장 · 고객</div>
+    <h2 class="rv">인구가 아니라 「담그는 행동」으로 셉니다.</h2>
+    <p class="lead2 rv">수제청 시장을 따로 잰 공신력 있는 숫자는 없습니다<sup class="f">11</sup>. 그래서 두 길로 추정하고, 1단계 설문(N≥300)으로 바꿔 넣습니다. 지금 숫자는 <b>모두 설문 전 가정</b>입니다.</p>
+    <div class="two rv">
+      <div><h3>길 1 · 담그는 가구에서</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">국내 가구</td><td>약 2,200만<sup class="f">17</sup></td></tr>
+        <tr><td class="l">× 1년에 한 번 이상 청을 담그는 가구 <span class="tag est">가정 10%</span></td><td>220만</td></tr>
+        <tr><td class="l">× 실패 경험 또는 「귀찮아서 안 함」 <span class="tag est">가정 40%</span></td><td>88만</td></tr>
+        <tr><td class="l">× 18.9만 원에 구매 의향 상위(Top-2) <span class="tag est">가정 15%</span></td><td>13만 가구</td></tr>
+        <tr class="sum"><td class="l">3년 누적 목표 3.6만 대 = 이 중</td><td>약 27%</td></tr>
+      </table><p class="note" style="margin-top:8px">27%는 높습니다. 설문에서 「담그는 가구 비율」이 10% 아래로 나오면 목표를 낮추고, 선물·홈카페 수요는 따로 셉니다.</p></div>
+      <div><h3>길 2 · 원액기 보유 고객에서</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">국내 원액기 활성 보유 가구 <span class="tag est">가정 150만</span></td><td>150만</td></tr>
+        <tr><td class="l">× 철마다 과일을 상자로 사고 청도 담그는 비율 <span class="tag est">가정 25%</span></td><td>37만</td></tr>
+        <tr><td class="l">× 자사몰·CRM으로 닿아 사는 비율 <span class="tag est">가정 10%</span></td><td>3.7만</td></tr>
+        <tr class="sum"><td class="l">3년 누적 목표</td><td>3.6만 대</td></tr>
+      </table><p class="note" style="margin-top:8px">두 길이 비슷한 자리에서 만납니다. 첫해 6천 대는 원액기 CRM(자사몰 회원)만으로 닿을 수 있는 크기로 잡았습니다.</p></div>
+    </div>
+    <h3 class="rv" style="margin-top:36px;font-size:20px">경쟁 · 대체재 — 가장 센 경쟁자는 빈 유리병입니다</h3>
+    <table class="cmp rv">
+      <tr><th>대체재</th><th>가격</th><th>저어 주기</th><th>온도</th><th>가스 · 완료 알림</th><th>우리와의 거리</th></tr>
+      <tr><td>유리 밀폐병 2~3L(락앤락 등)</td><td>1~2만 원</td><td>사람이</td><td>부엌 실온</td><td>사람이 열어 뺌 · 없음</td><td>지금 방법 · 「실패해 본 사람」이 우리 고객</td></tr>
+      <tr><td>요거트 메이커(다나와 상위)<sup class="f">9</sup></td><td>0.9~9만 원</td><td>없음</td><td>따뜻하게만(40°C 안팎)</td><td>없음</td><td>온도만 · 청 모드 없음</td></tr>
+      <tr><td>BRUNO 발효 메이커(일본)<sup class="f">8</sup></td><td>약 1만 엔대</td><td>없음</td><td>25~80°C · 1~48h</td><td>없음</td><td>가장 가까운 「온도 가전」 · 젓기 없음</td></tr>
+      <tr><td>청국장 발효기 8L(국내)<sup class="f">10</sup></td><td>약 22만 원</td><td>없음</td><td>따뜻하게</td><td>없음</td><td>가격대 참고 · 용도 다름</td></tr>
+      <tr><td>시판 청 · 홍쌍리 매실청 840ml<sup class="f">4</sup></td><td>29,000원</td><td colspan="3">완제품 · 100ml당 약 3,450원 — 집에서 담그면 500원 안팎 <span class="tag est">추정</span></td><td>「사 먹기」 대체 · 2L 10번이면 본체 값</td></tr>
+      <tr class="pick"><td>과일청 메이커</td><td>18.9만 원(목표)</td><td>자동 · 천천히</td><td>25~30 → 18~20°C</td><td>밸브 뚜껑 · 알림</td><td>청 전용은 국내·일본에 없음</td></tr>
+    </table>
+    <div class="two rv">
+      <div><h3>고객 4묶음과 지금의 행동</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">고객</th><th class="l">지금 겪는 불편</th><th class="l">지금 하는 방법</th><th class="l">바뀌는 것</th></tr>
+        <tr><td class="l">철마다 담그는 집</td><td class="l">설탕 굳음 · 곰팡이 · 여름 발효</td><td class="l">유리병 + 매일 젓기 + 베란다</td><td class="l">넣고 누르면 끝</td></tr>
+        <tr><td class="l">해 보고 싶은 집</td><td class="l">방법 모름 · 실패 두려움</td><td class="l">시판 청·시럽</td><td class="l">품목 버튼이 방법을 대신</td></tr>
+        <tr><td class="l">선물하는 집</td><td class="l">한 번에 많이 담가야 함</td><td class="l">시판 유자차 선물</td><td class="l">2L씩 철마다 · 병에 나눠</td></tr>
+        <tr><td class="l">원액기 사용자</td><td class="l">끝물·짜고 남은 과일</td><td class="l">버리거나 잼</td><td class="l">청으로 · 주스에 타기</td></tr>
+      </table></div>
+      <div><h3>사지 않을 이유와 답</h3><ul>
+        <li><b>「유리병이면 되지」</b> — 맞습니다. 그래서 1단계 설문 첫 질문이 「실패해 본 적 있나」입니다. 실패+포기 비율이 20% 아래면 중단합니다.</li>
+        <li><b>「1년에 몇 번 쓰려고」</b> — 주력 네 철 + 사이 품목이면 두 달에 한 번. 안 쓸 때 통은 보관 통, 받침은 서랍에.</li>
+        <li><b>「18.9만은 비싸다」</b> — 시판 청 2L 10번 값입니다. 가격 감도는 설문에서 Van Westendorp(4문항)로 잽니다.</li>
+        <li><b>「매실은 그래도 100일」</b> — 맞습니다. 안전 때문에 줄이지 않습니다. 손이 가는 며칠과 가스 한 달만 맡습니다.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="kicker rv">08 · 가격 정책 · 제조처</div>
+    <h2 class="rv">14.9만 원은 남지 않습니다. 18.9만 원과 착륙 원가 7.0만 원이 성립선입니다.</h2>
+    <p class="lead2 rv">개발비만이 아니라 <b>FOB → 운임·관세 → 인증 → 유통 수수료 → AS·마케팅</b>까지 한 대에 얹히는 돈을 모두 적층했습니다. 환율 1,400원/$, 중국 ODM 완제품 기준. 숫자는 부품 시세와 유사 제품 경험치로 적산한 <span class="tag est">추정</span>이며 ODM 견적 3곳으로 바꿉니다.</p>
+    <div class="two rv">
+      <div><h3>원가 적층 · 1대 (원)</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">항목</th><th>현재 적산</th><th>설계 목표</th></tr>
+        <tr><td class="l">유리 통 2L(프레스 성형 · 바닥 돌기)</td><td>7,000</td><td>5,500</td></tr>
+        <tr><td class="l">뚜껑 PP + 패킹 + 우산 밸브</td><td>2,500</td><td>2,200</td></tr>
+        <tr><td class="l">젓개(LSR + PP 캡슐 + N42SH 6극)</td><td>4,500</td><td>3,800</td></tr>
+        <tr><td class="l">구동 원판 + 백요크 + 납작 기어드 모터</td><td>7,500</td><td>6,000</td></tr>
+        <tr><td class="l">펠티어 + 방열판 + 팬(서늘고·해동기 공용)</td><td>6,500</td><td>5,500</td></tr>
+        <tr><td class="l">알루미늄 컵(프레스 + 아노다이징)</td><td>3,500</td><td>3,000</td></tr>
+        <tr><td class="l">제어 보드(MCU · H브리지 · 드라이버 · 센서)</td><td>9,000</td><td>7,000</td></tr>
+        <tr><td class="l">RGB LED 링 + 빛 테</td><td>2,500</td><td>2,000</td></tr>
+        <tr><td class="l">받침 사출 2종 + 버튼 + 고무발</td><td>5,000</td><td>4,500</td></tr>
+        <tr><td class="l">12V 4A 어댑터(KC) + 전원선</td><td>7,000</td><td>6,000</td></tr>
+        <tr><td class="l">배선 · 나사 · 단열 · 라벨</td><td>1,500</td><td>1,500</td></tr>
+        <tr class="sum"><td class="l">BOM 소계</td><td>56,500</td><td>47,000</td></tr>
+        <tr><td class="l">조립 · 검사 · 포장(박스 · 완충 · 설명서)</td><td>8,000</td><td>7,000</td></tr>
+        <tr><td class="l">ODM 마진 10%</td><td>6,500</td><td>5,500</td></tr>
+        <tr class="sum"><td class="l">FOB(≈$51 / $43)</td><td>71,000</td><td>59,500</td></tr>
+        <tr><td class="l">해상 운임 · 보험 · 통관 · 내륙(대당 0.02㎥)</td><td>3,000</td><td>3,000</td></tr>
+        <tr><td class="l">관세 — HS 8509.80 기본 8% · 한중 FTA 원산지 충족 시 0%<sup class="f">12</sup></td><td>5,700</td><td>4,800 → 0</td></tr>
+        <tr class="sum"><td class="l">착륙 원가</td><td>79,700</td><td>67,300 (FTA 시 62,500)</td></tr>
+      </table></div>
+      <div><h3>판매가 시나리오 · 1대 (원, 부가세 제외 공급가 기준)</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">소비자가</th><th>14.9만</th><th>16.9만</th><th>18.9만 ★</th><th>19.9만</th></tr>
+        <tr><td class="l">공급가(÷1.1)</td><td>135,500</td><td>153,600</td><td>171,800</td><td>180,900</td></tr>
+        <tr><td class="l">− 착륙 원가(현재 79,700)</td><td>79,700</td><td>79,700</td><td>79,700</td><td>79,700</td></tr>
+        <tr><td class="l">− 국내 물류(택배 · 창고)</td><td>4,500</td><td>4,500</td><td>4,500</td><td>4,500</td></tr>
+        <tr><td class="l">− 유통 수수료 가중 17%*</td><td>23,000</td><td>26,100</td><td>29,200</td><td>30,800</td></tr>
+        <tr><td class="l">− AS · 불량 충당 3%</td><td>4,100</td><td>4,600</td><td>5,200</td><td>5,400</td></tr>
+        <tr><td class="l">− 마케팅 10%</td><td>13,600</td><td>15,400</td><td>17,200</td><td>18,100</td></tr>
+        <tr class="sum"><td class="l">대당 공헌이익(현재 원가)</td><td>10,600 (8%)</td><td>23,300 (15%)</td><td>36,000 (21%)</td><td>42,400 (23%)</td></tr>
+        <tr class="sum"><td class="l">대당 공헌이익(목표 원가 67,300)</td><td>23,000 (17%)</td><td>35,700 (23%)</td><td>48,400 (28%)</td><td>54,800 (30%)</td></tr>
+      </table><p class="note" style="margin-top:8px">* 자사몰 40%(PG 3% + 쿠폰 5%) · 온라인몰 45%(15~20%) · 홈쇼핑 15%(35% + 사은품)의 가중 평균. 홈쇼핑 비중이 40%로 오르면 수수료는 22%로 뛰고 대당 이익이 8천 원 줄어듭니다. 고정비(개발비 상각 · 인건비)는 09에서 뺍니다.</p>
+      <div class="box dark" style="margin-top:14px"><h3>가격 정책 제안</h3><ul><li><b>소비자가 18.9만 원</b>(출시가), 시즌 프로모션 하한 16.9만 원. 14.9만은 공헌이익 8%로 고정비를 못 덮습니다.</li><li><b>착륙 원가 목표 7.0만 원</b> — BOM 4.7만 + 조립 + FOB 마진 + 운임 + 관세. ODM 견적이 8.5만을 넘으면 원가 절감 안 없이 진행하지 않습니다(중단 기준).</li><li><b>유통은 자사몰 중심</b>(목표 50%) — 원액기 CRM이 있어 가능한 전략이며 홈쇼핑은 2년차 이후 선택.</li><li>통 추가 판매(유리 통 + 밸브 뚜껑 세트 3.9만 원 <span class="tag est">추정</span>) — 매실철에 여러 통을 담그는 집을 위한 반복 매출.</li></ul></div></div>
+    </div>
+    <h3 class="rv" style="margin-top:36px;font-size:20px">인증 · 일회성 비용과 제조처</h3>
+    <div class="two rv">
+      <div><h3>일회성 비용 (만 원) <span class="tag est">추정</span></h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">금형 — 받침 몸통 · 바닥판 · 뚜껑 · 젓개(LSR) · 밸브 · 컵 프레스 · 유리 프레스 2세트 (중국 기준)</td><td>8,600</td></tr>
+        <tr><td class="l">설계 · 디자인 외주 — ID · 기구 · 회로/펌웨어</td><td>6,000</td></tr>
+        <tr><td class="l">KC 전자파 적합등록(시험 + 등록) · 사전 EMC 디버깅<sup class="f">13</sup></td><td>600</td></tr>
+        <tr><td class="l">KC 안전 — 어댑터는 인증품 구매(본체 DC 12V는 대상 여부 확인, 대상이면 +500)</td><td>0~500</td></tr>
+        <tr><td class="l">식품용 기구·용기 용출 시험 — 유리 · PP · 실리콘 3종<sup class="f">14</sup></td><td>450</td></tr>
+        <tr><td class="l">신뢰성 시험 — 식기세척기 500회 · 열충격 · 낙하 · 모터 수명 · 염료 순환</td><td>800</td></tr>
+        <tr><td class="l">시제품 · 목업 · 자석/유리 샘플 · 벤치</td><td>2,000</td></tr>
+        <tr><td class="l">특허 출원 2건(국내) + 선행 조사</td><td>800</td></tr>
+        <tr><td class="l">(수출 시 별도) CE LVD/EMC · FCC · LFGB/FDA 식품 접촉</td><td>1,500</td></tr>
+        <tr class="sum"><td class="l">개발비 합계(수출 인증 제외)</td><td>약 20,000 (범위 1.6~2.6억)</td></tr>
+      </table></div>
+      <div><h3>제조처 선택지</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">안</th><th class="l">장점</th><th class="l">단점 · 조건</th></tr>
+        <tr class="sum"><td class="l">① 중국 ODM 완제품 ★<br><small style="font-weight:400">광둥 중산·포산 소형가전 클러스터 — 요거트 메이커·펠티어 와인셀러 ODM 경험 업체</small></td><td class="l">FOB 가장 낮음 · 펠티어·팬·보드 공급망이 현지 · 서늘고·해동기와 묶어 협상</td><td class="l">MOQ 3,000 · 리드 90~120일 · 품질 상주 검사 · 관세 8%(FTA 원산지 충족 시 0%)</td></tr>
+        <tr><td class="l">② 중국 부품 + 국내 조립(김해)</td><td class="l">소량·시즌 유연 · 「Assembled in Korea」 · 품질 통제</td><td class="l">원가 +8~12% · 유리·자석 수입 통관 2중</td></tr>
+        <tr><td class="l">③ 베트남 ODM</td><td class="l">한-베 FTA 관세 0% · 인건비</td><td class="l">소형가전 ODM 기반 약함 · 유리·자석은 결국 중국에서 들여옴</td></tr>
+        <tr><td class="l">부품 직구매</td><td class="l" colspan="2">유리 통: 중국 허베이·산둥 프레스 유리 공장(또는 국내 내열 유리) 직구매 후 ODM 지급 · 자석: 닝보 협력 가능 업체(열에 강한 등급 · 조립품) · 펠티어·어댑터: 서늘고·해동기 공용 품번</td></tr>
+      </table><p class="note" style="margin-top:8px">추천: ①을 기본으로 1차 로트 3,000~5,000대, 유자철(10월 선적) 기준. 견적 요청서 항목은 상세 사양(04-B)과 벤치 목표 숫자(06)를 그대로 씁니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="numbers" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">09 · 숫자 · 3년 손익 · 감도</div>
+    <h2 class="rv">승부처는 두 가지 — 착륙 원가와 유통 믹스.</h2>
+    <p class="lead2 rv">기본안(18.9만 원 · 착륙 원가 7.8 → 7.2 → 7.0만 원 · 자사몰 40%)으로 3년을 적었습니다. 단위 억 원, 부가세 제외. <span class="tag est">추정</span> — 설문·견적 뒤 다시 계산합니다.</p>
+    <table class="pl rv">
+      <tr><th class="l">연도 (출시 2027-11 기준 12개월 단위)</th><th>1년차</th><th>2년차</th><th>3년차</th><th>누적</th></tr>
+      <tr><td class="l">판매 대수</td><td>6,000</td><td>12,000</td><td>18,000</td><td>36,000</td></tr>
+      <tr><td class="l">매출(공급가 17.18만)</td><td>10.3</td><td>20.6</td><td>30.9</td><td>61.8</td></tr>
+      <tr><td class="l">− 착륙 원가(7.8 / 7.2 / 7.0만)</td><td>4.7</td><td>8.6</td><td>12.6</td><td>25.9</td></tr>
+      <tr><td class="l">− 국내 물류 · AS 충당</td><td>0.6</td><td>1.2</td><td>1.7</td><td>3.5</td></tr>
+      <tr><td class="l">− 유통 수수료(17%)</td><td>1.8</td><td>3.5</td><td>5.3</td><td>10.6</td></tr>
+      <tr><td class="l">− 마케팅(10% + 출시 고정 0.5)</td><td>1.5</td><td>2.1</td><td>3.1</td><td>6.7</td></tr>
+      <tr class="sum"><td class="l">공헌이익</td><td>1.7</td><td>5.2</td><td>8.2</td><td>15.1</td></tr>
+      <tr><td class="l">− 개발비 상각(2.0억 / 3년)</td><td>0.7</td><td>0.7</td><td>0.7</td><td>2.0</td></tr>
+      <tr><td class="l">− 운영 인건비(PM · 품질 1.5명)</td><td>1.2</td><td>1.2</td><td>1.2</td><td>3.6</td></tr>
+      <tr class="sum"><td class="l">영업이익</td><td>−0.2</td><td>3.3</td><td>6.3</td><td>9.5</td></tr>
+      <tr><td class="l">영업이익률</td><td>−2%</td><td>16%</td><td>20%</td><td>15%</td></tr>
+    </table>
+    <div class="two rv">
+      <div><h3>손익분기 · 보수 시나리오</h3><ul>
+        <li><b>손익분기 약 5,600대</b>(개발비 2.0억 ÷ 대당 공헌이익 3.6만) — 1년차 안에 넘습니다.</li>
+        <li><b>보수 시나리오</b>(판매 50% · 프로모션가 16.9만 지속 · 원가 7.8만 유지): 3년 누적 영업이익 약 <b>−1.5억</b>. 즉 판매량이 절반이면 적자 — 1단계 설문의 구매 의향이 이 갈림길입니다.</li>
+        <li><b>낙관</b>(FTA 관세 0% · 자사몰 50%): 누적 +13억 안팎.</li>
+      </ul></div>
+      <div><h3>감도 — 3년 누적 영업이익(기준 9.5억)이 얼마나 움직이나</h3>
+        <div class="bars">
+          <div><span>착륙 원가 +1만 원</span><i data-w="38" class="neg"></i><em>−3.6억</em></div>
+          <div><span>판매가 −2만 원(16.9만)</span><i data-w="48" class="neg"></i><em>−4.6억</em></div>
+          <div><span>판매량 −30%</span><i data-w="48" class="neg"></i><em>−4.6억</em></div>
+          <div><span>홈쇼핑 비중 15 → 40%</span><i data-w="32" class="neg"></i><em>−3.0억</em></div>
+          <div><span>관세 8 → 0%(FTA)</span><i data-w="22" class="pos"></i><em>+2.1억</em></div>
+          <div><span>착륙 원가 목표 달성(−1.3만)</span><i data-w="49" class="pos"></i><em>+4.7억</em></div>
+        </div>
+        <p class="note" style="margin-top:8px">원가 1만 원이 3년 이익 3.6억을 움직입니다. 그래서 가격보다 먼저 <b>ODM 견적과 FTA 원산지</b>를 확인합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="wrap">
+    <div class="kicker rv">10 · 기술 · 특허 · 규제</div>
+    <h2 class="rv">새 기술은 없습니다. 조합이 새롭습니다 — 그래서 특허는 조합으로 냅니다.</h2>
+    <div class="sum3 rv">
+      <div><small>모듈별 기술 · 선례</small><ul>
+        <li><b>자석 커플링 교반</b> — 실험실 자석 교반기 · 자석 구동 수족관 펌프 · 셀프 스터링 머그. 새로운 것은 다극 원판 + 유리 돌기 고정 + 간헐 역회전 제어.</li>
+        <li><b>펠티어 양방향</b> — 펠티어 와인셀러 · 화장품 냉장고 · 서늘고·해동기와 같은 모듈. 새로운 것은 품목별 데우기→식히기 시퀀스.</li>
+        <li><b>한 방향 밸브 뚜껑</b> — 김치통 · 커피 원두 봉투 밸브. 새로운 것은 「기계에서 나온 뒤 통째 숙성」 흐름.</li>
+      </ul></div>
+      <div><small>특허 — 출원 후보 3건 (특허팀 · KIPRIS 선행 확인 요청)</small><ul>
+        <li>① 바닥 돌기 유리 용기 + 봉입 자석 날개 + 외부 다극 구동 원판의 식품 교반 구조</li>
+        <li>② 「즙이 나올 때까지 데우기만 → 간헐 저속 교반 → 역회전 재포착」 제어 방법</li>
+        <li>③ 밸브 뚜껑째 이동하는 2단계(기계 → 서늘한 곳) 숙성 가이드와 품목 묶음 UI</li>
+        <li>선행 키워드: magnetic stirrer fermentation jar · 자석 교반 발효 용기 · self-stirring container · 과일청 제조 장치. 가까운 선례가 있으면 ②·③ 중심으로 좁힙니다.</li>
+      </ul></div>
+      <div><small>규제 · 표시</small><ul>
+        <li><b>전기</b> — 어댑터 KC 안전 인증품 · 본체 KC 전자파 적합등록(전파법)<sup class="f">13</sup> · DC 12V 본체의 전기용품안전관리법 대상 여부 확인.</li>
+        <li><b>식품</b> — 식약처 「기구 및 용기·포장의 기준 및 규격」 용출 시험(유리 · 합성수지 PP · 고무/실리콘)<sup class="f">14</sup> · 식품용 마크 표시.</li>
+        <li><b>안내 문구</b> — 씨 뺀 매실 권장(시안화합물 약 95% 감소)<sup class="f">1</sup> · 「숙성 기간을 줄이지 않는다」 · 자석 삼킴 주의 · 금 간 유리 사용 금지.</li>
+        <li><b>말하지 않을 것</b> — 건강 효능 · 「100일을 줄인다」 · 「곰팡이 0%」(검증 전).</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="risk" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">11 · 리스크 · 중단 기준</div>
+    <h2 class="rv">무엇이 나오면 접는지 미리 적습니다.</h2>
+    <table class="risk rv">
+      <tr><th>리스크</th><th>가능성</th><th>영향</th><th>대응</th><th>확인 방법 · 시점</th></tr>
+      <tr><td>자석 커플링 힘 부족(첫날 설탕층 · 과일 끼임)</td><td>중</td><td>상</td><td>데우기 선행 · 다극 원판 · 간격 4mm · 역회전 → 미달 시 바닥 축 직결</td><td>벤치 토크 렌치 실측 · 1주차</td></tr>
+      <tr><td>바닥 날개가 윗면까지 못 섞어 곰팡이 잔존</td><td>중</td><td>상</td><td>축류 날개 · 2단 날개 · 빠른 회전 모드</td><td>염료 순환 + 2주 곰팡이 대조 · 2~3주차</td></tr>
+      <tr><td>여름 결로로 받침 안 물 고임 · 보드 고장</td><td>상(15°C) → 하(18°C)</td><td>중</td><td>식혀 두기 18~20°C · 물받이 홈 · 배수 · 코팅</td><td>28°C/70% 챔버 24시간 · 목업</td></tr>
+      <tr><td>유리 돌기 응력 · 식기세척기 파손</td><td>중</td><td>중</td><td>뿌리 R3 · 붕규산 · 대안 얕은 돔</td><td>유리 샘플 열충격 · 세척 500회 · 4~6주차</td></tr>
+      <tr><td>ODM 착륙 원가 8.5만 초과</td><td>중</td><td>상</td><td>VE 항목(보드 · 모터 · 유리) · 공용 플랫폼 묶음 협상 · FTA</td><td>견적 3곳 · G1</td></tr>
+      <tr><td>구매 의향 낮음(「유리병이면 되지」)</td><td>중</td><td>상</td><td>타깃을 「실패 경험자」로 좁힘 · 통 추가 판매 · 선물 세트</td><td>설문 N≥300 · 2~3주차</td></tr>
+      <tr><td>설탕 이미지 · 「건강 브랜드와 안 맞다」</td><td>중</td><td>중</td><td>덜 달게 모드 · 씨 뺀 매실 · 효능 표현 금지</td><td>인터뷰 10가구 · 출시 메시지 테스트</td></tr>
+      <tr><td>자석 삼킴 · 유리 파손 사고</td><td>하</td><td>상</td><td>Ø6.5cm 봉입 젓개 · 핀 고정 · 금 간 유리 안내 · 보증 제외 명시</td><td>안전 검토 · 인증 단계</td></tr>
+      <tr><td>특허 선행 기술 존재</td><td>중</td><td>하</td><td>제어 방법(②)·UI(③) 중심 출원 · 디자인 등록 병행</td><td>KIPRIS · 특허팀 · 4주차</td></tr>
+    </table>
+    <div class="two rv">
+      <div class="box dark" style="margin-top:0"><h3>중단 기준 (하나라도 걸리면 G1에서 멈춥니다)</h3><ul>
+        <li>벤치 토크가 간격 4mm에서 <b>0.3 N·m 미만</b>이고, 바닥 직결로 바꿔도 받침이 7cm를 넘어 「낮은 받침」 디자인이 깨질 때</li>
+        <li>설문에서 「청을 담그는 가구」 중 실패·포기 경험이 <b>20% 미만</b>이거나 18.9만 원 구매 의향 Top-2가 <b>15% 미만</b>일 때</li>
+        <li>ODM 견적 착륙 원가가 <b>8.5만 원 초과</b>이고 1년 안에 7.5만 아래로 내릴 VE 항목이 없을 때</li>
+      </ul></div>
+      <div><h3>실패해도 남는 것</h3><ul><li>펠티어 양방향 모듈 · 12V 48W 어댑터 · 보드 뼈대 — 서늘고·해동기에 그대로 씀</li><li>자석 커플링 토크 데이터와 닝보 협력사 관계 — 다른 교반·착즙 보조 기구에 재사용</li><li>「청 담그는 가구」 설문 데이터 — 과일 가전 라인업 전체의 수요 근거</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="validate">
+  <div class="wrap">
+    <div class="kicker rv">12 · 검증 · 일정 · 조직 · 출시</div>
+    <h2 class="rv">12주 · 약 1,500만 원으로 네 가지를 숫자로 확인합니다.</h2>
+    <div class="gate rv">
+      <div><small>1~3주차 · 벤치</small><b>힘 · 열 · 결로 · 순환</b><p>기성 2L 유리병 + 자석 원판 샘플(닝보) + 펠티어 플레이트. 레몬·유자 1:1 4병(손 젓기 / 25 / 30 / 35°C) 녹는 시간 · Brix · 토크 렌치 · 온도 3점 · 염료 순환 · 28°C 결로량. 약 450만 원.</p></div>
+      <div><small>2~3주차 · 설문 · 인터뷰</small><b>살 사람이 있나</b><p>원액기 자사몰 회원 + 패널 N≥300: 담그는 빈도·품목·1회 양 · 실패 경험 · 「저어 주기+온도」 구매 의향 · Van Westendorp 가격 · 시안 A/C 선호 · 조리대 며칠 수용. 심층 인터뷰 10가구. 약 550만 원.</p></div>
+      <div><small>4~6주차 · 워킹 목업</small><b>실제 비례로</b><p>3D 프린팅 받침 + 기성 유리 통 + 기어드 모터 · 자석 커플링 + 서늘고 펠티어 모듈 + LED 링. 매실(냉동) · 오미자(건조) 묶음 · 소음 · 저녁 빛 장면 촬영 · 유리 돌기/돔 샘플 2안. 약 500만 원.</p></div>
+      <div><small>7~12주차 · 정리 · G1</small><b>견적 · 특허 · 결정</b><p>ODM 3곳 견적(서늘고·해동기 묶음) · KIPRIS 선행 조사 · 설문 재채점 · 가격 정책 확정 · G1 보고.</p></div>
+    </div>
+    <div class="box rv"><h3>Go 기준 4개 (숫자로 판정)</h3><p>① 벤치에서 자석 젓개가 손 젓기보다 <b>2배 이상</b> 빨리 녹임 · 토크 ≥0.3 N·m &nbsp;② 2주 숙성 중 곰팡이 <b>0건</b>(대조군 대비) + 염료가 10분 안에 윗면 도달 &nbsp;③ 설문 「18.9만에 사겠다」 Top-2 <b>15% 이상</b>, 실패·포기 경험 20% 이상 &nbsp;④ ODM 견적 착륙 원가 <b>8.5만 원 이하</b></p></div>
+    <h3 class="rv" style="margin-top:40px;font-size:20px">로드맵 — 게이트와 통과 기준</h3>
+    <div class="timeline rv">
+      <div><small>2026-11</small><b>G0 · 이 기획서 결정</b><p>검증 예산 · 가격 정책 · 시안 A 승인</p></div>
+      <div><small>2026-12 ~ 2027-02</small><b>1단계 검증 12주</b><p>벤치 · 설문 · 목업 · 견적</p></div>
+      <div><small>2027-03</small><b>G1 · Go/Stop</b><p>Go 기준 4개 · 중단 기준 · 개발비 2.0억 승인</p></div>
+      <div><small>2027-04 ~ 05</small><b>ODM 선정 · 디자인 동결</b><p>피그마 시안 → CAD · 유리 2안 결정</p></div>
+      <div><small>2027-05 ~ 07</small><b>금형 · DVT</b><p>T1 샘플 · 신뢰성 시험 · 펌웨어</p></div>
+      <div><small>2027-08 ~ 09</small><b>G2 · 인증 · PVT</b><p>KC 전자파 · 식품용 시험 · 양산 검증</p></div>
+      <div><small>2027-10</small><b>양산 · 선적</b><p>1차 3,000~5,000대</p></div>
+      <div><small>2027-11</small><b>출시 · 유자철</b><p>G3 · 90일 KPI</p></div>
+    </div>
+    <p class="note rv">2027년 6월 매실철은 맞출 수 없습니다(금형·인증 리드타임). 첫 철은 유자·생강·선물철(11~12월)로 잡고, 매실은 2028년 6월이 첫 피크입니다.</p>
+    <div class="two rv">
+      <div><h3>조직 · 역할</h3><ul><li><b>PM 1</b>(기획 · 검증 · 가격) — AX팀</li><li><b>기구 1</b>(컵 · 젓개 · 유리 · 금형 관리) — 제품혁신부문 또는 외주 + AI 설계 검증</li><li><b>회로 · 펌웨어</b> — 외주(서늘고·해동기 보드와 공통 설계)</li><li><b>ID</b> — 외주(피그마 보드 기준) · <b>구매</b>(ODM · 유리 · 자석) · <b>품질</b>(식품 접촉 · 신뢰성)</li><li>단계 전환 조건: G1 통과 시 기구·회로 전담 지정, G2 전 품질 합류</li></ul></div>
+      <div><h3>출시 — 북극성 지표와 90일 KPI</h3><ul><li><b>북극성:</b> 구매 후 30일 안에 첫 통을 담근 비율 <b>70%</b> · 두 번째 철에 다시 담근 비율 <b>50%</b>(사용률이 곧 재구매·추천)</li><li><b>90일 KPI:</b> 1차 로트 3,000대 소진 · 자사몰 비중 50% · 반품률 3% 이하 · 리뷰 「설탕 다 녹았다」 언급 60% 이상</li><li><b>메시지:</b> 「넣고, 누르고, 알림 오면 냉장고로.」 · 「올해 유자청은 실패 없이.」</li><li><b>채널 · 시즌:</b> 11월 유자 출시 → 3월 딸기 → 6월 매실(통 추가 판매) · 원액기 CRM 선공개 · 선물 세트(통 2개)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="decision" style="background:#15120f;color:#f3efe8">
+  <div class="wrap">
+    <div class="kicker rv" style="color:#a89f93">13 · 결정 요청</div>
+    <h2 class="rv" style="color:#fff">네 가지를 결정해 주시면 12주 뒤 숫자로 돌아오겠습니다.</h2>
+    <div class="decide rv">
+      <div><small>결정 1</small><b>1단계 검증 승인</b><p>12주 · 약 1,500만 원(벤치 450 · 설문/인터뷰 550 · 목업 500). 결과는 Go 기준 4개와 중단 기준으로 G1(2027-03)에 보고합니다.</p></div>
+      <div><small>결정 2</small><b>가격 정책 방향</b><p>목표 소비자가 18.9만 원 · 프로모션 하한 16.9만 · 착륙 원가 목표 7.0만(상한 8.5만) · 자사몰 중심 유통. 이 틀로 ODM 견적과 설문 가격 문항을 짭니다.</p></div>
+      <div><small>결정 3</small><b>디자인 시안 A</b><p>항아리형 + 낮은 흰 받침으로 피그마 디자인을 진행합니다(나무 안은 옵션). B는 유리 돌기 때문에 제외, C는 대안으로 보관.</p></div>
+      <div><small>결정 4</small><b>공용 플랫폼 견적</b><p>서늘고 · 해동기 · 과일청 메이커의 펠티어 · 12V 48W 어댑터 · 보드 뼈대를 한 묶음으로 ODM 3곳에 견적 요청합니다.</p></div>
+    </div>
+    <p class="note rv" style="color:#a89f93;margin-top:28px">후속 요청: 특허팀 KIPRIS 선행 조사(출원 후보 3건) · 자사몰 회원 설문 발송 승인 · 유리 공장 2곳 샘플 의뢰(돌기 · 돔).</p>
+  </div>
+</section>
+
+<section id="sources" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">출처 · 신뢰도</div>
+    <h2 class="rv" style="font-size:24px">숫자마다 등급을 붙였습니다 — <span class="g1" style="color:#1f6b2b">1차</span> · <span style="color:#8a5a00">2차</span> · <span style="color:#4b3f8a">추정</span>.</h2>
+    <div class="src rv"><ol>
+      <li><span class="g1">1차</span> 식품의약품안전처 「가정에서 매실청 안전하게 담그는 방법」 안내(2026-05-27): 무게 1:1 · 소독 용기 · 그늘진 실온 3~4개월 · 약 1개월 가스 발생 시 주 1회 열기 · 씨 제거 시 시안화합물 약 95% 감소 · 올리고당 대체 — <a href="https://www.mfds.go.kr" target="_blank" rel="noopener">mfds.go.kr</a> (열람 2026-11-17)</li>
+      <li><span class="g2">2차</span> 가정 레시피·커뮤니티의 곰팡이·설탕 굳음 팁(복수 블로그·카페) — 1차 VOC 20건 인용으로 교체 예정</li>
+      <li><span class="g2">2차</span> 「당 걱정 줄이고 맛 살리고… 똑똑한 매실청 담그기」(2023-05-27 보도, 농촌진흥청 2020 분석 인용: 매실청 100g당 당류 44g · 담그기 열기 감소) — <a href="https://v.daum.net/v/20230527080115034" target="_blank" rel="noopener">v.daum.net</a></li>
+      <li><span class="g2">2차</span> 홍쌍리 매실청 420ml × 2병 29,000원 — 컬리 상품 페이지(열람 2026-11-17)</li>
+      <li><span class="g2">2차</span> 유자차 수출량 2021년 18,315t → 2024년 21,325t(aT 자료 인용, 헤럴드경제 2025-09-10) — <a href="https://www.heraldk.com/article/2025091018185712993" target="_blank" rel="noopener">heraldk.com</a></li>
+      <li><span class="g2">2차</span> 고흥 유자 전국 생산량의 절반 — 지역 보도(2024) · 2025년산 수확·수매 시작(위키트리 2025-11)</li>
+      <li><span class="g3">확인 필요</span> 휴롬 매출 추이(정점 대비 감소) — 사내 자료 · 다른 기획서 인용치. 재무팀 확인 후 숫자 기입</li>
+      <li><span class="g2">2차</span> BRUNO 발효 메이커 25~80°C · 1~48시간(제조사 페이지) · 아이리스오야마 요거트 메이커 약 3,900엔</li>
+      <li><span class="g2">2차</span> 다나와 「그릭 요거트 메이커」 기획전 상위 8개 9천~8.9만 원(2025) — <a href="https://plan.danawa.com/info/?nPlanSeq=9822" target="_blank" rel="noopener">danawa.com</a></li>
+      <li><span class="g2">2차</span> 국내 청국장 발효기 8L 약 22만 원(온라인몰 가격, 열람 2026-11)</li>
+      <li><span class="g2">2차</span> 유로모니터 국내 소형가전 시장 2025년 9조 6,238억 원 전망(2021-10 보도, CEO스코어데일리) · 과채음료 소매 6,635억 원(2019) · 수제청 전용 통계 없음 — <a href="https://ceoscoredaily.com/page/view/2021100814551968436" target="_blank" rel="noopener">ceoscoredaily.com</a></li>
+      <li><span class="g3">확인 필요</span> 관세: HS 8509.80(기타 가정용 전기기기) 기본 8% · 한중 FTA 양허·원산지 기준 — 관세법령정보포털에서 품목 분류 사전 심사 권장</li>
+      <li><span class="g2">2차</span> 전파법 적합성평가(KC 전자파 적합등록) · 전기용품 및 생활용품 안전관리법(어댑터 안전 인증) — 국립전파연구원 · 국가기술표준원</li>
+      <li><span class="g1">1차</span> 식약처 「기구 및 용기·포장의 기준 및 규격」 — 유리 · 합성수지(PP) · 고무(실리콘) 용출 시험 항목</li>
+      <li><span class="g2">2차</span> N42SH 네오디뮴 자석 사양(최고 사용 온도 150°C · Br 1.28~1.32T) — 제조사 공통 카탈로그 값 · 닝보 협력사 등급 확인 중</li>
+      <li><span class="g3">확인 필요</span> 서울 7~8월 평균 이슬점 22~24°C — 기상청 기후 통계로 확인 후 기입(결로 계산의 전제)</li>
+      <li><span class="g2">2차</span> 국내 가구 수 약 2,200만(통계청 2024 인구주택총조사 등록센서스) — 정확한 값 확인 후 기입</li>
+    </ol>
+    <p>토크 · 열 · 결로 · 원가 · 손익 수치는 제안자 계산(<span class="g3">추정</span>)이며, 계산식은 본문 06·08·09에 적었습니다. 1단계 검증과 ODM 견적으로 교체합니다.</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap">휴롬 과일청 메이커 기획서 · 2026-11-17 · 제안 AX팀 · 3D는 구조 설명용 모형으로 치수는 실제 디자인과 다를 수 있습니다. 온도 · 시간 · 토크 · 원가 · 손익은 시제품 실험과 견적 전 목표치입니다. 사진은 컨셉 이미지(AI 생성)입니다.</div></footer>
+
+<div id="progress"></div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // reveal (fallback + base)
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  if (!window.gsap || reduce) return;
+  gsap.registerPlugin(ScrollTrigger);
+  // progress bar
+  gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+  // hero
+  gsap.from('.hero .eyebrow, .hero h1, .hero .sub, .hero p, .hero .chip', { y: 28, opacity: 0, duration: 1.1, stagger: 0.09, ease: 'power3.out', delay: 0.15 });
+  gsap.from('.hero img', { scale: 1.08, opacity: 0, duration: 1.6, ease: 'power2.out' });
+  gsap.to('.hero img', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  // staggered groups
+  const groups = ['.kpi > div', '.toc a', '.trio > div', '.sum3 > div', '.spec > div', '.steps > div', '.cal > div', '.three > div', '.four > div', '.two > div', '.gate > div', '.decide > div', '.timeline > div', '.score tr', '.risk tr', '.cmp tr'];
+  groups.forEach(sel => { const els = gsap.utils.toArray(sel); if (!els.length) return;
+    ScrollTrigger.batch(els, { start: 'top 88%', once: true, onEnter: b => gsap.fromTo(b, { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.07, ease: 'power3.out', overwrite: true }) }); });
+  // table rows in .pl
+  gsap.utils.toArray('.pl').forEach(t => { const rows = t.querySelectorAll('tr'); gsap.from(rows, { opacity: 0, x: -14, duration: 0.5, stagger: 0.035, ease: 'power2.out', scrollTrigger: { trigger: t, start: 'top 85%', once: true } }); });
+  // count-up numbers in KPI (digits only)
+  gsap.utils.toArray('.kpi b').forEach(b => { const m = b.textContent.match(/^([^0-9]*)([0-9][0-9.,]*)(.*)$/); if (!m) return; const end = parseFloat(m[2].replace(/,/g, '')); const dec = (m[2].split('.')[1] || '').length; const o = { v: 0 };
+    ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power2.out', onUpdate: () => { b.textContent = m[1] + o.v.toLocaleString('ko-KR', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3]; } }) }); });
+  // sensitivity bars
+  gsap.utils.toArray('.bars i').forEach(i => { gsap.fromTo(i, { width: 0 }, { width: i.dataset.w + '%', duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: i, start: 'top 90%', once: true } }); });
+  // timeline line draw
+  gsap.utils.toArray('.timeline').forEach(t => gsap.from(t, { '--line': 0, duration: 1.8, ease: 'power2.inOut', scrollTrigger: { trigger: t, start: 'top 80%', once: true } }));
+  // section kickers slide
+  gsap.utils.toArray('.kicker').forEach(k => gsap.from(k, { x: -20, opacity: 0, duration: 0.6, scrollTrigger: { trigger: k, start: 'top 92%', once: true } }));
+  // headings
+  gsap.utils.toArray('section h2').forEach(h => gsap.from(h, { y: 24, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: h, start: 'top 90%', once: true } }));
+  // nav active
+  const links = [...document.querySelectorAll('nav a')]; const ids = links.map(a => a.getAttribute('href'));
+  ids.forEach((id, i) => { const el = document.querySelector(id); if (!el) return; ScrollTrigger.create({ trigger: el, start: 'top 45%', end: 'bottom 45%', onToggle: s => { if (s.isActive) { links.forEach(l => l.classList.remove('on')); links[i].classList.add('on'); } } }); });
+})();
+</script>
+</body>
+</html>

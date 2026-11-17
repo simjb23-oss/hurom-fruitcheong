@@ -1,0 +1,84 @@
+<div id="progress"></div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover:hover) and (min-width:1024px)').matches;
+  // base reveal (works without GSAP)
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  const heroImg = document.querySelector('.hero img');
+  const showHero = () => { heroImg.style.transition = 'opacity .9s ease, transform 1.8s cubic-bezier(.22,1,.36,1)'; heroImg.style.opacity = 1; heroImg.style.transform = 'scale(1)'; };
+  heroImg.style.transform = 'scale(1.06)'; if (heroImg.complete) showHero(); else heroImg.addEventListener('load', showHero);
+  if (!window.gsap) { heroImg.style.opacity = 1; return; }
+  if (reduce) { heroImg.style.opacity = 1; return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // smooth scroll (Lenis) — desktop only, keeps 3D section scroll in sync
+  let lenis = null;
+  if (window.Lenis && fine) { lenis = new Lenis({ lerp: 0.1, smoothWheel: true }); lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+
+  // progress bar
+  gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+
+  // hero: per-word blur-in headline
+  const h1 = document.querySelector('.hero h1');
+  if (h1) { h1.innerHTML = h1.innerHTML.replace(/(<em>.*?<\/em>|[^\s<]+)/g, m => `<span class="w">${m}</span>`); }
+  const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.22,1,0.36,1)' } });
+  tl.from('nav', { y: -20, opacity: 0, duration: .8 }, 0)
+    .from('.hero .eyebrow', { y: 18, opacity: 0, duration: .7 }, .15)
+    .from('.hero h1 .w', { y: 26, opacity: 0, filter: 'blur(10px)', duration: .9, stagger: .09 }, .3)
+    .from('.hero .sub', { y: 22, opacity: 0, duration: .8 }, .9)
+    .from('.hero p', { y: 22, opacity: 0, duration: .8 }, 1.05)
+    .from('.hero .chip', { y: 16, opacity: 0, duration: .6, stagger: .06 }, 1.2)
+    .from('.hero .hint', { opacity: 0, duration: .8 }, 1.6);
+  gsap.to('.hero img', { yPercent: 10, scale: 1.04, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .12 } });
+  gsap.to('.hero .wrap', { yPercent: -8, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: 'bottom top', scrub: .12 } });
+
+  // headings: masked line rise
+  gsap.utils.toArray('section h2').forEach(h => {
+    if (h.closest('#structure')) return;
+    const txt = h.innerHTML; h.innerHTML = `<span class="ln"><span>${txt}</span></span>`;
+    gsap.from(h.querySelector('.ln > span'), { yPercent: 110, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
+  });
+  gsap.utils.toArray('.kicker').forEach(k => { if (k.closest('#structure')) return; gsap.from(k, { x: -24, opacity: 0, duration: .6, ease: 'power3.out', scrollTrigger: { trigger: k, start: 'top 92%', once: true } }); });
+
+  // staggered groups
+  const groups = ['.kpi > div', '.toc a', '.trio > div', '.sum3 > div', '.spec > div', '.steps > div', '.three > div', '.four > div', '.two > div', '.gate > div', '.decide > div', '.timeline > div', '.swot > div', '.duo > div', '.score tr', '.risk tr', '.cmp tr'];
+  groups.forEach(sel => { const els = gsap.utils.toArray(sel); if (!els.length) return;
+    ScrollTrigger.batch(els, { start: 'top 90%', once: true, onEnter: b => gsap.fromTo(b, { y: 30, opacity: 0, scale: .985 }, { y: 0, opacity: 1, scale: 1, duration: .8, stagger: .08, ease: 'power3.out', overwrite: true }) }); });
+  gsap.utils.toArray('.pl').forEach(t => gsap.from(t.querySelectorAll('tr'), { opacity: 0, x: -16, duration: .5, stagger: .035, ease: 'power2.out', scrollTrigger: { trigger: t, start: 'top 88%', once: true } }));
+  gsap.utils.toArray('.ph img').forEach(im => gsap.fromTo(im, { clipPath: 'inset(0 0 100% 0)', scale: 1.12 }, { clipPath: 'inset(0 0 0% 0)', scale: 1.04, duration: 1.3, ease: 'power3.inOut', scrollTrigger: { trigger: im, start: 'top 85%', once: true } }));
+
+  // count-ups
+  gsap.utils.toArray('.kpi b').forEach(b => { const m = b.textContent.match(/^([^0-9]*)([0-9][0-9.,]*)(.*)$/); if (!m) return; const end = parseFloat(m[2].replace(/,/g, '')); const dec = (m[2].split('.')[1] || '').length; const o = { v: 0 };
+    ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.8, ease: 'power3.out', onUpdate: () => { b.textContent = m[1] + o.v.toLocaleString('ko-KR', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3]; } }) }); });
+
+  // bars & chart
+  gsap.utils.toArray('.bars i').forEach(i => gsap.fromTo(i, { width: 0 }, { width: i.dataset.w + '%', duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: i, start: 'top 92%', once: true } }));
+  gsap.utils.toArray('.chart').forEach(c => { const bars = c.querySelectorAll('i'); gsap.fromTo(bars, { height: 0 }, { height: i => bars[i].dataset.h + '%', duration: 1.4, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 85%', once: true } }); });
+  gsap.utils.toArray('.timeline').forEach(t => { gsap.from(t, { '--line': 0, duration: 1.8, ease: 'power2.inOut', scrollTrigger: { trigger: t, start: 'top 80%', once: true } }); });
+
+  // 1년 달력: horizontal scrub on desktop
+  const cal = document.querySelector('.cal');
+  if (cal && fine) { gsap.fromTo(cal.children, { y: 40, opacity: 0, rotateX: -20 }, { y: 0, opacity: 1, rotateX: 0, duration: .8, stagger: .06, ease: 'back.out(1.4)', scrollTrigger: { trigger: cal, start: 'top 85%', once: true } }); }
+
+  // card tilt (desktop)
+  if (fine) { document.querySelectorAll('.tilt').forEach(el => { el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; gsap.to(el, { rotateY: x * 8, rotateX: -y * 8, transformPerspective: 900, duration: .5, ease: 'power2.out' }); }); el.addEventListener('mouseleave', () => gsap.to(el, { rotateX: 0, rotateY: 0, duration: .7, ease: 'power3.out' })); }); }
+
+  // custom cursor ring
+  const cur = document.querySelector('.cursor');
+  if (cur && fine) { const pos = { x: innerWidth / 2, y: innerHeight / 2 }, tgt = { ...pos }; addEventListener('mousemove', e => { tgt.x = e.clientX; tgt.y = e.clientY; }); gsap.ticker.add(() => { pos.x += (tgt.x - pos.x) * .18; pos.y += (tgt.y - pos.y) * .18; cur.style.transform = `translate(${pos.x}px,${pos.y}px) translate(-50%,-50%)`; });
+    document.querySelectorAll('a,button').forEach(a => { a.addEventListener('mouseenter', () => gsap.to(cur, { scale: 2.2, duration: .3 })); a.addEventListener('mouseleave', () => gsap.to(cur, { scale: 1, duration: .3 })); }); }
+
+  // nav active state + anchor smooth
+  const links = [...document.querySelectorAll('nav a')]; const ids = links.map(a => a.getAttribute('href'));
+  ids.forEach((id, i) => { const el = document.querySelector(id); if (!el) return; ScrollTrigger.create({ trigger: el, start: 'top 45%', end: 'bottom 45%', onToggle: s => { if (s.isActive) { links.forEach(l => l.classList.remove('on')); links[i].classList.add('on'); } } }); });
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (!t) return; e.preventDefault(); if (lenis) lenis.scrollTo(t, { offset: -64 }); else t.scrollIntoView({ behavior: 'smooth' }); }));
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

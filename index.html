@@ -224,72 +224,291 @@ footer{padding:56px 0 72px;font-size:13px;color:var(--sub);border-top:1px solid 
 .night .kicker{color:#f2b05a}.night h2{color:#fff}.night .lead2{color:#c9c1b4}
 .night .photo{background:#15120f;border:1px solid rgba(255,255,255,.08)}
 </style>
+<style>
+/* 기획서 v3 추가 */
+.toc{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:28px}
+.toc a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 12px;font-size:13px;color:var(--ink);text-decoration:none;line-height:1.35}
+.toc a small{display:block;color:var(--sub);font-size:11px;font-weight:700;margin-bottom:3px}
+.toc a:hover{background:#fff}
+.kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:28px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 18px}
+.kpi b{display:block;font-size:30px;font-weight:800;letter-spacing:-0.03em;line-height:1.1}
+.kpi span{display:block;font-size:13px;color:var(--sub);margin-top:8px;line-height:1.45}
+.quote{background:#fff;border-left:4px solid #e8b35a;border-radius:0 14px 14px 0;padding:16px 20px;margin:12px 0;font-size:15px;line-height:1.6}
+.quote small{display:block;color:var(--sub);font-size:12px;margin-top:6px}
+.pl{width:100%;border-collapse:collapse;font-size:14px;margin-top:18px;background:#fff;border-radius:14px;overflow:hidden}
+.pl th,.pl td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+.pl th{background:var(--paper);font-weight:700;color:var(--sub);font-size:12px}
+.pl td:first-child,.pl th:first-child{text-align:left}
+.pl tr.sum td{font-weight:800;background:#fbfaf7}
+.pl td.l{text-align:left}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+.ok{background:#e4f3e3;color:#1f6b2b}.warn{background:#fdf0d5;color:#8a5a00}.bad{background:#fbe1e1;color:#9b1c1c}.est{background:#eceaf5;color:#4b3f8a}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.two>div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.two h3,.box h3{font-size:17px;margin:0 0 10px;letter-spacing:-0.02em}
+.two ul,.box ul{padding-left:18px;margin:0}.two li,.box li{margin:6px 0;line-height:1.55;font-size:14.5px}
+.box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin-top:20px}
+.box.dark{background:#15120f;color:#f3efe8;border-color:#15120f}.box.dark h3{color:#fff}.box.dark li,.box.dark p{color:#d8d1c6}
+.src{font-size:13px;color:var(--sub);line-height:1.7}
+.src ol{padding-left:22px}.src li{margin:4px 0}
+.src .g1{color:#1f6b2b;font-weight:700}.src .g2{color:#8a5a00;font-weight:700}.src .g3{color:#4b3f8a;font-weight:700}
+sup.f{font-size:10px;color:#4b3f8a;font-weight:700;margin-left:1px}
+.decide{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.decide div{background:#fff;border:2px solid #15120f;border-radius:18px;padding:20px}
+.decide small{display:block;font-size:12px;color:var(--sub);font-weight:700}.decide b{display:block;font-size:18px;margin:6px 0 8px;letter-spacing:-0.02em}.decide p{font-size:13.5px;line-height:1.5;margin:0}
+.score{width:100%;border-collapse:collapse;font-size:13px;margin-top:18px;background:#fff;border-radius:14px;overflow:hidden}
+.score th,.score td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:center}
+.score th{background:var(--paper);font-size:12px;color:var(--sub)}.score td:first-child,.score th:first-child{text-align:left;font-weight:700}
+.score tr.pick td{background:#fbf6ea;font-weight:800}
+.figma{display:inline-flex;align-items:center;gap:8px;background:#15120f;color:#fff;border-radius:999px;padding:10px 18px;text-decoration:none;font-size:14px;font-weight:700;margin-top:14px}
+@media (max-width:860px){.toc{grid-template-columns:1fr 1fr}.kpi{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.decide{grid-template-columns:1fr}.pl{font-size:12px}}
 
-<nav><div class="wrap"><b>HUROM<span>과일청 메이커</span></b>
-<ul><li><a href="#design">디자인</a></li><li><a href="#structure">구조</a></li><li><a href="#how">작동</a></li><li><a href="#calendar">1년 달력</a></li><li><a href="#why">문제</a></li><li><a href="#compare">원리</a></li><li><a href="#spec">사양</a></li><li><a href="#safety">위생·안전</a></li><li><a href="#cost">개발비·소싱</a></li><li><a href="#plan">제안 이유</a></li><li><a href="#verify">검증</a></li></ul></div></nav>
+/* cinematic v3 */
+html,body{background:#fbfaf7}
+body{overflow-x:clip;color:var(--ink)}
+.hero{background:#0e0b09;color:#f3efe8;padding:96px 0 56px;min-height:100svh}
+.hero img{left:34%;width:66%;object-fit:cover;object-position:62% 50%;opacity:0}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,#0e0b09 0%,#0e0b09 30%,rgba(14,11,9,.72) 48%,rgba(14,11,9,0) 70%),linear-gradient(0deg,#0e0b09 0%,rgba(14,11,9,0) 28%);pointer-events:none}
+.hero .wrap{z-index:2}
+.hero .eyebrow{color:#a89f93}.hero h1{color:#fff;font-size:clamp(46px,6.6vw,96px);line-height:1.02;letter-spacing:-0.045em}
+.hero h1 .w{display:inline-block;will-change:transform,filter,opacity}
+.hero h1 em{background:none;color:#f2a54a;font-style:italic;font-family:"Noto Serif KR","Gowun Batang",serif;font-weight:600}
+.hero .sub{color:#e9e2d6;max-width:24em;font-size:clamp(18px,1.6vw,21px);font-weight:600}
+.hero p{color:#bdb4a7;max-width:30em;font-size:16.5px}
+.hero .chips{max-width:640px}.hero .chip{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#efe9df;backdrop-filter:blur(10px)}
+.hero:after{display:none}
+.mono{font-family:ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8e867a}
+.grain{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.6'/></svg>")}
+.hero .hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:#8e867a;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3}
+.hero .hint i{display:block;width:1px;height:38px;background:linear-gradient(#f2a54a,transparent);animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.ph{position:relative;border-radius:24px;overflow:hidden;background:#111;aspect-ratio:3/2}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.ph:hover img{transform:scale(1.0)}
+.ph span{position:absolute;left:16px;bottom:14px;color:#fff;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);padding:6px 10px;border-radius:999px}
+.ph.wide{aspect-ratio:21/9}
+.tilt{transform-style:preserve-3d;will-change:transform}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.swot>div{border-radius:20px;padding:22px 24px;background:#fff;border:1px solid var(--line)}
+.swot small{display:block;font-weight:800;font-size:13px;margin-bottom:8px}.swot ul{padding-left:18px;margin:0}.swot li{margin:5px 0;font-size:14px;line-height:1.5}
+.swot .s{border-top:4px solid #3c9d5d}.swot .w{border-top:4px solid #d9534f}.swot .o{border-top:4px solid #e98f1f}.swot .t{border-top:4px solid #4b3f8a}
+.chart{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end;height:220px;margin-top:18px;padding:0 10px}
+.chart>div{display:flex;gap:8px;align-items:flex-end;justify-content:center;height:100%;position:relative}
+.chart i{display:block;width:34%;border-radius:8px 8px 0 0;height:0;position:relative}
+.chart i.rev{background:#15120f}.chart i.op{background:#e98f1f}
+.chart i b{position:absolute;left:50%;top:-22px;transform:translateX(-50%);font-size:12px;white-space:nowrap}
+.chart em{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-style:normal;font-size:12px;color:var(--sub)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--sub);margin-top:34px}.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+section h2 .ln{display:block;overflow:hidden}section h2 .ln span{display:block;will-change:transform}
+.kpi > div,.decide > div{transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s}
+.kpi > div:hover,.decide > div:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.cursor{position:fixed;left:0;top:0;width:26px;height:26px;border:1.5px solid rgba(233,143,31,.9);border-radius:50%;pointer-events:none;z-index:200;transform:translate(-50%,-50%);mix-blend-mode:difference;display:none}
+@media (hover:hover) and (min-width:1024px){.cursor{display:block}}
+@media (max-width:860px){.duo{grid-template-columns:1fr}.swot{grid-template-columns:1fr}.hero img{left:0;width:100%;opacity:.4}.hero .scrim{background:linear-gradient(0deg,#0e0b09 10%,rgba(14,11,9,.4) 60%)}}
+@media (max-width:860px){.score,.cmp,.risk,.timetbl{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}.score tbody,.cmp tbody,.risk tbody{display:table;min-width:640px;width:100%}.kpi b{font-size:26px}.cal{grid-template-columns:repeat(4,1fr)}}
+::selection{background:#f2a54a;color:#15120f}
+</style>
+
+<nav><div class="wrap"><b>HUROM<span>과일청 메이커 · 기획서</span></b>
+<ul><li><a href="#summary">요약</a></li><li><a href="#problem">문제</a></li><li><a href="#whynow">왜 휴롬</a></li><li><a href="#product">제품</a></li><li><a href="#design">디자인</a></li><li><a href="#feasible">구조 검토</a></li><li><a href="#market">시장·고객</a></li><li><a href="#pricing">가격 정책</a></li><li><a href="#numbers">숫자</a></li><li><a href="#risk">리스크</a></li><li><a href="#validate">검증·일정</a></li><li><a href="#decision">결정 요청</a></li></ul></div></nav>
 
 <header class="hero">
-  <img src="img/hero.png" alt="저녁 조리대 위 휴롬 과일청 메이커 · 받침 빛이 항아리형 유리 통 속 유자청을 비춤 · 시안 A · 가정 치수 Ø19×23cm">
+  <img src="img/hero.png" alt="저녁 조리대 위 휴롬 과일청 메이커 · 받침 빛이 항아리형 유리 통 속 유자청을 비춤 · 시안 A">
   <div class="wrap">
-    <div class="eyebrow">휴롬 신제품 기획 제안서 · 2026.11.17</div>
+    <div class="eyebrow mono">HUROM · NEW PRODUCT PROPOSAL · 2026.11.17 · AX TEAM</div>
     <h1>저녁 조리대 위, <em>청이</em> 빛납니다.</h1>
-    <div class="sub">과일과 설탕을 넣으면 저어 빨리 녹이고, 다 녹으면 알려 주는 조리대 가전 — 통째 옮긴 뒤에는 뚜껑 밸브가 가스를 뺍니다. 설탕이 바닥에 굳는 날과 뜬 과일에 곰팡이 피는 날이 없어집니다</div>
-    <p>받침은 낮고 조용하고, 유리 통이 주인공입니다. 담근 청의 색이 곧 제품의 색이고, 받침 빛이 아래에서 통을 비춥니다. 안에서는 바닥 젓개가 천천히 설탕을 녹이고, 통 바깥 펠티어가 녹이기 온도와 식혀 두는 온도를 지키다가, 설탕이 다 녹으면 「냉장고로」 또는 「서늘한 곳으로」 옮기라고 알립니다. 매실처럼 오래 재우는 청은 기계가 시간을 줄이지 않습니다 — 식약처 기준(3~4개월)은 그대로 두고, 녹이기까지만 맡은 뒤 통째 내보내 기계 한 대로 여러 번 담글 수 있게 합니다.</p>
-    <div class="chips"><span class="chip">시안 3개 · A 항아리 · B 원통 · C 넓적</span> <span class="chip">유자 · 매실 · 오미자 · 딸기 색 단추</span> <span class="chip">받침 빛 = 단계 표시</span> <span class="chip">버튼 1 · 빛 1줄 · 앱 없음</span> <span class="chip">녹이기 25~30°C · 식혀 두기 15~18°C</span> <span class="chip">가격은 견적 뒤</span></div>
+    <div class="sub">통에 구멍 하나 없이, 유리 너머 <b>자석이 젓개를 돌려</b> 설탕을 녹입니다. 펠티어가 온도를 지키고, 다 녹으면 「냉장고로」 또는 「서늘한 곳으로」 알립니다.</div>
+    <p>집에서 담그는 청이 실패하는 세 가지 — 바닥에 굳는 설탕, 뜬 과일의 곰팡이, 여름의 발효 — 를 「저어 주기」와 「온도」 두 가지로 막는 조리대 가전입니다. 서늘고·해동기와 부품을 나눠 쓰는 세 번째 「재료 준비 가전」이자, 철마다 꺼내는 첫 계절가전입니다.</p>
+    <div class="chips"><span class="chip">유리 너머 자석 교반 · 통에 구멍 없음</span> <span class="chip">1단계 검증 12주 · 약 1,500만 원</span> <span class="chip">목표 소비자가 18.9만 원</span> <span class="chip">목표 착륙 원가 7.0만 원</span> <span class="chip">2027-11 유자철 출시</span> <span class="chip">결정 요청 4건</span></div>
   </div>
+  <div class="hint"><span class="mono">scroll</span><i></i></div>
 </header>
+<div class="grain"></div><div class="cursor"></div>
 
 <section id="summary">
   <div class="wrap">
-    <h2 class="rv">한눈에 — 무엇을, 왜, 어떻게</h2>
-    <p class="lead2 rv">과일청 메이커는 휴롬의 첫 계절가전입니다. 유리 통이 주인공이고, 항아리 곡선과 아래에서 비추는 빛으로 기계 티를 숨겼습니다. <b>매실은 기계로 100일을 줄이지 않습니다.</b> 식약처 안내대로 씨의 독성은 시간이 줄이므로, 이 제품의 일은 「설탕을 빨리·고르게 녹이고, 다 녹으면 알려 주기」까지입니다. 가스는 통째 따라가는 <b>밸브 뚜껑</b>이 뺍니다.</p>
+    <div class="kicker rv">00 · 한 장 요약</div>
+    <h2 class="rv">무엇을, 왜, 얼마에, 언제 — 그리고 무엇을 결정해 주셔야 하는지.</h2>
+    <p class="lead2 rv">과일청 메이커는 <b>약 2L 유리 통 + 느린 자석 젓개 + 펠티어 한 장 + 버튼 하나</b>로 된 조리대 가전입니다. 청 담그기에서 사람이 하던 「매일 저어 주기」와 「서늘한 데 찾기」를 기계가 맡고, 녹인 뒤에는 통째 냉장고나 서늘한 곳으로 옮깁니다. 매실처럼 오래 재우는 청은 <b>기계가 시간을 줄이지 않습니다</b>(씨의 독성은 시간이 줄이므로<sup class="f">1</sup>). 청 전용 가전은 국내·일본에 없고<sup class="f">8</sup>, 부품의 70%는 서늘고·해동기와 같습니다.</p>
+    <div class="kpi rv">
+      <div><b>18.9만 원</b><span>목표 소비자가(부가세 포함) · 요거트 메이커(1~9만)와 발효기(22만) 사이, 원액기 아래<sup class="f">9,10</sup></span></div>
+      <div><b>7.0만 원</b><span>목표 착륙 원가(중국 ODM FOB + 운임·관세) · 현재 적산 8.0만 → 설계 원가 절감으로 7.0만 <span class="tag est">추정</span></span></div>
+      <div><b>약 2.0억 원</b><span>개발비(금형 0.9 · 설계 0.6 · 인증 0.1 · 시제품·시험 0.4) · 1단계 검증 1,500만 별도 <span class="tag est">추정</span></span></div>
+      <div><b>3.6만 대</b><span>3년 누적 판매 목표(6천 → 1.2만 → 1.8만) · 3년차 매출 31억 · 손익분기 약 5,600대 <span class="tag est">추정</span></span></div>
+      <div><b>2027-11</b><span>출시 목표(유자·생강철). 12주 검증 → G1(2027-03) → 금형 → 양산 2027-10</span></div>
+    </div>
+    <div class="two rv">
+      <div><h3>이 기획서가 답하는 것</h3><ul>
+        <li><b>진짜 되나?</b> — 자석 젓개의 힘, 유리 너머 열, 여름 결로, 유리 바닥 돌기 성형을 숫자로 따졌습니다(<a href="#feasible">구조 검토</a>). 결론: 성립하되 <b>「식혀 두기 15°C」는 결로 때문에 18°C로 바꿉니다.</b></li>
+        <li><b>얼마에 팔고 얼마가 남나?</b> — FOB부터 관세·인증·유통 수수료·AS까지 적층했습니다(<a href="#pricing">가격 정책</a>). 결론: 14.9만은 남지 않고, <b>18.9만 + 착륙 원가 7.0만</b>이 성립선입니다.</li>
+        <li><b>살 사람이 있나?</b> — 「담그는 가구」와 「원액기 보유 가구」 두 길로 추정하고, 설문 N≥300으로 바꿔 넣습니다(<a href="#market">시장·고객</a>).</li>
+      </ul></div>
+      <div><h3>결정 요청 (자세한 것은 <a href="#decision">맨 아래</a>)</h3><ul>
+        <li>① 1단계 검증 12주 · 약 1,500만 원 승인(벤치 · 설문 · 목업)</li>
+        <li>② 가격 정책 방향 승인: 목표 소비자가 18.9만 · 목표 착륙 원가 7.0만 · 미달 시 중단 기준</li>
+        <li>③ 디자인 시안 A(항아리)로 피그마 디자인 진행</li>
+        <li>④ 서늘고·해동기와 묶은 공용 플랫폼(펠티어·어댑터·보드) ODM 견적 요청</li>
+      </ul></div>
+    </div>
+    <div class="toc rv">
+      <a href="#problem"><small>01</small>문제 — 집 청은 왜 실패하나</a><a href="#whynow"><small>02</small>왜 휴롬 · 왜 지금</a><a href="#discovery"><small>03</small>후보 중 이것을 고른 이유</a><a href="#product"><small>04</small>제품 · 작동 · 1년 달력</a><a href="#design"><small>05</small>디자인 · 피그마 보드</a><a href="#feasible"><small>06</small>구조 성립 검토</a><a href="#market"><small>07</small>시장 · 고객</a><a href="#pricing"><small>08</small>가격 정책 · 제조처</a><a href="#numbers"><small>09</small>숫자 · 3년 손익 · 감도</a><a href="#tech"><small>10</small>기술 · 특허 · 규제</a><a href="#risk"><small>11</small>리스크 · 중단 기준</a><a href="#validate"><small>12</small>검증 · 일정 · 조직 · 출시</a>
+    </div>
+  </div>
+</section>
+
+<section id="problem" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">01 · 문제</div>
+    <h2 class="rv">청은 레시피가 세 줄인 음식인데, 집에서는 자주 실패합니다.</h2>
+    <p class="lead2 rv">식약처가 안내하는 매실청 담그기는 「무게 1:1 · 소독한 용기 · 그늘진 실온 3~4개월 · 담근 뒤 약 1개월은 가스가 생기니 주 1회 뚜껑을 열어 빼기」가 전부입니다<sup class="f">1</sup>. 어려운 것은 재료가 아니라 <b>사람이 100일 동안 지켜야 하는 일</b>입니다.</p>
+    <div class="trio rv">
+      <div class="on"><small>실패 1</small><strong>설탕이 바닥에 굳는다</strong><p>설탕이 녹기 전에 바닥에 층으로 가라앉아 굳습니다. 레시피마다 「가라앉은 설탕을 수시로 저어 녹이라」고 하지만 며칠 지나면 잊고, 안 녹은 설탕은 청이 끝나도 바닥에 남습니다.</p></div>
+      <div><small>실패 2</small><strong>뜬 과일에 곰팡이가 핀다</strong><p>과일이 위로 떠서 공기에 닿은 부분에 곰팡이가 핍니다. 뚜껑을 자주 열수록 더 피고, 잠기게 하려면 매일 눌러 주거나 저어 줘야 합니다<sup class="f">2</sup>.</p></div>
+      <div><small>실패 3</small><strong>더우면 술이 된다</strong><p>여름 부엌(28~30°C)에서 담그면 효모가 빨라 톡 쏘는 맛과 알코올이 생깁니다. 「서늘한 곳」이 요즘 아파트에는 없습니다. 열면 곰팡이, 안 열면 가스 — 식약처가 주 1회 열라고 하는 이유입니다<sup class="f">1</sup>.</p></div>
+    </div>
+    <div class="two rv">
+      <div><h3>고객의 말 (출처 보강 중)</h3>
+        <div class="quote">"매실청 바닥에 설탕이 그대로 남아서 두 달 뒤에 봤더니 돌덩이처럼 굳어 있었어요."<small>— 커뮤니티·리뷰 인용 자리. 1차 VOC(자사 CS·네이버 카페·블로그 댓글) 20건 이상을 표본 수와 함께 붙입니다.</small></div>
+        <div class="quote">"위에 뜬 유자에 하얀 곰팡이. 아까워서 걷어내고 먹었는데 괜찮을까요?"<small>— 같은 자리. 반대 데이터(「유리병이면 충분하다」는 의견 비율)도 같이 싣습니다.</small></div>
+        <p class="note" style="margin-top:10px">지금 단계에서 수치로 확인된 것은 <b>당류 44g/100g</b>(농진청 2020, 매실청 100g 기준)<sup class="f">3</sup>과 식약처 안내 문구<sup class="f">1</sup>뿐입니다. 「담그는 가구 비율」「실패 경험률」은 1단계 설문(N≥300)으로 잽니다.</p>
+      </div>
+      <div><h3>지금의 대체 행동 — 이미 돈을 쓰고 있습니다</h3><ul>
+        <li><b>사 먹기:</b> 홍쌍리 매실청 420ml × 2병 29,000원(100ml당 약 3,450원)<sup class="f">4</sup>. 집에서 담그면 100ml당 500원 안팎(과일·설탕 원가) <span class="tag est">추정</span>.</li>
+        <li><b>배우기:</b> 수제청 원데이 클래스가 전국에 퍼져 있습니다(회당 3~6만 원대) — 시장 크기는 없지만 「하고 싶은데 못 한다」는 신호입니다.</li>
+        <li><b>포기하기:</b> 설탕 걱정과 번거로움으로 매실청 담그기 열기가 예전만 못하다는 보도<sup class="f">3</sup>. 우리가 노리는 것은 포기한 사람이 아니라 <b>「해 봤는데 실패한 사람」과 「해 보고 싶은데 못 한 사람」</b>입니다.</li>
+        <li><b>계절 신호:</b> 유자차 수출량 2021년 18,315t → 2024년 21,325t(aT)<sup class="f">5</sup>, 고흥이 전국 유자의 절반<sup class="f">6</sup>. 11~12월 유자·생강, 6월 매실, 3~4월 딸기, 9월 오미자 — 네 번의 철이 있습니다.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="whynow">
+  <div class="wrap">
+    <div class="kicker rv">02 · 왜 휴롬 · 왜 지금</div>
+    <h2 class="rv">과일을 다루는 회사의, 철마다 꺼내는 가전.</h2>
     <div class="sum3 rv">
-      <div><small>목적</small><p>청 담그기에서 사람이 하던 일 두 가지 — <b>저어 주기</b>와 <b>온도 지키기</b> — 를 기계가 맡습니다. 과일과 설탕을 넣고 품목 버튼을 누르면 <b>바닥 자석 젓개</b>가 천천히 돌아 설탕을 녹이고 뜬 과일을 설탕물에 잠기게 하며, <b>통 바깥 펠티어</b>가 녹이기 온도(25~30°C)와 식혀 두는 온도(15~18°C)를 각각 맞춥니다. 설탕이 다 녹으면 알립니다 — 유자·레몬·딸기는 1~2일 뒤 「냉장고로」, 매실·생강·오미자는 며칠 뒤 「서늘한 곳으로」. 통째 옮기면 기계는 다음 청을 받습니다.</p></div>
-      <div><small>왜 휴롬인가</small><ul><li><b>과일 브랜드.</b> 원액기 즙으로 청을 담그고, 만든 청을 주스에 타는 레시피로 이어집니다.</li><li><b>같은 부품.</b> 펠티어·방열판·팬·12V 어댑터·제어 보드 뼈대를 서늘고·해동기와 같이 씁니다. 새로 드는 것은 유리 통·젓개·뚜껑뿐입니다.</li><li><b>철마다 꺼내는 가전.</b> 봄 딸기 → 6월 매실 → 9월 오미자 → 겨울 유자·생강. 한 철 가전이 아니라 1년 달력 가전입니다.</li></ul></div>
-      <div><small>디자인 원칙</small><p>며칠 동안 조리대 위에 놓여 있고, 철마다 다시 꺼내는 물건입니다. 숨기고 싶은 기계면 베란다로 가고, 그러면 쓰지 않게 됩니다. 그래서 <b>꺼내 두고 싶은 물건</b>이어야 합니다. 받침은 낮고 조용하게, 팬 구멍·나사·방열판은 바닥과 뒤로, 앞에는 버튼 1개와 빛 1줄만. 저녁에 받침 빛이 청을 비추면 술병처럼 빛납니다.</p></div>
+      <div><small>왜 휴롬인가</small><ul>
+        <li><b>과일 브랜드.</b> 원액기 고객은 이미 철마다 과일을 상자로 삽니다. 짜고 남는 과일, 끝물 싼 과일이 청이 됩니다. 원액기 즙 + 청, 청을 탄 주스로 레시피가 이어집니다.</li>
+        <li><b>같은 부품.</b> 펠티어·방열판·팬·12V 어댑터·제어 보드 뼈대를 서늘고·해동기와 같이 씁니다. 새로 드는 것은 유리 통·젓개·뚜껑·자석 커플링뿐입니다.</li>
+        <li><b>잘하는 구조.</b> 느리게·세게 돌리는 감속 구동과 식품 접촉 부품 설계는 원액기에서 쌓은 것입니다. 자석이 모자라면 원액기식 바닥 축 직결이 대안입니다.</li>
+      </ul></div>
+      <div><small>왜 지금인가</small><ul>
+        <li><b>착즙기 한 품목 의존.</b> 휴롬 매출은 정점 대비 크게 줄었고(사내 자료<sup class="f">7</sup>), 상업용·B2B로 다각화 중입니다. 가정용에서도 「원액기 옆에 놓이는 두 번째 가전」이 필요합니다.</li>
+        <li><b>빈 자리.</b> 청 전용 가전은 국내·일본에 없고, 발효기·요거트 메이커는 온도만 지킵니다<sup class="f">8,9</sup>. 먼저 내면 「청 메이커 = 휴롬」을 가져갈 수 있습니다.</li>
+        <li><b>플랫폼 타이밍.</b> 서늘고·해동기 ODM 견적을 지금 받습니다. 세 제품을 한 번에 묶으면 펠티어·어댑터·보드 단가와 금형 조건이 달라집니다.</li>
+      </ul></div>
+      <div><small>휴롬 브랜드와 맞는가</small><p>「저속 착즙 · 영양 · 건강」과 설탕 1:1 청은 언뜻 어긋나 보입니다. 그래서 이 제품은 <b>「설탕을 더 넣는 기계」가 아니라 「실패 없이, 덜 달게도 담글 수 있는 기계」</b>로 말합니다 — 식약처가 권하는 씨 뺀 매실, 올리고당 일부 대체<sup class="f">1</sup>, 설탕 0.7 딸기청 모드를 기본 레시피에 넣습니다. 말하지 않을 것: 「매실청이 몸에 좋다」「100일을 줄인다」.</p></div>
     </div>
-    <div class="spec rv" style="margin-top:36px">
-      <div><b>약 2L</b><span>유리 통 · 1회분 과일 약 800g + 설탕 약 800g · 통째 냉장고로</span></div>
-      <div><b>25~30 → 15~18°C</b><span>녹이기 미지근 → 식혀 두기 서늘 · 설탕은 무게 1:1</span></div>
-      <div><b>1+1</b><span>품목 버튼 1개 + 빛 1줄 · 받침 빛이 단계를 보여 줌 · 앱 없음</span></div>
-      <div><b>30분마다 1~2분</b><span>바닥 자석 젓개 · 천천히 · 즙이 나오기 전 처음 4~6시간은 데우기만 · 다 녹으면 멈춤</span></div>
+  </div>
+</section>
+
+<section id="discovery" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">03 · 후보 중 이것을 고른 이유</div>
+    <h2 class="rv">계절가전 후보 3개와 「재료 준비 가전」 라인업 안에서의 자리.</h2>
+    <p class="lead2 rv">출발은 「색다른 계절가전」이었습니다. 후보 3개(과일청 메이커 · 김장 절임통 · 수박 냉각기)를 6가지 기준으로 점수 매겼고, 이미 기획 중인 서늘고·해동기·펄프 도크와 부품·고객을 나눌 수 있는지도 봤습니다. 점수는 제안자 판단이며 <b>1단계 설문 뒤 재채점</b>합니다.</p>
+    <table class="score rv">
+      <tr><th>후보</th><th>휴롬다움</th><th>빈 시장</th><th>부품 공용</th><th>철마다 반복</th><th>안전 난이도(낮을수록 ↑)</th><th>디자인 매력</th><th>합계(30)</th></tr>
+      <tr class="pick"><td>과일청 메이커</td><td>5</td><td>5</td><td>5</td><td>5</td><td>3</td><td>5</td><td>28</td></tr>
+      <tr><td>김장 절임통(배추 절임·세척)</td><td>3</td><td>3</td><td>2</td><td>1(연 1회)</td><td>4</td><td>2</td><td>15</td></tr>
+      <tr><td>수박 냉각기</td><td>3</td><td>4</td><td>4</td><td>2(여름)</td><td>5</td><td>3</td><td>21</td></tr>
+      <tr><td>(참고) 서늘고 · 보관</td><td>5</td><td>4</td><td>—</td><td>5(사철)</td><td>5</td><td>4</td><td>23+</td></tr>
+    </table>
+    <div class="two rv">
+      <div><h3>과일청이 이긴 이유</h3><ul><li>네 철(딸기·매실·오미자·유자)에 사이 품목까지 두 달에 한 번 꺼냅니다 — 계절가전의 약점(연 1회)이 없습니다.</li><li>펠티어·팬·어댑터·보드가 서늘고·해동기와 같아 셋을 한 플랫폼으로 견적·생산할 수 있습니다.</li><li>유리 통이 주인공인 디자인 — 조리대 위에 「두고 싶은 물건」이 됩니다. 김장통·수박 냉각기는 숨기고 싶은 물건입니다.</li></ul></div>
+      <div><h3>약점으로 남는 것</h3><ul><li><b>안전 난이도 3점:</b> 먹는 것을 며칠 두는 기계라 곰팡이·발효·자석 삼킴·유리 파손을 설계와 안내로 막아야 합니다(<a href="#tech">규제</a>, <a href="#risk">리스크</a>).</li><li><b>「유리병이면 되지」:</b> 가장 센 경쟁자는 빈 유리병입니다. 그래서 1단계 설문의 첫 질문이 「실패해 본 적 있나」입니다.</li><li><b>설탕 이미지:</b> 위 02에서 답한 대로 「덜 달게 · 실패 없이」로 말합니다.</li></ul></div>
     </div>
-    <p class="note">가격(원가·판매가·개발비)은 부품 견적 뒤에 정합니다. 치수는 3D를 그리기 위한 값으로 실제 디자인과 다를 수 있습니다.</p>
+  </div>
+</section>
+
+<section id="product">
+  <div class="wrap">
+    <div class="kicker rv">04 · 제품</div>
+    <h2 class="rv">통 하나, 젓개 하나, 펠티어 한 장, 버튼 하나.</h2>
+    <div class="duo rv"><div class="ph tilt"><img src="img/photo_yuja_front.jpg" alt="과일청 메이커 정면 · 유자청 · 받침 빛 · 컨셉 이미지"><span class="mono">01 / 대표 컷 · 시안 A</span></div><div class="ph tilt"><img src="img/photo_pour_maesil.jpg" alt="매실 위에 설탕을 붓는 장면 · 컨셉 이미지"><span class="mono">02 / 과일 먼저, 설탕은 위에</span></div></div>
+    <div class="spec rv">
+      <div><b>약 2L</b><span>유리 통 · 1회분 과일 약 800g + 설탕 약 800g · 통째 옮김</span></div>
+      <div><b>25~30 → 18~20°C</b><span>녹이기 미지근 → 다 녹은 뒤 옮길 때까지 서늘(결로 때문에 15°C → 18°C로 조정, <a href="#feasible">06</a>)</span></div>
+      <div><b>1+1</b><span>품목 버튼 1개 + 빛 1줄 · 받침 빛이 단계 표시 · 앱·블루투스 없음</span></div>
+      <div><b>30분마다 1~2분</b><span>바닥 자석 젓개 · 아주 천천히 · 즙이 나오기 전 처음 4~6시간은 데우기만</span></div>
+      <div><b>3묶음</b><span>유자·레몬·딸기(1~2일 → 냉장고) / 매실(며칠 → 서늘한 곳) / 생강·오미자</span></div>
+      <div><b>3개</b><span>씻는 부품 · 뚜껑 · 유리 통 · 젓개(통·젓개 식기세척기)</span></div>
+      <div><b>Ø19 × 23cm</b><span>시안 A 바깥 크기(받침 Ø19×5 + 통 16 + 뚜껑 2) · 확정은 디자인 뒤</span></div>
+      <div><b>12V 48W</b><span>외장 어댑터(KC 인증품) · 펠티어 36W + 팬·모터·LED · 서늘고·해동기 공용 후보</span></div>
+    </div>
+    <div class="how rv" style="margin-top:36px">
+      <div class="steps">
+        <div><i>1</i><b>넣고 누릅니다</b><p>썬 과일과 설탕(무게 1:1, 딸기 0.7~1)을 통에 넣고 뚜껑을 얹습니다. 버튼을 눌러 품목 묶음을 고르면 받침 빛이 그 색으로 켜집니다. 과일 먼저, 설탕은 위에 — 바닥 설탕층을 얇게 하기 위한 안내입니다.</p></div>
+        <div><i>2</i><b>데우고, 천천히 젓습니다</b><p>처음 4~6시간은 25~30°C로 데우기만 합니다(즙이 나와 설탕이 젖을 때까지). 그 뒤 30분마다 1~2분, 바닥의 Ø6.5cm 날개가 아주 천천히 돌아 가라앉은 설탕을 녹이고 설탕물을 위로 보냅니다. 걸리면 멈췄다 거꾸로 돌고 다시 붙잡습니다. 빛은 숨 쉬듯 — 녹이는 중.</p></div>
+        <div><i>3</i><b>다 녹으면 알리고, 옮길 때까지 서늘하게</b><p>품목별 시간이 지나면 세 번 깜빡 + 알림음. 유자·레몬·딸기는 「냉장고로」(냉장 2~3주), 매실·생강·오미자는 「서늘한 곳으로」(그늘진 실온 3~4개월, 식약처<sup class="f">1</sup>). 옮기기 전까지 펠티어가 극을 바꿔 18~20°C로 식혀 둡니다. 통째 옮기면 뚜껑의 한 방향 밸브가 첫 한 달의 가스를 기계 없이 뺍니다.</p></div>
+      </div>
+    </div>
+    <div class="ph wide rv" style="margin-top:44px"><img src="img/photo_lineup_glow.jpg" alt="유자 · 매실 · 오미자 · 딸기 — 받침 빛이 청 색을 따라감 · 컨셉 이미지"><span class="mono">03 / 철마다 통 안의 색이 바뀝니다</span></div>
+    <h3 class="rv" style="margin-top:36px;font-size:20px">1년 달력 — 한 철 가전이 아니라 철마다 꺼내는 가전</h3>
+    <div class="cal rv">
+      <div><small>1월</small><i style="background:#f29a2e"></i><b>유자·레몬</b><span>끝물 유자</span></div><div><small>2월</small><i style="background:#d9b26a"></i><b>생강</b><span>감기철</span></div><div class="main"><small>3월</small><i style="background:#f06a8c"></i><b>딸기</b><span>딸기청 · 우유</span></div><div><small>4월</small><i style="background:#f06a8c"></i><b>딸기</b><span>끝물 · 값 쌀 때</span></div><div><small>5월</small><i style="background:#c44"></i><b>앵두·체리</b><span>소량</span></div><div class="main"><small>6월</small><i style="background:#8cb43c"></i><b>매실</b><span>씨 빼면 더 안전</span></div><div><small>7월</small><i style="background:#e7a24a"></i><b>살구·자두</b><span>묶음 2</span></div><div><small>8월</small><i style="background:#6fb36a"></i><b>청귤</b><span>풋귤청</span></div><div class="main"><small>9월</small><i style="background:#c41f3e"></i><b>오미자</b><span>물에 타기</span></div><div><small>10월</small><i style="background:#e8c15a"></i><b>모과</b><span>묶음 3</span></div><div class="main"><small>11월</small><i style="background:#f29a2e"></i><b>유자·생강</b><span>선물철 · 출시</span></div><div class="main"><small>12월</small><i style="background:#f29a2e"></i><b>유자·생강</b><span>김장 뒤</span></div>
+    </div>
+    <p class="note rv">제철은 국내 출하 시기 기준. 진한 칸이 주력 네 철. 모든 묶음에서 기계는 「녹이기까지」만 맡고, 매실·생강·오미자는 녹으면 통째 서늘한 곳으로 가서 긴 숙성을 그대로 합니다 — 기계 한 대로 매실철에 여러 통을 담글 수 있습니다.</p>
   </div>
 </section>
 
 <section id="design" style="background:var(--paper)">
   <div class="wrap">
-    <div class="rv">
-      <div class="kicker">디자인 · 시안 3개</div>
-      <h2>받침은 낮고 조용하게, 청 색이 주인공.</h2>
-      <p class="lead2">세 시안 모두 같은 규칙입니다 — 몸체는 <b>낮고 얇은 받침</b>뿐이고, 위에 올린 유리 통이 제품 전체처럼 보입니다. 앞에서 보이는 것은 <b>버튼 1개와 빛 1줄</b>, 팬 구멍·방열판·나사는 바닥과 뒤에 있습니다. 통이 앉는 자리 둘레에 <b>빛 테</b>가 있어 받침이 통을 아래에서 비춥니다. 아래 3D에서 시안·청 색·나무 안을 바꿔 볼 수 있습니다.</p>
+    <div class="kicker rv">05 · 디자인</div>
+    <h2 class="rv">받침은 낮고 조용하게, 청 색이 주인공.</h2>
+    <p class="lead2 rv">며칠 동안 조리대 위에 놓여 있고 철마다 다시 꺼내는 물건입니다. 숨기고 싶은 기계면 베란다로 가고, 그러면 쓰지 않게 됩니다. 그래서 <b>꺼내 두고 싶은 물건</b>이어야 합니다. 디자인 작업은 피그마 보드에서 합니다 — 시안·CMF·사용 장면을 거기서 고치고, 이 페이지의 그림은 그 보드를 가져옵니다.</p>
+    <a class="figma rv" href="https://www.figma.com/design/4p5ypveUPOybvLEnaq2gcE" target="_blank" rel="noopener">피그마 디자인 보드 열기 →</a>
+    <div class="three rv" style="margin-top:28px">
+      <div><div class="photo"><img src="img/a.png" alt="시안 A 항아리형"></div><div class="cap"><b>시안 A · 추천 — 항아리형 유리 통 + 흰 무광 받침</b><p>장독 곡선을 현대적으로 다듬은 통(배 Ø16 · 입 Ø12 · 16cm). 배가 나와 2L가 들어가도 키가 낮습니다. 받침 Ø19 × 5cm.</p><small>유리 금형 필요(바닥 돌기 포함)</small></div></div>
+      <div><div class="photo"><img src="img/b.png" alt="시안 B 원통"></div><div class="cap"><b>시안 B — 원통 유리 + 연회색 세라믹 질감 받침</b><p>가장 단순한 통(Ø14 × 16cm). 기성 내열 유리를 쓸 수 있다는 장점이 있었지만, 바닥 유리 돌기(젓개 핀)가 필요해져 기성 통을 못 씁니다.</p><small>사실상 제외</small></div></div>
+      <div><div class="photo"><img src="img/c.png" alt="시안 C 넓적"></div><div class="cap"><b>시안 C — 넓적한 낮은 유리 통 + 베이지 받침</b><p>넓고 낮은 통(Ø18 × 11cm). 상부장 아래 어디든 들어가고 설탕이 빨리 녹지만, 자리를 더 차지하고 「항아리」 느낌이 약합니다.</p><small>대안</small></div></div>
     </div>
-    <div class="three rv">
-      <div><div class="photo"><img src="img/a.png" alt="시안 A · 항아리형 유리 통 + 흰 무광 받침"></div><div class="cap"><small>시안 A · 추천</small><b>항아리형 유리 통 + 흰 무광 받침</b><p>장독·항아리 곡선을 현대적으로 다듬은 통(배 Ø16 · 입 Ø12 · 높이 16cm). 「청 담그기」라는 한국 살림 문화와 바로 이어지고, 배가 나와 2L가 들어가도 키가 낮습니다. 받침 Ø19 × 5cm, 서늘고·해동기와 같은 흰 무광.</p></div></div>
-      <div><div class="photo"><img src="img/b.png" alt="시안 B · 원통 유리 + 연회색 세라믹 질감 받침"></div><div class="cap"><small>시안 B</small><b>원통 유리 + 연회색 세라믹 질감 받침</b><p>가장 단순한 통(Ø14 × 16cm). 기성 내열 유리 규격이 있어 금형이 없을 수 있습니다. 받침은 18 × 18 × 5cm 네모에 연회색 무광 세라믹 질감 — 도자기 받침 느낌. 통이 곧아 눈금과 세척이 쉽습니다.</p></div></div>
-      <div><div class="photo"><img src="img/c.png" alt="시안 C · 넓적한 낮은 유리 통 + 따뜻한 베이지 받침"></div><div class="cap"><small>시안 C</small><b>넓적한 낮은 유리 통 + 따뜻한 베이지 받침</b><p>넓고 낮은 통(Ø18 × 11cm). 상부장 아래 어디든 들어가고, 과일을 얇게 펴 담아 설탕이 빨리 녹습니다. 받침 Ø21 × 4cm 베이지. 다만 넓은 만큼 자리를 더 차지하고 「항아리」 느낌은 약합니다.</p></div></div>
+    <div class="four rv">
+      <div><img src="img/c_yuja.png" alt="유자"><small>유자 · 주황</small></div><div><img src="img/c_maesil.png" alt="매실"><small>매실 · 초록</small></div><div><img src="img/c_omija.png" alt="오미자"><small>오미자 · 빨강</small></div><div><img src="img/c_strawberry.png" alt="딸기"><small>딸기 · 분홍</small></div>
     </div>
-    <div class="sum2 rv" style="margin-top:28px">
-      <div><div class="photo" style="margin:0 0 12px;border-radius:16px"><img src="img/wood.png" alt="나무 안 · 시안 A에 나무 손잡이와 받침 윗테 · 오미자청"></div><small>나무 안 · 시안 A + 뚜껑 손잡이·받침 윗테를 나무로</small><p style="font-size:15px;line-height:1.65">서늘고와 달리 이 제품은 나무색을 써도 됩니다. 뚜껑 손잡이와 받침 윗테 두 곳만 나무로 바꾼 안입니다. 항아리 + 나무면 「장독대」 느낌이 더 살고, 받침 윗테가 나무면 통이 앉은 자리가 또렷해집니다. 3D 아래 「나무」 단추로 켜고 끌 수 있습니다. 나무는 오일 마감 너도밤나무·호두나무 후보.</p></div>
-      <div><small>색 단추 · 청 색과 받침 빛이 같이 바뀜</small>
-        <div class="four"><div><img src="img/c_yuja.png" alt="유자"><small>유자 · 주황</small></div><div><img src="img/c_maesil.png" alt="매실"><small>매실 · 초록</small></div><div><img src="img/c_omija.png" alt="오미자"><small>오미자 · 빨강</small></div><div><img src="img/c_strawberry.png" alt="딸기"><small>딸기 · 분홍</small></div></div>
-        <p class="note">받침의 RGB LED 링이 품목 색으로 통을 비춥니다. 단추를 누르면 통 안 청 색과 받침 빛 색이 함께 바뀝니다. 사진·영상도 같은 식 — 받침은 늘 같고 철마다 통 안 색이 바뀝니다.</p></div>
+    <div class="two rv">
+      <div><h3>바꿀 수 없는 것 (기획이 정함)</h3><ul><li>유리 통 약 2L, 통에 구멍·축·실링 없음, 통째 들어 옮김</li><li>받침 높이 6cm 이하(모터·펠티어·팬을 눕혀 넣음) · 앞에는 버튼 1 + 빛 1줄</li><li>팬 슬롯·방열판·나사·어댑터 선은 바닥판·뒷면에만</li><li>받침 빛 = 품목 색 + 단계 표시(숨쉬기 · 고정 · 세 번 깜빡)</li><li>식품 접촉 부품은 유리·식품용 실리콘·PP만</li></ul></div>
+      <div><h3>디자이너가 정하는 것 (피그마에서)</h3><ul><li>통의 곡선과 입 지름(국자가 들어가고 과일을 담기 쉬운 선)</li><li>받침 윗테·뚜껑 손잡이의 나무 사용 여부(오일 마감 너도밤·호두)</li><li>빛 테의 폭·확산 재질 · 저녁 밝기</li><li>Hurom 각인 위치 · 서늘고·해동기와 한 가족으로 보이는 라운드 값</li><li>평가 기준: 「발효기·요거트 메이커로 보이면 실패」 — 인터뷰에서 가전으로 인식되는 비율 30% 이하</li></ul></div>
     </div>
-    <div class="sum3 rv" style="margin-top:28px">
-      <div><small>숨긴 것</small><ul>
-        <li><b>팬 구멍</b> — 바닥판 흡기 슬롯 + 뒷면 배기 슬롯. 앞·옆에서는 안 보입니다.</li>
-        <li><b>방열판·펠티어·모터·보드</b> — 모두 받침 안. 받침 높이 5cm에 눕혀 넣습니다.</li>
-        <li><b>나사</b> — 바닥판 쪽에서만. 윗면·옆면은 이음선 없는 사출 한 덩어리.</li></ul></div>
-      <div><small>앞에서 보이는 것</small><ul>
-        <li><b>버튼 1개</b> — 받침 앞 윗면. 짧게 누르면 품목(유자·레몬 → 매실 → 생강·오미자), 길게 누르면 끔.</li>
-        <li><b>빛 1줄</b> — 버튼 뒤 가는 선. 품목 색.</li>
-        <li><b>받침 빛</b> — 통 둘레 빛 테 + 통을 아래서 비추는 링. 숨 쉬듯 = 녹이는 중 · 은은히 고정 = 숙성 중 · 세 번 깜빡 + 알림음 = 완료. 표시등을 따로 두지 않고 <b>조명이 곧 표시</b>입니다.</li></ul></div>
-      <div><small>이 제품군의 규칙</small><ul>
-        <li><b>버튼 1개, 앱 없음.</b> 숙성 시간은 품목에 묶여 있어 따로 맞추지 않습니다.</li>
-        <li><b>통에 구멍 없음.</b> 젓개는 자석으로 돌리고, 통은 뚜껑째 들어 냉장고에 넣습니다.</li>
-        <li><b>펠티어·팬·어댑터·보드는 공용.</b> 서늘고·해동기와 같은 부품으로 개발비와 공급처를 나눕니다.</li></ul></div>
+  </div>
+</section>
+
+<section id="scene">
+  <div class="wrap">
+    <div class="kicker rv">쓰는 장면</div>
+    <h2 class="rv">6월 아침, 매실 2kg을 사 온 날.</h2>
+    <div class="photo rv" style="margin-top:24px;border-radius:24px;overflow:hidden"><img src="img/photo_kitchen.jpg" alt="아침 조리대에서 유리 통에 매실을 담그는 장면 · 컨셉 이미지" style="width:100%;display:block"></div>
+    <p class="note rv">컨셉 이미지(AI 생성 · 분위기와 비례 확인용). 씻어 말린 매실과 설탕을 통에 넣고 뚜껑을 얹은 뒤 버튼 한 번. 며칠 뒤 「서늘한 곳으로」 알림이 오면 통째 들어 옮기고, 기계는 다음 통을 받습니다.</p>
+  </div>
+</section>
+
+<section id="feasible" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">06 · 구조 성립 검토 — 진짜 되나</div>
+    <h2 class="rv">열 번 따져서 아홉은 되고, 하나는 바꿨습니다.</h2>
+    <p class="lead2 rv">그림이 예쁜 것과 기계가 도는 것은 다릅니다. 힘 · 열 · 물 · 유리 · 안전을 하나씩 숫자로 따졌습니다. 아래 값은 설계 계산이며 <b>1단계 벤치에서 실측으로 바꿉니다.</b> 결론 하나가 바뀌었습니다 — 여름 「식혀 두기 15°C」는 결로 때문에 <b>18~20°C(실온 −8~10°C)</b>로 조정합니다.</p>
+    <div class="duo rv" style="margin-top:24px"><div class="ph tilt" style="aspect-ratio:3/2"><img src="img/photo_cutaway.jpg" alt="과일청 메이커 단면 컨셉 이미지 · 유리 바닥 돌기 · 실리콘 교반 날개(자석 6개) · 하부 자석 디스크 · 슬림 기어모터 · 알루미늄 컵 · 펠티어 모듈"><span class="mono">04 / 단면 컨셉 (AI 이미지 · 비례 확인용)</span></div><div class="box" style="margin-top:0"><h3>신박한 점 하나 — 통에 구멍 없이 자석으로 젓습니다</h3><ul><li>유리 통 바닥에는 구멍·축·실링이 <b>없습니다.</b> 그래서 새지 않고, 통째 들어 냉장고로 갑니다.</li><li>바닥의 작은 유리 돌기에 <b>실리콘 젓개(자석 6개 봉입)</b>를 끼우고, 유리 너머 4mm 아래의 <b>자석 원판</b>이 돌립니다.</li><li>씻을 것은 뚜껑·유리 통·젓개 셋. 젓개는 뽑아서 식기세척기에 넣습니다. 축이 있는 블렌더·제빵기 통과 다른 점입니다.</li><li>힘이 모자라면(벤치 0.3 N·m 미달) 그때 바닥 축 직결로 바꿉니다 — 지금은 자석이 기본안입니다.</li></ul></div></div>
+    <div class="figure rv"><img src="img/section.svg" alt="통 바닥과 받침 가운데 단면도 · 유리 돌기 · 젓개 · 자석 원판 · 모터 · 펠티어 · 팬 · 결로 물받이"><small>단면 · 16개 부품의 자리와 치수(설계 목표). 「작대기」(유리 돌기 핀)는 속이 찬 유리이고, 그 위에 끼우는 젓개 안에 PP 캡슐로 막은 자석 6개가 들어 있습니다. 축척 아님.</small></div>
+    <table class="pl rv">
+      <tr><th class="l" style="width:17%">검토 항목</th><th class="l" style="width:38%">계산 · 근거</th><th class="l" style="width:33%">결론 · 설계 반영</th><th>판정</th></tr>
+      <tr><td class="l"><b>① 젓개를 돌리는 힘</b></td><td class="l">다 녹은 청(당도 60~65%, 150~500 mPa·s)을 Ø6.5cm 날개로 60rpm 이하로 저을 때 필요한 힘 &lt;0.01 N·m. 즙이 나와 설탕이 젖은 뒤 바닥층을 밀 때 0.05~0.15 N·m. 담근 첫날 마른 설탕 1kg + 과일 1kg이 누르면 0.1~0.5 N·m, 과일이 끼면 순간 1 N·m 이상.</td><td class="l">마른 설탕 더미는 젓지 않음(처음 4~6시간 데우기만). 설계 목표 0.5 N·m(최소 0.3)로 평상시의 3배 여유. 걸림은 모터 전류로 감지 → 멈춤 → 역회전.</td><td><span class="tag ok">성립</span></td></tr>
+      <tr><td class="l"><b>② 자석 커플링이 그 힘을 내나</b></td><td class="l">6극 N42SH 원판 Ø65 × 5mm 한 쌍, 간격 4mm(유리 3 + 틈 1)에서 전달 가능 토크 0.3~0.6 N·m <span class="tag est">추정</span>. 간격이 6mm로 벌어지면 절반 아래로 떨어짐 — 간격이 지배 변수. 알루미늄이 사이에 있으면 와전류로 손실 → 컵 가운데 Ø7cm를 뚫음.</td><td class="l">목표 범위 안이지만 여유가 작음. 자석 협력사(닝보)에 배열 설계·간격별 힘 계산을 요청하고 벤치에서 토크 렌치로 실측. 미달 시 <b>바닥 축 직결(제빵기식, 1~3 N·m)</b>로 전환 — 통 실링과 받침 +2cm를 감수.</td><td><span class="tag warn">조건부</span></td></tr>
+      <tr><td class="l"><b>③ 유리 너머로 데워지나</b></td><td class="l">청 1.6kg(비열 ≈2.5 kJ/kg·K)을 10°C 올리는 데 40 kJ. 펠티어 가열 순출력 30W면 약 25분 분량의 열. 유리 바닥 3mm(k≈1 W/m·K) Ø16 = 전도 약 10 W/K로 병목 아님. 병목은 청 내부 대류 → 젓개가 섞어 줌. 실온 22°C에서 28°C 유지 손실 약 4W.</td><td class="l">컵이 바닥 + 아래 옆면 3cm를 감싸 접촉 면적 확보. 2~3시간 안에 통 전체 25~30°C 도달 <span class="tag est">추정</span>. 1주차 벤치에서 온도 3점(바닥·중간·위) 기록.</td><td><span class="tag ok">성립</span></td></tr>
+      <tr><td class="l"><b>④ 여름에 식혀 두기가 되나 · 결로</b></td><td class="l">부엌 28°C에서 통을 15°C로 두면 유리 겉면이 <b>이슬점(서울 7~8월 22~24°C<sup class="f">16</sup>) 아래</b>로 내려가 물이 맺힙니다. 하루 수십 ml가 받침으로 흘러 컵·LED·보드로 갑니다. 냉각 부하 자체는 약 7~10W로 펠티어(냉각 COP 0.5~0.8)로 충분.</td><td class="l"><b>15°C를 포기합니다.</b> 식혀 두기 = 실온 −8~10°C, 최저 18°C(여름 부엌 28°C → 18~20°C). 효모는 20°C 아래에서 충분히 느려짐 — 식약처 「서늘한 곳」에 °C 기준은 없음<sup class="f">1</sup>. 그래도 생길 소량 결로는 컵 둘레 물받이 홈 + 바닥 배수 + 보드 컨포멀 코팅으로 받음.</td><td><span class="tag bad">바꿈</span></td></tr>
+      <tr><td class="l"><b>⑤ 유리 바닥 돌기(핀)를 만들 수 있나</b></td><td class="l">프레스 성형 유리(잼병·캔들 용기)는 바닥 엠보가 흔하고, 높이 8~12mm 돌기는 플런저 금형으로 가능. 문제는 뿌리의 응력 집중과 식기세척기·열충격(차가운 컵 ↔ 미지근한 컵).</td><td class="l">1안: 돌기 높이 8mm · 뿌리 R3 이상 · 붕규산 또는 강화 소다석회. 2안(대안): 돌기 대신 바닥 가운데 얕은 돔(3~4mm) + 젓개 아래 오목 + 자석 인력으로 중심 잡기 — 금형이 쉬움. 유리 공장 2곳에 두 안 모두 샘플 요청.</td><td><span class="tag warn">조건부</span></td></tr>
+      <tr><td class="l"><b>⑥ 바닥 날개가 위까지 섞나</b></td><td class="l">날개는 바닥 시럽만 돌립니다. 녹은 설탕물은 무거워 아래 머물고 위에는 과일과 묽은 즙이 남을 수 있음 — 뜬 과일 곰팡이가 남는 길.</td><td class="l">날개 3장에 각도를 주어 위로 미는 흐름(축류)을 만들고, 벤치에서 염료로 순환을 확인. 안 되면 축 높이 5cm의 2단 날개 또는 「하루 두 번 30초 빠른 회전」 모드 추가.</td><td><span class="tag warn">조건부</span></td></tr>
+      <tr><td class="l"><b>⑦ 가스를 밸브가 빼나</b></td><td class="l">매실청 첫 1개월 발효 가스는 하루 수백 ml 수준 <span class="tag est">추정</span>. 실리콘 우산 밸브(열림 압력 1~3 kPa)는 분당 수 L를 통과시킴. 뚜껑은 얹어 누르는 식이라 밸브가 막혀도 터지지 않음.</td><td class="l">밸브 1개로 충분. 밸브에 청이 튀어 굳지 않게 뚜껑 안쪽에 방울 받이 턱. 2~3주차 벤치에서 일반 뚜껑(주 1회 열기)과 비교.</td><td><span class="tag ok">성립</span></td></tr>
+      <tr><td class="l"><b>⑧ 자석이 열·물·입을 견디나</b></td><td class="l">N42SH 최고 사용 온도 150°C — 식기세척기 70°C와 녹이기 30°C에 여유. 자석은 PP로 융착해 막고 식품용 실리콘(LSR)으로 한 번 더 덮음. 젓개 지름 6.5cm는 삼킴 시험 원통(약 3.2cm)에 들어가지 않음.</td><td class="l">깨져도 조각이 밖으로 나오지 않는 이중 봉입. 젓개는 제품 색으로 눈에 띄게. 설명서에 「국자로 뜰 때 젓개는 핀에 남는다」 표기.</td><td><span class="tag ok">성립</span></td></tr>
+      <tr><td class="l"><b>⑨ 받침 6cm 안에 다 들어가나</b></td><td class="l">납작 기어드 모터(두께 ≤20mm) + 구동 원판(6mm) + 백요크(1mm)가 가운데 27mm. 펠티어 40×40×4 + 방열판 20mm + 팬 10mm를 눕혀 뒤쪽. 보드 1.6mm. 어댑터는 외장.</td><td class="l">받침 높이 5~6cm 성립. 바닥 직결로 바꾸면 7~8cm.</td><td><span class="tag ok">성립</span></td></tr>
+      <tr><td class="l"><b>⑩ 전력 · 소음</b></td><td class="l">펠티어 36W(12V 3A) + 팬 2W + 모터 3W(간헐) + LED 2W → 최대 43W → 12V 4A(48W) 어댑터. 팬은 저속(≤1,500rpm) 25 dB(A) 안팎, 모터는 30분에 1~2분.</td><td class="l">서늘고·해동기와 같은 12V 어댑터 규격으로 묶음. 소음은 목업에서 실측.</td><td><span class="tag ok">성립</span></td></tr>
+    </table>
+    <div class="two rv">
+      <div><h3>이번 검토로 바뀐 것</h3><ul><li>식혀 두기 15~18°C → <b>18~20°C(실온 −8~10°C)</b>. 사양·작동·안전 칸을 모두 고쳤습니다.</li><li>컵 둘레 <b>물받이 홈 + 배수</b>, 보드 코팅 추가(결로 대비).</li><li>유리 바닥 「돌기」와 「얕은 돔」 <b>두 안을 병행</b>해 유리 공장 샘플로 결정.</li><li>젓개 날개에 각도(축류) · 벤치에 <b>염료 순환 시험</b> 추가.</li></ul></div>
+      <div><h3>벤치에서 꼭 재야 하는 숫자 4개</h3><ul><li>자석 커플링이 간격 4mm에서 미끄러지는 토크(목표 ≥0.3 N·m)</li><li>통 세 지점 온도가 25~30°C에 드는 시간(목표 ≤3시간)</li><li>28°C·습도 70% 방에서 18°C 유지 시 하루 결로량(목표 ≤10ml)</li><li>바닥 날개 작동 시 염료가 윗면까지 도는 시간(목표 ≤10분)</li></ul></div>
     </div>
+    <div class="box rv" style="margin-top:24px"><h3>구조 3D · 분해도 (아래로 스크롤하면 부품별로 분해됩니다)</h3><p class="note">3D는 구조 설명용 모형입니다. 치수는 실제 디자인과 다를 수 있습니다. 시안·청 색·나무 안을 단추로 바꿔 볼 수 있습니다.</p></div>
   </div>
 </section>
 
@@ -310,307 +529,426 @@ footer{padding:56px 0 72px;font-size:13px;color:var(--sub);border-top:1px solid 
 </section>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module" src="explode.js"></script>
-
-<section id="how">
-  <div class="wrap how">
-    <div class="rv">
-      <div class="kicker">작동</div>
-      <h2>넣고, 누르고, 알림 오면 냉장고로.</h2>
-      <div class="steps">
-        <div><i>1</i><div><b>과일과 설탕을 넣고 품목 버튼을 누릅니다</b><p>유리 통을 받침에 올리고 썬 과일과 설탕을 넣습니다(1회분 가정 과일 약 800g + 설탕 약 800g). 뚜껑을 얹고 버튼을 눌러 품목을 고릅니다 — <b>유자·레몬·딸기</b>(녹으면 냉장고로) → <b>매실</b>(녹으면 서늘한 곳으로) → <b>생강·오미자</b>(매실과 같이). 설탕은 과일과 <b>같은 무게</b>(1:1, 딸기는 0.7~1). 받침 빛이 품목 색으로 켜집니다.</p></div></div>
-        <div><i>2</i><div><b>젓개가 천천히 돌아 설탕을 녹입니다</b><p>통 바닥의 자석 젓개가 <b>30분마다 1~2분씩</b> 아주 천천히 돌며 바닥에 가라앉은 설탕을 들어 올려 녹인 설탕물을 위로 보냅니다. 과일이 으깨지지 않고 소리·전기도 적습니다. 즙이 아직 안 나와 젓개가 걸릴 수 있는 <b>처음 4~6시간은 데우기만 하다가</b> 시작하고, 걸리면 멈췄다 역회전한 뒤 자석을 다시 붙잡습니다. 젓개는 지름 6~7cm 날개로 바닥 핀에 끼워져 있어 청을 뜰 때 딸려 나오지 않습니다. 펠티어가 알루미늄 컵을 <b>미지근하게(25~30°C)</b> 데워 설탕이 빨리 녹게 합니다. 유자·레몬은 1~2일, 딸기는 하루 안쪽이면 다 녹을 것으로 봅니다. 받침 빛이 숨 쉬듯 천천히 밝아졌다 어두워집니다 = 녹이는 중.</p></div></div>
-        <div><i>3</i><div><b>다 녹으면 알리고, 옮길 때까지 서늘하게 둡니다</b><p>설탕이 다 녹으면 젓개가 멈추고 세 번 깜빡이며 알림음 — 유자·레몬·딸기는 <b>「냉장고로 옮기세요」</b>(냉장 2~3주 보관), 매실·생강·오미자는 <b>「서늘한 곳으로 옮기세요」</b>(그늘진 실온에서 3~4개월 그대로 재움). 옮기기 전까지는 펠티어가 극을 바꿔 컵을 <b>서늘하게(15~18°C)</b> 식혀 둡니다 · 받침 빛 고정. 통째 들어 옮기면 뚜껑도 함께 가므로, 담근 뒤 약 1개월 생기는 가스(식약처: 주 1회 뚜껑 열어 빼라)는 <b>한 방향 밸브</b>가 기계 없이 뺍니다. 기계는 비워져 다음 청을 받습니다.</p></div></div>
-      </div>
-      <div class="led"><span><i style="background:#f29a2e"></i>받침 빛 · 품목 색(유자 주황 · 매실 초록 · 오미자 빨강 · 딸기 분홍)</span><span><i style="background:#f0a050"></i>숨쉬기 · 녹이는 중</span><span><i style="background:#6aa8e8"></i>고정 · 다 녹음 · 옮길 때까지 서늘</span><span><i style="background:#3cab6e"></i>세 번 깜빡 + 알림음 · 완료</span><span><i style="background:#999"></i>빠른 깜빡임 · 통 없음 · 젓개 걸림 · 과열</span></div>
-    </div>
-    <div class="photo rv"><img src="img/stirrer.png" alt="과일청 메이커 젓개·구동부 확대 · 유리 돌기(핀)에 끼운 Ø6.5cm 날개 젓개 · 바닥 쪽 여러 극 자석 · 가운데 Ø7cm 뚫린 알루미늄 컵 · 유리 창 아래 구동 자석 원판과 납작 모터"><p class="note" style="margin:8px 4px 0">젓개·구동부(반쯤 분해) — 유리 통 바닥 가운데 유리 돌기(핀) · 핀에 끼운 Ø6.5cm 날개 3 · 바닥 쪽 여러 극 자석 원판(PP로 막고 실리콘으로 덮음) · 가운데 Ø7cm가 뚫린 알루미늄 컵 · 그 아래 구동 자석 원판 + 납작 모터(유리 3mm + 틈 1mm = 간격 4mm) · 펠티어·방열판·팬은 뒤쪽</p></div>
-    <div class="photo rv"><img src="img/explode.png" alt="과일청 메이커 분해도 · 뚜껑 · 유리 통(바닥 핀) · 핀 고정 젓개 · 가운데 뚫린 알루미늄 컵 · 빛 링 · 펠티어 · 방열판 · 팬 · 구동 자석 원판과 모터 · 보드 · 바닥판"><p class="note" style="margin:8px 4px 0">구조 3D · 분해도(시안 A) — 뚜껑(밸브) · 유리 통 2L(바닥 가운데 유리 돌기=핀) · 핀에 끼운 Ø6.5cm 젓개(여러 극 자석 봉입) · 가운데 Ø7cm 뚫린 알루미늄 컵 · 빛 링 · 펠티어 · 방열판 · 팬 · 구동 자석 원판 + 납작 모터(간격 4mm) · 제어 보드 · 버튼 · 바닥판 · 어댑터 · 부품 14개</p></div>
-  </div>
-</section>
-
-<section id="calendar" style="background:var(--paper)">
+<section id="spec">
   <div class="wrap">
-    <div class="rv">
-      <div class="kicker">1년 달력</div>
-      <h2>한 철 가전이 아니라, 철마다 꺼내는 가전입니다.</h2>
-      <p class="lead2">네 철 — 봄 딸기, 6월 매실, 9월 오미자, 겨울 유자·생강 — 에 사이사이 품목을 더했습니다. 진한 칸이 주력이고, 버튼 묶음 3개(유자·레몬·딸기 / 매실 / 생강·오미자)로 덮습니다. 모든 묶음에서 기계는 「녹이기까지」만 맡습니다. 묶음 1은 녹으면 바로 냉장고로 가서 기계 효과가 가장 크고, 묶음 2·3은 녹은 뒤 통째 서늘한 곳에서 긴 숙성을 그대로 합니다. 제철 기준은 국내 출하 시기(일반 상식 수준)입니다.</p>
+    <div class="kicker rv">04-B · 상세 사양 (설계 목표값 · 시제품 실측과 ODM 협의로 확정)</div>
+    <h2 class="rv">전원 · 열 · 구동 · 재질 · 안전 — 숫자로 적습니다.</h2>
+    <div class="two rv">
+      <div><h3>전기 · 전원</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">정격 입력(어댑터)</td><td class="l">AC 100~240V · 50/60Hz → DC 12V 4A(48W) · KC 안전 인증 어댑터 · 전원선 1.5m · 서늘고·해동기 공용 규격</td></tr>
+        <tr><td class="l">소비전력</td><td class="l">최대 43W(데우기·식히기 시작) · 녹이기 평균 15W · 식혀 두기 평균 8~12W · 대기 ≤0.5W <span class="tag est">추정</span></td></tr>
+        <tr><td class="l">펠티어</td><td class="l">TEC1-12706급 40×40×3.8mm 1장 · 12V 3A로 구동(정격의 절반, 효율 구간) · H브리지 극 전환 · 과열 차단 65°C(더운 면 NTC)</td></tr>
+        <tr><td class="l">구동 모터</td><td class="l">12V 납작 기어드 DC/BLDC · 출력 10~60rpm · 정격 0.6 N·m · 전류 감지로 걸림 판정(≥1.2A 2초) → 정지 → 역회전 3초 → 재시작</td></tr>
+        <tr><td class="l">자석 커플링</td><td class="l">6극 N42SH 원판 Ø65 × 5mm 한 쌍 + 철 백요크 1mm · 간격 4mm · 설계 전달 토크 ≥0.3 N·m(목표 0.5) · 최고 사용 온도 150°C</td></tr>
+        <tr><td class="l">센서 · 표시</td><td class="l">NTC 10kΩ 2개(컵 · 방열판) · 리드 스위치(통 감지) · 모터 전류 · RGB LED 링 12구 + 앞면 빛 1줄 · 부저 · 버튼 1(짧게 = 품목 · 길게 = 끔)</td></tr>
+        <tr><td class="l">제어</td><td class="l">8비트 MCU · 품목 묶음 3 × (데우기 온도 · 젓기 간격 · 완료 시간 · 식혀 두기 온도) 표 · 펌웨어 갱신 없음(앱 없음)</td></tr>
+      </table></div>
+      <div><h3>열 · 용량 · 재질 · 환경</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">온도 범위</td><td class="l">녹이기 25~30°C(품목별 고정) · 식혀 두기 실온 −8~10°C, 최저 18°C · 제어 정밀도 ±1.5°C(컵 기준) <span class="tag est">추정</span></td></tr>
+        <tr><td class="l">용량 · 크기 · 무게</td><td class="l">유리 통 총 2.0L · 유효 1.6L(과일 800g + 설탕 800g) · 시안 A 바깥 Ø19 × 23cm · 받침 5~6cm · 본체 약 1.1kg + 통 0.9kg + 뚜껑 0.15kg <span class="tag est">추정</span></td></tr>
+        <tr><td class="l">유리 통</td><td class="l">붕규산 3.3 또는 강화 소다석회(유리 공장 샘플로 결정) · 바닥 3mm · 바닥 가운데 돌기 8mm(대안: 얕은 돔) · 눈금 2줄 · 식기세척기 · 열탕 10분 · 열충격 ΔT 40°C 이상</td></tr>
+        <tr><td class="l">식품 접촉 부품</td><td class="l">유리 · 젓개 LSR 실리콘(자석은 PP 융착 캡슐 안) · 뚜껑 PP + 실리콘 패킹 + 실리콘 우산 밸브(열림 1~3 kPa) · 모두 식약처 기구·용기 기준 용출 시험<sup class="f">14</sup></td></tr>
+        <tr><td class="l">본체 재질</td><td class="l">받침 ABS 또는 PC/ABS 무광 · 알루미늄 컵 A1050 2mm 경질 아노다이징 · 빛 테 유백 PC · 바닥판 PP + 고무발 4</td></tr>
+        <tr><td class="l">소음 · 환경</td><td class="l">≤30 dB(A) 1m(팬 저속) · 사용 환경 10~35°C · 습도 ≤80% · 결로 물받이 홈 + 배수 · 보드 컨포멀 코팅</td></tr>
+        <tr><td class="l">안전 · 인증 · 보증</td><td class="l">통 없으면 정지 · 걸림 정지 · 과열 차단 · 젓개 Ø6.5cm(삼킴 원통 미통과) · KC 전자파 적합등록 + 어댑터 KC 안전 + 식품용 기구 기준<sup class="f">13,14</sup> · 보증 1년(유리 파손 제외)</td></tr>
+      </table></div>
     </div>
-    <div class="cal rv">
-      <div><small>1월</small><i style="background:#f29a2e"></i><b>유자 · 레몬</b><span>겨울 끝물 유자, 레몬은 사철</span></div>
-      <div><small>2월</small><i style="background:#d8b06a"></i><b>생강</b><span>저장 생강 · 감기철</span></div>
-      <div class="main"><small>3월</small><i style="background:#f06a8c"></i><b>딸기</b><span>봄 딸기청 · 우유에 타기</span></div>
-      <div class="main"><small>4월</small><i style="background:#f06a8c"></i><b>딸기</b><span>끝물 딸기 · 값 쌀 때</span></div>
-      <div><small>5월</small><i style="background:#d94a6a"></i><b>앵두 · 체리</b><span>소량 · 묶음 1 버튼</span></div>
-      <div class="main"><small>6월</small><i style="background:#8cb43c"></i><b>매실</b><span>청매실 · 씨 빼면 더 안전</span></div>
-      <div><small>7월</small><i style="background:#f0a050"></i><b>살구 · 자두</b><span>묶음 2 버튼</span></div>
-      <div><small>8월</small><i style="background:#9ec24a"></i><b>청귤</b><span>풋귤청 · 묶음 1 버튼</span></div>
-      <div class="main"><small>9월</small><i style="background:#c41f3e"></i><b>오미자</b><span>가을 오미자청 · 물에 타기</span></div>
-      <div><small>10월</small><i style="background:#e8c15a"></i><b>모과</b><span>모과청 · 묶음 3 버튼</span></div>
-      <div class="main"><small>11월</small><i style="background:#f29a2e"></i><b>유자 · 생강</b><span>유자청 · 생강청 · 선물철</span></div>
-      <div class="main"><small>12월</small><i style="background:#f29a2e"></i><b>유자 · 생강</b><span>유자차 · 생강차 · 김장 뒤</span></div>
-    </div>
-    <div class="sum3 rv" style="margin-top:28px">
-      <div><small>버튼 묶음 1 · 유자·레몬·딸기 (녹으면 끝)</small><p>껍질째 썰거나 통째 설탕과 섞는 품목. 설탕 무게 1:1(딸기 0.7~1). 25~30°C에서 젓개가 돌아 1~2일(딸기는 하루 안쪽)에 다 녹으면 완료 알림 → 냉장고에서 2~3주 보관. 유자·레몬·딸기·청귤·라임·앵두가 여기 묶입니다. 기계 효과가 가장 큰 묶음입니다.</p></div>
-      <div><small>버튼 묶음 2 · 매실 (녹으면 서늘한 곳으로)</small><p>단단한 과일이라 설탕이 며칠 걸려 녹습니다. 다 녹으면 바로 「서늘한 곳으로」 알림 → 통째(밸브 뚜껑째) 옮겨 그늘진 실온에서 전체 3~4개월 그대로 재움 (식약처). 첫 1개월 가스는 뚜껑 밸브가 뺍니다. 기계 한 대로 매실철에 여러 통을 담글 수 있습니다. <b>시간을 줄이지 않습니다</b> — 씨의 시안화합물은 시간이 줄여 줍니다. 「씨 뺀 매실 권장」(약 95% 감소)을 설명서와 통 라벨에 안내합니다. 매실·살구·자두가 여기 묶입니다.</p></div>
-      <div><small>버튼 묶음 3 · 생강·오미자 (녹이기까지)</small><p>생강은 채 썰어 설탕에 재고, 오미자는 열매째 설탕에 묻어 서늘하게 둡니다(뜨거우면 떫어짐). 설탕 1:1. 매실과 같이 「긴 숙성」 품목으로 보고, 기계는 녹이기까지만 맡고 통째 서늘한 곳으로 보냅니다. 모과도 여기. 두 품목을 한 묶음으로 둘 수 있는지는 1단계 실험으로 확인.</p></div>
-    </div>
+    <p class="note rv">모든 값은 설계 목표치입니다. 1단계 벤치(토크 · 온도 · 결로 · 순환)와 ODM 견적에서 실측·확정합니다.</p>
   </div>
 </section>
 
-<section id="why">
+<section id="market" style="background:var(--paper)">
   <div class="wrap">
-    <div class="rv">
-      <div class="kicker">문제</div>
-      <h2>청은 쉬운 음식인데, 집에서는 자주 실패합니다.</h2>
-      <p class="lead">레시피는 「과일 1 : 설탕 1(무게), 가라앉은 설탕을 수시로 저어 녹이고, 그늘진 실온에 두기」가 전부입니다 (식약처). 그런데 「수시로 저어 주기」를 100일 동안 하는 것과, 「뚜껑을 자주 열지 않으면서 가스는 빼는 것」을 사람이 지키는 게 어렵습니다.</p>
+    <div class="kicker rv">07 · 시장 · 고객</div>
+    <h2 class="rv">인구가 아니라 「담그는 행동」으로 셉니다.</h2>
+    <p class="lead2 rv">수제청 시장을 따로 잰 공신력 있는 숫자는 없습니다<sup class="f">11</sup>. 그래서 두 길로 추정하고, 1단계 설문(N≥300)으로 바꿔 넣습니다. 지금 숫자는 <b>모두 설문 전 가정</b>입니다.</p>
+    <div class="two rv">
+      <div><h3>길 1 · 담그는 가구에서</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">국내 가구</td><td>약 2,200만<sup class="f">17</sup></td></tr>
+        <tr><td class="l">× 1년에 한 번 이상 청을 담그는 가구 <span class="tag est">가정 10%</span></td><td>220만</td></tr>
+        <tr><td class="l">× 실패 경험 또는 「귀찮아서 안 함」 <span class="tag est">가정 40%</span></td><td>88만</td></tr>
+        <tr><td class="l">× 18.9만 원에 구매 의향 상위(Top-2) <span class="tag est">가정 15%</span></td><td>13만 가구</td></tr>
+        <tr class="sum"><td class="l">3년 누적 목표 3.6만 대 = 이 중</td><td>약 27%</td></tr>
+      </table><p class="note" style="margin-top:8px">27%는 높습니다. 설문에서 「담그는 가구 비율」이 10% 아래로 나오면 목표를 낮추고, 선물·홈카페 수요는 따로 셉니다.</p></div>
+      <div><h3>길 2 · 원액기 보유 고객에서</h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">국내 원액기 활성 보유 가구 <span class="tag est">가정 150만</span></td><td>150만</td></tr>
+        <tr><td class="l">× 철마다 과일을 상자로 사고 청도 담그는 비율 <span class="tag est">가정 25%</span></td><td>37만</td></tr>
+        <tr><td class="l">× 자사몰·CRM으로 닿아 사는 비율 <span class="tag est">가정 10%</span></td><td>3.7만</td></tr>
+        <tr class="sum"><td class="l">3년 누적 목표</td><td>3.6만 대</td></tr>
+      </table><p class="note" style="margin-top:8px">두 길이 비슷한 자리에서 만납니다. 첫해 6천 대는 원액기 CRM(자사몰 회원)만으로 닿을 수 있는 크기로 잡았습니다.</p></div>
     </div>
-    <div class="trio rv">
-      <div><small>설탕</small><strong>바닥에 가라앉아 굳음</strong><p>설탕이 녹기 전에 바닥에 층으로 굳습니다. 레시피 대부분이 「가라앉은 설탕을 저어 녹이기」를 100일 동안 수시로 하라고 하는데 며칠 지나면 잊습니다. 안 녹은 설탕은 청이 끝나도 바닥에 남습니다.</p></div>
-      <div><small>곰팡이</small><strong>뜬 과일에 핌</strong><p>과일이 위로 떠서 공기에 닿은 부분에 곰팡이가 핍니다. 뚜껑을 자주 열수록 더 피어서 「윗면을 설탕으로 덮거나 섞어 두라」는 팁이 흔합니다. 잠기게 하려면 매일 눌러 주거나 저어 줘야 합니다.</p></div>
-      <div><small>온도</small><strong>더우면 술이 됨</strong><p>여름 부엌에서 담그면 발효가 빨라 톡 쏘는 맛과 알코올이 생깁니다. 담근 뒤 약 1개월은 가스가 생겨 식약처도 「완전히 잠그지 말고 주 1회 뚜껑을 열어 가스를 빼라」고 합니다 — 열면 곰팡이, 안 열면 가스. 「서늘한 데」도 요즘 집에는 없습니다.</p></div>
-      <div class="on"><small>과일청 메이커</small><strong>저어 주기 + 온도 지키기를 기계가</strong><p>통에 넣고 품목 버튼을 누르면 끝입니다. 젓개가 천천히 돌아 설탕을 빨리·고르게 녹이고 과일을 잠기게 하고, 펠티어가 녹이기·식혀 두기 온도를 지키고, 뚜껑 한 방향 밸브가 뚜껑을 열지 않고도 첫 한 달 가스를 뺍니다. 다 되면 알립니다.</p></div>
-    </div>
-    <div class="fill rv"><small>시장과 경쟁 제품</small><ul>
-      <li><b>청 전용 가전은 국내·일본 모두 없습니다</b> — 빈자리입니다.</li>
-      <li><b>가까운 제품:</b> 일본 BRUNO 발효 메이커(25~80°C · 1~48시간 설정, 청 모드 없음) · 아이리스오야마 요거트 메이커 약 3,900엔 · 국내 청국장 발효기 8L 약 22만 원 — 모두 「온도 유지」만 되고 젓기·가스 빼기·완료 알림이 없습니다.</li>
-      <li><b>완제품 비교:</b> 홍쌍리 매실청 420ml × 2병 29,000원(100ml당 약 3,450원).</li>
-      <li><b>시장 크기:</b> 수제청만 따로 잰 공신력 있는 숫자는 <b>없습니다</b>. 넓게는 과채음료 소매 6,635억 원(2019, 2012~19 연 5% 감소), 아시아·태평양 잼·스프레드 20.6억 달러(2024) → 26.9억 달러(2029, 연 5.5%)가 있지만 직접 시장이 아닙니다. 이 문서는 「원데이 클래스가 성행하는 취미 시장」으로만 적고, 크기는 설문의 「담그는 집 비율」로 봅니다.</li></ul></div>
-  </div>
-</section>
-
-<section class="statement">
-  <div class="wrap rv">
-    <h2>녹이는 며칠만 맡기면, 나머지는 냉장고와 서늘한 곳, 그리고 뚜껑 밸브가 합니다.</h2>
-    <div class="scale">
-      <div><b>분</b><span>과일 썰어 설탕과 넣기 · 품목 버튼 한 번</span></div>
-      <div class="mid"><b>1~2일 ~ 며칠</b><span>녹이기(젓개 30분마다 1~2분 + 25~30°C) · 유자·레몬·딸기 1~2일, 매실·생강·오미자 며칠 → 알림 → 옮길 때까지 15~18°C</span></div>
-      <div><b>달</b><span>유자·레몬·딸기는 냉장 2~3주 · 매실·생강·오미자는 서늘한 곳에서 3~4개월 그대로, 첫 1개월 가스는 뚜껑 밸브가</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="compare">
-  <div class="wrap">
-    <div class="rv">
-      <div class="kicker">원리 · 왜 저어 주고 왜 온도를 지키나</div>
-      <h2>설탕물에 잠기면 안 상하고, 서늘하면 술이 안 됩니다.</h2>
-      <p class="lead2">청이 오래 가는 이유는 <b>설탕 농도</b>입니다. 설탕이 과일 무게만큼 들어가 녹으면 물을 붙잡아 미생물이 자라기 어렵습니다. 그래서 중요한 것은 두 가지뿐입니다 — ① 설탕이 <b>다 녹아</b> 과일이 <b>설탕물에 잠겨</b> 있을 것, ② 효모가 활발해지지 않게 <b>서늘할 것</b>. 안 녹은 설탕이 바닥에 있고 과일이 공기 중에 떠 있는 첫 며칠이 가장 위험한 때이고, 과일청 메이커는 바로 그 며칠을 맡고, 그 뒤 첫 한 달의 가스는 통째 따라가는 밸브 뚜껑이 뺍니다. 그 뒤의 긴 숙성(매실 3~4개월)은 기계가 줄이지 않습니다 — 매실 씨의 시안화합물은 시간이 줄여 주기 때문입니다 (식약처).</p>
-    </div>
+    <h3 class="rv" style="margin-top:36px;font-size:20px">경쟁 · 대체재 — 가장 센 경쟁자는 빈 유리병입니다</h3>
     <table class="cmp rv">
-      <tr><th>방식</th><th>저어 주기</th><th>온도</th><th>걸림돌</th><th>이 제품</th></tr>
-      <tr><td>유리병에 담가 두기</td><td>사람이 매일(잊음)</td><td>부엌 실온(여름엔 더움)</td><td>설탕 굳음 · 뜬 과일 곰팡이 · 여름엔 술 됨</td><td>지금 방법</td></tr>
-      <tr><td>요거트 메이커·발효기<br><small>BRUNO 25~80°C · 1~48h / 청국장 발효기 8L 약 22만 원</small></td><td>안 저음</td><td>따뜻하게만(발효용) · 청 모드 없음</td><td>설탕은 그대로 가라앉음 · 가스 못 뺌 · 완료 알림 없음</td><td>안 맞음</td></tr>
-      <tr><td>가열 교반 냄비</td><td>저음(빠르게)</td><td>뜨겁게(끓임)</td><td>익혀서 잼이 됨 · 생과일 향 사라짐</td><td>안 씀</td></tr>
-      <tr class="pick"><td>과일청 메이커</td><td><b>천천히 · 자동</b><br>녹이기 땐 자주, 숙성 땐 가끔</td><td><b>펠티어</b> · 녹이기 25~30°C → 식혀 두기 15~18°C</td><td>펠티어·모터·유리 통이 들어감 · 온도는 1주차 실험(25/30/35°C)으로 확정</td><td><b>이 제품</b></td></tr>
+      <tr><th>대체재</th><th>가격</th><th>저어 주기</th><th>온도</th><th>가스 · 완료 알림</th><th>우리와의 거리</th></tr>
+      <tr><td>유리 밀폐병 2~3L(락앤락 등)</td><td>1~2만 원</td><td>사람이</td><td>부엌 실온</td><td>사람이 열어 뺌 · 없음</td><td>지금 방법 · 「실패해 본 사람」이 우리 고객</td></tr>
+      <tr><td>요거트 메이커(다나와 상위)<sup class="f">9</sup></td><td>0.9~9만 원</td><td>없음</td><td>따뜻하게만(40°C 안팎)</td><td>없음</td><td>온도만 · 청 모드 없음</td></tr>
+      <tr><td>BRUNO 발효 메이커(일본)<sup class="f">8</sup></td><td>약 1만 엔대</td><td>없음</td><td>25~80°C · 1~48h</td><td>없음</td><td>가장 가까운 「온도 가전」 · 젓기 없음</td></tr>
+      <tr><td>청국장 발효기 8L(국내)<sup class="f">10</sup></td><td>약 22만 원</td><td>없음</td><td>따뜻하게</td><td>없음</td><td>가격대 참고 · 용도 다름</td></tr>
+      <tr><td>시판 청 · 홍쌍리 매실청 840ml<sup class="f">4</sup></td><td>29,000원</td><td colspan="3">완제품 · 100ml당 약 3,450원 — 집에서 담그면 500원 안팎 <span class="tag est">추정</span></td><td>「사 먹기」 대체 · 2L 10번이면 본체 값</td></tr>
+      <tr class="pick"><td>과일청 메이커</td><td>18.9만 원(목표)</td><td>자동 · 천천히</td><td>25~30 → 18~20°C</td><td>밸브 뚜껑 · 알림</td><td>청 전용은 국내·일본에 없음</td></tr>
     </table>
-    <div class="sum3 rv" style="margin-top:28px">
-      <div><small>천천히 젓는 이유</small><p>빨리 저으면 과일이 뭉개져 탁해지고 거품이 납니다. 필요한 건 바닥 설탕을 들어 올리고 뜬 과일을 뒤집는 것뿐이라, 분당 몇 바퀴면 됩니다. 녹이기 단계엔 자주, 숙성 단계엔 하루 몇 번만. 느린 만큼 모터가 작고 조용합니다.</p></div>
-      <div><small>펠티어 하나로 데우고 식히기</small><p>펠티어는 전류 방향을 바꾸면 더운 면과 찬 면이 바뀝니다. 녹이기 단계엔 컵을 미지근하게(설탕이 빨리 녹음), 숙성 단계엔 서늘하게(효모가 느려짐). 서늘고·해동기와 같은 펠티어·방열판·팬을 그대로 씁니다. 녹이기 25~30°C(높이면 향이 날고 발효 위험), 식혀 두기 15~18°C(식약처 「서늘한 곳」, 정확한 °C 기준은 없음) — 1주차 실험으로 확정합니다.</p></div>
-      <div><small>완료 판단</small><p><b>품목별 정해진 시간</b>으로 끝냅니다(묶음 1: 녹이기 1~2일 / 묶음 2·3: 며칠). 설탕이 다 녹았는지는 젓개 저항(모터 전류)이 떨어지는 것으로 보조 판단할 수 있는데, 이건 2차 기능 후보입니다. 센서는 NTC 1개만.</p></div>
-    </div>
-    <div class="rv" style="margin-top:28px">
-      <small style="display:block;margin-bottom:8px;color:var(--sub)">걸림돌과 답</small>
-      <table class="risk"><tr><th>걸림돌</th><th>답</th></tr>
-        <tr><td>끈적한 청과 설탕층에 젓개가 안 돈다 · 자석은 미끄러진다</td><td>다 녹은 청(당도 60~65%)은 끈적해도 느린 날개를 돌리는 데 드는 힘이 아주 작아 문제가 아님. 어려운 때는 <b>담근 첫날</b>로, 바닥에 쌓인 설탕 1kg 위를 과일 1kg이 누르고 있어 실험실용 자석 막대(수 mN·m)로는 못 돎. 그래서 ① 막대 대신 <b>지름 6~7cm 날개 + 여러 극 희토류 자석 원판</b>으로 붙잡는 힘을 수십 배로 키우고(목표 0.5 N·m 이상) ② 유리 바닥과 컵을 얇게 해 자석 사이 간격을 줄이고 ③ 과일 먼저·설탕은 위에 담도록 안내해 바닥층을 얇게 만들고 ④ 25~30°C로 데워 설탕을 빨리 녹이고 ⑤ 즙이 나오기 전 처음 4~6시간은 데우기만 하다 시작하고, 걸리면 역회전 후 다시 붙잡음. 위쪽 과일까지는 못 섞고 바닥 시럽만 돌리지만, 사람이 젓는 이유도 바닥 설탕이라 목적에 맞음. 그래도 모자라면 바닥 직결 구동으로 바꿈. 필요한 힘과 낼 수 있는 힘은 1단계 벤치에서 측정</td></tr>
-        <tr><td>유리 통은 열이 잘 안 통한다</td><td>통 바닥·아래 옆면이 <b>알루미늄 컵</b>에 닿고, 펠티어가 컵을 데우거나 식힘. 설탕물은 젓개가 돌려 온도가 고르게 됨. 유리 두께·컵 접촉은 실험으로</td></tr>
-        <tr><td>숙성 중 가스가 차서 뚜껑이 들린다</td><td>뚜껑 가운데 <b>한 방향 밸브</b>. 가스는 나가고 공기는 안 들어옴. 뚜껑은 얹어 누르는 식이라 터지지 않음</td></tr>
-        <tr><td>품목마다 온도·시간이 다르다</td><td>버튼 1개로 <b>3가지 품목 묶음</b>만. 온도는 두 값(25~30 / 15~18°C), 시간은 두 틀(1~2일 / 며칠)로 단순화 · 1단계 실험으로 확인</td></tr>
-        <tr><td>매실을 기계로 빨리 끝내면 위험하다</td><td>매실 모드는 <b>시간을 줄이지 않음</b>. 녹이기만 하고 「서늘한 곳으로」 알림, 가스는 밸브 뚜껑이. 일본식 「데워서 2~3주」·「밥솥 반나절」 방법은 한국 매실청(씨 독성·100일)과 다르므로 쓰지 않음</td></tr>
-        <tr><td>2L가 맞는 양인가</td><td>과일 800g + 설탕 800g ≈ 1.6L에 20% 여유. 설문에서 「한 번에 얼마나 담그는지」 확인</td></tr></table>
-    </div>
-    <div class="verdict rv">
-      <h3>결론 — 「저어 주기」와 「온도」만 기계가 맡아도 집 청의 실패는 거의 사라집니다</h3>
-      <p>가열도, 압력도, 앱도 없습니다. 유리 통 하나, 느린 자석 젓개 하나, 펠티어 한 장입니다. 그래서 서늘고·해동기와 같은 부품으로 만들 수 있고, 통만 들어 냉장고로 옮기면 됩니다. 온도(25~30 / 15~18°C)와 시간(1~2일 / 며칠), 젓개 간격(30분마다 1~2분)은 실험 전 목표치이고, 토크와 함께 <b>1단계 벤치 실험</b>으로 먼저 확인합니다.</p>
-      <ul><li>젓개가 과일 덩어리를 밀어 올리지 못하면 → 날개를 키우거나 간헐 역회전 제어</li><li>유리를 통해 온도가 충분히 안 바뀌면 → 컵 접촉 면적을 늘리거나(옆면 컵 높이 ↑) 유리 통 바닥을 평평·얇게</li><li>품목 3묶음으로 안 덮이면 → 버튼 묶음을 바꾸되 버튼은 1개 유지</li></ul>
+    <div class="two rv">
+      <div><h3>고객 4묶음과 지금의 행동</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">고객</th><th class="l">지금 겪는 불편</th><th class="l">지금 하는 방법</th><th class="l">바뀌는 것</th></tr>
+        <tr><td class="l">철마다 담그는 집</td><td class="l">설탕 굳음 · 곰팡이 · 여름 발효</td><td class="l">유리병 + 매일 젓기 + 베란다</td><td class="l">넣고 누르면 끝</td></tr>
+        <tr><td class="l">해 보고 싶은 집</td><td class="l">방법 모름 · 실패 두려움</td><td class="l">시판 청·시럽</td><td class="l">품목 버튼이 방법을 대신</td></tr>
+        <tr><td class="l">선물하는 집</td><td class="l">한 번에 많이 담가야 함</td><td class="l">시판 유자차 선물</td><td class="l">2L씩 철마다 · 병에 나눠</td></tr>
+        <tr><td class="l">원액기 사용자</td><td class="l">끝물·짜고 남은 과일</td><td class="l">버리거나 잼</td><td class="l">청으로 · 주스에 타기</td></tr>
+      </table></div>
+      <div><h3>사지 않을 이유와 답</h3><ul>
+        <li><b>「유리병이면 되지」</b> — 맞습니다. 그래서 1단계 설문 첫 질문이 「실패해 본 적 있나」입니다. 실패+포기 비율이 20% 아래면 중단합니다.</li>
+        <li><b>「1년에 몇 번 쓰려고」</b> — 주력 네 철 + 사이 품목이면 두 달에 한 번. 안 쓸 때 통은 보관 통, 받침은 서랍에.</li>
+        <li><b>「18.9만은 비싸다」</b> — 시판 청 2L 10번 값입니다. 가격 감도는 설문에서 Van Westendorp(4문항)로 잽니다.</li>
+        <li><b>「매실은 그래도 100일」</b> — 맞습니다. 안전 때문에 줄이지 않습니다. 손이 가는 며칠과 가스 한 달만 맡습니다.</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
-<section id="spec" style="background:var(--paper)">
+<section id="strategy">
   <div class="wrap">
-    <div class="rv">
-      <div class="kicker">사양 (온도·시간은 1단계 실험으로 확정)</div>
-      <h2>통 하나, 젓개 하나, 펠티어 한 장, 버튼 하나.</h2>
+    <div class="kicker rv">07-B · 전략 분석 — SWOT · STP · 4P</div>
+    <h2 class="rv">강점은 과일 브랜드와 공용 부품, 약점은 「유리병이면 되지」입니다.</h2>
+    <div class="swot rv">
+      <div class="s"><small>S · 강점</small><ul><li>과일을 다루는 브랜드 — 원액기 고객이 철마다 과일을 상자로 삼</li><li>펠티어 · 어댑터 · 보드를 서늘고 · 해동기와 공용 → 개발비 · 단가 유리</li><li>느리게 · 세게 돌리는 구동과 식품 접촉 설계 경험(원액기)</li><li>자사몰 · CRM 보유 → 홈쇼핑 없이 첫해 6천 대 가능</li></ul></div>
+      <div class="w"><small>W · 약점</small><ul><li>가장 센 경쟁자가 1~2만 원 유리병 — 가치 설명이 필요</li><li>「설탕 가전」 이미지가 건강 브랜드와 어긋나 보일 수 있음</li><li>계절 상품 — 비수기 재고와 생산 평준화 과제</li><li>유리 금형 · 자석 커플링은 사내 첫 경험</li></ul></div>
+      <div class="o"><small>O · 기회</small><ul><li>청 전용 가전이 국내 · 일본에 없음 — 첫 진입자 자리</li><li>홈카페 · 원데이 클래스 · 선물 수요(유자 · 생강)</li><li>식약처가 「씨 뺀 매실 · 올리고당 대체」를 권고 → 「안전하게 · 덜 달게」 메시지의 공적 근거</li><li>통 추가 판매 · 레시피 콘텐츠로 반복 접점</li></ul></div>
+      <div class="t"><small>T · 위협</small><ul><li>중국 저가 「자석 교반 발효기」가 1년 안에 따라 나올 수 있음 → 특허(제어 방법 · 구조)와 브랜드로 방어</li><li>설탕 섭취 우려 보도 반복</li><li>관세 · 환율 변동(원가 1만 원 = 3년 이익 3.6억)</li><li>유리 파손 · 곰팡이 민원 같은 식품 안전 이슈</li></ul></div>
     </div>
-    <div class="spec rv">
-      <div><b>약 2L</b><span>유리 통 · 시안 A 항아리 배 Ø16 × 16cm · 1회분 과일 약 800g + 설탕 약 800g</span></div>
-      <div><b>Ø19 × 23cm</b><span>바깥 크기 · 3D 가정(시안 A · 받침 5 + 통 16 + 뚜껑 2) · 확정은 시안 선택 뒤</span></div>
-      <div><b>25~30°C</b><span>녹이기 · 설탕이 빨리 녹되 향·발효를 지키는 상한</span></div>
-      <div><b>15~18°C</b><span>다 녹은 뒤 옮길 때까지 서늘 유지 · 식약처 「서늘한 곳」에 맞춤</span></div>
-      <div><b>1+1</b><span>품목 버튼 1개 + 빛 1줄 · 받침 빛이 단계 표시 · 표시창·앱·블루투스 없음</span></div>
-      <div><b>3묶음</b><span>유자·레몬·딸기 1~2일 → 냉장 / 매실 · 생강·오미자 며칠 → 서늘한 곳</span></div>
-      <div><b>3개</b><span>씻는 부품 · 뚜껑 · 유리 통 · 젓개 (통·젓개 식기세척기)</span></div>
-      <div><b>표기 없음</b><span>판매가 · 원가 · 개발비 — 근거 숫자가 나오기 전엔 적지 않음 · ODM 견적 때 서늘고·해동기와 묶어 받음</span></div>
+    <div class="two rv">
+      <div><h3>STP</h3><ul>
+        <li><b>세분화:</b> ① 철마다 담그는 집(실패 경험) ② 해 보고 싶은 집 ③ 선물하는 집 ④ 원액기 사용자 ⑤ 홈카페 · 1인 가구(소량 · 보기 좋음)</li>
+        <li><b>타깃:</b> 1차 = ①+④(원액기 CRM으로 닿음 · 실패 경험이 있어 가치 설명이 짧음) · 2차 = ③ 선물철 · 3차 = ⑤</li>
+        <li><b>포지셔닝:</b> 「실패 없는 수제청 — 넣고, 누르고, 알림 오면 냉장고로.」 발효기(온도만)와 유리병(사람이 다) 사이의 빈 칸. 가격은 요거트 메이커 위 · 원액기 아래.</li>
+      </ul></div>
+      <div><h3>4P</h3><ul>
+        <li><b>Product:</b> 본체(18.9만) + 유리 통 · 밸브 뚜껑 세트(3.9만) + 시즌 레시피 카드. 시안 A, 색은 흰 하나 · 통 안 청이 색.</li>
+        <li><b>Price:</b> 출시가 18.9만 · 프로모션 하한 16.9만 · 통 세트 묶음 21.9만. 가격 감도는 Van Westendorp로 확인.</li>
+        <li><b>Place:</b> 자사몰 50% · 온라인몰 40% · 선물 시즌 백화점 팝업 10%. 홈쇼핑은 2년차 선택(수수료 35%).</li>
+        <li><b>Promotion:</b> 철마다 캠페인(11월 유자 → 3월 딸기 → 6월 매실) · 원액기 고객 선공개 · 「올해 유자청은 실패 없이」 · 사용 영상(30초) · 리뷰 「설탕 다 녹았다」 수집.</li>
+      </ul></div>
     </div>
-    <table class="spect rv">
-      <tr><th colspan="2">기본</th></tr>
-      <tr><td>제품명</td><td>휴롬 과일청 메이커 (가칭) · 이름은 미정</td></tr>
-      <tr><td>크기 · 무게</td><td><b>확정 전</b> — 3D 가정: 시안 A 받침 Ø19 × 5cm + 통 16cm + 뚜껑 2cm = 높이 약 23cm / 시안 B 18 × 18 × 23cm / 시안 C Ø21 × 17cm. 조건: 상부장 아래(보통 50~60cm)에 여유 있게 · 받침만 서랍에 들어갈 것</td></tr>
-      <tr><td>유리 통</td><td>식품용 유리 · A 항아리형 배 Ø16 · 입 Ø12 · 16cm / B 원통 Ø14 × 16cm / C 넓적 Ø18 × 11cm(모두 약 2L) · 바닥 평평·얇게(열 전달) · <b>바닥에 구멍 없음</b> · 눈금 2줄(과일 · 설탕) · 손잡이 없음 · 식기세척기 가능 · <b>열탕 소독 가능</b>(끓는 물 약 10분 — 식약처·기사 권고에 맞춤) · 뚜껑째 냉장고에</td></tr>
-      <tr><td>닿는 부품 모두 식품용</td><td>청·가스에 닿는 부품은 전부 식품 접촉 등급 — 유리 통 · 젓개: 식품용 실리콘(LSR) + 자석은 PP로 막고 그 위를 실리콘으로 덮어 이중 봉입(깨져도 조각이 나오지 않음) · 뚜껑: PP + 실리콘 패킹 + 실리콘 밸브 · 산(과일산)과 설탕에 견딜 것</td></tr>
-      <tr><td>겉모습 · 색상</td><td>낮은 받침(A 흰 무광 / B 연회색 세라믹 질감 / C 베이지) + 「Hurom」 · 투명 유리 통 · 흰 뚜껑 · 나무 안: 뚜껑 손잡이·받침 윗테 · 앞에는 버튼 1 + 빛 1줄 · 팬 구멍·나사는 바닥·뒤 · 서늘고·해동기·펄프 도크와 같은 문법(모서리 작게 굴린 무광)</td></tr>
-      <tr><th colspan="2">녹이기 · 알림 · 옮기기</th></tr>
-      <tr><td>품목 버튼</td><td>버튼 1개 짧게 누를 때마다 <b>유자·레몬 → 매실 → 생강·오미자</b> 순환 · 받침 빛 색으로 표시 · 길게 누르면 끔 · 품목별 온도·시간은 보드에 고정 — 묶음 1: 25~30°C 1~2일 → 알림(냉장고로) / 묶음 2·3: 25~30°C 며칠 → 알림(서늘한 곳으로) · 알림 뒤 옮길 때까지 15~18°C · 「씨 뺀 매실 권장」은 설명서·통 라벨에 표기</td></tr>
-      <tr><td>녹이기</td><td>젓개 <b>30분마다 1~2분</b> 천천히 · 즙이 나오기 전 처음 4~6시간은 데우기만 · 걸리면 멈췄다 다시 붙잡기 · 다 녹으면 멈춤 · 펠티어 데우기 → 컵 <b>미지근 25~30°C</b> · 설탕이 다 녹을 때까지 — 유자·레몬 1~2일 · 딸기 1일 안쪽 · 매실·생강·오미자는 더 걺 · 받침 빛 숨쉬기</td></tr>
-      <tr><td>다 녹은 뒤</td><td>젓개 멈춤 · 펠티어 식히기 → 컵 <b>서늘 15~18°C</b>로 옮길 때까지 유지 · 받침 빛 고정 · 통째 옮긴 뒤 담근 날부터 약 1개월 생기는 가스는 뚜껑 한 방향 밸브가 기계 없이 뺌 [식약처 「약 1개월 가스 발생 · 주 1회 열어 빼기」]</td></tr>
-      <tr><td>완료</td><td>품목별 시간이 지나면 알림음 + 받침 빛 세 번 깜빡 — 묶음 1 「냉장고로 옮기세요」(냉장 2~3주 보관) · 묶음 2·3 「서늘한 곳으로 옮기세요」 · 옮길 때까지 서늘 유지 · 통째 또는 병에 나눔</td></tr>
-      <tr><th colspan="2">구조 · 전기</th></tr>
-      <tr><td>젓개 · 구동 (자석 방식)</td><td>통 바닥 가운데 핀에 끼우는 <b>지름 6~7cm 날개형 젓개</b>(제자리에서만 돌고 떠다니지 않음 · 국자·입에 들어가지 않는 크기 · 뽑아서 씻음 · 통에 구멍·축 없음) · 날개 안에 <b>여러 극으로 배열한 희토류 자석 원판</b>을 PP로 막고 식품용 실리콘으로 덮어 봉입 · 컵 바닥 가운데 아래의 구동 자석(코일식 또는 납작 모터 + 자석 원판)이 유리 너머로 돌림 · <b>설계 목표: 0.5 N·m 이상(최소 0.3 N·m) · 자석 사이 간격 4mm 안쪽</b> — 날개 아래 컵 가운데(Ø7cm)는 알루미늄을 빼 유리 바닥(가운데 약 3mm)만 두고, 냉각은 컵 둘레로 · 핀은 유리 통을 찍을 때 함께 만드는 바닥 돌기(구멍 아님)(실험실 자석 막대의 수십 배 · 담근 첫날 설탕층과 과일 무게를 밀 수 있는 값) · 자석은 식기세척기 70°C와 녹이기 가열에 견디는 <b>내열 등급</b> · <b>30분마다 1~2분</b> 아주 느리게 · <b>처음 4~6시간은 데우기만 하고 젓지 않음</b>(즙이 나와 설탕이 젖은 뒤 시작 — 마른 설탕 더미를 밀 일이 없게) · 걸리면 멈췄다 역회전 후 다시 붙잡기 · 다 녹으면 멈춤 · 통이 없으면 작동 안 함 · 벤치에서 힘이 모자라면 블렌더 통처럼 바닥에 밀봉 축을 두는 <b>바닥 직결 구동</b>으로 바꿈</td></tr>
-      <tr><td>온도</td><td>알루미늄 컵(통 바닥 + 아래 옆면 약 3cm 접촉) 바닥 뒤쪽에 <b>펠티어 1장</b>(서늘고·해동기와 같은 부품) · 극 전환으로 데우기·식히기 · 방열판 + 팬 · NTC 1개(컵)</td></tr>
-      <tr><td>빛</td><td>컵 바닥 <b>RGB LED 링</b> + 통 둘레 빛 테 — 품목 색으로 통을 아래서 비춤 · 단계는 빛의 숨쉬기/고정/깜빡임 · 앞면 <b>빛 1줄</b>(품목 색) · 밝기는 저녁에 낮춤(조도 센서 없이 시간대로)</td></tr>
-      <tr><td>바람</td><td>바닥판 흡기 슬롯 → 팬 → 방열판 → 뒷면 배기 슬롯 · 숙성 때 더운 바람, 녹이기 때 찬 바람이 뒤로 나감 · 앞·옆에 구멍 없음</td></tr>
-      <tr><td>뚜껑 · 밸브</td><td>흰 PP 뚜껑 + 실리콘 패킹 · 가운데 <b>한 방향 실리콘 밸브</b>(김 빠짐 구멍) · 얹어 누르는 식(돌려 잠그지 않음) · 손잡이(PP 또는 나무) · 떼어 씻음</td></tr>
-      <tr><td>센서 · 안전</td><td>NTC(컵) · 통 감지 자석 스위치(통 없으면 정지) · 모터 전류로 젓개 걸림 감지 · 펠티어 과열 차단</td></tr>
-      <tr><td>전원</td><td>12V 외장 어댑터(서늘고·해동기 공용 후보) · W는 <b>펠티어 선정 뒤</b> — 펠티어 1장 + 기어드 모터 + 팬 + LED</td></tr>
-      <tr><td>소음</td><td>식혀 두는 중 거실에 둘 수 있을 것(수치는 목업 측정 뒤) · 젓개가 느려 모터 소음 작음 · 팬이 주된 소음</td></tr>
-      <tr><th colspan="2">생산 · 인증</th></tr>
-      <tr><td>새 금형</td><td>받침 몸통 · 바닥판 · 뚜껑 · 젓개(실리콘) · 밸브 사출 + 유리 통(A·C는 유리 금형, B는 기성 규격 가능) + 알루미늄 컵 프레스(벌수는 시안 확정 뒤)</td></tr>
-      <tr><td>공유 부품</td><td>펠티어 · 방열판 · 팬 · 12V 어댑터 · 제어 보드 뼈대를 서늘고·해동기와 공용 · 새로 드는 것은 유리 통·젓개·뚜껑·느린 모터·LED 링</td></tr>
-      <tr><td>인증</td><td>어댑터 KC 안전 · 본체 KC 전자파 · 식품용 기구 기준(용출 시험): 유리 · 실리콘 · PP · 과일청의 Brix·수분활성도 식품공전 기준은 이번에 확인 못 함 → 인증 단계에서 확인</td></tr>
-    </table>
-    <p class="note" style="margin-top:12px">모든 수치는 목표치입니다. 시제품 실측과 ODM 협의로 확정합니다.</p>
+    <div class="box rv"><h3>경쟁 강도 한 줄 점검 (5 Forces)</h3><p class="note">신규 진입 위협 <b>높음</b>(중국 ODM이 쉽게 복제) · 대체재 <b>높음</b>(유리병 · 시판 청) · 구매자 교섭력 <b>중</b>(온라인몰 수수료) · 공급자 교섭력 <b>중</b>(유리 · 자석은 복수 공급처) · 기존 경쟁 <b>낮음</b>(전용 제품 없음). 결론: 먼저 내고, 제어 방법 특허와 브랜드 · 레시피 콘텐츠로 1년 선점 효과를 지킵니다.</p></div>
   </div>
 </section>
 
-<section id="safety">
+<section id="pricing">
   <div class="wrap">
-    <div class="rv">
-      <div class="kicker">위생 · 안전</div>
-      <h2>먹는 것을 며칠 두는 기계이니, 기준은 식품입니다.</h2>
-      <p class="lead2">청은 설탕 농도 덕에 비교적 안전한 음식이지만, 그 농도에 이르기 전 며칠과 「뜬 과일」이 위험합니다. 그래서 이 제품의 위생 기준은 <b>잠기게 하기 · 서늘하게 하기 · 가스 빼기 · 닿는 것은 식품용</b> 네 가지입니다. 기준 문서는 식약처 매실청 안내 — <b>무게 1:1 · 소독한 용기 · 그늘진 실온 3~4개월 · 첫 1개월 주 1회 가스 빼기</b>.</p>
+    <div class="kicker rv">08 · 가격 정책 · 제조처</div>
+    <h2 class="rv">14.9만 원은 남지 않습니다. 18.9만 원과 착륙 원가 7.0만 원이 성립선입니다.</h2>
+    <p class="lead2 rv">개발비만이 아니라 <b>FOB → 운임·관세 → 인증 → 유통 수수료 → AS·마케팅</b>까지 한 대에 얹히는 돈을 모두 적층했습니다. 환율 1,400원/$, 중국 ODM 완제품 기준. 숫자는 부품 시세와 유사 제품 경험치로 적산한 <span class="tag est">추정</span>이며 ODM 견적 3곳으로 바꿉니다.</p>
+    <div class="two rv">
+      <div><h3>원가 적층 · 1대 (원)</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">항목</th><th>현재 적산</th><th>설계 목표</th></tr>
+        <tr><td class="l">유리 통 2L(프레스 성형 · 바닥 돌기)</td><td>7,000</td><td>5,500</td></tr>
+        <tr><td class="l">뚜껑 PP + 패킹 + 우산 밸브</td><td>2,500</td><td>2,200</td></tr>
+        <tr><td class="l">젓개(LSR + PP 캡슐 + N42SH 6극)</td><td>4,500</td><td>3,800</td></tr>
+        <tr><td class="l">구동 원판 + 백요크 + 납작 기어드 모터</td><td>7,500</td><td>6,000</td></tr>
+        <tr><td class="l">펠티어 + 방열판 + 팬(서늘고·해동기 공용)</td><td>6,500</td><td>5,500</td></tr>
+        <tr><td class="l">알루미늄 컵(프레스 + 아노다이징)</td><td>3,500</td><td>3,000</td></tr>
+        <tr><td class="l">제어 보드(MCU · H브리지 · 드라이버 · 센서)</td><td>9,000</td><td>7,000</td></tr>
+        <tr><td class="l">RGB LED 링 + 빛 테</td><td>2,500</td><td>2,000</td></tr>
+        <tr><td class="l">받침 사출 2종 + 버튼 + 고무발</td><td>5,000</td><td>4,500</td></tr>
+        <tr><td class="l">12V 4A 어댑터(KC) + 전원선</td><td>7,000</td><td>6,000</td></tr>
+        <tr><td class="l">배선 · 나사 · 단열 · 라벨</td><td>1,500</td><td>1,500</td></tr>
+        <tr class="sum"><td class="l">BOM 소계</td><td>56,500</td><td>47,000</td></tr>
+        <tr><td class="l">조립 · 검사 · 포장(박스 · 완충 · 설명서)</td><td>8,000</td><td>7,000</td></tr>
+        <tr><td class="l">ODM 마진 10%</td><td>6,500</td><td>5,500</td></tr>
+        <tr class="sum"><td class="l">FOB(≈$51 / $43)</td><td>71,000</td><td>59,500</td></tr>
+        <tr><td class="l">해상 운임 · 보험 · 통관 · 내륙(대당 0.02㎥)</td><td>3,000</td><td>3,000</td></tr>
+        <tr><td class="l">관세 — HS 8509.80 기본 8% · 한중 FTA 원산지 충족 시 0%<sup class="f">12</sup></td><td>5,700</td><td>4,800 → 0</td></tr>
+        <tr class="sum"><td class="l">착륙 원가</td><td>79,700</td><td>67,300 (FTA 시 62,500)</td></tr>
+      </table></div>
+      <div><h3>판매가 시나리오 · 1대 (원, 부가세 제외 공급가 기준)</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">소비자가</th><th>14.9만</th><th>16.9만</th><th>18.9만 ★</th><th>19.9만</th></tr>
+        <tr><td class="l">공급가(÷1.1)</td><td>135,500</td><td>153,600</td><td>171,800</td><td>180,900</td></tr>
+        <tr><td class="l">− 착륙 원가(현재 79,700)</td><td>79,700</td><td>79,700</td><td>79,700</td><td>79,700</td></tr>
+        <tr><td class="l">− 국내 물류(택배 · 창고)</td><td>4,500</td><td>4,500</td><td>4,500</td><td>4,500</td></tr>
+        <tr><td class="l">− 유통 수수료 가중 17%*</td><td>23,000</td><td>26,100</td><td>29,200</td><td>30,800</td></tr>
+        <tr><td class="l">− AS · 불량 충당 3%</td><td>4,100</td><td>4,600</td><td>5,200</td><td>5,400</td></tr>
+        <tr><td class="l">− 마케팅 10%</td><td>13,600</td><td>15,400</td><td>17,200</td><td>18,100</td></tr>
+        <tr class="sum"><td class="l">대당 공헌이익(현재 원가)</td><td>10,600 (8%)</td><td>23,300 (15%)</td><td>36,000 (21%)</td><td>42,400 (23%)</td></tr>
+        <tr class="sum"><td class="l">대당 공헌이익(목표 원가 67,300)</td><td>23,000 (17%)</td><td>35,700 (23%)</td><td>48,400 (28%)</td><td>54,800 (30%)</td></tr>
+      </table><p class="note" style="margin-top:8px">* 자사몰 40%(PG 3% + 쿠폰 5%) · 온라인몰 45%(15~20%) · 홈쇼핑 15%(35% + 사은품)의 가중 평균. 홈쇼핑 비중이 40%로 오르면 수수료는 22%로 뛰고 대당 이익이 8천 원 줄어듭니다. 고정비(개발비 상각 · 인건비)는 09에서 뺍니다.</p>
+      <div class="box dark" style="margin-top:14px"><h3>가격 정책 제안</h3><ul><li><b>소비자가 18.9만 원</b>(출시가), 시즌 프로모션 하한 16.9만 원. 14.9만은 공헌이익 8%로 고정비를 못 덮습니다.</li><li><b>착륙 원가 목표 7.0만 원</b> — BOM 4.7만 + 조립 + FOB 마진 + 운임 + 관세. ODM 견적이 8.5만을 넘으면 원가 절감 안 없이 진행하지 않습니다(중단 기준).</li><li><b>유통은 자사몰 중심</b>(목표 50%) — 원액기 CRM이 있어 가능한 전략이며 홈쇼핑은 2년차 이후 선택.</li><li>통 추가 판매(유리 통 + 밸브 뚜껑 세트 3.9만 원 <span class="tag est">추정</span>) — 매실철에 여러 통을 담그는 집을 위한 반복 매출.</li></ul></div></div>
     </div>
+    <h3 class="rv" style="margin-top:36px;font-size:20px">인증 · 일회성 비용과 제조처</h3>
+    <div class="two rv">
+      <div><h3>일회성 비용 (만 원) <span class="tag est">추정</span></h3><table class="pl" style="margin-top:6px">
+        <tr><td class="l">금형 — 받침 몸통 · 바닥판 · 뚜껑 · 젓개(LSR) · 밸브 · 컵 프레스 · 유리 프레스 2세트 (중국 기준)</td><td>8,600</td></tr>
+        <tr><td class="l">설계 · 디자인 외주 — ID · 기구 · 회로/펌웨어</td><td>6,000</td></tr>
+        <tr><td class="l">KC 전자파 적합등록(시험 + 등록) · 사전 EMC 디버깅<sup class="f">13</sup></td><td>600</td></tr>
+        <tr><td class="l">KC 안전 — 어댑터는 인증품 구매(본체 DC 12V는 대상 여부 확인, 대상이면 +500)</td><td>0~500</td></tr>
+        <tr><td class="l">식품용 기구·용기 용출 시험 — 유리 · PP · 실리콘 3종<sup class="f">14</sup></td><td>450</td></tr>
+        <tr><td class="l">신뢰성 시험 — 식기세척기 500회 · 열충격 · 낙하 · 모터 수명 · 염료 순환</td><td>800</td></tr>
+        <tr><td class="l">시제품 · 목업 · 자석/유리 샘플 · 벤치</td><td>2,000</td></tr>
+        <tr><td class="l">특허 출원 2건(국내) + 선행 조사</td><td>800</td></tr>
+        <tr><td class="l">(수출 시 별도) CE LVD/EMC · FCC · LFGB/FDA 식품 접촉</td><td>1,500</td></tr>
+        <tr class="sum"><td class="l">개발비 합계(수출 인증 제외)</td><td>약 20,000 (범위 1.6~2.6억)</td></tr>
+      </table></div>
+      <div><h3>제조처 선택지</h3><table class="pl" style="margin-top:6px">
+        <tr><th class="l">안</th><th class="l">장점</th><th class="l">단점 · 조건</th></tr>
+        <tr class="sum"><td class="l">① 중국 ODM 완제품 ★<br><small style="font-weight:400">광둥 중산·포산 소형가전 클러스터 — 요거트 메이커·펠티어 와인셀러 ODM 경험 업체</small></td><td class="l">FOB 가장 낮음 · 펠티어·팬·보드 공급망이 현지 · 서늘고·해동기와 묶어 협상</td><td class="l">MOQ 3,000 · 리드 90~120일 · 품질 상주 검사 · 관세 8%(FTA 원산지 충족 시 0%)</td></tr>
+        <tr><td class="l">② 중국 부품 + 국내 조립(김해)</td><td class="l">소량·시즌 유연 · 「Assembled in Korea」 · 품질 통제</td><td class="l">원가 +8~12% · 유리·자석 수입 통관 2중</td></tr>
+        <tr><td class="l">③ 베트남 ODM</td><td class="l">한-베 FTA 관세 0% · 인건비</td><td class="l">소형가전 ODM 기반 약함 · 유리·자석은 결국 중국에서 들여옴</td></tr>
+        <tr><td class="l">부품 직구매</td><td class="l" colspan="2">유리 통: 중국 허베이·산둥 프레스 유리 공장(또는 국내 내열 유리) 직구매 후 ODM 지급 · 자석: 닝보 협력 가능 업체(열에 강한 등급 · 조립품) · 펠티어·어댑터: 서늘고·해동기 공용 품번</td></tr>
+      </table><p class="note" style="margin-top:8px">추천: ①을 기본으로 1차 로트 3,000~5,000대, 유자철(10월 선적) 기준. 견적 요청서 항목은 상세 사양(04-B)과 벤치 목표 숫자(06)를 그대로 씁니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="numbers" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">09 · 숫자 · 3년 손익 · 감도</div>
+    <h2 class="rv">승부처는 두 가지 — 착륙 원가와 유통 믹스.</h2>
+    <p class="lead2 rv">기본안(18.9만 원 · 착륙 원가 7.8 → 7.2 → 7.0만 원 · 자사몰 40%)으로 3년을 적었습니다. 단위 억 원, 부가세 제외. <span class="tag est">추정</span> — 설문·견적 뒤 다시 계산합니다.</p>
+    <table class="pl rv">
+      <tr><th class="l">연도 (출시 2027-11 기준 12개월 단위)</th><th>1년차</th><th>2년차</th><th>3년차</th><th>누적</th></tr>
+      <tr><td class="l">판매 대수</td><td>6,000</td><td>12,000</td><td>18,000</td><td>36,000</td></tr>
+      <tr><td class="l">매출(공급가 17.18만)</td><td>10.3</td><td>20.6</td><td>30.9</td><td>61.8</td></tr>
+      <tr><td class="l">− 착륙 원가(7.8 / 7.2 / 7.0만)</td><td>4.7</td><td>8.6</td><td>12.6</td><td>25.9</td></tr>
+      <tr><td class="l">− 국내 물류 · AS 충당</td><td>0.6</td><td>1.2</td><td>1.7</td><td>3.5</td></tr>
+      <tr><td class="l">− 유통 수수료(17%)</td><td>1.8</td><td>3.5</td><td>5.3</td><td>10.6</td></tr>
+      <tr><td class="l">− 마케팅(10% + 출시 고정 0.5)</td><td>1.5</td><td>2.1</td><td>3.1</td><td>6.7</td></tr>
+      <tr class="sum"><td class="l">공헌이익</td><td>1.7</td><td>5.2</td><td>8.2</td><td>15.1</td></tr>
+      <tr><td class="l">− 개발비 상각(2.0억 / 3년)</td><td>0.7</td><td>0.7</td><td>0.7</td><td>2.0</td></tr>
+      <tr><td class="l">− 운영 인건비(PM · 품질 1.5명)</td><td>1.2</td><td>1.2</td><td>1.2</td><td>3.6</td></tr>
+      <tr class="sum"><td class="l">영업이익</td><td>−0.2</td><td>3.3</td><td>6.3</td><td>9.5</td></tr>
+      <tr><td class="l">영업이익률</td><td>−2%</td><td>16%</td><td>20%</td><td>15%</td></tr>
+    </table>
+    <div class="two rv">
+      <div><h3>3년 매출 · 영업이익 (억 원)</h3><div class="chart">
+        <div><i class="rev" data-h="33"><b>10.3</b></i><i class="op" data-h="1"><b>−0.2</b></i><em>1년차</em></div>
+        <div><i class="rev" data-h="67"><b>20.6</b></i><i class="op" data-h="11"><b>3.3</b></i><em>2년차</em></div>
+        <div><i class="rev" data-h="100"><b>30.9</b></i><i class="op" data-h="20"><b>6.3</b></i><em>3년차</em></div>
+      </div><div class="legend"><span><i style="background:#15120f"></i>매출(공급가)</span><span><i style="background:#e98f1f"></i>영업이익</span></div></div>
+      <div><h3>손익분기 · 보수 시나리오</h3><ul>
+        <li><b>손익분기 약 5,600대</b>(개발비 2.0억 ÷ 대당 공헌이익 3.6만) — 1년차 안에 넘습니다.</li>
+        <li><b>보수 시나리오</b>(판매 50% · 프로모션가 16.9만 지속 · 원가 7.8만 유지): 3년 누적 영업이익 약 <b>−1.5억</b>. 즉 판매량이 절반이면 적자 — 1단계 설문의 구매 의향이 이 갈림길입니다.</li>
+        <li><b>낙관</b>(FTA 관세 0% · 자사몰 50%): 누적 +13억 안팎.</li>
+      </ul></div>
+      <div><h3>감도 — 3년 누적 영업이익(기준 9.5억)이 얼마나 움직이나</h3>
+        <div class="bars">
+          <div><span>착륙 원가 +1만 원</span><i data-w="38" class="neg"></i><em>−3.6억</em></div>
+          <div><span>판매가 −2만 원(16.9만)</span><i data-w="48" class="neg"></i><em>−4.6억</em></div>
+          <div><span>판매량 −30%</span><i data-w="48" class="neg"></i><em>−4.6억</em></div>
+          <div><span>홈쇼핑 비중 15 → 40%</span><i data-w="32" class="neg"></i><em>−3.0억</em></div>
+          <div><span>관세 8 → 0%(FTA)</span><i data-w="22" class="pos"></i><em>+2.1억</em></div>
+          <div><span>착륙 원가 목표 달성(−1.3만)</span><i data-w="49" class="pos"></i><em>+4.7억</em></div>
+        </div>
+        <p class="note" style="margin-top:8px">원가 1만 원이 3년 이익 3.6억을 움직입니다. 그래서 가격보다 먼저 <b>ODM 견적과 FTA 원산지</b>를 확인합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="wrap">
+    <div class="kicker rv">10 · 기술 · 특허 · 규제</div>
+    <h2 class="rv">새 기술은 없습니다. 조합이 새롭습니다 — 그래서 특허는 조합으로 냅니다.</h2>
     <div class="sum3 rv">
-      <div><small>곰팡이 · 발효</small><ul>
-        <li>젓개가 뜬 과일을 설탕물에 잠기게 하고, 녹이기 단계에서 설탕을 빨리 녹여 <b>농도가 오르는 시간을 줄입니다</b>.</li>
-        <li>녹인 뒤엔 서늘하게(15~18°C). 효모 발효가 느려져 알코올·가스가 적게 생깁니다.</li>
-        <li>가스는 뚜껑 밸브로 빠지고, 밖 공기·벌레·먼지는 들어오지 않습니다. 뚜껑은 얹어 누르는 식이라 가스가 차도 터지지 않습니다.</li></ul></div>
-      <div><small>씻기</small><ul>
-        <li>떼어 씻는 것 셋: 뚜껑(패킹·밸브 분리) · 유리 통(식기세척기 · 열탕 소독 10분) · 젓개(실리콘, 식기세척기).</li>
-        <li>유리 통에 구멍이 없어 <b>설탕물이 모터·펠티어 쪽으로 못 갑니다</b>. 컵은 닦기만 하면 됩니다.</li>
-        <li>설탕물이 컵에 흘렀을 때 끈적임이 남지 않게 컵은 매끈한 아노다이징, 모서리 둥글게.</li></ul></div>
-      <div><small>열 · 전기 · 유리</small><ul>
-        <li>펠티어 더운 면 과열 차단(NTC) · 겉면은 손이 닿아도 뜨겁지 않게.</li>
-        <li>유리 통은 차가운 컵과 미지근한 컵을 오가므로 <b>온도 차에 견디는 유리</b>. 떨어뜨림·금 간 통 사용 금지 안내.</li>
-        <li>젓개 자석은 실리콘에 봉입해 청에 닿지 않음 · 통이 없거나 걸리면 모터 정지.</li></ul></div>
-    </div>
-    <div class="fill"><small>위생·안전 기준 + 남은 확인</small><ul>
-      <li><b>식약처 매실청 안내:</b> 매실:설탕 = 무게 1:1 · 소독한 용기 · 그늘진 실온에서 3~4개월 · 담근 뒤 약 1개월은 가스가 생기니 완전히 잠그지 말고 주 1회 뚜껑을 열어 빼기 → 이 제품의 「1:1 눈금 2줄」·「한 방향 밸브」·「15~18°C 식혀 두기」의 근거.</li>
-      <li><b>매실 씨 독성(시안화합물):</b> 씨 뺀 매실 약 95% 감소 · 황매실 약 70% 감소 · 건더기 건진 뒤 숙성 약 22% 감소 · 서늘한 곳 6개월 이상 약 13% 추가 감소. 그래서 <b>매실 모드는 시간을 줄이지 않고</b>, 「씨 뺀 매실 권장」을 안내합니다. 「1년 두면 독이 다 없어진다」는 근거를 찾지 못해 적지 않습니다.</li>
-      <li><b>용기 소독:</b> 끓는 물 약 10분 열탕 소독 뒤 완전 건조 → 유리 통은 식기세척기·열탕 모두 되는 유리로.</li>
-      <li><b>남은 확인:</b> 과일청의 Brix·수분활성도 식품공전 기준(인증 단계) · 식품용 유리(붕규산/강화)·실리콘(LSR)·PP의 시험 항목 · 12V 펠티어 기기의 KC 안전 대상 여부(서늘고·해동기와 같은 판단) · 한 방향 밸브의 배출량이 매실 1개월 가스량을 덮는지(1단계 실험).</li></ul></div>
-  </div>
-</section>
-
-<section id="cost" style="background:var(--paper)">
-  <div class="wrap">
-    <div class="rv">
-      <div class="kicker">개발비와 소싱 · 금액은 적지 않음</div>
-      <h2>부품은 서늘고·해동기 것입니다. 새것은 유리 통과 젓개뿐입니다.</h2>
-      <p class="lead2">펠티어·방열판·팬·어댑터·보드는 서늘고·해동기와 같은 부품이고, 받침 사출은 그 제품군과 같은 공정입니다. 새로 설계하는 것은 <b>유리 통(시안에 따라 금형 또는 기성)</b>, <b>자석 젓개</b>, <b>밸브 뚜껑</b>, <b>희토류 자석 커플링과 느린 구동부</b>, <b>LED 링</b>입니다. 금액은 근거 숫자가 나오기 전엔 적지 않습니다(서늘고 때 목표가를 뺀 것과 같은 원칙). 개발비는 펠티어·팬·어댑터를 같이 쓰는 서늘고·해동기와 묶어 ODM 견적 때 받습니다.</p>
-    </div>
-    <div class="sum2 rv" style="margin-top:28px">
-      <div><small>개발비 · 항목 (금액은 ODM 견적 뒤)</small><ul>
-        <li><b>산업 디자인</b> — 시안 A/B/C 중 고른 뒤 받침·뚜껑·통 비례 다듬기, 서늘고·해동기와 한 가족으로</li>
-        <li><b>워킹 목업·시제품</b> — 기성 유리병 + 자석 교반기 + 펠티어 플레이트로 벤치 → 3D 프린팅 받침</li>
-        <li><b>금형</b> — 받침·바닥판·뚜껑 사출, 젓개·밸브 실리콘, 유리 통(A·C 유리 금형 / B 기성이면 없음), 알루미늄 컵 프레스</li>
-        <li><b>온도·구동·빛 모듈</b> — 기성 펠티어·방열판·팬(서늘고·해동기 공급처) + 희토류 자석 커플링·느린 구동부 + RGB LED 링</li>
-        <li><b>제어 보드·펌웨어</b> — 펠티어 극 전환(H브리지), 품목별 일정표, 젓개 걸림 감지, 빛 숨쉬기</li>
-        <li><b>식품 시험·인증</b> — 식품 접촉 소재(유리·실리콘·PP), KC</li></ul>
-      <p class="note">합계는 ODM 견적 뒤에 적습니다. 펄프 도크보다는 작고(분쇄부 없음) 해동기와 비슷할 것으로 봅니다. 항아리 유리 금형(시안 A)은 원통 기성 통(시안 B)보다 비쌉니다.</p></div>
-      <div><small>부품별 소싱처 · 초안 (ODM 조사 뒤 확정)</small><ul>
-        <li><b>완제품 ODM:</b> 「저어 주는 청 메이커」는 국내·일본에 없습니다. 가까운 것은 요거트 메이커·발효기(BRUNO · 아이리스오야마 · 국내 청국장 발효기)·소형 와인셀러(펠티어) ODM. 설계는 휴롬이 하고 부품을 모읍니다.</li>
-        <li><b>유리 통:</b> 내열 유리 용기 제조사(밀폐 용기·커피 서버 업체) · 항아리형은 유리 금형 가능한 곳 · 원통은 기성 Ø14 규격 우선</li>
-        <li><b>펠티어·방열판·팬·어댑터:</b> 서늘고·해동기와 같은 공급처</li>
-        <li><b>젓개·밸브·패킹:</b> 식품용 실리콘 사출 업체(주방 실리콘 용기 제조사) · 자석 봉입 가능 여부</li>
-        <li><b>자석·자석 커플링: 협력 가능 업체 있음</b> — 닝보 푸넝 희토류(宁波复能稀土新材料, 중국 닝보 · ISO9001 · IATF16949). 열에 강한 자석과 자석 조립품을 만들어 젓개 원판·구동 원판 커플링과 통 감지 자석을 맡길 수 있고, 자석 배열 설계와 간격별 힘 계산을 함께 받습니다.</li>
-        <li><b>느린 모터·코일 구동부:</b> 요거트 메이커·자석 교반기·수족관 펌프 모터 업체</li>
-        <li><b>나무 손잡이·윗테:</b> 오일 마감 원목 소품 업체(도마·손잡이) · 식품 접촉 안전 오일</li></ul></div>
-    </div>
-    <div class="fill rv"><small>부품 견적 요청서에 넣을 것 (초안)</small><ul>
-      <li>식품용 유리 통 약 2L(A 항아리 / B 원통 / C 넓적 — 시안 확정 뒤 하나) · 바닥 평평 · 눈금 2줄 · 식기세척기 · 온도 차 내성</li>
-      <li>자석 커플링: 간격 6mm에서 0.5 N·m 이상(내열 희토류 자석, 여러 극 원판) + 느린 구동부(코일식 또는 납작 기어드 모터) · 걸림 시 역회전 · 통 감지 스위치 · 미달 시 바닥 직결 구동 대안 견적</li>
-      <li>펠티어 1장(서늘고·해동기 공용 품번) + 방열판 + 팬 · H브리지 극 전환 · NTC 1 · RGB LED 링</li>
-      <li>실리콘 젓개(자석 봉입) · 한 방향 밸브 · 뚜껑 패킹 — 식품용 LSR, 산·당 내성</li>
-      <li>버튼 1·빛 1줄·부저 · 12V 어댑터(W는 펠티어 선정 뒤) · 금형 벌수·개발비·최소 주문량·샘플 일정·KC·식품 접촉 시험 경험</li></ul></div>
-  </div>
-</section>
-
-<section id="plan">
-  <div class="wrap">
-    <div class="rv">
-      <div class="kicker">제안 이유와 고객</div>
-      <h2>휴롬의 네 번째 「재료 준비 가전」, 그리고 첫 계절가전.</h2>
-      <p class="lead2">서늘고(보관) → 해동기(준비) → 펄프 도크(남은 것) 다음이 과일청 메이커(철마다 담그기)입니다. 셋과 부품을 나누고, 휴롬의 「과일」 이미지를 가장 직접적으로 씁니다.</p>
-    </div>
-    <div class="sum3 rv" style="margin-top:36px">
-      <div><small>왜 해야 하나 · 휴롬</small><ul>
-        <li><b>과일을 다루는 회사의 가전입니다.</b> 원액기 고객은 이미 철마다 과일을 상자로 삽니다. 짜고 남는 과일, 끝물 싼 과일이 청이 됩니다.</li>
-        <li><b>레시피가 이어집니다.</b> 원액기 즙 + 청, 청을 탄 주스, 펄프 가루 + 청으로 만드는 간식. 세 제품이 한 식탁에 섭니다.</li>
-        <li><b>개발이 싸집니다.</b> 펠티어·팬·어댑터·보드는 서늘고·해동기 것, 받침은 같은 사출 공정.</li>
-        <li><b>색다릅니다.</b> 청 전용 가전은 국내·일본에 없고, 발효기·요거트 메이커는 온도만 지킵니다. 수제청은 「원데이 클래스가 성행하는 취미 시장」이고, 크기 숫자는 없어 설문으로 봅니다.</li></ul></div>
-      <div><small>수요가 생기는 곳 · 상황</small><ul>
-        <li><b>철마다 청을 담그는 집:</b> 매실철·유자철에 상자로 사서 담그는, 이미 하는 사람들. 실패 경험(곰팡이·설탕 굳음)이 있는 사람이 핵심.</li>
-        <li><b>담가 보고 싶었지만 안 한 집:</b> 「귀찮다 · 실패할까 봐」가 이유. 버튼 한 번이면 시작합니다.</li>
-        <li><b>선물하는 집:</b> 겨울 유자청·생강청은 선물 수요가 큽니다. 통째 숙성해 병에 나눕니다.</li>
-        <li><b>아이 있는 집:</b> 시판 음료 대신 딸기청·청귤청 탄 물·우유.</li></ul></div>
-      <div><small>고객이 얻는 것</small><ul>
-        <li><b>실패하지 않습니다.</b> 설탕이 다 녹고, 곰팡이가 안 피고, 술이 안 됩니다.</li>
-        <li><b>손이 안 갑니다.</b> 넣고 누르고 알림 오면 냉장고. 매일 저어 주기와 「서늘한 데 찾기」가 없어집니다.</li>
-        <li><b>보기 좋습니다.</b> 조리대 위 유리 통에 철마다 다른 색 청이 비치고, 저녁엔 받침 빛이 비춥니다.</li></ul></div>
-    </div>
-    <div class="rv" style="margin-top:28px">
-      <small style="display:block;margin-bottom:8px;color:var(--sub)">고객 측면 분석 · 누가, 지금 어떻게, 무엇이 바뀌나</small>
-      <table class="risk"><tr><th>고객</th><th>지금 겪는 불편</th><th>지금 하는 방법</th><th>과일청 메이커가 바꾸는 것</th></tr>
-      <tr><td><b>철마다 담그는 집</b></td><td>설탕 굳음 · 곰팡이 · 여름 발효</td><td>유리병 + 매일 젓기 + 베란다</td><td>넣고 누르면 끝 · 실패 없음</td></tr>
-      <tr><td><b>해 보고 싶은 집</b></td><td>방법을 모르고 실패가 두려움</td><td>시판 청·시럽 구매</td><td>품목 버튼이 방법을 대신</td></tr>
-      <tr><td><b>선물하는 집</b></td><td>한 번에 많이 담가야 해서 부담</td><td>시판 유자차 선물</td><td>2L씩 철마다 · 병에 나눠 선물</td></tr>
-      <tr><td><b>원액기 사용자</b></td><td>끝물 과일·짜고 남은 과일 처리</td><td>버리거나 잼</td><td>청으로 · 주스에 타 먹기</td></tr></table>
-    </div>
-    <div class="sum2 rv" style="margin-top:28px">
-      <div><small>고객이 사지 않을 이유</small><ul>
-        <li><b>「유리병이면 되지」</b> — 맞습니다. 그래서 「실패해 본 사람」과 「해 보고 싶었지만 안 한 사람」이 몇 %인지 설문으로 먼저 봅니다. 20~30% 아래면 Stop.</li>
-        <li><b>「1년에 몇 번 쓰려고」</b> — 1년 달력으로 답합니다. 주력 다섯 철 + 사이 품목이면 두 달에 한 번. 쓰지 않을 때도 유리 통·받침 빛으로 조리대에 둘 수 있게.</li>
-        <li><b>「2L는 적다 / 많다」</b> — 설문에서 1회 양을 봅니다. 많으면 통만 큰 것(3L) 추가, 적으면 1L 통.</li>
-        <li><b>「자리를 차지한다」</b> — 받침 Ø19cm. 쓰지 않을 때 통은 식품 보관 통으로, 받침은 서랍에.</li>
-        <li><b>「매실은 그래도 100일이네」</b> — 맞습니다. 안전 때문에 줄이지 않습니다. 대신 100일 중 손이 가는 「저어 녹이기」 며칠을 기계가, 「가스 빼기」 한 달을 밸브 뚜껑이 맡고, 통째 서늘한 곳에 두면 됩니다. 유자·레몬·딸기는 1~2일에 끝납니다.</li></ul></div>
-      <div><small>고객에게 확인할 것 (설문 · 실험)</small><ul>
-        <li>청을 담그는 빈도와 품목, 1회 양(과일 kg), 실패 경험과 이유</li>
-        <li>「저어 주기 + 온도만 해 주면 사겠나」 · 「있으면 쓰겠다」 비율(가격 없이)</li>
-        <li>시안 A/B/C 중 선호 · 나무 손잡이 선호 · 받침 빛이 좋은지 거슬리는지(밤)</li>
-        <li>며칠~한 달 조리대 위에 두는 것이 괜찮은지(자리 · 소음 · 보기) · 품목 묶음 3개로 충분한지</li>
-        <li>실제 품목별 설탕 녹는 시간·곰팡이 발생·맛(1단계 실험)</li></ul>
-      <p class="note">위 고객 분석은 가설입니다. 설문과 실험 결과로 바로잡습니다.</p></div>
+      <div><small>모듈별 기술 · 선례</small><ul>
+        <li><b>자석 커플링 교반</b> — 실험실 자석 교반기 · 자석 구동 수족관 펌프 · 셀프 스터링 머그. 새로운 것은 다극 원판 + 유리 돌기 고정 + 간헐 역회전 제어.</li>
+        <li><b>펠티어 양방향</b> — 펠티어 와인셀러 · 화장품 냉장고 · 서늘고·해동기와 같은 모듈. 새로운 것은 품목별 데우기→식히기 시퀀스.</li>
+        <li><b>한 방향 밸브 뚜껑</b> — 김치통 · 커피 원두 봉투 밸브. 새로운 것은 「기계에서 나온 뒤 통째 숙성」 흐름.</li>
+      </ul></div>
+      <div><small>특허 — 출원 후보 3건 (특허팀 · KIPRIS 선행 확인 요청)</small><ul>
+        <li>① 바닥 돌기 유리 용기 + 봉입 자석 날개 + 외부 다극 구동 원판의 식품 교반 구조</li>
+        <li>② 「즙이 나올 때까지 데우기만 → 간헐 저속 교반 → 역회전 재포착」 제어 방법</li>
+        <li>③ 밸브 뚜껑째 이동하는 2단계(기계 → 서늘한 곳) 숙성 가이드와 품목 묶음 UI</li>
+        <li>선행 키워드: magnetic stirrer fermentation jar · 자석 교반 발효 용기 · self-stirring container · 과일청 제조 장치. 가까운 선례가 있으면 ②·③ 중심으로 좁힙니다.</li>
+      </ul></div>
+      <div><small>규제 · 표시</small><ul>
+        <li><b>전기</b> — 어댑터 KC 안전 인증품 · 본체 KC 전자파 적합등록(전파법)<sup class="f">13</sup> · DC 12V 본체의 전기용품안전관리법 대상 여부 확인.</li>
+        <li><b>식품</b> — 식약처 「기구 및 용기·포장의 기준 및 규격」 용출 시험(유리 · 합성수지 PP · 고무/실리콘)<sup class="f">14</sup> · 식품용 마크 표시.</li>
+        <li><b>안내 문구</b> — 씨 뺀 매실 권장(시안화합물 약 95% 감소)<sup class="f">1</sup> · 「숙성 기간을 줄이지 않는다」 · 자석 삼킴 주의 · 금 간 유리 사용 금지.</li>
+        <li><b>말하지 않을 것</b> — 건강 효능 · 「100일을 줄인다」 · 「곰팡이 0%」(검증 전).</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
-<section id="verify" style="background:var(--paper)">
+<section id="risk" style="background:var(--paper)">
   <div class="wrap">
-    <div class="rv">
-      <div class="kicker">검증 계획</div>
-      <h2>큰돈 쓰기 전에, 젓개와 온도부터 확인합니다.</h2>
-      <p class="lead2">서늘고·해동기·펄프 도크와 같은 순서입니다. 기성 부품으로 벤치를 만들어 「느린 젓개가 과일을 밀어 올리는지」와 「유리 너머로 온도가 맞는지」를 재고, 설문으로 「살 사람이 있는지」와 「어느 시안을 고르는지」를 봅니다.</p>
+    <div class="kicker rv">11 · 리스크 · 중단 기준</div>
+    <h2 class="rv">무엇이 나오면 접는지 미리 적습니다.</h2>
+    <table class="risk rv">
+      <tr><th>리스크</th><th>가능성</th><th>영향</th><th>대응</th><th>확인 방법 · 시점</th></tr>
+      <tr><td>자석 커플링 힘 부족(첫날 설탕층 · 과일 끼임)</td><td>중</td><td>상</td><td>데우기 선행 · 다극 원판 · 간격 4mm · 역회전 → 미달 시 바닥 축 직결</td><td>벤치 토크 렌치 실측 · 1주차</td></tr>
+      <tr><td>바닥 날개가 윗면까지 못 섞어 곰팡이 잔존</td><td>중</td><td>상</td><td>축류 날개 · 2단 날개 · 빠른 회전 모드</td><td>염료 순환 + 2주 곰팡이 대조 · 2~3주차</td></tr>
+      <tr><td>여름 결로로 받침 안 물 고임 · 보드 고장</td><td>상(15°C) → 하(18°C)</td><td>중</td><td>식혀 두기 18~20°C · 물받이 홈 · 배수 · 코팅</td><td>28°C/70% 챔버 24시간 · 목업</td></tr>
+      <tr><td>유리 돌기 응력 · 식기세척기 파손</td><td>중</td><td>중</td><td>뿌리 R3 · 붕규산 · 대안 얕은 돔</td><td>유리 샘플 열충격 · 세척 500회 · 4~6주차</td></tr>
+      <tr><td>ODM 착륙 원가 8.5만 초과</td><td>중</td><td>상</td><td>VE 항목(보드 · 모터 · 유리) · 공용 플랫폼 묶음 협상 · FTA</td><td>견적 3곳 · G1</td></tr>
+      <tr><td>구매 의향 낮음(「유리병이면 되지」)</td><td>중</td><td>상</td><td>타깃을 「실패 경험자」로 좁힘 · 통 추가 판매 · 선물 세트</td><td>설문 N≥300 · 2~3주차</td></tr>
+      <tr><td>설탕 이미지 · 「건강 브랜드와 안 맞다」</td><td>중</td><td>중</td><td>덜 달게 모드 · 씨 뺀 매실 · 효능 표현 금지</td><td>인터뷰 10가구 · 출시 메시지 테스트</td></tr>
+      <tr><td>자석 삼킴 · 유리 파손 사고</td><td>하</td><td>상</td><td>Ø6.5cm 봉입 젓개 · 핀 고정 · 금 간 유리 안내 · 보증 제외 명시</td><td>안전 검토 · 인증 단계</td></tr>
+      <tr><td>특허 선행 기술 존재</td><td>중</td><td>하</td><td>제어 방법(②)·UI(③) 중심 출원 · 디자인 등록 병행</td><td>KIPRIS · 특허팀 · 4주차</td></tr>
+    </table>
+    <div class="two rv">
+      <div class="box dark" style="margin-top:0"><h3>중단 기준 (하나라도 걸리면 G1에서 멈춥니다)</h3><ul>
+        <li>벤치 토크가 간격 4mm에서 <b>0.3 N·m 미만</b>이고, 바닥 직결로 바꿔도 받침이 7cm를 넘어 「낮은 받침」 디자인이 깨질 때</li>
+        <li>설문에서 「청을 담그는 가구」 중 실패·포기 경험이 <b>20% 미만</b>이거나 18.9만 원 구매 의향 Top-2가 <b>15% 미만</b>일 때</li>
+        <li>ODM 견적 착륙 원가가 <b>8.5만 원 초과</b>이고 1년 안에 7.5만 아래로 내릴 VE 항목이 없을 때</li>
+      </ul></div>
+      <div><h3>실패해도 남는 것</h3><ul><li>펠티어 양방향 모듈 · 12V 48W 어댑터 · 보드 뼈대 — 서늘고·해동기에 그대로 씀</li><li>자석 커플링 토크 데이터와 닝보 협력사 관계 — 다른 교반·착즙 보조 기구에 재사용</li><li>「청 담그는 가구」 설문 데이터 — 과일 가전 라인업 전체의 수요 근거</li></ul></div>
     </div>
+  </div>
+</section>
+
+<section id="validate">
+  <div class="wrap">
+    <div class="kicker rv">12 · 검증 · 일정 · 조직 · 출시</div>
+    <h2 class="rv">12주 · 약 1,500만 원으로 네 가지를 숫자로 확인합니다.</h2>
     <div class="gate rv">
-      <div><small>1단계 · 1~3주차</small><b>벤치 실험</b><p>기성 2L 유리병 + 실험실용 자석 교반기(느리게) + 펠티어 플레이트(와인셀러 부품)로 벤치. <b>1주차:</b> 레몬·유자(지금 철) 각 800g + 설탕 800g(1:1)을 네 병 — ① 손으로 하루 2번 젓기·실온 ② 자석 젓개 + 25°C ③ 자석 젓개 + 30°C ④ 자석 젓개 + 35°C — 로 나눠 「설탕이 다 녹는 시간」과 Brix(굴절당도계)를 재고, 향 변화·거품(발효)을 기록해 녹이기 온도를 확정. 젓개가 실제로 도는지(담근 첫날 설탕층 · 10°C 시럽 · 30분 간격 · 재붙잡기)와 <b>필요한 힘</b>(토크 렌치로 날개를 돌려 측정)을 같이 확인하고, 자석 원판 샘플이 유리 너머로 내는 힘과 비교. <b>2~3주차:</b> 녹은 병을 밸브 뚜껑째 실온 서늘한 곳에 두고 가스가 빠지는지, 곰팡이가 안 피는지 대조군(일반 뚜껑 · 주 1회 열기)과 비교. 생강 1병 추가.</p></div>
-      <div><small>2단계 · 2~3주차</small><b>고객 설문</b><p>원액기 사용자 + 청 담그기 경험자. 빈도·품목·1회 양·실패 이유, 「저어 주기 + 온도」에 대한 구매 의향(가격 없이 「있으면 쓰겠다」), 시안 A/B/C 선호, 2L 적정성, 조리대 며칠 수용도, 「매실은 그래도 100일」 수용도.</p></div>
-      <div><small>3단계 · 4~6주차</small><b>워킹 목업</b><p>3D 프린팅 받침 + 기성 유리 통 + 기어드 모터·자석 커플링 + 서늘고 펠티어 모듈 + LED 링으로 실제 비례의 목업. 매실(6월 전엔 냉동 매실로 대체)·오미자(건조 오미자) 묶음 확인. 젓개 토크·소음·유리 온도 차·저녁 빛 장면 사진.</p></div>
-      <div><small>Go 기준 4개</small><b>숫자로 판정</b><p>① 벤치에서 자석 젓개가 손 젓기보다 <b>2배 이상</b> 빨리 녹임 ② 2주 숙성 중 곰팡이 0건(대조군 대비) ③ 설문 「있으면 쓰겠다」 30% 이상 ④ 품목 묶음 3개로 설문 상위 품목의 80% 이상 덮음</p></div>
+      <div><small>1~3주차 · 벤치</small><b>힘 · 열 · 결로 · 순환</b><p>기성 2L 유리병 + 자석 원판 샘플(닝보) + 펠티어 플레이트. 레몬·유자 1:1 4병(손 젓기 / 25 / 30 / 35°C) 녹는 시간 · Brix · 토크 렌치 · 온도 3점 · 염료 순환 · 28°C 결로량. 약 450만 원.</p></div>
+      <div><small>2~3주차 · 설문 · 인터뷰</small><b>살 사람이 있나</b><p>원액기 자사몰 회원 + 패널 N≥300: 담그는 빈도·품목·1회 양 · 실패 경험 · 「저어 주기+온도」 구매 의향 · Van Westendorp 가격 · 시안 A/C 선호 · 조리대 며칠 수용. 심층 인터뷰 10가구. 약 550만 원.</p></div>
+      <div><small>4~6주차 · 워킹 목업</small><b>실제 비례로</b><p>3D 프린팅 받침 + 기성 유리 통 + 기어드 모터 · 자석 커플링 + 서늘고 펠티어 모듈 + LED 링. 매실(냉동) · 오미자(건조) 묶음 · 소음 · 저녁 빛 장면 촬영 · 유리 돌기/돔 샘플 2안. 약 500만 원.</p></div>
+      <div><small>7~12주차 · 정리 · G1</small><b>견적 · 특허 · 결정</b><p>ODM 3곳 견적(서늘고·해동기 묶음) · KIPRIS 선행 조사 · 설문 재채점 · 가격 정책 확정 · G1 보고.</p></div>
     </div>
-    <div class="fill rv"><small>다음 단계</small><ul>
-      <li>디자인 시안 확정(A/B/C · 나무) → 크기 확정 · 실사 이미지</li>
-      <li>ODM 후보(요거트 메이커 · 발효기 · 펠티어 와인셀러 · 유리 금형) · 서늘고·해동기와 묶은 견적 → 그때 원가·판매가·개발비</li>
-      <li>과일청 Brix·수분활성도 식품공전 기준 · KC 대상 여부 · 식품용 유리 종류</li>
-      <li>1주차 벤치 결과로 녹이기 온도(25/30/35°C) · 젓개 간격(30분마다 1~2분) · 매실 녹는 일수 확정 · 묶음 3(생강·오미자)이 한 묶음으로 되는지</li></ul></div>
-    <p class="note" style="margin-top:20px">출처: <a href="https://www.foodtoday.or.kr/news/article.html?no=205059">식약처 매실청 안내(푸드투데이)</a> · <a href="https://mfds.go.kr/brd/m_580/view.do?seq=166">식약처</a> · <a href="https://www.korea.kr/multi/visualNewsView.do?newsId=148929566">korea.kr 매실 씨</a> · <a href="https://v.daum.net/v/20240530135208715">곰팡이·열탕 소독</a> · <a href="https://news.kakaku.com/prdnews/cd=kaden/ctcd=2113/id=129392/">BRUNO 발효 메이커</a> · <a href="https://weathernews.jp/news/202506/180136/">일본 매실 시럽 2~3주·밥솥</a> · <a href="https://www.kurly.com/goods/5011696">홍쌍리 매실(컬리)</a> · <a href="https://www.kais99.org/jkais/journal/Vol22No07/vol22no07p21.pdf">과채음료 시장 논문</a> · <a href="https://www.tridge.com/stories/rapid-growth-in-the-asian-jams-and-spreads-market-driven-by-rising-incomes-and-online">아시아 잼 시장(Tridge)</a></p>
+    <div class="box rv"><h3>Go 기준 4개 (숫자로 판정)</h3><p>① 벤치에서 자석 젓개가 손 젓기보다 <b>2배 이상</b> 빨리 녹임 · 토크 ≥0.3 N·m &nbsp;② 2주 숙성 중 곰팡이 <b>0건</b>(대조군 대비) + 염료가 10분 안에 윗면 도달 &nbsp;③ 설문 「18.9만에 사겠다」 Top-2 <b>15% 이상</b>, 실패·포기 경험 20% 이상 &nbsp;④ ODM 견적 착륙 원가 <b>8.5만 원 이하</b></p></div>
+    <h3 class="rv" style="margin-top:40px;font-size:20px">로드맵 — 게이트와 통과 기준</h3>
+    <div class="timeline rv">
+      <div><small>2026-11</small><b>G0 · 이 기획서 결정</b><p>검증 예산 · 가격 정책 · 시안 A 승인</p></div>
+      <div><small>2026-12 ~ 2027-02</small><b>1단계 검증 12주</b><p>벤치 · 설문 · 목업 · 견적</p></div>
+      <div><small>2027-03</small><b>G1 · Go/Stop</b><p>Go 기준 4개 · 중단 기준 · 개발비 2.0억 승인</p></div>
+      <div><small>2027-04 ~ 05</small><b>ODM 선정 · 디자인 동결</b><p>피그마 시안 → CAD · 유리 2안 결정</p></div>
+      <div><small>2027-05 ~ 07</small><b>금형 · DVT</b><p>T1 샘플 · 신뢰성 시험 · 펌웨어</p></div>
+      <div><small>2027-08 ~ 09</small><b>G2 · 인증 · PVT</b><p>KC 전자파 · 식품용 시험 · 양산 검증</p></div>
+      <div><small>2027-10</small><b>양산 · 선적</b><p>1차 3,000~5,000대</p></div>
+      <div><small>2027-11</small><b>출시 · 유자철</b><p>G3 · 90일 KPI</p></div>
+    </div>
+    <p class="note rv">2027년 6월 매실철은 맞출 수 없습니다(금형·인증 리드타임). 첫 철은 유자·생강·선물철(11~12월)로 잡고, 매실은 2028년 6월이 첫 피크입니다.</p>
+    <div class="two rv">
+      <div><h3>조직 · 역할</h3><ul><li><b>PM 1</b>(기획 · 검증 · 가격) — AX팀</li><li><b>기구 1</b>(컵 · 젓개 · 유리 · 금형 관리) — 제품혁신부문 또는 외주 + AI 설계 검증</li><li><b>회로 · 펌웨어</b> — 외주(서늘고·해동기 보드와 공통 설계)</li><li><b>ID</b> — 외주(피그마 보드 기준) · <b>구매</b>(ODM · 유리 · 자석) · <b>품질</b>(식품 접촉 · 신뢰성)</li><li>단계 전환 조건: G1 통과 시 기구·회로 전담 지정, G2 전 품질 합류</li></ul></div>
+      <div><h3>출시 — 북극성 지표와 90일 KPI</h3><ul><li><b>북극성:</b> 구매 후 30일 안에 첫 통을 담근 비율 <b>70%</b> · 두 번째 철에 다시 담근 비율 <b>50%</b>(사용률이 곧 재구매·추천)</li><li><b>90일 KPI:</b> 1차 로트 3,000대 소진 · 자사몰 비중 50% · 반품률 3% 이하 · 리뷰 「설탕 다 녹았다」 언급 60% 이상</li><li><b>메시지:</b> 「넣고, 누르고, 알림 오면 냉장고로.」 · 「올해 유자청은 실패 없이.」</li><li><b>채널 · 시즌:</b> 11월 유자 출시 → 3월 딸기 → 6월 매실(통 추가 판매) · 원액기 CRM 선공개 · 선물 세트(통 2개)</li></ul></div>
+    </div>
   </div>
 </section>
 
-<footer><div class="wrap">휴롬 과일청 메이커 기획 제안서 · 2026-11-17 · 3D는 구조 설명용 모형으로 치수는 실제 디자인과 다를 수 있습니다. 온도·시간은 시제품 실험 전 목표치입니다. 제철 달력은 일반 상식 수준입니다.</div></footer>
+<section id="decision" style="background:#15120f;color:#f3efe8">
+  <div class="wrap">
+    <div class="kicker rv" style="color:#a89f93">13 · 결정 요청</div>
+    <h2 class="rv" style="color:#fff">네 가지를 결정해 주시면 12주 뒤 숫자로 돌아오겠습니다.</h2>
+    <div class="decide rv">
+      <div><small>결정 1</small><b>1단계 검증 승인</b><p>12주 · 약 1,500만 원(벤치 450 · 설문/인터뷰 550 · 목업 500). 결과는 Go 기준 4개와 중단 기준으로 G1(2027-03)에 보고합니다.</p></div>
+      <div><small>결정 2</small><b>가격 정책 방향</b><p>목표 소비자가 18.9만 원 · 프로모션 하한 16.9만 · 착륙 원가 목표 7.0만(상한 8.5만) · 자사몰 중심 유통. 이 틀로 ODM 견적과 설문 가격 문항을 짭니다.</p></div>
+      <div><small>결정 3</small><b>디자인 시안 A</b><p>항아리형 + 낮은 흰 받침으로 피그마 디자인을 진행합니다(나무 안은 옵션). B는 유리 돌기 때문에 제외, C는 대안으로 보관.</p></div>
+      <div><small>결정 4</small><b>공용 플랫폼 견적</b><p>서늘고 · 해동기 · 과일청 메이커의 펠티어 · 12V 48W 어댑터 · 보드 뼈대를 한 묶음으로 ODM 3곳에 견적 요청합니다.</p></div>
+    </div>
+    <p class="note rv" style="color:#a89f93;margin-top:28px">후속 요청: 특허팀 KIPRIS 선행 조사(출원 후보 3건) · 자사몰 회원 설문 발송 승인 · 유리 공장 2곳 샘플 의뢰(돌기 · 돔).</p>
+  </div>
+</section>
 
+<section id="sources" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="kicker rv">출처 · 신뢰도</div>
+    <h2 class="rv" style="font-size:24px">숫자마다 등급을 붙였습니다 — <span class="g1" style="color:#1f6b2b">1차</span> · <span style="color:#8a5a00">2차</span> · <span style="color:#4b3f8a">추정</span>.</h2>
+    <div class="src rv"><ol>
+      <li><span class="g1">1차</span> 식품의약품안전처 「가정에서 매실청 안전하게 담그는 방법」 안내(2026-05-27): 무게 1:1 · 소독 용기 · 그늘진 실온 3~4개월 · 약 1개월 가스 발생 시 주 1회 열기 · 씨 제거 시 시안화합물 약 95% 감소 · 올리고당 대체 — <a href="https://www.mfds.go.kr" target="_blank" rel="noopener">mfds.go.kr</a> (열람 2026-11-17)</li>
+      <li><span class="g2">2차</span> 가정 레시피·커뮤니티의 곰팡이·설탕 굳음 팁(복수 블로그·카페) — 1차 VOC 20건 인용으로 교체 예정</li>
+      <li><span class="g2">2차</span> 「당 걱정 줄이고 맛 살리고… 똑똑한 매실청 담그기」(2023-05-27 보도, 농촌진흥청 2020 분석 인용: 매실청 100g당 당류 44g · 담그기 열기 감소) — <a href="https://v.daum.net/v/20230527080115034" target="_blank" rel="noopener">v.daum.net</a></li>
+      <li><span class="g2">2차</span> 홍쌍리 매실청 420ml × 2병 29,000원 — 컬리 상품 페이지(열람 2026-11-17)</li>
+      <li><span class="g2">2차</span> 유자차 수출량 2021년 18,315t → 2024년 21,325t(aT 자료 인용, 헤럴드경제 2025-09-10) — <a href="https://www.heraldk.com/article/2025091018185712993" target="_blank" rel="noopener">heraldk.com</a></li>
+      <li><span class="g2">2차</span> 고흥 유자 전국 생산량의 절반 — 지역 보도(2024) · 2025년산 수확·수매 시작(위키트리 2025-11)</li>
+      <li><span class="g3">확인 필요</span> 휴롬 매출 추이(정점 대비 감소) — 사내 자료 · 다른 기획서 인용치. 재무팀 확인 후 숫자 기입</li>
+      <li><span class="g2">2차</span> BRUNO 발효 메이커 25~80°C · 1~48시간(제조사 페이지) · 아이리스오야마 요거트 메이커 약 3,900엔</li>
+      <li><span class="g2">2차</span> 다나와 「그릭 요거트 메이커」 기획전 상위 8개 9천~8.9만 원(2025) — <a href="https://plan.danawa.com/info/?nPlanSeq=9822" target="_blank" rel="noopener">danawa.com</a></li>
+      <li><span class="g2">2차</span> 국내 청국장 발효기 8L 약 22만 원(온라인몰 가격, 열람 2026-11)</li>
+      <li><span class="g2">2차</span> 유로모니터 국내 소형가전 시장 2025년 9조 6,238억 원 전망(2021-10 보도, CEO스코어데일리) · 과채음료 소매 6,635억 원(2019) · 수제청 전용 통계 없음 — <a href="https://ceoscoredaily.com/page/view/2021100814551968436" target="_blank" rel="noopener">ceoscoredaily.com</a></li>
+      <li><span class="g3">확인 필요</span> 관세: HS 8509.80(기타 가정용 전기기기) 기본 8% · 한중 FTA 양허·원산지 기준 — 관세법령정보포털에서 품목 분류 사전 심사 권장</li>
+      <li><span class="g2">2차</span> 전파법 적합성평가(KC 전자파 적합등록) · 전기용품 및 생활용품 안전관리법(어댑터 안전 인증) — 국립전파연구원 · 국가기술표준원</li>
+      <li><span class="g1">1차</span> 식약처 「기구 및 용기·포장의 기준 및 규격」 — 유리 · 합성수지(PP) · 고무(실리콘) 용출 시험 항목</li>
+      <li><span class="g2">2차</span> N42SH 네오디뮴 자석 사양(최고 사용 온도 150°C · Br 1.28~1.32T) — 제조사 공통 카탈로그 값 · 닝보 협력사 등급 확인 중</li>
+      <li><span class="g3">확인 필요</span> 서울 7~8월 평균 이슬점 22~24°C — 기상청 기후 통계로 확인 후 기입(결로 계산의 전제)</li>
+      <li><span class="g2">2차</span> 국내 가구 수 약 2,200만(통계청 2024 인구주택총조사 등록센서스) — 정확한 값 확인 후 기입</li>
+    </ol>
+    <p>토크 · 열 · 결로 · 원가 · 손익 수치는 제안자 계산(<span class="g3">추정</span>)이며, 계산식은 본문 06·08·09에 적었습니다. 1단계 검증과 ODM 견적으로 교체합니다.</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap">휴롬 과일청 메이커 기획서 · 2026-11-17 · 제안 AX팀 · 3D는 구조 설명용 모형으로 치수는 실제 디자인과 다를 수 있습니다. 온도 · 시간 · 토크 · 원가 · 손익은 시제품 실험과 견적 전 목표치입니다. 사진은 컨셉 이미지(AI 생성)입니다.</div></footer>
+
+<div id="progress"></div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script>
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover:hover) and (min-width:1024px)').matches;
+  // base reveal (works without GSAP)
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  const heroImg = document.querySelector('.hero img');
+  const showHero = () => { heroImg.style.transition = 'opacity .9s ease, transform 1.8s cubic-bezier(.22,1,.36,1)'; heroImg.style.opacity = 1; heroImg.style.transform = 'scale(1)'; };
+  heroImg.style.transform = 'scale(1.06)'; if (heroImg.complete) showHero(); else heroImg.addEventListener('load', showHero);
+  if (!window.gsap) { heroImg.style.opacity = 1; return; }
+  if (reduce) { heroImg.style.opacity = 1; return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // smooth scroll (Lenis) — desktop only, keeps 3D section scroll in sync
+  let lenis = null;
+  if (window.Lenis && fine) { lenis = new Lenis({ lerp: 0.1, smoothWheel: true }); lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+
+  // progress bar
+  gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+
+  // hero: per-word blur-in headline
+  const h1 = document.querySelector('.hero h1');
+  if (h1) { h1.innerHTML = h1.innerHTML.replace(/(<em>.*?<\/em>|[^\s<]+)/g, m => `<span class="w">${m}</span>`); }
+  const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.22,1,0.36,1)' } });
+  tl.from('nav', { y: -20, opacity: 0, duration: .8 }, 0)
+    .from('.hero .eyebrow', { y: 18, opacity: 0, duration: .7 }, .15)
+    .from('.hero h1 .w', { y: 26, opacity: 0, filter: 'blur(10px)', duration: .9, stagger: .09 }, .3)
+    .from('.hero .sub', { y: 22, opacity: 0, duration: .8 }, .9)
+    .from('.hero p', { y: 22, opacity: 0, duration: .8 }, 1.05)
+    .from('.hero .chip', { y: 16, opacity: 0, duration: .6, stagger: .06 }, 1.2)
+    .from('.hero .hint', { opacity: 0, duration: .8 }, 1.6);
+  gsap.to('.hero img', { yPercent: 10, scale: 1.04, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .12 } });
+  gsap.to('.hero .wrap', { yPercent: -8, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: 'bottom top', scrub: .12 } });
+
+  // headings: masked line rise
+  gsap.utils.toArray('section h2').forEach(h => {
+    if (h.closest('#structure')) return;
+    const txt = h.innerHTML; h.innerHTML = `<span class="ln"><span>${txt}</span></span>`;
+    gsap.from(h.querySelector('.ln > span'), { yPercent: 110, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
+  });
+  gsap.utils.toArray('.kicker').forEach(k => { if (k.closest('#structure')) return; gsap.from(k, { x: -24, opacity: 0, duration: .6, ease: 'power3.out', scrollTrigger: { trigger: k, start: 'top 92%', once: true } }); });
+
+  // staggered groups
+  const groups = ['.kpi > div', '.toc a', '.trio > div', '.sum3 > div', '.spec > div', '.steps > div', '.three > div', '.four > div', '.two > div', '.gate > div', '.decide > div', '.timeline > div', '.swot > div', '.duo > div', '.score tr', '.risk tr', '.cmp tr'];
+  groups.forEach(sel => { const els = gsap.utils.toArray(sel); if (!els.length) return;
+    ScrollTrigger.batch(els, { start: 'top 90%', once: true, onEnter: b => gsap.fromTo(b, { y: 30, opacity: 0, scale: .985 }, { y: 0, opacity: 1, scale: 1, duration: .8, stagger: .08, ease: 'power3.out', overwrite: true }) }); });
+  gsap.utils.toArray('.pl').forEach(t => gsap.from(t.querySelectorAll('tr'), { opacity: 0, x: -16, duration: .5, stagger: .035, ease: 'power2.out', scrollTrigger: { trigger: t, start: 'top 88%', once: true } }));
+  gsap.utils.toArray('.ph img').forEach(im => gsap.fromTo(im, { clipPath: 'inset(0 0 100% 0)', scale: 1.12 }, { clipPath: 'inset(0 0 0% 0)', scale: 1.04, duration: 1.3, ease: 'power3.inOut', scrollTrigger: { trigger: im, start: 'top 85%', once: true } }));
+
+  // count-ups
+  gsap.utils.toArray('.kpi b').forEach(b => { const m = b.textContent.match(/^([^0-9]*)([0-9][0-9.,]*)(.*)$/); if (!m) return; const end = parseFloat(m[2].replace(/,/g, '')); const dec = (m[2].split('.')[1] || '').length; const o = { v: 0 };
+    ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.8, ease: 'power3.out', onUpdate: () => { b.textContent = m[1] + o.v.toLocaleString('ko-KR', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3]; } }) }); });
+
+  // bars & chart
+  gsap.utils.toArray('.bars i').forEach(i => gsap.fromTo(i, { width: 0 }, { width: i.dataset.w + '%', duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: i, start: 'top 92%', once: true } }));
+  gsap.utils.toArray('.chart').forEach(c => { const bars = c.querySelectorAll('i'); gsap.fromTo(bars, { height: 0 }, { height: i => bars[i].dataset.h + '%', duration: 1.4, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 85%', once: true } }); });
+  gsap.utils.toArray('.timeline').forEach(t => { gsap.from(t, { '--line': 0, duration: 1.8, ease: 'power2.inOut', scrollTrigger: { trigger: t, start: 'top 80%', once: true } }); });
+
+  // 1년 달력: horizontal scrub on desktop
+  const cal = document.querySelector('.cal');
+  if (cal && fine) { gsap.fromTo(cal.children, { y: 40, opacity: 0, rotateX: -20 }, { y: 0, opacity: 1, rotateX: 0, duration: .8, stagger: .06, ease: 'back.out(1.4)', scrollTrigger: { trigger: cal, start: 'top 85%', once: true } }); }
+
+  // card tilt (desktop)
+  if (fine) { document.querySelectorAll('.tilt').forEach(el => { el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; gsap.to(el, { rotateY: x * 8, rotateX: -y * 8, transformPerspective: 900, duration: .5, ease: 'power2.out' }); }); el.addEventListener('mouseleave', () => gsap.to(el, { rotateX: 0, rotateY: 0, duration: .7, ease: 'power3.out' })); }); }
+
+  // custom cursor ring
+  const cur = document.querySelector('.cursor');
+  if (cur && fine) { const pos = { x: innerWidth / 2, y: innerHeight / 2 }, tgt = { ...pos }; addEventListener('mousemove', e => { tgt.x = e.clientX; tgt.y = e.clientY; }); gsap.ticker.add(() => { pos.x += (tgt.x - pos.x) * .18; pos.y += (tgt.y - pos.y) * .18; cur.style.transform = `translate(${pos.x}px,${pos.y}px) translate(-50%,-50%)`; });
+    document.querySelectorAll('a,button').forEach(a => { a.addEventListener('mouseenter', () => gsap.to(cur, { scale: 2.2, duration: .3 })); a.addEventListener('mouseleave', () => gsap.to(cur, { scale: 1, duration: .3 })); }); }
+
+  // nav active state + anchor smooth
+  const links = [...document.querySelectorAll('nav a')]; const ids = links.map(a => a.getAttribute('href'));
+  ids.forEach((id, i) => { const el = document.querySelector(id); if (!el) return; ScrollTrigger.create({ trigger: el, start: 'top 45%', end: 'bottom 45%', onToggle: s => { if (s.isActive) { links.forEach(l => l.classList.remove('on')); links[i].classList.add('on'); } } }); });
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (!t) return; e.preventDefault(); if (lenis) lenis.scrollTo(t, { offset: -64 }); else t.scrollIntoView({ behavior: 'smooth' }); }));
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
 </script>
 </body>
 </html>

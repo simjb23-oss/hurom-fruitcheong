@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+  <defs>
+    <linearGradient id="syrup" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c777" stop-opacity=".55"/><stop offset="1" stop-color="#e98f1f" stop-opacity=".75"/></linearGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#9a9a9a" stroke-width="1.2"/></pattern>
+    <pattern id="hatchAl" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8b94a3" stroke-width="1.1"/></pattern>
+  </defs>
+  <rect width="1200" height="720" fill="#fbfaf7"/>
+  <text x="40" y="44" font-size="22" font-weight="800" fill="#151515">단면 · 통 바닥과 받침 가운데 (시안 A · 축척 아님)</text>
+  <text x="40" y="68" font-size="13" fill="#666">통에는 구멍·축·실링이 없습니다. 젓개는 유리 돌기에 끼워져 제자리에서만 돌고, 유리 너머의 자석 원판이 돌립니다.</text>
+
+  <!-- base shell -->
+  <path d="M250 430 Q250 410 270 410 L930 410 Q950 410 950 430 L950 600 Q950 620 930 620 L270 620 Q250 620 250 600 Z" fill="#f4f2ee" stroke="#c9c4bb" stroke-width="2"/>
+  <!-- bottom plate -->
+  <rect x="262" y="600" width="676" height="14" fill="#e6e2da" stroke="#c9c4bb"/>
+  <!-- intake slots -->
+  <g stroke="#9a948a" stroke-width="2"><line x1="300" y1="607" x2="340" y2="607"/><line x1="860" y1="607" x2="900" y2="607"/></g>
+
+  <!-- aluminium cup (section: two side walls + floor with centre hole) -->
+  <g fill="url(#hatchAl)" stroke="#6f7886" stroke-width="2">
+    <rect x="300" y="340" width="14" height="110"/><rect x="886" y="340" width="14" height="110"/>
+    <rect x="300" y="436" width="195" height="14"/><rect x="705" y="436" width="195" height="14"/>
+  </g>
+  <!-- glass jar bottom (section) -->
+  <path d="M318 300 L318 418 Q318 428 328 428 L560 428 Q600 428 600 408 Q600 428 640 428 L872 428 Q882 428 882 418 L882 300" fill="none" stroke="#5aa5c8" stroke-width="10" stroke-linejoin="round"/>
+  <!-- glass pin (dome stud) -->
+  <path d="M575 428 Q575 392 600 388 Q625 392 625 428 Z" fill="#cfe6f2" stroke="#5aa5c8" stroke-width="4"/>
+  <!-- syrup -->
+  <rect x="323" y="310" width="554" height="113" fill="url(#syrup)"/>
+  <!-- stirrer: silicone body -->
+  <path d="M470 423 L470 380 Q470 366 484 366 L716 366 Q730 366 730 380 L730 423 Z" fill="#f2f2f2" fill-opacity=".9" stroke="#8c8c8c" stroke-width="2"/>
+  <!-- hub hole around pin -->
+  <path d="M570 423 L570 395 Q600 386 630 395 L630 423" fill="#fbfaf7" stroke="#8c8c8c" stroke-width="2"/>
+  <!-- PP capsule with 6 magnets (shown as 4 in section) -->
+  <rect x="484" y="398" width="76" height="20" fill="#dcdcdc" stroke="#777"/><rect x="640" y="398" width="76" height="20" fill="#dcdcdc" stroke="#777"/>
+  <g stroke="#333" stroke-width="1"><rect x="488" y="401" width="32" height="14" fill="#d33"/><rect x="526" y="401" width="30" height="14" fill="#2a6bd6"/><rect x="644" y="401" width="32" height="14" fill="#2a6bd6"/><rect x="682" y="401" width="30" height="14" fill="#d33"/></g>
+  <!-- blades (two visible) -->
+  <path d="M484 366 L440 352 L484 376 Z" fill="#e3e3e3" stroke="#8c8c8c"/><path d="M716 366 L760 352 L716 376 Z" fill="#e3e3e3" stroke="#8c8c8c"/>
+  <!-- drive disc + back yoke + motor -->
+  <rect x="470" y="456" width="260" height="14" fill="#ececec" stroke="#777"/>
+  <g stroke="#333"><rect x="478" y="459" width="52" height="9" fill="#2a6bd6"/><rect x="536" y="459" width="52" height="9" fill="#d33"/><rect x="612" y="459" width="52" height="9" fill="#d33"/><rect x="670" y="459" width="52" height="9" fill="#2a6bd6"/></g>
+  <rect x="470" y="470" width="260" height="5" fill="#555"/>
+  <rect x="540" y="478" width="120" height="34" rx="6" fill="#bdbdbd" stroke="#777"/>
+  <text x="600" y="500" font-size="12" text-anchor="middle" fill="#222">납작 기어드 모터 · ≤20mm</text>
+  <!-- gap dimension -->
+  <g stroke="#c41f3e" stroke-width="1.5"><line x1="760" y1="432" x2="760" y2="456"/><line x1="752" y1="432" x2="768" y2="432"/><line x1="752" y1="456" x2="768" y2="456"/></g>
+  <text x="772" y="448" font-size="12" fill="#c41f3e" font-weight="700">간격 4mm = 유리 3 + 틈 1</text>
+  <!-- peltier stack at rear-left of cup -->
+  <rect x="330" y="452" width="120" height="8" fill="#fff" stroke="#777"/><rect x="330" y="460" width="120" height="8" fill="#c8d9ff" stroke="#777"/>
+  <text x="390" y="458" font-size="9" text-anchor="middle" fill="#333">TEC 40×40</text>
+  <rect x="330" y="470" width="120" height="30" fill="url(#hatch)" stroke="#777"/>
+  <rect x="330" y="504" width="120" height="60" rx="4" fill="#eaeaea" stroke="#777"/><circle cx="390" cy="534" r="22" fill="none" stroke="#777" stroke-width="2"/><text x="390" y="538" font-size="11" text-anchor="middle" fill="#333">팬</text>
+  <!-- airflow -->
+  <path d="M320 606 L320 560 L300 560" fill="none" stroke="#e98f1f" stroke-width="2.5" marker-end="url(#a)"/>
+  <path d="M452 534 L470 534 L470 590 L930 590" fill="none" stroke="#e98f1f" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <text x="700" y="584" font-size="11" fill="#b36a10">배기 → 뒷면 슬롯</text>
+  <!-- LED ring + light rim -->
+  <g fill="#ffd27a" stroke="#d9a53c"><rect x="322" y="432" width="10" height="4"/><rect x="868" y="432" width="10" height="4"/></g>
+  <rect x="300" y="332" width="14" height="8" fill="#fff3cf" stroke="#d9a53c"/><rect x="886" y="332" width="14" height="8" fill="#fff3cf" stroke="#d9a53c"/>
+  <!-- drip channel -->
+  <path d="M314 436 L314 446 L330 446" fill="none" stroke="#3a86c8" stroke-width="2"/><path d="M886 436 L886 446 L870 446" fill="none" stroke="#3a86c8" stroke-width="2"/>
+  <!-- board -->
+  <rect x="780" y="520" width="140" height="6" fill="#2e7d32"/><text x="850" y="542" font-size="11" text-anchor="middle" fill="#333">제어 보드 · H브리지 · 모터 드라이버</text>
+  <!-- reed switch -->
+  <rect x="846" y="452" width="26" height="8" fill="#ffd27a" stroke="#777"/>
+
+  <!-- leader labels left -->
+  <g font-size="13" fill="#222">
+    <g stroke="#999" stroke-width="1"><line x1="318" y1="310" x2="120" y2="150"/><line x1="470" y1="380" x2="120" y2="215"/><line x1="500" y1="408" x2="120" y2="270"/><line x1="440" y1="352" x2="120" y2="330"/><line x1="307" y1="400" x2="120" y2="390"/><line x1="330" y1="470" x2="120" y2="470"/><line x1="390" y1="556" x2="120" y2="540"/><line x1="314" y1="446" x2="120" y2="600"/></g>
+    <text x="40" y="146"><tspan font-weight="800">1</tspan> 유리 통 · 붕규산 3.3 또는 강화 소다석회 · 바닥 3mm</text>
+    <text x="40" y="211"><tspan font-weight="800">2</tspan> 젓개 몸 · 식품용 실리콘(LSR) · Ø6.5cm</text>
+    <text x="40" y="266"><tspan font-weight="800">3</tspan> PP 캡슐 + 희토류 자석 6극(N42SH) · 이중 봉입</text>
+    <text x="40" y="326"><tspan font-weight="800">4</tspan> 날개 3장 · 각도 15° (아래 → 위 흐름)</text>
+    <text x="40" y="386"><tspan font-weight="800">5</tspan> 알루미늄 컵 · 바닥 + 옆면 3cm 접촉 · 가운데 Ø7cm 뚫림</text>
+    <text x="40" y="466"><tspan font-weight="800">6</tspan> 펠티어 TEC1-12706 · 극 전환(데우기/식히기)</text>
+    <text x="40" y="536"><tspan font-weight="800">7</tspan> 방열판 + 팬 60mm · 바닥 흡기 → 뒤 배기</text>
+    <text x="40" y="596"><tspan font-weight="800">8</tspan> 결로 물받이 홈 + 배수(여름 식혀 두기)</text>
+  </g>
+  <!-- leader labels right -->
+  <g font-size="13" fill="#222">
+    <g stroke="#999" stroke-width="1"><line x1="600" y1="392" x2="1080" y2="150"/><line x1="730" y1="463" x2="1080" y2="230"/><line x1="730" y1="472" x2="1080" y2="290"/><line x1="660" y1="495" x2="1080" y2="350"/><line x1="859" y1="456" x2="1080" y2="410"/><line x1="873" y1="434" x2="1080" y2="470"/><line x1="893" y1="336" x2="1080" y2="530"/><line x1="850" y1="523" x2="1080" y2="590"/></g>
+    <text x="1160" y="146" text-anchor="end"><tspan font-weight="800">9</tspan> 유리 돌기(핀) · 높이 8mm · 뿌리 R3 (대안: 얕은 돔)</text>
+    <text x="1160" y="226" text-anchor="end"><tspan font-weight="800">10</tspan> 구동 자석 원판 · 6극 N42SH · Ø65 × 5mm</text>
+    <text x="1160" y="286" text-anchor="end"><tspan font-weight="800">11</tspan> 철 백요크 1mm (자속 모음)</text>
+    <text x="1160" y="346" text-anchor="end"><tspan font-weight="800">12</tspan> 납작 기어드 모터 · 12V · 10~60rpm · 0.6 N·m</text>
+    <text x="1160" y="406" text-anchor="end"><tspan font-weight="800">13</tspan> 통 감지 리드 스위치(통 없으면 정지)</text>
+    <text x="1160" y="466" text-anchor="end"><tspan font-weight="800">14</tspan> RGB LED 링 (품목 색 · 단계 표시)</text>
+    <text x="1160" y="526" text-anchor="end"><tspan font-weight="800">15</tspan> 빛 테 · 유백 PC 확산</text>
+    <text x="1160" y="586" text-anchor="end"><tspan font-weight="800">16</tspan> 제어 보드 · MCU + H브리지 + 모터 드라이버 + NTC</text>
+  </g>
+  <text x="600" y="690" font-size="12" text-anchor="middle" fill="#777">빨강·파랑 = 자석 N·S극 (6극 중 단면에 보이는 4개) · 주황 점선 = 바람길 · 치수는 설계 목표값</text>
+</svg>
