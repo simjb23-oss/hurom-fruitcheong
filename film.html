@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>휴롬 과일청 메이커 · 소개 필름</title>
+<title>휴롬 청담 · 과일청 메이커 · 소개 필름</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <style>
@@ -33,10 +33,10 @@
 /* 4 · 분해 */
 #s4{background:#faf8f3;color:#1c1b19}
 #s4 .p{color:#6b6862}#s4 .kick{color:#d26a12}
-#s4 .ex{position:absolute;right:4vw;top:50%;transform:translateY(-50%);height:88vh;aspect-ratio:1600/1660;background:url(img/explode-numbered.png) center/contain no-repeat}
+#s4 .ex{position:absolute;right:4vw;top:50%;transform:translateY(-50%);height:88vh;aspect-ratio:1600/1660;background:url(img/real-hero.jpg) center/contain no-repeat}
 .parts{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;font-size:15px}
 .parts div{display:flex;gap:10px;align-items:center}.parts em{font-style:normal;width:24px;height:24px;border-radius:12px;background:#e8781a;color:#fff;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:none}
-.magimg{position:absolute;left:38vw;right:2vw;top:6vh;bottom:10vh;background:url(img/real-magnet.jpg) center/contain no-repeat}
+.magimg{position:absolute;left:38vw;right:2vw;top:6vh;bottom:10vh;background:url(img/photo_yuja_front.jpg) center/contain no-repeat}
 .mag{position:absolute;left:calc(38vw + (60vw*.5) - 1vw);top:53%;width:0;height:0}.mag i{position:absolute;left:-60px;top:-22px;width:120px;height:44px;border:2px solid rgba(232,120,26,.9);border-radius:50%;opacity:0}
 @media(max-width:860px){.magimg{left:0;right:0;top:7vh;bottom:auto;height:42vh}.mag{display:none}}
 /* 5 · 라인업 */
@@ -59,31 +59,33 @@
 #brand span{font-weight:500;opacity:.7;margin-left:10px}
 @media(max-width:860px){.copy{left:6vw;right:6vw;top:auto;bottom:16vh;transform:none}.shade{background:linear-gradient(0deg,rgba(11,10,9,.9) 10%,rgba(11,10,9,0) 70%)}
 #sugar{top:8vh;right:50%;transform:translateX(50%);width:72vw}#s4 .ex{top:6vh;right:50%;transform:translateX(50%);height:46vh}.parts{grid-template-columns:1fr;font-size:13px}.stats{gap:24px}.track{flex-wrap:wrap}}
+#s4 .ex{aspect-ratio:1/1;height:68vh;background-size:cover;border-radius:20px}
+@media (max-width:760px){#s4 .ex{height:40vh}}
 </style></head><body>
-<div id="brand">HUROM<span>과일청 메이커</span></div>
+<div id="brand">HUROM<span>청담 · 과일청 메이커</span></div>
 <div id="stage">
  <section class="scene" id="s0"><div><h2 class="h split">설탕이 다 녹을 때까지<br>매일 저어 주던 일.</h2></div><div class="line"></div></section>
- <section class="scene" id="s1"><div class="bg" style="background-image:url(img/real-hero.jpg)"></div><div class="shade"></div>
-  <div class="copy"><div class="kick"><span>Hurom · Fruit Syrup Maker</span></div><h1 class="h split">담가 두면,<br>자석이 저어 줍니다.</h1><p class="p">유리 항아리에 과일과 설탕만 넣고 버튼 하나. 유리 너머 자석이 젓고, 설탕이 녹으면 서늘하게 지켜 둡니다.</p></div></section>
+ <section class="scene" id="s1"><div class="bg" style="background-image:url(img/photo_evening_omija.jpg)"></div><div class="shade"></div>
+  <div class="copy"><div class="kick"><span>Hurom 청담 · Fruit Syrup Maker</span></div><h1 class="h split">담가 두면,<br>자석이 저어 줍니다.</h1><p class="p">1L 유리 항아리에 과일과 설탕만 넣고 버튼 하나. 뚜껑에 달린 젓개가 천천히 젓고, 설탕이 다 녹으면 빛으로 알려 줍니다.</p></div></section>
  <section class="scene" id="s2"><div class="bg" style="background-image:url(img/real-use.jpg)"></div><div class="shade"></div>
   <div class="copy"><div class="kick"><span>담그는 날</span></div><h2 class="h split">넣고, 누르면 끝.</h2>
-  <div class="stats"><div class="stat"><b data-n="1">0</b><span>버튼</span></div><div class="stat"><b data-n="2" data-u="L">0</b><span>유리 항아리</span></div><div class="stat"><b data-n="0" data-from="9">9</b><span>통에 뚫린 구멍</span></div></div></div></section>
+  <div class="stats"><div class="stat"><b data-n="1">0</b><span>버튼</span></div><div class="stat"><b data-n="1" data-u="L">0</b><span>유리 항아리</span></div><div class="stat"><b data-n="0" data-from="9">9</b><span>통에 뚫린 구멍</span></div></div></div></section>
  <section class="scene" id="s3"><canvas id="sugar"></canvas>
-  <div class="copy"><div class="kick"><span>기계가 하는 일</span></div><h2 class="h split">녹이고, 젓고,<br>식혀 둡니다.</h2>
-  <div class="track"><div class="tk"><div class="bar"><i></i></div><b>녹이기</b><span>25~30°C · 처음 4~6시간</span></div><div class="tk"><div class="bar"><i></i></div><b>젓기</b><span>30분마다 1~2분</span></div><div class="tk"><div class="bar"><i></i></div><b>식혀 두기</b><span>실온보다 8~10°C 낮게</span></div></div></div></section>
+  <div class="copy"><div class="kick"><span>기계가 하는 일</span></div><h2 class="h split">쉬고, 젓고,<br>알려 줍니다.</h2>
+  <div class="track"><div class="tk"><div class="bar"><i></i></div><b>쉬기</b><span>처음 4~6시간 · 즙이 나올 때까지</span></div><div class="tk"><div class="bar"><i></i></div><b>젓기</b><span>30분마다 1~2분</span></div><div class="tk"><div class="bar"><i></i></div><b>알림</b><span>다 녹으면 세 번 깜빡 → 냉장고로</span></div></div></div></section>
 <section class="scene" id="sM" style="background:#f4f2ee"><div class="magimg"></div>
   <div class="mag"><i></i><i></i><i></i></div>
-  <div class="copy" style="color:#1c1b19;max-width:520px"><div class="kick" style="color:#d26a12"><span>Magnetic Stir · 자석 젓기</span></div><h2 class="h split">유리 너머에서,<br>자석이 젓습니다.</h2><p class="p" style="color:#5f5b55">통 바닥 아래 6극 자석 원판이 돌면, 유리 안쪽 젓개 속 자석이 따라 돕니다. 축도 구멍도 실링도 없어 새지 않고, 젓개는 쏙 빼서 씻습니다.</p>
-  <div class="stats" style="margin-top:30px"><div class="stat"><b data-n="0" data-from="3" style="color:#1c1b19">3</b><span style="color:#6b6862">통에 뚫린 구멍 · 축 · 실링</span></div><div class="stat"><b data-n="6" style="color:#1c1b19">0</b><span style="color:#6b6862">극 자석 원판</span></div><div class="stat"><b data-n="3" style="color:#1c1b19">0</b><span style="color:#6b6862">씻는 부품</span></div></div></div></section>
+  <div class="copy" style="color:#1c1b19;max-width:520px"><div class="kick" style="color:#d26a12"><span>Lid Stirrer · 뚜껑 젓개</span></div><h2 class="h split">뚜껑을 들면,<br>젓개가 같이 나옵니다.</h2><p class="p" style="color:#5f5b55">뚜껑 가운데 손잡이에서 투명 축이 바닥까지 내려오고, 끝의 젓개를 받침 속 자석이 유리 너머로 돌립니다. 통에 구멍이 없어 새지 않고, 청이 다 되면 뚜껑째 들어 끈적한 청 속을 손으로 뒤질 일이 없습니다.</p>
+  <div class="stats" style="margin-top:30px"><div class="stat"><b data-n="0" data-from="3" style="color:#1c1b19">3</b><span style="color:#6b6862">통에 뚫린 구멍</span></div><div class="stat"><b data-n="4" style="color:#1c1b19">0</b><span style="color:#6b6862">극 자석 디스크</span></div><div class="stat"><b data-n="3" style="color:#1c1b19">0</b><span style="color:#6b6862">씻는 부품</span></div></div></div></section>
  <section class="scene" id="s4"><div class="ex"></div>
-  <div class="copy"><div class="kick"><span>구조</span></div><h2 class="h split">통에는 구멍이 없습니다.</h2><p class="p">젓개는 유리 바닥 돌기에 끼워 두고, 유리 너머 자석이 돌립니다. 씻는 것은 셋뿐입니다.</p>
-  <div class="parts"><div><em>2</em>유리 통 · 붕규산 2L</div><div><em>3</em>젓개 · 자석 봉입</div><div><em>6</em>자석 원판 + 납작 모터</div><div><em>7</em>펠티어 · 데우기·식히기</div><div><em>5</em>빛 링 · 단계 표시</div><div><em>14</em>12V 4A 어댑터</div></div></div></section>
+  <div class="copy"><div class="kick"><span>구조</span></div><h2 class="h split">통에는 구멍이 없습니다.</h2><p class="p">젓개는 뚜껑 축 끝에 딸깍 끼우고, 바닥은 평평해 손이 다 닿습니다. 씻는 것은 뚜껑 · 통 · 젓개 셋뿐(젓개는 식기세척기).</p>
+  <div class="parts"><div><em>1</em>뚜껑 · 손잡이 = 젓개 축 머리</div><div><em>2</em>유리 항아리 · 붕규산 1L</div><div><em>3</em>투명 축 + 딸깍 젓개 · 자석 봉입</div><div><em>4</em>자석 디스크 + 작은 기어 모터</div><div><em>5</em>빛 링 · 단계 표시</div><div><em>6</em>USB-C · 폰 충전기로 켬</div></div></div></section>
  <section class="scene" id="s5"><div class="bg" style="background-image:url(img/real-lineup.jpg)"></div><div id="wash"></div><div class="shade b"></div>
   <div class="copy bottom"><div class="kick"><span>네 가지 청</span></div><h2 class="h split">빛이 청의 색을 따라갑니다.</h2>
   <div class="swatch"><div class="sw"><i style="background:#f2a516"></i>유자</div><div class="sw"><i style="background:#a8c43a"></i>매실</div><div class="sw"><i style="background:#c8102e"></i>오미자</div><div class="sw"><i style="background:#ef4b5f"></i>딸기</div></div></div></section>
  <section class="scene" id="s6"><div class="bg" style="background-image:url(img/real-night.jpg)"></div><div class="shade"></div>
-  <div class="copy"><div class="kick"><span>밤새</span></div><h2 class="h split">불을 꺼도,<br>청은 지켜집니다.</h2><p class="p">다 녹으면 흰 빛으로 알리고, 그다음부터는 서늘하게 숙성합니다. 밤에도 조용히(30dB 이하 목표).</p></div></section>
- <section class="scene" id="s7"><div><div class="kick"><span>Hurom · 2026</span></div><h2 class="h split">휴롬 과일청 메이커</h2><p class="p" style="margin:22px auto 0">조리대 위의 작은 항아리 하나로, 계절 과일을 일 년 내내.</p>
+  <div class="copy"><div class="kick"><span>밤새</span></div><h2 class="h split">불을 꺼도,<br>젓개는 조용히 돕니다.</h2><p class="p">다 녹으면 세 번 깜빡여 알립니다. 유자 · 레몬 · 딸기는 냉장고로, 매실 · 생강 · 오미자는 서늘한 곳으로. 밤에도 조용히(30dB 이하 목표).</p></div></section>
+ <section class="scene" id="s7"><div><div class="kick"><span>Hurom · 2026</span></div><h2 class="h split">휴롬 청담</h2><p class="p" style="margin:22px auto 0">조리대 위의 작은 항아리 하나로, 계절 과일을 일 년 내내.</p>
   <div class="cta"><a href="./">기획서 보기</a><a class="ghost" href="strategy.html">경영 분석</a><a class="ghost" href="#" id="again">다시 보기</a></div></div></section>
 </div>
 <div id="hud"><div id="dots"></div><button class="ctl" id="pp">일시정지</button></div>
