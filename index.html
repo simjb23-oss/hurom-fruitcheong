@@ -191,6 +191,10 @@ footer{padding:56px 0 72px;font-size:13px;color:var(--sub);border-top:1px solid 
 .hero h1 em{background:linear-gradient(transparent 62%,rgba(242,154,46,.55) 62%)}
 .hero .sub{color:#e9e2d6}
 .hero p{color:#c9c1b4}
+.hero{padding:88px 0 48px}
+.hero .sub{max-width:21em;font-size:clamp(18px,1.7vw,22px)}
+.hero .chips{max-width:600px}
+@media (max-width:860px){.hero .sub,.hero .chips{max-width:none}}
 .hero .chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#efe9df}
 @media (max-width:860px){.hero img{left:0;width:100%;opacity:.55}}
 .cal{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:40px}
