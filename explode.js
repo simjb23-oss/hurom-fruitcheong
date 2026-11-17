@@ -320,7 +320,7 @@ function buildLite() {
   const BH = V.baseH, SEAT_D = 0.06, SEAT_Y = BH - SEAT_D;      // 통이 앉는 얕은 자리 6mm(컵 없음)
   const JH = V.jarH, JY = SEAT_Y + 0.004;                        // 통 바닥 높이
   const GT = 0.025, GAP = 0.008;                                 // 유리 바닥 2.5mm · 그림 틈 — 실제 유효 간격 4.5mm(유리 2.5 + 덮개 1 + 띄움 0.5 + 틈 0.5)
-  const MR = 0.20, BALLR = 0.04, DIMPLE = 0.04;                  // 자석 디스크 Ø40(양쪽 같음) · 세라믹 볼 Ø8mm · 오목 자리 4mm
+  const MR = 0.20, STEMR = 0.04;                                 // 자석 디스크 Ø40(양쪽 같음) · 뚜껑 축 Ø8mm(투명 트라이탄) — 오목 자리 · 세라믹 볼 없음(바닥 평평)
   const VR = V.jar === 'lwide' ? 0.33 : 0.27;                    // 날개 Ø6.6 / Ø5.4cm
   const JR = V.mouthR;                                           // 통 바깥 반지름(입구가 가장 넓음)
   M.body.color.set(V.baseColor); M.body.roughness = V.baseRough; M.body.clearcoat = V.baseClear;
@@ -340,14 +340,13 @@ function buildLite() {
     const ring = new THREE.Mesh(new THREE.RingGeometry(MR + 0.07, JR - 0.02, 64), M.ledRing); ring.rotation.x = -Math.PI / 2; ring.position.y = SEAT_Y + 0.004; g.add(ring);
     part('빛 링 · 단색 LED · 통을 아래서 비춤 · 숨쉬기=젓는 중 · 고정=다 녹음', g, [0, 0.38, 0], new THREE.Vector3(-0.3, SEAT_Y, 0.15), true);
   }
-  /* 3. 유리 통 — 1L 붕규산 3.3 · 입구가 가장 넓어 프레스 성형 · 바닥 2.5mm · 오목 자리 + 세라믹 볼 · 1.0L 상한 선 */
+  /* 3. 유리 통 — 1L 붕규산 3.3 · 입구가 가장 넓어 프레스 성형 · 바닥 2.5mm 평평(축 젓개라 오목 자리 없음) · 1.0L 상한 선 */
   {
     const g = new THREE.Group(); jarGroup = g;
     const prof = jarProfile(V.jar, JH);
     const outer = lathe(prof, M.glass, 96);
     const innerP = inset(prof, 0.03); innerP[0] = [0, GT];
     g.add(outer, lathe(innerP, M.glass, 96));
-    const dimple = new THREE.Mesh(new THREE.TorusGeometry(BALLR + 0.015, 0.007, 12, 48), M.glass); dimple.rotation.x = Math.PI / 2; dimple.position.y = GT + 0.004; g.add(dimple);
     const lineY = JH * (1.0 / 1.2);   // 1.0L 상한 선(전체 1.2L)
     const line = new THREE.Mesh(new THREE.TorusGeometry(JR + 0.002, 0.004, 8, 96), M.pp); line.rotation.x = Math.PI / 2; line.position.y = lineY; g.add(line);
     const fillY = lineY - 0.08;
@@ -364,29 +363,34 @@ function buildLite() {
       f.position.set(Math.cos(a) * rr, y + 0.03, Math.sin(a) * rr); f.rotation.set(rnd(), rnd() * 3, rnd()); fruitG.add(f);
     }
     g.position.y = JY;
-    part(`유리 통 · 1L 붕규산 3.3 · ${V.jar === 'lwide' ? '넓적 Ø13.5 × 9.5cm' : '통형 Ø10 × 15cm'} · 입구가 가장 넓음(프레스 성형) · 바닥 2.5mm · 오목 자리 + 세라믹 볼 · 1.0L 상한 선 · 구멍 없음`, g, [0, 1.2, 0], new THREE.Vector3(JR + 0.1, JH * 0.75, 0));
+    part(`유리 통 · 1L 붕규산 3.3 · ${V.jar === 'lwide' ? '넓적 Ø13.5 × 9.5cm' : '통형 Ø10 × 15cm'} · 입구가 가장 넓음(프레스 성형) · 바닥 2.5mm 평평(오목 자리 없음) · 1.0L 상한 선 · 구멍 없음`, g, [0, 1.2, 0], new THREE.Vector3(JR + 0.1, JH * 0.75, 0));
   }
-  /* 4. 젓개 — 날개 3 · 자석 디스크 Ø40 봉입(4극 · 도금 + PP + 실리콘) · 세라믹 볼이 오목 자리에 앉아 제자리에서 돎 */
+  /* 4. 젓개 — 날개 3 · 자석 디스크 Ø40 봉입(4극 · 도금 + PP + 실리콘) · 뚜껑 축 끝에 딸깍 끼워 바닥에 닿아 돎 · 빼서 식기세척기 */
   {
     const g = new THREE.Group();
     const body = lathe([[0, 0], [VR, 0], [VR, 0.05], [VR - 0.025, 0.07], [0.1, 0.07], [0.085, 0.13], [0, 0.13]], M.siliconeT, 64); g.add(body);
-    const ball = new THREE.Mesh(new THREE.SphereGeometry(BALLR, 24, 16), M.pp); ball.position.y = 0.01; g.add(ball);
+    const sock = new THREE.Mesh(new THREE.CylinderGeometry(STEMR + 0.02, STEMR + 0.02, 0.05, 20), M.pp); sock.position.y = 0.15; g.add(sock);   // 축 끝 딸깍 소켓
     for (let i = 0; i < 4; i++) { const seg = new THREE.Mesh(new THREE.CylinderGeometry(MR, MR, 0.026, 40, 1, false, i * Math.PI / 2, Math.PI / 2), i % 2 ? M.magnetS : M.magnet); seg.position.y = 0.025; g.add(seg); }   // 4극 디스크
     const ppCap = new THREE.Mesh(new THREE.CylinderGeometry(MR + 0.01, MR + 0.01, 0.012, 40), M.pp); ppCap.position.y = 0.044; g.add(ppCap);
     for (let i = 0; i < 3; i++) { const h = new THREE.Group(); h.rotation.y = i * Math.PI * 2 / 3; const b = new THREE.Mesh(new RoundedBoxGeometry(VR - 0.12, 0.08, 0.05, 2, 0.018), M.silicone); b.position.set((VR + 0.08) / 2 + 0.01, 0.1, 0); b.rotation.x = 0.4; h.add(b); g.add(h); }
-    g.position.y = JY + GT - DIMPLE * 0.6; g.userData.slow = true; spinners.push(g);
-    part(`젓개 · Ø${Math.round(VR * 20)}cm 날개 3 · 자석 디스크 Ø40 봉입(4극 · 도금 + PP + 실리콘) · 세라믹 볼 Ø8mm · 오목 자리에 앉아 제자리에서 돎 · 뽑아서 씻음`, g, [0, 0.8, 0], new THREE.Vector3(VR, 0.07, 0));
+    g.position.y = JY + GT; g.userData.slow = true; spinners.push(g);
+    part(`젓개 · Ø${Math.round(VR * 20)}cm 날개 3 · 자석 디스크 Ø40 봉입(4극 · 도금 + PP + 실리콘) · 뚜껑 축 끝에 딸깍 · 뚜껑 들면 같이 나옴 · 빼서 식기세척기`, g, [0, 0.9, 0], new THREE.Vector3(VR, 0.07, 0));
   }
-  /* 5. 뚜껑 — PP · 얹는 식 · 패킹 · 한 방향 밸브 · 손잡이(나무 안) */
+  /* 5. 뚜껑 — PP · 얹는 식 · 패킹 · 가운데 축 베어링 + 투명 축(트라이탄 Ø8)이 바닥 젓개까지 · 한 방향 밸브(옆) · 손잡이(나무 안) · 뚜껑을 들면 젓개가 같이 나옴 */
   {
     const g = new THREE.Group();
     const r = JR + 0.05;
     const lid = lathe([[0, 0], [r, 0], [r, 0.055], [r - 0.03, 0.09], [0.14, 0.11], [0, 0.11]], M.lid, 72); g.add(lid);
     const skirt = lathe([[JR - 0.05, -0.07], [JR - 0.03, -0.07], [JR - 0.03, 0], [JR - 0.05, 0]], M.silicone, 72); g.add(skirt);
     const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.095, 0.11, 0.06, 32), wood ? M.wood : M.lid); knob.position.y = 0.14; g.add(knob); if (wood) woodMeshes.push(knob);
-    const valve = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.026, 16), M.valve); valve.position.y = 0.18; g.add(valve);
+    const valve = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.026, 16), M.valve); valve.position.set(0.22, 0.1, 0); g.add(valve);   // 밸브는 축 옆
+    const stemL = JH - GT - 0.17;                                                                                                             // 뚜껑 밑면 → 젓개 소켓 위
+    const stem = new THREE.Mesh(new THREE.CylinderGeometry(STEMR, STEMR, stemL + 0.08, 20), M.glass); stem.position.y = -stemL / 2 + 0.04; g.add(stem);   // 투명 축(트라이탄)
+    const bear = new THREE.Mesh(new THREE.CylinderGeometry(STEMR + 0.03, STEMR + 0.03, 0.04, 20), M.pp); bear.position.y = -0.02; g.add(bear);          // 축 베어링(뚜껑 밑)
+    const tip = new THREE.Mesh(new THREE.CylinderGeometry(STEMR + 0.012, STEMR + 0.012, 0.05, 20), M.pp); tip.position.y = -stemL + 0.02; g.add(tip);    // 축 끝 딸깍 돌기
+    const rest = lathe([[r, 0.055], [r + 0.03, 0.055], [r + 0.03, 0.075], [r, 0.075]], M.lid, 72); g.add(rest);                                          // 입구에 걸쳐 세우는 턱
     g.position.y = JY + JH;
-    part(`뚜껑 · PP · 얹는 식 · 패킹 · 한 방향 밸브(김 빠짐)${wood ? ' · 나무 손잡이' : ''}`, g, [0, 1.8, 0], new THREE.Vector3(r, 0.07, 0));
+    part(`뚜껑 · PP · 가운데 축 베어링 + 투명 축(트라이탄 Ø8)이 바닥 젓개까지 · 뚜껑 들면 젓개가 같이 나옴 · 한 방향 밸브 · 입구에 걸쳐 세우는 턱${wood ? ' · 나무 손잡이' : ''}`, g, [0, 1.9, 0], new THREE.Vector3(r, 0.07, 0));
   }
   /* 6. 구동 자석 디스크 Ø40 × 5mm + 부시 + 5V 기어 모터 — 자리 바닥 바로 아래 · 유효 간격 4.5mm · 20~30rpm · 0.1 N·m */
   {
@@ -433,6 +437,15 @@ function buildLite() {
     g.add(tube([new THREE.Vector3(0, BH * 0.42, -(V.baseR + 0.1)), new THREE.Vector3(0.3, 0.12, -(V.baseR + 0.6)), new THREE.Vector3(1.2, 0.03, -1.4), new THREE.Vector3(2.2, 0.03, -1.6)], 0.012, M.wireB, 30));
     g.name = 'cable';
     part('USB-C to C 케이블 1m · 어댑터 없음(5V 2A 폰 충전기) · 전기용품안전 비대상', g, [0.9, -0.5, -0.3], new THREE.Vector3(0.9, 0.08, -(V.baseR + 0.9)));
+  }
+  /* 11. 보관 뚜껑 — 납작 PP · 밸브 · 다 녹으면 축 뚜껑 대신 끼워 통째 냉장고로(받침 옆에 놓음 · ?nostorelid) */
+  {
+    const g = new THREE.Group();
+    const r = JR + 0.05;
+    const lid = lathe([[0, 0], [r, 0], [r, 0.045], [r - 0.03, 0.06], [0, 0.06]], M.lid, 72); g.add(lid);
+    const valve = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.026, 16), M.valve); valve.position.y = 0.07; g.add(valve);
+    g.position.set(V.baseR + r + 0.25, 0, 0.3); g.name = 'storelid';
+    part('보관 뚜껑 · 납작 PP · 밸브 · 다 녹으면 축 뚜껑 대신 끼워 통째 냉장고로', g, [0.5, 0.4, 0], new THREE.Vector3(r * 0.5, 0.06, 0));
   }
   airG = null;   // 바람길 없음(팬 없음)
   glow.position.set(0, SEAT_Y + 0.1, 0); glowUp.position.set(0, JY + JH * 0.5, 0);
